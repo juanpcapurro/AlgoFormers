@@ -3,7 +3,8 @@ Trabajo Práctico 2
 
 ## [Enunciado TP2](https://docs.google.com/document/d/1TRXdMIcBzeZ8nkx3D7Oj51ysUXpI5cZWzbrTyp-dPFw/edit?usp=sharing)
 
-### 1er Entrega: **Jueves 02/06/2016** - Lunes 06/06/2016 - 2 semanas desde fecha inicio
+### ~~1er Entrega: Jueves 02/06/2016 - Lunes 06/06/2016 - 2 semanas desde fecha inicio~~
+### 1er Entrega: **Lunes 30/05/2016**.
 
 * A desallorar para la próxima entrega:
   * Turnos
