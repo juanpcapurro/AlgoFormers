@@ -1,0 +1,9 @@
+vim -s <(echo $' 
+
+:tabnew ./src/Trivial.java \n
+:tabnew ./test/TrivialTest.java \n
+
+gt \n
+:q \n
+')
+
