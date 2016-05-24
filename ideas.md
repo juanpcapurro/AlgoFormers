@@ -20,7 +20,7 @@
 
 
 * Jugadores
-  1. Básicamente se derrallo en el item anterior. Debería existir una clase "Jugador", que contenga todas las referencias a sus Transformer, el bando al que pertenece, bonus, desventajas, vida, y otras caracteristicas.
+  1. Básicamente se desarrollo en el item anterior. Debería existir una clase "Jugador", que contenga todas las referencias a sus Transformer, el bando al que pertenece, bonus, desventajas, vida, y otras caracteristicas.
   2. Debería hacerse también con una interfaz. Por ahora solo hay dos tipos de jugadores, pero me parece genial dejar abierta la posibilidad de que haya un 3er jugador. Del tipo... ¿Humanos?¿Gatos voladores parlantes con rayos láser amantes de Netflix y Starbucks? No creo que lleguemos a hacerlo, pero sería genial dejar la posibilidad de agregar más tipos de jugadores.
 
 
