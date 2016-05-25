@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <testsuites>
-  <testsuite errors="0" failures="0" hostname="Lentium-II" id="0" name="TrivialTest" package="algoFormers" tests="1" time="0.126" timestamp="2016-05-24T22:04:39">
+  <testsuite errors="0" failures="0" hostname="Lentium-II" id="0" name="TrivialTest" package="algoFormers" tests="1" time="0.145" timestamp="2016-05-25T23:08:15">
       <properties>
           <property name="file.encoding.pkg" value="sun.io" />
 
@@ -120,9 +120,9 @@
 
           <property name="build" value="/home/vasectomio/Documents/GitHub/AlgoFormers/build" />
 
-          <property name="ivy.targets.copied" value="true" />
+          <property name="ivy.targets.copied" value="false" />
 
-          <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner algoFormers.TrivialTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=false formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/home/vasectomio/Documents/GitHub/AlgoFormers/build/reports/junit-xml/TEST-algoFormers.TrivialTest.xml crashfile=/home/vasectomio/Documents/GitHub/AlgoFormers/junitvmwatcher8337570923744687966.properties propsfile=/home/vasectomio/Documents/GitHub/AlgoFormers/junit2090281284616558276.properties" />
+          <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner algoFormers.TrivialTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=false formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/home/vasectomio/Documents/GitHub/AlgoFormers/build/reports/junit-xml/TEST-algoFormers.TrivialTest.xml crashfile=/home/vasectomio/Documents/GitHub/AlgoFormers/junitvmwatcher8613816495097782875.properties propsfile=/home/vasectomio/Documents/GitHub/AlgoFormers/junit6788082579680428893.properties" />
 
           <property name="ivy.shared.default.artifact.pattern" value="[organisation]/[module]/[revision]/[type]s/[artifact].[ext]" />
 
@@ -290,7 +290,7 @@
 
           <property name="ivy.settings.file.ivy.instance" value="ivysettings.xml" />
 
-          <property name="ivy.nb.targets.copied" value="13" />
+          <property name="ivy.nb.targets.copied" value="0" />
 
           <property name="ant.project.name" value="nicopaez.tutoriales.oo.notas" />
 
@@ -436,7 +436,7 @@
 
       </properties>
 
-      <testcase classname="algoFormers.TrivialTest" name="wowQueSorpresaRetornaTrue" time="0.087" />
+      <testcase classname="algoFormers.TrivialTest" name="wowQueSorpresaRetornaTrue" time="0.104" />
 
       <system-out><![CDATA[]]></system-out>
 
