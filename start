@@ -1,7 +1,7 @@
 vim -s <(echo $' 
 
-:tabnew ./src/Trivial.java \n
-:tabnew ./test/TrivialTest.java \n
+:tabnew ./src/tablero/Tablero.java \n
+:tabnew ./test/tablero/TableroTest.java \n
 
 gt \n
 :q \n
