@@ -1,4 +1,4 @@
-package algoFormers.tablero;
+package tablero;
 
 public class EspacioVacio extends Colocable{
 	public boolean ocupaLugar(){

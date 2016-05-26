@@ -1,4 +1,4 @@
-package algoFormers.tablero;
+package tablero;
 
 
 public class Casillero {
@@ -6,8 +6,8 @@ public class Casillero {
     private Superficie superficie;
 
     Casillero(){
-        Colocable colocable= new EspacioVacio();
-        Superficie superficie= new Llano();
+        colocado= new EspacioVacio();
+        superficie= new Llano();
     }
 
     public boolean estaOcupado(){

@@ -1,4 +1,4 @@
-package algoFormers.tablero;
+package tablero;
 
 import java.util.Arrays;
 
@@ -16,7 +16,7 @@ public class Tablero{
     public boolean estaVacio(){
         for (Casillero[] row : matrizCasilleros)
             for (Casillero casillero : row)
-                if (casillero.estaOcupado())
+                if (!casillero.estaOcupado())
                     return true;
         return false;
     }

@@ -1,4 +1,4 @@
-package algoFormers.tablero;
+package tablero;
 
 
 public class Llano extends Superficie{
