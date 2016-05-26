@@ -11,4 +11,10 @@ public class ColocableTest{
 		assertFalse(unColocable.ocupaLugar());
 	}
 
+	
+	@Test
+	public void algoFormerOcupaLugar (){
+		Colocable unAlgoFormer = new AlgoFormer();
+		assertTrue(unAlgoFormer.ocupaLugar());
+	}
 }
