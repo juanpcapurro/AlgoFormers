@@ -18,7 +18,13 @@ public class TableroTest{
 
     @Test
     public void test02colocarYVericarQueCasilleroNoEsteVacio(){
-        tablero.colocar()
+        assert(tablero.colocar(3,4,new EspacioOcupado()));
+        assert(!tablero.estaVacioEnPosicion(3,4));
     }
-	
+
+    @Test
+    public void test03colocarDosObjetosMismaPosicion(){
+        assert(tablero.colocar(3,4,new EspacioOcupado()));
+        assert(!tablero.colocar(3,4,new EspacioOcupado()));
+    }
 }

@@ -20,4 +20,14 @@ public class Tablero{
                     return true;
         return false;
     }
+
+	public boolean colocar(int fila, int columna,Colocable aColocar){
+		Casillero casillero= matrizCasilleros[fila][columna];
+		return casillero.colocar(aColocar);
+	}
+
+	public boolean estaVacioEnPosicion(int fila, int columna){
+		Casillero casillero= matrizCasilleros[fila][columna];
+		return !casillero.estaOcupado();
+	}
 }

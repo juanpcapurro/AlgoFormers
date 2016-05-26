@@ -15,4 +15,10 @@ public class Casillero {
     }
 
 
+    public boolean colocar(Colocable aColocar) {
+        if (this.estaOcupado())
+                return false;
+        colocado=aColocar;
+        return true;
+    }
 }
