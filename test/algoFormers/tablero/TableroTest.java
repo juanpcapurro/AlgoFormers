@@ -13,8 +13,12 @@ public class TableroTest{
 
     @Test
     public void test01CasilleroDebeEstarVacio(){
-        assert(tablero.estaVacio());
+        assert(tablero.estaTodoVacio());
     }
 
+    @Test
+    public void test02colocarYVericarQueCasilleroNoEsteVacio(){
+        tablero.colocar()
+    }
 	
 }

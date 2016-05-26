@@ -13,7 +13,7 @@ public class Tablero{
 			Arrays.fill(row, new Casillero());//Charly quiere usar esto, peguenle a el
 	}
 
-    public boolean estaVacio(){
+    public boolean estaTodoVacio(){
         for (Casillero[] row : matrizCasilleros)
             for (Casillero casillero : row)
                 if (!casillero.estaOcupado())
