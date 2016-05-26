@@ -40,7 +40,7 @@ public class TableroTest{
     }
 	
 	@Test
-	public void sacarUnAlgoformer (){
+	public void test06sacarUnAlgoformer (){
 		tablero.colocarAlgoformer(2,5);
 		assertTrue(tablero.estaOcupadoEnPosicion(2,5));
 		assertFalse(tablero.estaTodoVacio());
@@ -49,5 +49,20 @@ public class TableroTest{
 		assertFalse(tablero.estaOcupadoEnPosicion(2,5));
 		assertTrue(tablero.estaTodoVacio());
 	}
+
+    @Test
+    public void test07VaciarUnEspacioVacio(){
+        tablero.vaciarPosicion(3,4);
+        assertFalse(tablero.estaOcupadoEnPosicion(3,4));
+    }
+
+    @Test
+    public void test08colocarEnPosicionLuegoDeVaciar(){
+        tablero.colocarAlgoformer(3,4);
+        tablero.vaciarPosicion(3,4);
+        assertFalse(tablero.estaOcupadoEnPosicion(3,4));
+        tablero.colocarAlgoformer(3,4);
+        assertTrue(tablero.estaOcupadoEnPosicion(3,4));
+    }
 	
 }
