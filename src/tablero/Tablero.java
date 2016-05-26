@@ -8,4 +8,5 @@ public class Tablero{
 		matrizCasilleros = new Casillero[dimension_pedida][dimension_pedida];
 		DIMENSION = dimension_pedida;
 	}
+
 }
