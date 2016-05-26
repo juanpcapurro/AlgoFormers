@@ -22,4 +22,8 @@ public class Casillero {
                 throw new CasilleroYaOcupado();
         colocado=aColocar;
     }
+
+	public void vaciar(){
+		colocado = new EspacioVacio();
+	}
 }

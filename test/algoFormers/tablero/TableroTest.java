@@ -3,9 +3,7 @@ package algoFormers.tablero;
 import org.junit.Before;
 import org.junit.Test;
 
-import algoFormers.tablero.colocable.robots.AlgoFormer;
-
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 public class TableroTest{
     Tablero tablero;
@@ -40,5 +38,15 @@ public class TableroTest{
     public void test05ColocarCoordenadaInvalidaExcedeTamanio(){
         tablero.colocarAlgoformer(17,23);
     }
-
+	
+	@Test
+	public void sacarUnAlgoformer (){
+		tablero.colocarAlgoformer(2,5);
+		assertTrue(tablero.estaOcupadoEnPosicion(2,5));
+		assertFalse(tablero.estaTodoVacio());
+		tablero.vaciarPosicion(2,5);
+		assertFalse(tablero.estaOcupadoEnPosicion(2,5));
+		assertTrue(tablero.estaTodoVacio());
+	}
+	
 }

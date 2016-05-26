@@ -1,7 +1,7 @@
 package algoFormers.tablero;
 
-import algoFormers.tablero.colocable.robots.AlgoFormer;
-import algoFormers.tablero.colocable.Colocable;
+import algoFormers.tablero.colocable.robots.*;
+import algoFormers.tablero.colocable.*;
 
 import java.util.Arrays;
 
@@ -43,5 +43,9 @@ public class Tablero{
 	private void vericarCoordenadas(int fila, int columna) {
 		if (fila<0 || columna <0 || fila >= DIMENSION || columna >= DIMENSION)
 			throw new CoordenadasInvalidas() ;
+	}
+	public void vaciarPosicion(int fila, int columna){
+		this.vericarCoordenadas(fila, columna);
+		this.matrizCasilleros[fila][columna].vaciar();
 	}
 }
