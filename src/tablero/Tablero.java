@@ -1,4 +1,6 @@
-package tablero;
+package algoFormers.tablero;
+
+import tablero.Casillero;
 
 public class Tablero{
 	private final int DIMENSION;
@@ -10,10 +12,6 @@ public class Tablero{
 	}
 
     public boolean estaVacio(){
-        for (Casillero[] row : matrizCasilleros)
-            for (Casillero casillero : row)
-                if (casillero.estaOcupado())
-                    return true;
-        return false;
+        for ()
     }
 }
