@@ -1,4 +1,5 @@
 start
-/.idea/*
+/.idea/**
 *.swp
-/build/*
+/build/**
+/libs/**
