@@ -2,3 +2,4 @@ start
 /.idea/*
 *.swp
 /build/*
+/libs/*
