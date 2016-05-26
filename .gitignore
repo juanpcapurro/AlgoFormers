@@ -1,0 +1,4 @@
+start
+.idea
+*.swp
+/build/*
