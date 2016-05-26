@@ -7,7 +7,7 @@ public class Casillero {
 
     Casillero(){
         Colocable colocable= new EspacioVacio();
-        Superficie superficie= new SuperficieVacia();
+        Superficie superficie= new Llano();
     }
 
     public boolean estaOcupado(){

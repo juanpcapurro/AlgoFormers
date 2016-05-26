@@ -1,6 +1,6 @@
 package tablero;
 
-import algoFormers.tablero.Tablero;
+import tablero.Tablero;
 import org.junit.Before;
 import org.junit.Test;
 
