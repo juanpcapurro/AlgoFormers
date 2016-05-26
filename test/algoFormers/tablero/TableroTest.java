@@ -1,5 +1,6 @@
 package algoFormers.tablero;
 
+import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -13,18 +14,18 @@ public class TableroTest{
 
     @Test
     public void test01CasilleroDebeEstarVacio(){
-        assert(tablero.estaTodoVacio());
+        assertTrue(tablero.estaTodoVacio());
     }
 
     @Test
     public void test02colocarYVericarQueCasilleroNoEsteVacio(){
-        assert(tablero.colocar(3,4,new EspacioOcupado()));
-        assert(!tablero.estaVacioEnPosicion(3,4));
+        tablero.colocar(3,4,new EspacioOcupado());
+        assertTrue(tablero.estaOcupadoEnPosicion(3,4));
     }
 
-    @Test
-    public void test03colocarDosObjetosMismaPosicion(){
-        assert(tablero.colocar(3,4,new EspacioOcupado()));
-        assert(!tablero.colocar(3,4,new EspacioOcupado()));
+    @Test(expected= CasilleroYaOcupado.class)
+    public void test03colocarDosObjetosMismaPosicionTiraExcepcion(){
+        tablero.colocar(3,4,new EspacioOcupado());
+        tablero.colocar(3,4,new EspacioOcupado());
     }
 }

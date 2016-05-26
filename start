@@ -7,6 +7,7 @@ vim -s <(echo $'
 :tabnew ./src/algoFormers/tablero/Colocable.java \n
 :sp ./test/algoFormers/tablero/ColocableTest.java \n
 :tabnew ./src/algoFormers/tablero/EspacioVacio.java \n
+:tabnew ./src/algoFormers/tablero/Casillero.java \n 
 
 gt \n
 :q \n

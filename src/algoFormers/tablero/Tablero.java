@@ -16,18 +16,18 @@ public class Tablero{
     public boolean estaTodoVacio(){
         for (Casillero[] row : matrizCasilleros)
             for (Casillero casillero : row)
-                if (!casillero.estaOcupado())
-                    return true;
-        return false;
+                if (casillero.estaOcupado())
+                    return false;
+        return true;
     }
 
-	public boolean colocar(int fila, int columna,Colocable aColocar){
+	public void colocar(int fila, int columna,Colocable aColocar){
 		Casillero casillero= matrizCasilleros[fila][columna];
-		return casillero.colocar(aColocar);
+		casillero.colocar(aColocar);
 	}
 
-	public boolean estaVacioEnPosicion(int fila, int columna){
+	public boolean estaOcupadoEnPosicion(int fila, int columna){
 		Casillero casillero= matrizCasilleros[fila][columna];
-		return !casillero.estaOcupado();
+		return casillero.estaOcupado();
 	}
 }

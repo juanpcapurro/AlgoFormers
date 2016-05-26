@@ -15,10 +15,9 @@ public class Casillero {
     }
 
 
-    public boolean colocar(Colocable aColocar) {
+    public void colocar(Colocable aColocar) {
         if (this.estaOcupado())
-                return false;
+                throw new CasilleroYaOcupado();
         colocado=aColocar;
-        return true;
     }
 }
