@@ -1,7 +1,8 @@
 package algoFormers.tablero;
 
-import algoFormers.tablero.colocable.*;
-import algoFormers.tablero.superficie.*;
+import algoFormers.tablero.colocable.AlgoFormer;
+import algoFormers.tablero.colocable.Colocable;
+
 import java.util.Arrays;
 
 public class Tablero{
@@ -27,6 +28,10 @@ public class Tablero{
 		this.vericarCoordenadas(fila,columna);
 		Casillero casillero= matrizCasilleros[fila][columna];
 		casillero.colocar(aColocar);
+	}
+
+	public void colocarAlgoformer(int fila,int columna){
+		this.colocar(fila,columna, new AlgoFormer());
 	}
 
 	public boolean estaOcupadoEnPosicion(int fila, int columna){

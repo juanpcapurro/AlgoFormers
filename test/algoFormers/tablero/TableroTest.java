@@ -1,12 +1,9 @@
 package algoFormers.tablero;
 
-import algoFormers.tablero.colocable.*;
-import algoFormers.tablero.superficie.*;
-
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
 
 public class TableroTest{
     Tablero tablero;
@@ -23,23 +20,23 @@ public class TableroTest{
 
     @Test
     public void test02colocarYVericarQueCasilleroNoEsteVacio(){
-        tablero.colocar(3,4,new AlgoFormer());
+        tablero.colocarAlgoformer(3,4);
         assertTrue(tablero.estaOcupadoEnPosicion(3,4));
     }
 
     @Test(expected= CasilleroYaOcupado.class)
     public void test03colocarDosObjetosMismaPosicionTiraExcepcion(){
-        tablero.colocar(3,4,new AlgoFormer());
-        tablero.colocar(3,4,new AlgoFormer());
+        tablero.colocarAlgoformer(3,4);
+        tablero.colocarAlgoformer(3,4);
     }
 
     @Test(expected = CoordenadasInvalidas.class)
     public void test04ColocarCoordenadaInvalidaNumeroNegativo(){
-        tablero.colocar(-3,4, new EspacioVacio());
+        tablero.colocarAlgoformer(-3,4);
     }
     @Test(expected = CoordenadasInvalidas.class)
     public void test05ColocarCoordenadaInvalidaExcedeTamanio(){
-        tablero.colocar(17,23, new EspacioVacio());
+        tablero.colocarAlgoformer(17,23);
     }
 
 }
