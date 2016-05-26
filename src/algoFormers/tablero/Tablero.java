@@ -22,12 +22,19 @@ public class Tablero{
     }
 
 	public void colocar(int fila, int columna,Colocable aColocar){
+		this.vericarCoordenadas(fila,columna);
 		Casillero casillero= matrizCasilleros[fila][columna];
 		casillero.colocar(aColocar);
 	}
 
 	public boolean estaOcupadoEnPosicion(int fila, int columna){
+		this.vericarCoordenadas(fila,columna);
 		Casillero casillero= matrizCasilleros[fila][columna];
 		return casillero.estaOcupado();
+	}
+
+	private void vericarCoordenadas(int fila, int columna) {
+		if (fila<0 || columna <0 || fila >= DIMENSION || columna >= DIMENSION)
+			throw new CoordenadasInvalidas() ;
 	}
 }
