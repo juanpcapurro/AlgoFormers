@@ -3,6 +3,8 @@ package algoFormers.tablero.colocable;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
+import algoFormers.tablero.colocable.robots.AlgoFormer;
+
 public class ColocableTest{
 	
 	@Test

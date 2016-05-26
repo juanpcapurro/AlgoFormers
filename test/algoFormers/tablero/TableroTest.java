@@ -3,6 +3,8 @@ package algoFormers.tablero;
 import org.junit.Before;
 import org.junit.Test;
 
+import algoFormers.tablero.colocable.robots.AlgoFormer;
+
 import static org.junit.Assert.assertTrue;
 
 public class TableroTest{

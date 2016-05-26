@@ -1,6 +1,6 @@
 package algoFormers.tablero;
 
-import algoFormers.tablero.colocable.AlgoFormer;
+import algoFormers.tablero.colocable.robots.AlgoFormer;
 import algoFormers.tablero.colocable.Colocable;
 
 import java.util.Arrays;
