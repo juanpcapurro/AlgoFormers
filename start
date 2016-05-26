@@ -1,7 +1,12 @@
 vim -s <(echo $' 
 
 :tabnew ./src/tablero/Tablero.java \n
-:tabnew ./test/tablero/TableroTest.java \n
+:sp ./test/tablero/TableroTest.java \n
+:tabnew ./src/tablero/Superficie.java \n
+:sp ./test/tablero/SuperficieTest.java \n
+:tabnew ./src/tablero/Colocable.java \n
+:sp ./test/tablero/ColocableTest.java \n
+:tabnew ./src/tablero/EspacioVacio.java \n
 
 gt \n
 :q \n
