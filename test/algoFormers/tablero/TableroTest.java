@@ -1,5 +1,8 @@
 package algoFormers.tablero;
 
+import algoFormers.tablero.colocable.*;
+import algoFormers.tablero.superficie.*;
+
 import org.junit.Before;
 import org.junit.Test;
 

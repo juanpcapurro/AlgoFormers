@@ -1,5 +1,7 @@
 package algoFormers.tablero;
 
+import algoFormers.tablero.colocable.*;
+import algoFormers.tablero.superficie.*;
 import java.util.Arrays;
 
 public class Tablero{

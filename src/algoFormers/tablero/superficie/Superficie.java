@@ -1,4 +1,4 @@
-package algoFormers.tablero;
+package algoFormers.tablero.superficie;
 
 
 public abstract class Superficie {
