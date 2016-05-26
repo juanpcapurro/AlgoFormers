@@ -1,12 +1,12 @@
 vim -s <(echo $' 
 
-:tabnew ./src/tablero/Tablero.java \n
-:sp ./test/tablero/TableroTest.java \n
-:tabnew ./src/tablero/Superficie.java \n
-:sp ./test/tablero/SuperficieTest.java \n
-:tabnew ./src/tablero/Colocable.java \n
-:sp ./test/tablero/ColocableTest.java \n
-:tabnew ./src/tablero/EspacioVacio.java \n
+:tabnew ./src/algoFormers/tablero/Tablero.java \n
+:sp ./test/algoFormers/tablero/TableroTest.java \n
+:tabnew ./src/algoFormers/tablero/Superficie.java \n
+:sp ./test/algoFormers/tablero/SuperficieTest.java \n
+:tabnew ./src/algoFormers/tablero/Colocable.java \n
+:sp ./test/algoFormers/tablero/ColocableTest.java \n
+:tabnew ./src/algoFormers/tablero/EspacioVacio.java \n
 
 gt \n
 :q \n
