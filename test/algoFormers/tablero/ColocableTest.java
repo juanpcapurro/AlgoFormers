@@ -1,4 +1,4 @@
-package tablero;
+package algoFormers.tablero;
 
 import org.junit.Test;
 import static org.junit.Assert.*;

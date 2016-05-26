@@ -1,4 +1,4 @@
-package tablero;
+package algoFormers.tablero;
 
 import org.junit.Before;
 import org.junit.Test;

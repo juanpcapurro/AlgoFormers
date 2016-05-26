@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite errors="0" failures="0" hostname="Lentium-II" name="algoFormers.tablero.TableroTest" tests="1" time="0.004" timestamp="2016-05-26T02:10:07">
+<testsuite errors="0" failures="0" hostname="Lentium-II" name="TableroTest" tests="1" time="0.004" timestamp="2016-05-26T02:10:07">
   <properties>
     <property name="file.encoding.pkg" value="sun.io" />
     <property name="ivy.retrieve.pattern.ivy.instance" value="/home/vasectomio/Documents/GitHub/AlgoFormers/lib/[artifact]-[revision](-[classifier]).[ext]" />
@@ -218,7 +218,7 @@
     <property name="sun.arch.data.model" value="64" />
     <property name="ivy.buildlist.ivyfilepath" value="ivy.xml" />
   </properties>
-  <testcase classname="algoFormers.tablero.TableroTest" name="test01CasilleroDebeEstarVacio" time="0.001" />
+  <testcase classname="TableroTest" name="test01CasilleroDebeEstarVacio" time="0.001" />
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

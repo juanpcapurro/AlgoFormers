@@ -1,4 +1,4 @@
-package tablero;
+package algoFormers.tablero;
 
 import java.util.Arrays;
 
