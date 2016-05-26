@@ -44,6 +44,7 @@ public class TableroTest{
 		tablero.colocarAlgoformer(2,5);
 		assertTrue(tablero.estaOcupadoEnPosicion(2,5));
 		assertFalse(tablero.estaTodoVacio());
+
 		tablero.vaciarPosicion(2,5);
 		assertFalse(tablero.estaOcupadoEnPosicion(2,5));
 		assertTrue(tablero.estaTodoVacio());
