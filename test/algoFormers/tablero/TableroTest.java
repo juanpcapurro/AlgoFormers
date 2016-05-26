@@ -20,14 +20,14 @@ public class TableroTest{
 
     @Test
     public void test02colocarYVericarQueCasilleroNoEsteVacio(){
-        tablero.colocar(3,4,new EspacioOcupado());
+        tablero.colocar(3,4,new AlgoFormer());
         assertTrue(tablero.estaOcupadoEnPosicion(3,4));
     }
 
     @Test(expected= CasilleroYaOcupado.class)
     public void test03colocarDosObjetosMismaPosicionTiraExcepcion(){
-        tablero.colocar(3,4,new EspacioOcupado());
-        tablero.colocar(3,4,new EspacioOcupado());
+        tablero.colocar(3,4,new AlgoFormer());
+        tablero.colocar(3,4,new AlgoFormer());
     }
 
     @Test(expected = CoordenadasInvalidas.class)
@@ -38,4 +38,5 @@ public class TableroTest{
     public void test05ColocarCoordenadaInvalidaExcedeTamanio(){
         tablero.colocar(17,23, new EspacioVacio());
     }
+
 }
