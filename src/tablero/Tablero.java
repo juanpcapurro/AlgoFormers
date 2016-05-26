@@ -1,5 +1,7 @@
 package algoFormers.tablero;
 
+import tablero.Casillero;
+
 public class Tablero{
 	private final int DIMENSION;
 	private Casillero[][] matrizCasilleros;
