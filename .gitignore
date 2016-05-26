@@ -1,4 +1,4 @@
 start
-.idea
+/.idea/*
 *.swp
 /build/*
