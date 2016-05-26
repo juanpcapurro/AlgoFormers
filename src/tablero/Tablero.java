@@ -1,6 +1,6 @@
 package algoFormers.tablero;
 
-import tablero.Casillero;
+import java.util.Arrays;
 
 public class Tablero{
 	private final int DIMENSION;

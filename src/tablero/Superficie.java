@@ -1,11 +1,6 @@
-package tablero;
+package algoFormers.tablero;
 
 
 public abstract class Superficie {
-    Superficie[] listaSuperficies;
-
-    Superficie(){
-        listaSuperficies= {new Llano};
-    }
 
 }

@@ -1,6 +1,6 @@
 package algoFormers.tablero;
 
-import static org.junit.assert.*;
+import static org.junit.Assert.*;
 import org.junit.Test;
 
 public class ColocableTest{
