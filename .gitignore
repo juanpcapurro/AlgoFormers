@@ -3,3 +3,4 @@ start
 *.swp
 /build/**
 /libs/**
+*.iml
