@@ -85,20 +85,6 @@ public class TableroTest{
         assertTrue(tablero.estaOcupadoEnPosicion(3,4));
     }
     
-    /*Test auxiliar para ir chequeando mientras esta en correccion la ocupacion de los casilleros.
-     * Borrar cuando ande bien.
-    @Test
-    public void testAuxiliar(){
-        tablero.colocarAlgoformer(3,4);
-        assertTrue(tablero.estaOcupadoEnPosicion(3,4));
-        assertTrue(tablero.estaOcupadoEnPosicion(3,0));
-        assertTrue(tablero.estaOcupadoEnPosicion(3,1));
-        assertTrue(tablero.estaOcupadoEnPosicion(3,2));
-        assertTrue(tablero.estaOcupadoEnPosicion(3,3));
-        assertTrue(tablero.estaOcupadoEnPosicion(3,5));
-        assertTrue(tablero.estaOcupadoEnPosicion(3,6));
-        assertTrue(tablero.estaOcupadoEnPosicion(3,7));
-    }*/
-        
-    
+
+
 }

@@ -1,9 +1,7 @@
 package algoFormers.tablero;
 
-import algoFormers.tablero.colocable.robots.*;
-import algoFormers.tablero.colocable.*;
-
-import java.util.Arrays;
+import algoFormers.tablero.colocable.Colocable;
+import algoFormers.tablero.colocable.robots.AlgoFormer;
 
 public class Tablero{
 	private final int DIMENSION;
@@ -12,8 +10,10 @@ public class Tablero{
 	public Tablero(int dimension_pedida){
 		matrizCasilleros = new Casillero[dimension_pedida][dimension_pedida];
 		DIMENSION = dimension_pedida;
-		for (Casillero[] row: this.matrizCasilleros)//Este for llena la matriz
-			Arrays.fill(row, new Casillero());//Charly quiere usar esto, peguenle a el
+		for (Casillero[] row: matrizCasilleros) {//Este for llena la matriz
+			for(int i=0;i<DIMENSION;i++)
+				row[i]= new Casillero();
+		}
 	}
 
     public boolean estaTodoVacio(){
