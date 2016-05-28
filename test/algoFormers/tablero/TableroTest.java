@@ -64,5 +64,40 @@ public class TableroTest{
         tablero.colocarAlgoformer(3,4);
         assertTrue(tablero.estaOcupadoEnPosicion(3,4));
     }
-	
+    
+    @Test
+    public void test09MoverColocable(){
+        tablero.colocarAlgoformer(3,4);
+        assertTrue(tablero.estaOcupadoEnPosicion(3,4));
+        assertFalse(tablero.estaOcupadoEnPosicion(4,4));
+        tablero.mover(3, 4, 4, 4);
+
+        assertTrue(tablero.estaOcupadoEnPosicion(4,4));
+        assertFalse(tablero.estaOcupadoEnPosicion(3,4));
+    }
+    
+    @Test
+    public void test10MoverColocableAMismaPosicion(){
+        tablero.colocarAlgoformer(3,4);
+        assertTrue(tablero.estaOcupadoEnPosicion(3,4));
+        tablero.mover(3, 4, 3, 4);
+        assertTrue(tablero.estaOcupadoEnPosicion(3,4));
+    }
+    
+    /*Test auxiliar para ir chequeando mientras está en correccion la ocupacion de los casilleros.
+     * Borrar cuando ande bien.
+    @Test
+    public void testAuxiliar(){
+        tablero.colocarAlgoformer(3,4);
+        assertTrue(tablero.estaOcupadoEnPosicion(3,4));
+        assertTrue(tablero.estaOcupadoEnPosicion(3,0));
+        assertTrue(tablero.estaOcupadoEnPosicion(3,1));
+        assertTrue(tablero.estaOcupadoEnPosicion(3,2));
+        assertTrue(tablero.estaOcupadoEnPosicion(3,3));
+        assertTrue(tablero.estaOcupadoEnPosicion(3,5));
+        assertTrue(tablero.estaOcupadoEnPosicion(3,6));
+        assertTrue(tablero.estaOcupadoEnPosicion(3,7));
+    }*/
+        
+    
 }

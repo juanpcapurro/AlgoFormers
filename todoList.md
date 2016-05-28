@@ -2,10 +2,8 @@
 Básicamente ya está desarrollado lo que sería el Tablero y los Casilleros.
 
 ## To do list
-* ~~Hacer pruebas básicas del Tablero/Casillero.~~
-* ~~Implementar métodos básicos del Tablero/Casillero.~~
-* Hacer pruebas para los movimientos del tablero.
-* Desarrollar el método "mover" en Tablero, que mueve un objeto de una posición a otra, reutilizando los métodos básicos ya creados.
+* ~~Implementar métodos básicos del Tablero/Casillero.~~ Ailu dice: en mi opini�n esto estar�a hecho tambi�n. Pero tal vez no consider� algo, por lo tanto lo dejo en la lista.
+
 * Hacer pruebas que verifiquen los turnos.
 * Desarrollar las clase Turno, y decidir como se va a manejar.Nota: propongo que haya una instancia de una clase Juego o algo así(posiblemente un singleton) que sepa de quien es el turno, y haga las interacciones entre la UI y el Tablero, desacoplando al tablero del resto del programa.
 * Hacer Test de las superficies.
