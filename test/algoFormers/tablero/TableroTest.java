@@ -80,11 +80,12 @@ public class TableroTest{
     public void test10MoverColocableAMismaPosicion(){
         tablero.colocarAlgoformer(3,4);
         assertTrue(tablero.estaOcupadoEnPosicion(3,4));
+        
         tablero.mover(3, 4, 3, 4);
         assertTrue(tablero.estaOcupadoEnPosicion(3,4));
     }
     
-    /*Test auxiliar para ir chequeando mientras está en correccion la ocupacion de los casilleros.
+    /*Test auxiliar para ir chequeando mientras esta en correccion la ocupacion de los casilleros.
      * Borrar cuando ande bien.
     @Test
     public void testAuxiliar(){
