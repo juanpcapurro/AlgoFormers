@@ -18,21 +18,21 @@ public class AlgoFormerTest{
 	@Test
 	public void elAlgoFormerTipoOptimusOcupaLugar(){
 
-		AlgoFormer optimus = new Optimus();
+		Autobot optimus = new Optimus();
 		assertTrue(optimus.ocupaLugar());
 	}
 
 	@Test
 	public void elAlgoFormerTipoBumplebeeOcupaLugar(){
 
-		AlgoFormer bumplebee = new Bumplebee();
+		Autobot bumplebee = new Bumplebee();
 		assertTrue(bumplebee.ocupaLugar());
 	}
 
 	@Test
 	public void elAlgoFormerTipoRatchetOcupaLugar(){
 
-		AlgoFormer ratchet = new Ratchet();
+		Autobot ratchet = new Ratchet();
 		assertTrue(ratchet.ocupaLugar());
 	}
 }
