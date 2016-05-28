@@ -15,24 +15,4 @@ public class AlgoFormerTest{
 		assertTrue(mauricio.ocupaLugar());
 	}
 
-	@Test
-	public void elAlgoFormerTipoOptimusOcupaLugar(){
-
-		Autobot optimus = new Optimus();
-		assertTrue(optimus.ocupaLugar());
-	}
-
-	@Test
-	public void elAlgoFormerTipoBumplebeeOcupaLugar(){
-
-		Autobot bumplebee = new Bumplebee();
-		assertTrue(bumplebee.ocupaLugar());
-	}
-
-	@Test
-	public void elAlgoFormerTipoRatchetOcupaLugar(){
-
-		Autobot ratchet = new Ratchet();
-		assertTrue(ratchet.ocupaLugar());
-	}
 }
