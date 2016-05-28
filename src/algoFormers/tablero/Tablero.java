@@ -1,9 +1,7 @@
 package algoFormers.tablero;
 
-import algoFormers.tablero.colocable.robots.*;
-import algoFormers.tablero.colocable.*;
-
-import java.util.Arrays;
+import algoFormers.tablero.colocable.Colocable;
+import algoFormers.tablero.colocable.robots.AlgoFormer;
 
 public class Tablero{
 	private final int DIMENSION;
@@ -12,12 +10,14 @@ public class Tablero{
 	public Tablero(int dimension_pedida){
 		matrizCasilleros = new Casillero[dimension_pedida][dimension_pedida];
 		DIMENSION = dimension_pedida;
-		for (Casillero[] row: matrizCasilleros)//Este for llena la matriz
-			Arrays.fill(row, new Casillero());//Charly quiere usar esto, peguenle a el
+		for (Casillero[] row: matrizCasilleros) {//Este for llena la matriz
+			for(int i=0;i<DIMENSION;i++)
+				row[i]= new Casillero();
+		}
 	}
 
     public boolean estaTodoVacio(){
-        for (Casillero[] row : matrizCasilleros)
+        for (Casillero[] row : this.matrizCasilleros)
             for (Casillero casillero : row)
                 if (casillero.estaOcupado())
                     return false;
@@ -26,7 +26,7 @@ public class Tablero{
 
 	public void colocar(int fila, int columna,Colocable aColocar){
 		this.vericarCoordenadas(fila,columna);
-		Casillero casillero= matrizCasilleros[fila][columna];
+		Casillero casillero= this.matrizCasilleros[fila][columna];
 		casillero.colocar(aColocar);
 	}
 
@@ -34,9 +34,18 @@ public class Tablero{
 		this.colocar(fila,columna, new AlgoFormer());
 	}
 
+	public void mover(int filaOrigen, int columnaOrigen, int filaDestino, int columnaDestino){
+		this.vericarCoordenadas(filaDestino, columnaDestino);
+		this.vericarCoordenadas(filaOrigen, filaDestino);
+		
+		Colocable colocableAMover = (this.matrizCasilleros[filaOrigen][columnaOrigen]).obtenerColocado();
+		this.vaciarPosicion(filaOrigen, columnaOrigen);
+		this.colocar(filaDestino, columnaDestino, colocableAMover);
+	}
+	
 	public boolean estaOcupadoEnPosicion(int fila, int columna){
 		this.vericarCoordenadas(fila,columna);
-		Casillero casillero= matrizCasilleros[fila][columna];
+		Casillero casillero= this.matrizCasilleros[fila][columna];
 		return casillero.estaOcupado();
 	}
 

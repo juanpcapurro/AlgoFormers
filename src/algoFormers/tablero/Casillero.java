@@ -26,4 +26,8 @@ public class Casillero {
 	public void vaciar(){
 		colocado = new EspacioVacio();
 	}
+	
+	public Colocable obtenerColocado(){
+		return colocado;
+	}
 }

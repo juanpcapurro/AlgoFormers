@@ -64,5 +64,27 @@ public class TableroTest{
         tablero.colocarAlgoformer(3,4);
         assertTrue(tablero.estaOcupadoEnPosicion(3,4));
     }
-	
+    
+    @Test
+    public void test09MoverColocable(){
+        tablero.colocarAlgoformer(3,4);
+        assertTrue(tablero.estaOcupadoEnPosicion(3,4));
+        assertFalse(tablero.estaOcupadoEnPosicion(4,4));
+        tablero.mover(3, 4, 4, 4);
+
+        assertTrue(tablero.estaOcupadoEnPosicion(4,4));
+        assertFalse(tablero.estaOcupadoEnPosicion(3,4));
+    }
+    
+    @Test
+    public void test10MoverColocableAMismaPosicion(){
+        tablero.colocarAlgoformer(3,4);
+        assertTrue(tablero.estaOcupadoEnPosicion(3,4));
+        
+        tablero.mover(3, 4, 3, 4);
+        assertTrue(tablero.estaOcupadoEnPosicion(3,4));
+    }
+    
+
+
 }
