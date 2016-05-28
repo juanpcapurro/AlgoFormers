@@ -16,8 +16,8 @@ public class AutobotTest{
     @Test
     public void elAutobotTipoBumplebeeOcupaLugar(){
 
-        Autobot bumplebee = new Bumplebee();
-        assertTrue(bumplebee.ocupaLugar());
+        Autobot bumblebee = new Bumblebee();
+        assertTrue(bumblebee.ocupaLugar());
     }
 
     @Test
