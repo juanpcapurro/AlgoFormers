@@ -1,18 +1,17 @@
-vim -s <(echo $' 
+vim -s <(echo $'
 
 :tabnew ./src/algoFormers/tablero/Tablero.java \n
-:sp ./test/algoFormers/tablero/TableroTest.java \n
+:vsp ./test/algoFormers/tablero/TableroTest.java \n
 :tabnew ./src/algoFormers/tablero/colocable/Colocable.java \n
-:sp ./test/algoFormers/tablero/colocable/ColocableTest.java \n
+:vsp ./test/algoFormers/tablero/colocable/ColocableTest.java \n
 
 :tabnew ./src/algoFormers/tablero/superficie/EspacioVacio.java \n
-:tabnew ./src/algoFormers/tablero/Casillero.java \n 
-:sp ./test/algoFormers/tablero/CasilleroTest.java \n
+:tabnew ./src/algoFormers/tablero/Casillero.java \n
+:vsp ./test/algoFormers/tablero/CasilleroTest.java \n
 :tabnew ./src/algoFormers/tablero/colocable/AlgoFormer.java \n
-:sp ./test/algoFormers/tablero/colocable/AlgoFormerTest.java \n
+:vsp ./test/algoFormers/tablero/colocable/AlgoFormerTest.java \n
 :tabnew ./src/algoFormers/tablero/Atacable.java \n
 
 gt \n
 :q \n
 ')
-

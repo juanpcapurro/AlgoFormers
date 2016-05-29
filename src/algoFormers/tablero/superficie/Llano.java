@@ -3,7 +3,7 @@ package algoFormers.tablero.superficie;
 /**
  * Created by Charly on 5/29/16.
  */
-public class Llano implements Superficie {
+public class Llano extends Superficie {
     private static Llano ourInstance = new Llano();
 
     public static Llano getInstance() {

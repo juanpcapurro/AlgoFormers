@@ -3,7 +3,7 @@ package algoFormers.tablero.superficie;
 /**
  * Created by Charly on 5/29/16.
  */
-public class Rocoso implements Superficie{
+public class Rocoso extends Superficie{
     private static Rocoso ourInstance = new Rocoso();
 
     public static Rocoso getInstance() {

@@ -1,10 +1,10 @@
 package algoFormers.tablero.superficie;
 
 
-public interface Superficie {
+public abstract class Superficie {
 
-    public void cambiarALlano(SuperficieConcretaActual superficieActual);
-    public void cambiarARocoso(SuperficieConcretaActual superficieActual);
-    public void cambiarAPantanoso(SuperficieConcretaActual superficieActual);
+    public abstract void cambiarALlano(SuperficieConcretaActual superficieActual);
+    public abstract void cambiarARocoso(SuperficieConcretaActual superficieActual);
+    public abstract void cambiarAPantanoso(SuperficieConcretaActual superficieActual);
 
 }

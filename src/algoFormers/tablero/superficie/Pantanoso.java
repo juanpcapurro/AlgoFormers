@@ -3,7 +3,7 @@ package algoFormers.tablero.superficie;
 /**
  * Created by Charly on 5/29/16.
  */
-public class Pantanoso implements Superficie{
+public class Pantanoso extends Superficie{
     private static Pantanoso ourInstance = new Pantanoso();
 
     public static Pantanoso getInstance() {
