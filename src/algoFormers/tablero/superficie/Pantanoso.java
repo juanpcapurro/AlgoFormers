@@ -3,18 +3,19 @@ package algoFormers.tablero.superficie;
 /**
  * Created by Charly on 5/29/16.
  */
-public class Llano implements Superficie {
-    private static Llano ourInstance = new Llano();
+public class Pantanoso implements Superficie{
+    private static Pantanoso ourInstance = new Pantanoso();
 
-    public static Llano getInstance() {
+    public static Pantanoso getInstance() {
         return ourInstance;
     }
 
-    private Llano() {
+    private Pantanoso() {
     }
 
     @Override
     public void cambiarALlano(SuperficieConcretaActual superficieActual){
+        superficieActual.cambiarActual(Llano.getInstance());
     }
 
     @Override
@@ -24,6 +25,6 @@ public class Llano implements Superficie {
 
     @Override
     public void cambiarAPantanoso(SuperficieConcretaActual superficieActual) {
-        superficieActual.cambiarActual(Pantanoso.getInstance());
     }
+
 }

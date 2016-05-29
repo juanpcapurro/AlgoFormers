@@ -1,4 +1,6 @@
-import algoFormers.tablero.colocable.Bumblebee;
+package algoFormers.tablero.colocable;
+
+import algoFormers.tablero.colocable.robots.Bumblebee;
 import org.junit.Test;
 
 import static org.junit.Assert.assertFalse;

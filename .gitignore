@@ -1,6 +1,8 @@
 start
-/.idea/**
 *.swp
-/build/**
-/libs/**
 *.iml
+/.classpath
+/.project
+/.idea/
+/build/
+/libs/

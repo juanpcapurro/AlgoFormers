@@ -1,15 +1,16 @@
 package algoFormers.tablero;
 
-import algoFormers.tablero.colocable.*;
+import algoFormers.tablero.colocable.Colocable;
+import algoFormers.tablero.colocable.EspacioVacio;
 import algoFormers.tablero.superficie.*;
 
 public class Casillero {
     private Colocable colocado;
-    private Superficie superficie;
+    private SuperficieConcretaActual superficieActual;
 
     Casillero(){
         colocado= new EspacioVacio();
-        superficie= new Llano();
+        superficieActual= new SuperficieConcretaActual();
     }
 
     public boolean estaOcupado(){

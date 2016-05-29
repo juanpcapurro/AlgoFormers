@@ -1,5 +1,6 @@
 package algoFormers.tablero.colocable;
 
+import algoFormers.tablero.colocable.robots.Ratchet;
 import org.junit.Test;
 
 import static org.junit.Assert.assertFalse;

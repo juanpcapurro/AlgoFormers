@@ -1,6 +1,6 @@
 package algoFormers.tablero.colocable;
 
-import org.junit.Before;
+import algoFormers.tablero.colocable.robots.Optimus;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
