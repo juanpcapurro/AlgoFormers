@@ -35,6 +35,9 @@ public class Tablero{
 	}
 
 	public void mover(int filaOrigen, int columnaOrigen, int filaDestino, int columnaDestino){
+		/*MOVER DEBE SER MEJORADO PARA CONSIDERAR:
+		 * -Distancias permitidas de los algoformers
+		 * -Posibilidad de elegir paso a paso el casillero siguiente
 		this.vericarCoordenadas(filaDestino, columnaDestino);
 		this.vericarCoordenadas(filaOrigen, filaDestino);
 		
