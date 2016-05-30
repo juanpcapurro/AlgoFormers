@@ -1,5 +1,7 @@
 package algoFormers.tablero.superficie;
 
+import algoFormers.tablero.colocable.robots.Arma;
+
 /**
  * Created by Charly on 5/29/16.
  */
@@ -26,5 +28,11 @@ public class Pantanoso extends Superficie{
     @Override
     public void cambiarAPantanoso(SuperficieConcretaActual superficieActual) {
     }
+
+	@Override
+	public void recibirAtaque(Arma unArma) {
+		// TODO Auto-generated method stub
+		
+	}
 
 }
