@@ -32,6 +32,6 @@ public class Llano extends Superficie {
 	@Override
 	public void recibirAtaque(Arma unArma) {
 		// TODO Auto-generated method stub
-		
 	}
+
 }

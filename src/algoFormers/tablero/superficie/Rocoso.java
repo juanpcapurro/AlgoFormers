@@ -30,7 +30,7 @@ public class Rocoso extends Superficie{
 	@Override
 	public void recibirAtaque(Arma unArma) {
 		// TODO Auto-generated method stub
-		
+		/*this.cambiarALlano(ourinstance); ?????? */
 	}
 
 }

@@ -38,6 +38,7 @@ public class Tablero{
 		/*MOVER DEBE SER MEJORADO PARA CONSIDERAR:
 		 * -Distancias permitidas de los algoformers
 		 * -Posibilidad de elegir paso a paso el casillero siguiente
+		 * -En cada eleccion, el tablero validaria si es posible o no.*/
 		this.vericarCoordenadas(filaDestino, columnaDestino);
 		this.vericarCoordenadas(filaOrigen, filaDestino);
 		
