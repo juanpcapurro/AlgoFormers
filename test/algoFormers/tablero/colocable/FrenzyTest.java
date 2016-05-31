@@ -19,14 +19,14 @@ public class FrenzyTest {
 
 
     @Test
-    public void frenzyRecibeAtaqueYSigueConVida() {
+    public void  test01FrenzyRecibeAtaqueYSigueConVida() {
 
         mauricio.recibirAtaque(4);
         assertTrue(mauricio.estaVivo());
     }
 
     @Test
-    public void frenzyRecibeAtaqueYMuere() {
+    public void  test02FrenzyRecibeAtaqueYMuere() {
 
         mauricio.recibirAtaque(400);
         assertFalse(mauricio.estaVivo());

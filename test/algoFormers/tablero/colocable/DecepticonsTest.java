@@ -12,21 +12,21 @@ public class DecepticonsTest {
 
 
     @Test
-    public void elDecepticonTipoMegatronOcupaLugar(){
+    public void test01ElDecepticonTipoMegatronOcupaLugar(){
 
         Decepticon megatron = new Megatron();
         assertTrue(megatron.ocupaLugar());
     }
 
     @Test
-    public void elDecepticonTipoBonecrusherOcupaLugar(){
+    public void test02ElDecepticonTipoBonecrusherOcupaLugar(){
 
         Decepticon boneCrusher = new BoneCrusher();
         assertTrue(boneCrusher.ocupaLugar());
     }
 
     @Test
-    public void elDecepticonTipoFrenzyOcupaLugar(){
+    public void test03ElDecepticonTipoFrenzyOcupaLugar(){
 
         Decepticon frenzy = new Frenzy();
         assertTrue(frenzy.ocupaLugar());
