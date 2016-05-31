@@ -11,14 +11,11 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 public class SuperionTest {
-    Optimus optimus;
-    Bumblebee bumblebee;
-    Ratchet ratchet;
-    Superion superion;
-    Optimus optimusHerido;
-    Bumblebee bumblebeeHerido;
-    Ratchet ratchetHerido;
-    Superion superionHerido;
+    private Optimus optimus;
+    private Bumblebee bumblebee;
+    private Ratchet ratchet;
+    private Superion superion;
+    private Superion superionAutobotsHeridos;
 
     @Before
     public void setUp() throws Exception {
@@ -26,19 +23,12 @@ public class SuperionTest {
         bumblebee = new Bumblebee();
         ratchet = new Ratchet();
 
-        optimusHerido.recibirAtaque(400);
-        bumblebeeHerido.recibirAtaque(250);
-        ratchetHerido.recibirAtaque(50);
-
-        Superion superionHerido = new Superion(optimusHerido, bumblebeeHerido, ratchetHerido);
-
+        superion = new Superion(optimus, bumblebee, ratchet);
 
     }
 
     @Test
     public void superionCreadoConUnOptimusUnBumblebeeYUnRatchet() {
-        superion = new Superion(optimus, bumblebee, ratchet);
-
         assertTrue(superion.estaVivo());
 
     }
@@ -58,39 +48,58 @@ public class SuperionTest {
     @Test
     public void superionRecibeAtaqueYMuere() {
         superion.recibirAtaque(1000);
-
         assertFalse(superion.estaVivo());
     }
 
-
-
-
     @Test
         public void superionCreadoConAutobotsHeridos() {
-            assertTrue(superionHerido.estaVivo());
 
-            assertTrue(optimusHerido.getPuntosDeVida()==100);
-            assertTrue(bumblebeeHerido.getPuntosDeVida()==100);
-            assertTrue(ratchetHerido.getPuntosDeVida()==100);
+            optimus.recibirAtaque(400);
+            bumblebee.recibirAtaque(250);
+            ratchet.recibirAtaque(50);
 
-         assertTrue(superionHerido.getPuntosDeVida()==300);
+            assertTrue(optimus.getPuntosDeVida()==100);
+            assertTrue(bumblebee.getPuntosDeVida()==100);
+            assertTrue(ratchet.getPuntosDeVida()==100);
+
+            superionAutobotsHeridos = new Superion(optimus, bumblebee, ratchet);
+            assertTrue(superionAutobotsHeridos.estaVivo());
+            assertTrue(superionAutobotsHeridos.getPuntosDeVida()==300);
         }
-
-        @Test
-        public void superionCreadoConAutobotsHeridosRecibeAtaqueYMuere() {
-            superionHerido.recibirAtaque(300);
-
-            assertFalse(superionHerido.estaVivo());
-            assertTrue(superionHerido.getPuntosDeVida()==0);
-         }
-
         @Test
         public void superionCreadoConAutobotsHeridosRecibeAtaqueYSigueConVida() {
-            superionHerido.recibirAtaque(10);
+            optimus.recibirAtaque(400);
+            bumblebee.recibirAtaque(250);
+            ratchet.recibirAtaque(50);
 
-            assertTrue(superionHerido.estaVivo());
-            assertTrue(superionHerido.getPuntosDeVida()==290);
+            assertTrue(optimus.getPuntosDeVida()==100);
+            assertTrue(bumblebee.getPuntosDeVida()==100);
+            assertTrue(ratchet.getPuntosDeVida()==100);
+
+            superionAutobotsHeridos = new Superion(optimus, bumblebee, ratchet);
+            superionAutobotsHeridos.recibirAtaque(10);
+
+            assertTrue(superionAutobotsHeridos.estaVivo());
+            assertTrue(superionAutobotsHeridos.getPuntosDeVida()==290);
         }
+        @Test
+        public void superionCreadoConAutobotsHeridosRecibeAtaqueYMuere() {
+            optimus.recibirAtaque(400);
+            bumblebee.recibirAtaque(250);
+            ratchet.recibirAtaque(50);
+
+            assertTrue(optimus.getPuntosDeVida()==100);
+            assertTrue(bumblebee.getPuntosDeVida()==100);
+            assertTrue(ratchet.getPuntosDeVida()==100);
+
+            superionAutobotsHeridos = new Superion(optimus, bumblebee, ratchet);
+            superionAutobotsHeridos.recibirAtaque(300);
+
+            assertFalse(superionAutobotsHeridos.estaVivo());
+            assertTrue(superionAutobotsHeridos.getPuntosDeVida()==0);
+         }
+
+
 
 
 
