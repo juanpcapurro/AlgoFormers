@@ -20,7 +20,7 @@ public class BumblebeeTest {
     @Test
     public void bumblebeeRecibeAtaqueYMuere() {
 
-        mauricio.recibirAtaque(350);
+        mauricio.recibirAtaque(550);
         assertFalse(mauricio.estaVivo());
     }
 }
