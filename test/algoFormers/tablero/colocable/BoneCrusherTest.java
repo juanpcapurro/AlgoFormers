@@ -18,14 +18,14 @@ public class BoneCrusherTest {
 
 
     @Test
-    public void boneCrusherRecibeAtaqueYSigueConVida() {
+    public void test01BoneCrusherRecibeAtaqueYSigueConVida() {
 
         mauricio.recibirAtaque(4);
         assertTrue(mauricio.estaVivo());
     }
 
     @Test
-    public void boneCrusherRecibeAtaqueYMuere() {
+    public void test02BoneCrusherRecibeAtaqueYMuere() {
 
         mauricio.recibirAtaque(200);
         assertFalse(mauricio.estaVivo());
