@@ -11,7 +11,7 @@ public class RatchetTest {
     Ratchet mauricio = new Ratchet();
 
     @Test
-    public void ratchetRecibeAtaqueYSigueConVida() {
+    public void  test01RatchetRecibeAtaqueYSigueConVida() {
 
         mauricio.recibirAtaque(4);
 
@@ -19,7 +19,7 @@ public class RatchetTest {
     }
 
     @Test
-    public void ratchetRecibeAtaqueYMuere() {
+    public void  test02RatchetRecibeAtaqueYMuere() {
 
         mauricio.recibirAtaque(150);
         assertFalse(mauricio.estaVivo());

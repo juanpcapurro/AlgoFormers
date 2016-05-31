@@ -28,17 +28,17 @@ public class SuperionTest {
     }
 
     @Test
-    public void superionCreadoConUnOptimusUnBumblebeeYUnRatchet() {
+    public void  test01SuperionCreadoConUnOptimusUnBumblebeeYUnRatchet() {
         assertTrue(superion.estaVivo());
 
     }
     @Test
-    public void superionSusPuntosDeVidaEsLaSumaDeLosAutobosQueLoForman() {
+    public void  test02SuperionSusPuntosDeVidaEsLaSumaDeLosAutobosQueLoForman() {
         assertTrue(superion.getPuntosDeVida() == 1000);
 
     }
     @Test
-    public void superionRecibeAtaqueYSigueConVida() {
+    public void  test03SuperionRecibeAtaqueYSigueConVida() {
         superion.recibirAtaque(100);
 
         assertTrue(superion.estaVivo());
@@ -46,13 +46,13 @@ public class SuperionTest {
     }
 
     @Test
-    public void superionRecibeAtaqueYMuere() {
+    public void  test04SuperionRecibeAtaqueYMuere() {
         superion.recibirAtaque(1000);
         assertFalse(superion.estaVivo());
     }
 
     @Test
-        public void superionCreadoConAutobotsHeridos() {
+        public void  test05SuperionCreadoConAutobotsHeridos() {
 
             optimus.recibirAtaque(400);
             bumblebee.recibirAtaque(250);
@@ -67,7 +67,7 @@ public class SuperionTest {
             assertTrue(superionAutobotsHeridos.getPuntosDeVida()==300);
         }
         @Test
-        public void superionCreadoConAutobotsHeridosRecibeAtaqueYSigueConVida() {
+        public void  test06SuperionCreadoConAutobotsHeridosRecibeAtaqueYSigueConVida() {
             optimus.recibirAtaque(400);
             bumblebee.recibirAtaque(250);
             ratchet.recibirAtaque(50);
@@ -83,7 +83,7 @@ public class SuperionTest {
             assertTrue(superionAutobotsHeridos.getPuntosDeVida()==290);
         }
         @Test
-        public void superionCreadoConAutobotsHeridosRecibeAtaqueYMuere() {
+        public void  test07SuperionCreadoConAutobotsHeridosRecibeAtaqueYMuere() {
             optimus.recibirAtaque(400);
             bumblebee.recibirAtaque(250);
             ratchet.recibirAtaque(50);
