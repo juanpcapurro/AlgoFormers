@@ -28,17 +28,17 @@ public class MenasorTest {
     }
 
     @Test
-    public void menasorCreadoConUnMegatronUnBoneCrusherYUnFrenzy() {
+    public void  test01MenasorCreadoConUnMegatronUnBoneCrusherYUnFrenzy() {
         assertTrue(menasor.estaVivo());
 
     }
     @Test
-    public void menasorSusPuntosDeVidaEsLaSumaDeLosDeceptionsQueLoForman() {
+    public void  test02MenasorSusPuntosDeVidaEsLaSumaDeLosDeceptionsQueLoForman() {
         assertTrue(menasor.getPuntosDeVida() == 1150);
 
     }
     @Test
-    public void menasorRecibeAtaqueYSigueConVida() {
+    public void  test03MenasorRecibeAtaqueYSigueConVida() {
         menasor.recibirAtaque(100);
 
         assertTrue(menasor.estaVivo());
@@ -46,13 +46,13 @@ public class MenasorTest {
     }
 
     @Test
-    public void menasorRecibeAtaqueYMuere() {
+    public void  test04MenasorRecibeAtaqueYMuere() {
         menasor.recibirAtaque(1150);
         assertFalse(menasor.estaVivo());
     }
 
     @Test
-    public void menasorCreadoConDecepticonsHeridos() {
+    public void  test05MenasorCreadoConDecepticonsHeridos() {
 
         megatron.recibirAtaque(450);
         boneCrusher.recibirAtaque(100);
@@ -67,7 +67,7 @@ public class MenasorTest {
         assertTrue(menasorDecepticonsHeridos.getPuntosDeVida()==300);
     }
     @Test
-    public void menasorCreadoConDecepticonsHeridosRecibeAtaqueYSigueConVida() {
+    public void  test06MenasorCreadoConDecepticonsHeridosRecibeAtaqueYSigueConVida() {
         megatron.recibirAtaque(450);
         boneCrusher.recibirAtaque(100);
         frenzy.recibirAtaque(300);
@@ -83,7 +83,7 @@ public class MenasorTest {
         assertTrue(menasorDecepticonsHeridos.getPuntosDeVida()==290);
     }
     @Test
-    public void menasorCreadoConDecepticonsHeridosRecibeAtaqueYMuere() {
+    public void  test07MenasorCreadoConDecepticonsHeridosRecibeAtaqueYMuere() {
         megatron.recibirAtaque(450);
         boneCrusher.recibirAtaque(100);
         frenzy.recibirAtaque(300);

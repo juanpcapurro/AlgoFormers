@@ -17,14 +17,14 @@ public class MegatronTest {
 
 
     @Test
-    public void MegatronRecibeAtaqueYSigueConVida() {
+    public void  test01MegatronRecibeAtaqueYSigueConVida() {
 
         mauricio.recibirAtaque(4);
         assertTrue(mauricio.estaVivo());
     }
 
     @Test
-    public void MegatronRecibeAtaqueYMuere() {
+    public void  test02MegatronRecibeAtaqueYMuere() {
 
         mauricio.recibirAtaque(550);
         assertFalse(mauricio.estaVivo());
