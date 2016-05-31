@@ -10,14 +10,14 @@ public class OptimusTest {
     Optimus mauricio = new Optimus();
 
     @Test
-    public void optimusRecibeAtaqueYSigueConVida() {
+    public void  test01OptimusRecibeAtaqueYSigueConVida() {
 
         mauricio.recibirAtaque(4);
         assertTrue(mauricio.estaVivo());
     }
 
     @Test
-    public void optimusRecibeAtaqueYMuere() {
+    public void  test02OptimusRecibeAtaqueYMuere() {
 
         mauricio.recibirAtaque(500);
         assertFalse(mauricio.estaVivo());
