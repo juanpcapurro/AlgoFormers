@@ -26,7 +26,7 @@ public class MegatronTest {
     @Test
     public void MegatronRecibeAtaqueYMuere() {
 
-        mauricio.recibirAtaque(500);
+        mauricio.recibirAtaque(550);
         assertFalse(mauricio.estaVivo());
     }
 }
