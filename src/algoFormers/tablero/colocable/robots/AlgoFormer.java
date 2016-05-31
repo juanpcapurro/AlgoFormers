@@ -10,7 +10,8 @@ public class AlgoFormer extends Colocable {
 	protected int ataque;
 	protected int velocidad;
 
-	public AlgoFormer(){
+
+    public AlgoFormer(){
 
 	}
 
@@ -21,5 +22,7 @@ public class AlgoFormer extends Colocable {
 	public  boolean estaVivo(){return (this.ptosDeVida > 0);}
 
 	public  void recibirAtaque(int ataque){ this.ptosDeVida -= ataque ;}
+
+    public int getPuntosDeVida(){ return this.ptosDeVida;}
 }
 
