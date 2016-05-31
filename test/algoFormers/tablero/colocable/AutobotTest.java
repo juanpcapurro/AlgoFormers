@@ -10,21 +10,21 @@ import static org.junit.Assert.*;
 
 public class AutobotTest{
     @Test
-    public void elAutobotTipoOptimusOcupaLugar(){
+    public void test01ElAutobotTipoOptimusOcupaLugar(){
 
         Autobot optimus = new Optimus();
         assertTrue(optimus.ocupaLugar());
     }
 
     @Test
-    public void elAutobotTipoBumplebeeOcupaLugar(){
+    public void test02ElAutobotTipoBumplebeeOcupaLugar(){
 
         Autobot bumblebee = new Bumblebee();
         assertTrue(bumblebee.ocupaLugar());
     }
 
     @Test
-    public void elAutobotTipoRatchetOcupaLugar(){
+    public void test03ElAutobotTipoRatchetOcupaLugar(){
 
         Autobot ratchet = new Ratchet();
         assertTrue(ratchet.ocupaLugar());

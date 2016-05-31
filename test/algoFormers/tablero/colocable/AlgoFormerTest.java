@@ -11,7 +11,7 @@ public class AlgoFormerTest{
 
 	
 	@Test
-	public void elAlgoFormerOcupaLugar (){
+	public void test01ElAlgoFormerOcupaLugar (){
 		assertTrue(mauricio.ocupaLugar());
 	}
 
