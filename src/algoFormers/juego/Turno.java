@@ -12,6 +12,7 @@ public class Turno {
 	public Turno( int cantJugadores) {
         this.cantidadDeJugadores=cantJugadores;
         jugadores=new ArrayList<>();
+        turno=0;
     }
     
 	public Jugador obtenerTurnoActual() {
