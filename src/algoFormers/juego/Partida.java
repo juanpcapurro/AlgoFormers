@@ -1,6 +1,7 @@
 package algoFormers.juego;
 
 import algoFormers.tablero.Tablero;
+import algoFormers.tablero.colocable.robots.*;
 
 
 public class Partida {
@@ -9,20 +10,49 @@ public class Partida {
     private Tablero tablero;
     private Jugador jugadorUno;
     private Jugador jugadorDos;
-
+    static final int DOSJUGADORES=2;
     public Partida(String nombreJugadorUno, String nombreJugadorDos, int dimension) {
-    	
-        this.jugadorUno = this.generarJugador();
-        this.jugadorDos = this.generarJugador();
+    	iniciarPartidaDosJugadores(nombreJugadorUno,nombreJugadorDos,dimension);
 
-        this.turno = new Turno(jugadorUno,jugadorDos);
-
-        this.tablero = new Tablero(dimension);
     }
 
-	private Jugador generarJugador() {
-		/*HAY QUE CODEAR LA GENERACION. DUDAS DE COMO OBTENEMOS LOS DATOS*/
-		return null;
-	}
+    private void iniciarPartidaDosJugadores (String nombreJugadorUno,String nombreJugadorDos,int dimension){
+        jugadorUno=new Jugador(nombreJugadorUno);
+        jugadorDos=new Jugador(nombreJugadorDos);
+        crearAutobots(jugadorUno);
+        crearDecepticons(jugadorDos);
+
+        this.turno = new Turno(DOSJUGADORES);
+        turno.agregarJugador(jugadorUno);
+        turno.agregarJugador(jugadorDos);
+
+        this.tablero = new Tablero(dimension);
+        jugar(tablero,turno);
+    }
+
+    private void jugar(Tablero tablero, Turno turno){
+        Jugador jugadorActual=turno.obtenerTurnoActual();
+        while (jugadorActual.equipovivo()){
+            pedirJugada(tablero,jugadorActual);
+            jugadorActual=turno.obtenerTurnoActual();
+        }
+    }
+
+    private void pedirJugada(Tablero tablero, Jugador jugador){
+
+    }
+
+    private void crearAutobots(Jugador jugador){
+        jugador.agregarAlgoFormer(new Bumblebee());
+        jugador.agregarAlgoFormer(new Ratchet());
+        jugador.agregarAlgoFormer(new Optimus());
+    }
+
+    private void crearDecepticons(Jugador jugador){
+        jugador.agregarAlgoFormer(new BoneCrusher());
+        jugador.agregarAlgoFormer(new Frenzy());
+        jugador.agregarAlgoFormer(new Megatron());
+    }
+
 
 }

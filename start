@@ -1,5 +1,8 @@
 vim -s <(echo $'
 
+:tabnew ./src/algoFormers/tablero/superficie/SuperficieConcreta.java \n
+:vsp ./test/algoFormers/tablero/superficie/SuperficieTest.java \n
+:tabnew ./src/algoFormers/tablero/superficie/Llano.java \n
 :tabnew ./src/algoFormers/tablero/Tablero.java \n
 :vsp ./test/algoFormers/tablero/TableroTest.java \n
 :tabnew ./src/algoFormers/tablero/colocable/Colocable.java \n

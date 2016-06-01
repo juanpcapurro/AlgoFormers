@@ -1,38 +1,37 @@
 
 package algoFormers.juego;
 
-import algoFormers.tablero.colocable.robot.equipos.EquipoDeAlgoFormers;
+import algoFormers.tablero.colocable.robots.AlgoFormer;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Jugador {
 
 
 
 	public String nombreDeJugador;
-	public EquipoDeAlgoFormers miEquipo;
 	boolean esMiTurno;
+	List<AlgoFormer> equipo;
 	
-	public Jugador(String nuevoNombre, EquipoDeAlgoFormers equipoElegido){
+	public Jugador(String nuevoNombre){
 		this.nombreDeJugador = nuevoNombre;
-		this.miEquipo = equipoElegido;
+		equipo= new ArrayList<>();
 	}
-	
-	public boolean sigueEnJuego(){
-		return (this.getMiEquipo().equipoSigueConVida());
-	}
+
 	
 	public String getNombreDeJugador() {
 		return this.nombreDeJugador;
 	}
 
-	public EquipoDeAlgoFormers getMiEquipo() {
-		return (this.miEquipo);
-	}
 
-	public void esSuTurno(boolean b) {
-		this.esMiTurno = b;
+	public void agregarAlgoFormer(AlgoFormer nuevoAlgoBot) {
+		equipo.add(nuevoAlgoBot);
 	}
-	
-	public boolean puedeJugar(){
-		return this.esMiTurno;
+	public boolean equipovivo(){
+		for (AlgoFormer algoformer : equipo)
+			if (algoformer.estaVivo())
+				return true;
+		return false;
 	}
 }
