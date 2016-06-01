@@ -9,6 +9,7 @@ public class Jugador {
 
 	public String nombreDeJugador;
 	public EquipoDeAlgoFormers miEquipo;
+	boolean esMiTurno;
 	
 	public Jugador(String nuevoNombre, EquipoDeAlgoFormers equipoElegido){
 		this.nombreDeJugador = nuevoNombre;
@@ -25,5 +26,13 @@ public class Jugador {
 
 	public EquipoDeAlgoFormers getMiEquipo() {
 		return (this.miEquipo);
+	}
+
+	public void esSuTurno(boolean b) {
+		this.esMiTurno = b;
+	}
+	
+	public boolean puedeJugar(){
+		return this.esMiTurno;
 	}
 }
