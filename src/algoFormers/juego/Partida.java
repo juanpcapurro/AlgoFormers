@@ -39,19 +39,19 @@ public class Partida {
     }
 
     private void pedirJugada(Tablero tablero, Jugador jugador){
-
+        //falta implementar esto
     }
 
     private void crearAutobots(Jugador jugador){
-        jugador.agregarAlgoFormer(new Bumblebee());
-        jugador.agregarAlgoFormer(new Ratchet());
-        jugador.agregarAlgoFormer(new Optimus());
+        jugador.agregarUnidad(new Bumblebee());
+        jugador.agregarUnidad(new Ratchet());
+        jugador.agregarUnidad(new Optimus());
     }
 
     private void crearDecepticons(Jugador jugador){
-        jugador.agregarAlgoFormer(new BoneCrusher());
-        jugador.agregarAlgoFormer(new Frenzy());
-        jugador.agregarAlgoFormer(new Megatron());
+        jugador.agregarUnidad(new BoneCrusher());
+        jugador.agregarUnidad(new Frenzy());
+        jugador.agregarUnidad(new Megatron());
     }
 
 

@@ -34,7 +34,7 @@ public class JugadorTest {
 
 	@Test
 	public void test03EquipoConUnAlgoformerEstaVivo() {
-		miJugador.agregarAlgoFormer(new Bumblebee());
+		miJugador.agregarUnidad(new Bumblebee());
 		assertTrue(miJugador.equipovivo());
 	}
 	
@@ -43,9 +43,9 @@ public class JugadorTest {
 		AlgoFormer bumblebee=new Bumblebee();
 		AlgoFormer ratchet=new Ratchet();
 		AlgoFormer frenzy=new Frenzy();
-		miJugador.agregarAlgoFormer(bumblebee);
-		miJugador.agregarAlgoFormer(ratchet);
-		miJugador.agregarAlgoFormer(frenzy);
+		miJugador.agregarUnidad(bumblebee);
+		miJugador.agregarUnidad(ratchet);
+		miJugador.agregarUnidad(frenzy);
 
 		bumblebee.recibirAtaque(VIDABUMBLEBEE);
 		assertTrue(miJugador.equipovivo());
@@ -55,9 +55,9 @@ public class JugadorTest {
 		AlgoFormer bumblebee=new Bumblebee();
 		AlgoFormer ratchet=new Ratchet();
 		AlgoFormer frenzy=new Frenzy();
-		miJugador.agregarAlgoFormer(bumblebee);
-		miJugador.agregarAlgoFormer(ratchet);
-		miJugador.agregarAlgoFormer(frenzy);
+		miJugador.agregarUnidad(bumblebee);
+		miJugador.agregarUnidad(ratchet);
+		miJugador.agregarUnidad(frenzy);
 
 		bumblebee.recibirAtaque(VIDABUMBLEBEE);
 		ratchet.recibirAtaque(VIDARATCHET);

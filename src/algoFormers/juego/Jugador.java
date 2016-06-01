@@ -25,7 +25,7 @@ public class Jugador {
 	}
 
 
-	public void agregarAlgoFormer(AlgoFormer nuevoAlgoBot) {
+	public void agregarUnidad(AlgoFormer nuevoAlgoBot) {
 		equipo.add(nuevoAlgoBot);
 	}
 	public boolean equipovivo(){
