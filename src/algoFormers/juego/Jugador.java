@@ -11,7 +11,6 @@ public class Jugador {
 
 
 	public String nombreDeJugador;
-	boolean esMiTurno;
 	List<AlgoFormer> equipo;
 	
 	public Jugador(String nuevoNombre){

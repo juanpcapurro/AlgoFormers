@@ -2,10 +2,17 @@ package algoFormers.tablero.superficie;
 
 import algoFormers.tablero.colocable.robots.Ataque;
 
-public abstract class Superficie {
+abstract class Superficie {
 
-    public abstract void cambiarALlano(SuperficieConcretaActual superficieActual);
-    public abstract void cambiarARocoso(SuperficieConcretaActual superficieActual);
-    public abstract void cambiarAPantanoso(SuperficieConcretaActual superficieActual);
+    void cambiarALlano(SuperficieConcretaActual superficieActual){
+        superficieActual.cambiarActual(Llano.getInstance());
+    }
+    void cambiarARocoso(SuperficieConcretaActual superficieActual){
+        superficieActual.cambiarActual(Rocoso.getInstance());
+    }
+    void cambiarAPantanoso(SuperficieConcretaActual superficieActual){
+        superficieActual.cambiarActual(Pantanoso.getInstance());
+    }
+
     public abstract void recibirAtaque(SuperficieConcretaActual superficieActual,Ataque ataque);
 }
