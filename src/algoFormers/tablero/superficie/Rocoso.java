@@ -1,6 +1,6 @@
 package algoFormers.tablero.superficie;
 
-import algoFormers.tablero.colocable.robots.Arma;
+import algoFormers.tablero.colocable.robots.Ataque;
 
 /**
  * Created by Charly on 5/29/16.
@@ -28,9 +28,8 @@ public class Rocoso extends Superficie{
     }
 
 	@Override
-	public void recibirAtaque(Arma unArma) {
-		// TODO Auto-generated method stub
-		/*this.cambiarALlano(ourinstance); ?????? */
+	public void recibirAtaque(SuperficieConcretaActual superficieActual,Ataque unAtaque) {
+	    superficieActual.cambiarActual(Llano.getInstance());
 	}
 
 }

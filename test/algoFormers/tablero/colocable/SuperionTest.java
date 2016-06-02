@@ -2,6 +2,7 @@ package algoFormers.tablero.colocable;
 
 
 import algoFormers.tablero.colocable.robots.Bumblebee;
+import algoFormers.tablero.colocable.robots.DisparoConvencional;
 import algoFormers.tablero.colocable.robots.Optimus;
 import algoFormers.tablero.colocable.robots.Ratchet;
 import org.junit.Before;
@@ -39,7 +40,7 @@ public class SuperionTest {
     }
     @Test
     public void  test03SuperionRecibeAtaqueYSigueConVida() {
-        superion.recibirAtaque(100);
+        superion.recibirAtaque(new DisparoConvencional(100));
 
         assertTrue(superion.estaVivo());
         assertTrue(superion.getPuntosDeVida() == 900);
@@ -47,16 +48,16 @@ public class SuperionTest {
 
     @Test
     public void  test04SuperionRecibeAtaqueYMuere() {
-        superion.recibirAtaque(1000);
+        superion.recibirAtaque(new DisparoConvencional(1000));
         assertFalse(superion.estaVivo());
     }
 
     @Test
         public void  test05SuperionCreadoConAutobotsHeridos() {
 
-            optimus.recibirAtaque(400);
-            bumblebee.recibirAtaque(250);
-            ratchet.recibirAtaque(50);
+            optimus.recibirAtaque(new DisparoConvencional(400));
+            bumblebee.recibirAtaque(new DisparoConvencional(250));
+            ratchet.recibirAtaque(new DisparoConvencional(50));
 
             assertTrue(optimus.getPuntosDeVida()==100);
             assertTrue(bumblebee.getPuntosDeVida()==100);
@@ -68,32 +69,32 @@ public class SuperionTest {
         }
         @Test
         public void  test06SuperionCreadoConAutobotsHeridosRecibeAtaqueYSigueConVida() {
-            optimus.recibirAtaque(400);
-            bumblebee.recibirAtaque(250);
-            ratchet.recibirAtaque(50);
+            optimus.recibirAtaque(new DisparoConvencional(400));
+            bumblebee.recibirAtaque(new DisparoConvencional(250));
+            ratchet.recibirAtaque(new DisparoConvencional(50));
 
             assertTrue(optimus.getPuntosDeVida()==100);
             assertTrue(bumblebee.getPuntosDeVida()==100);
             assertTrue(ratchet.getPuntosDeVida()==100);
 
             superionAutobotsHeridos = new Superion(optimus, bumblebee, ratchet);
-            superionAutobotsHeridos.recibirAtaque(10);
+            superionAutobotsHeridos.recibirAtaque(new DisparoConvencional(10));
 
             assertTrue(superionAutobotsHeridos.estaVivo());
             assertTrue(superionAutobotsHeridos.getPuntosDeVida()==290);
         }
         @Test
         public void  test07SuperionCreadoConAutobotsHeridosRecibeAtaqueYMuere() {
-            optimus.recibirAtaque(400);
-            bumblebee.recibirAtaque(250);
-            ratchet.recibirAtaque(50);
+            optimus.recibirAtaque(new DisparoConvencional(400));
+            bumblebee.recibirAtaque(new DisparoConvencional(250));
+            ratchet.recibirAtaque(new DisparoConvencional(50));
 
             assertTrue(optimus.getPuntosDeVida()==100);
             assertTrue(bumblebee.getPuntosDeVida()==100);
             assertTrue(ratchet.getPuntosDeVida()==100);
 
             superionAutobotsHeridos = new Superion(optimus, bumblebee, ratchet);
-            superionAutobotsHeridos.recibirAtaque(300);
+            superionAutobotsHeridos.recibirAtaque(new DisparoConvencional(300));
 
             assertFalse(superionAutobotsHeridos.estaVivo());
             assertTrue(superionAutobotsHeridos.getPuntosDeVida()==0);

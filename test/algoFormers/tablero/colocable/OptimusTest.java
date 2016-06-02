@@ -1,5 +1,6 @@
 package algoFormers.tablero.colocable;
 
+import algoFormers.tablero.colocable.robots.DisparoConvencional;
 import algoFormers.tablero.colocable.robots.Optimus;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -12,14 +13,14 @@ public class OptimusTest {
     @Test
     public void  test01OptimusRecibeAtaqueYSigueConVida() {
 
-        mauricio.recibirAtaque(4);
+        mauricio.recibirAtaque(new DisparoConvencional(4));
         assertTrue(mauricio.estaVivo());
     }
 
     @Test
     public void  test02OptimusRecibeAtaqueYMuere() {
 
-        mauricio.recibirAtaque(500);
+        mauricio.recibirAtaque(new DisparoConvencional(500));
         assertFalse(mauricio.estaVivo());
     }
 }

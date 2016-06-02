@@ -1,9 +1,9 @@
 package algoFormers.tablero.colocable;
 
-public abstract class Colocable{
+import algoFormers.tablero.Atacable;
+
+public abstract class Colocable implements Atacable{
 	public abstract boolean ocupaLugar();
-
-
 
 
 }

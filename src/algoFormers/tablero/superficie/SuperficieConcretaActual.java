@@ -1,9 +1,12 @@
 package algoFormers.tablero.superficie;
 
+import algoFormers.tablero.Atacable;
+import algoFormers.tablero.colocable.robots.Ataque;
+
 /**
  * Created by Charly on 5/29/16.
  */
-public class SuperficieConcretaActual {
+public class SuperficieConcretaActual implements Atacable {
     Superficie actual;
 
     public SuperficieConcretaActual(){actual=Llano.getInstance();}
@@ -23,5 +26,9 @@ public class SuperficieConcretaActual {
     }
     public void cambiarActual(Superficie aCambiar){
         actual=aCambiar;
+    }
+
+    public void recibirAtaque(Ataque ataque) {
+        actual.recibirAtaque(this, ataque);
     }
 }

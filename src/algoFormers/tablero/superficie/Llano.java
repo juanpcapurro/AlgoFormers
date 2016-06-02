@@ -1,6 +1,6 @@
 package algoFormers.tablero.superficie;
 
-import algoFormers.tablero.colocable.robots.Arma;
+import algoFormers.tablero.colocable.robots.Ataque;
 
 /**
  * Created by Charly on 5/29/16.
@@ -29,9 +29,9 @@ public class Llano extends Superficie {
         superficieActual.cambiarActual(Pantanoso.getInstance());
     }
 
-	@Override
-	public void recibirAtaque(Arma unArma) {
-		// TODO Auto-generated method stub
-	}
+    @Override
+    public void recibirAtaque(SuperficieConcretaActual superficieActual, Ataque ataque) {
+    }
+
 
 }

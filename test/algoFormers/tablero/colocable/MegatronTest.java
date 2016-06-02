@@ -1,5 +1,6 @@
 package algoFormers.tablero.colocable;
 
+import algoFormers.tablero.colocable.robots.DisparoConvencional;
 import algoFormers.tablero.colocable.robots.Megatron;
 import org.junit.Before;
 import org.junit.Test;
@@ -19,14 +20,14 @@ public class MegatronTest {
     @Test
     public void  test01MegatronRecibeAtaqueYSigueConVida() {
 
-        mauricio.recibirAtaque(4);
+        mauricio.recibirAtaque(new DisparoConvencional(4));
         assertTrue(mauricio.estaVivo());
     }
 
     @Test
     public void  test02MegatronRecibeAtaqueYMuere() {
 
-        mauricio.recibirAtaque(550);
+        mauricio.recibirAtaque(new DisparoConvencional(550));
         assertFalse(mauricio.estaVivo());
     }
 }

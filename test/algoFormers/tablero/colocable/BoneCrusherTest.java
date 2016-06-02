@@ -1,5 +1,6 @@
 package algoFormers.tablero.colocable;
 import algoFormers.tablero.colocable.robots.BoneCrusher;
+import algoFormers.tablero.colocable.robots.DisparoConvencional;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -20,14 +21,14 @@ public class BoneCrusherTest {
     @Test
     public void test01BoneCrusherRecibeAtaqueYSigueConVida() {
 
-        mauricio.recibirAtaque(4);
+        mauricio.recibirAtaque(new DisparoConvencional(4));
         assertTrue(mauricio.estaVivo());
     }
 
     @Test
     public void test02BoneCrusherRecibeAtaqueYMuere() {
 
-        mauricio.recibirAtaque(200);
+        mauricio.recibirAtaque(new DisparoConvencional(200));
         assertFalse(mauricio.estaVivo());
     }
 }

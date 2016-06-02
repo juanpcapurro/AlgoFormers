@@ -1,9 +1,6 @@
 package algoFormers.juego;
 
-import algoFormers.tablero.colocable.robots.AlgoFormer;
-import algoFormers.tablero.colocable.robots.Bumblebee;
-import algoFormers.tablero.colocable.robots.Frenzy;
-import algoFormers.tablero.colocable.robots.Ratchet;
+import algoFormers.tablero.colocable.robots.*;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -47,7 +44,7 @@ public class JugadorTest {
 		miJugador.agregarUnidad(ratchet);
 		miJugador.agregarUnidad(frenzy);
 
-		bumblebee.recibirAtaque(VIDABUMBLEBEE);
+		bumblebee.recibirAtaque(new DisparoConvencional(VIDABUMBLEBEE));
 		assertTrue(miJugador.equipovivo());
 	}
 	@Test
@@ -59,9 +56,9 @@ public class JugadorTest {
 		miJugador.agregarUnidad(ratchet);
 		miJugador.agregarUnidad(frenzy);
 
-		bumblebee.recibirAtaque(VIDABUMBLEBEE);
-		ratchet.recibirAtaque(VIDARATCHET);
-		frenzy.recibirAtaque(VIDAFRENZY);
+		bumblebee.recibirAtaque(new DisparoConvencional(VIDABUMBLEBEE));
+		ratchet.recibirAtaque(new DisparoConvencional(VIDARATCHET));
+		frenzy.recibirAtaque(new DisparoConvencional(VIDAFRENZY));
 
 		assertFalse(miJugador.equipovivo());
 	}

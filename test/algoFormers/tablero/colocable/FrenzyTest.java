@@ -1,5 +1,6 @@
 package algoFormers.tablero.colocable;
 
+import algoFormers.tablero.colocable.robots.DisparoConvencional;
 import algoFormers.tablero.colocable.robots.Frenzy;
 import org.junit.Before;
 import org.junit.Test;
@@ -21,14 +22,14 @@ public class FrenzyTest {
     @Test
     public void  test01FrenzyRecibeAtaqueYSigueConVida() {
 
-        mauricio.recibirAtaque(4);
+        mauricio.recibirAtaque(new DisparoConvencional(4));
         assertTrue(mauricio.estaVivo());
     }
 
     @Test
     public void  test02FrenzyRecibeAtaqueYMuere() {
 
-        mauricio.recibirAtaque(400);
+        mauricio.recibirAtaque(new DisparoConvencional(400));
         assertFalse(mauricio.estaVivo());
     }
 }

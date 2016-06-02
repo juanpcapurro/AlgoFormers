@@ -1,9 +1,11 @@
 package algoFormers.tablero.superficie;
 
+import algoFormers.tablero.colocable.robots.Ataque;
+import algoFormers.tablero.colocable.robots.Misil;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertSame;
 
 /**
  * Created by Charly on 5/29/16.
@@ -81,5 +83,13 @@ public class SuperficieTest {
     	assertSame(Pantanoso.getInstance(),superficieActual.verActual());
         superficieActual.cambiarARocoso();
         assertSame(Rocoso.getInstance(),superficieActual.verActual());
+    }
+    @Test
+    public void test11DisparoSuperficieActualLoHaceLlano(){
+        superficieActual.cambiarARocoso();
+        Ataque ataque =new Misil(100);
+        ataque.atacar(superficieActual);
+        assertSame(Llano.getInstance(),superficieActual.verActual());
+
     }
 }

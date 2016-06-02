@@ -1,5 +1,6 @@
 package algoFormers.tablero.colocable;
 
+import algoFormers.tablero.colocable.robots.DisparoConvencional;
 import algoFormers.tablero.colocable.robots.Ratchet;
 import org.junit.Test;
 
@@ -13,7 +14,7 @@ public class RatchetTest {
     @Test
     public void  test01RatchetRecibeAtaqueYSigueConVida() {
 
-        mauricio.recibirAtaque(4);
+        mauricio.recibirAtaque(new DisparoConvencional(4));
 
         assertTrue(mauricio.estaVivo());
     }
@@ -21,7 +22,7 @@ public class RatchetTest {
     @Test
     public void  test02RatchetRecibeAtaqueYMuere() {
 
-        mauricio.recibirAtaque(150);
+        mauricio.recibirAtaque(new DisparoConvencional(150));
         assertFalse(mauricio.estaVivo());
     }
 }

@@ -21,8 +21,11 @@ public class AlgoFormer extends Colocable {
 
 	public  boolean estaVivo(){return (this.ptosDeVida > 0);}
 
-	public  void recibirAtaque(int ataque){ this.ptosDeVida -= ataque ;}
-
     public int getPuntosDeVida(){ return this.ptosDeVida;}
+
+	@Override
+	public void recibirAtaque(Ataque unAtaque) {
+		ptosDeVida-= unAtaque.getDanio();
+	}
 }
 

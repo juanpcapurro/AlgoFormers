@@ -2,6 +2,7 @@ package algoFormers.tablero;
 
 import algoFormers.tablero.colocable.Colocable;
 import algoFormers.tablero.colocable.robots.AlgoFormer;
+import algoFormers.tablero.colocable.robots.Ataque;
 
 public class Tablero{
 	private final int DIMENSION;
@@ -60,5 +61,10 @@ public class Tablero{
 	public void vaciarPosicion(int fila, int columna){
 		this.vericarCoordenadas(fila, columna);
 		this.matrizCasilleros[fila][columna].vaciar();
+	}
+
+	public void atacar(int fila , int columna,Ataque ataque){
+		vericarCoordenadas(fila,columna);
+		(matrizCasilleros[fila][columna]).atacarCasillero(ataque);
 	}
 }
