@@ -15,7 +15,7 @@ public class Turno {
         turno=0;
     }
     
-	public Jugador obtenerTurnoActual() {
+	public Jugador obtenerProximoJugador() {
         return jugadores.get(turno++ % cantidadDeJugadores);
     }
 

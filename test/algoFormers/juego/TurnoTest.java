@@ -5,7 +5,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-public class TurnoTest {
+public class  TurnoTest {
 	
 	private Jugador miJugador1;
 	private Jugador miJugador2;
@@ -23,27 +23,27 @@ public class TurnoTest {
 	
 	@Test
 	public void test01TurnoArrancaEn1(){
-		assertEquals(turno.obtenerTurnoActual(),miJugador1);
+		assertEquals(turno.obtenerProximoJugador(),miJugador1);
 	}
 	
 	@Test
 	public void test02TurnoSeIncrementa(){
-		turno.obtenerTurnoActual();
-		assertEquals(turno.obtenerTurnoActual(),miJugador2);
+		turno.obtenerProximoJugador();
+		assertEquals(turno.obtenerProximoJugador(),miJugador2);
 
 	}
 	@Test
 	public void test03TercerTurnoEsDelPrimeroJugador(){
-		turno.obtenerTurnoActual();
-		turno.obtenerTurnoActual();
-		assertEquals(turno.obtenerTurnoActual(),miJugador1);
+		turno.obtenerProximoJugador();
+		turno.obtenerProximoJugador();
+		assertEquals(turno.obtenerProximoJugador(),miJugador1);
 	}
 	@Test
 	public void test04CuartoTurnoEsDelSegundoJugador(){
-		turno.obtenerTurnoActual();
-		turno.obtenerTurnoActual();
-		turno.obtenerTurnoActual();
-		assertEquals(turno.obtenerTurnoActual(),miJugador2);
+		turno.obtenerProximoJugador();
+		turno.obtenerProximoJugador();
+		turno.obtenerProximoJugador();
+		assertEquals(turno.obtenerProximoJugador(),miJugador2);
 	}
 
 }

@@ -1,6 +1,5 @@
 package algoFormers.tablero.colocable;
 
-
 import algoFormers.tablero.colocable.robots.AlgoFormer;
 import algoFormers.tablero.colocable.robots.Bumblebee;
 import algoFormers.tablero.colocable.robots.Optimus;
