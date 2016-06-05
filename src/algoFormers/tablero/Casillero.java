@@ -2,7 +2,7 @@ package algoFormers.tablero;
 
 import algoFormers.tablero.colocable.Colocable;
 import algoFormers.tablero.colocable.EspacioVacio;
-import algoFormers.tablero.colocable.robots.Ataque;
+import algoFormers.tablero.colocable.robots.armas.Ataque;
 import algoFormers.tablero.superficie.*;
 
 public class Casillero {

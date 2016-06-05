@@ -1,8 +1,7 @@
-package algoFormers.tablero.colocable;
-import algoFormers.tablero.colocable.robots.Decepticon;
-import algoFormers.tablero.colocable.robots.Megatron;
-import algoFormers.tablero.colocable.robots.BoneCrusher;
-import algoFormers.tablero.colocable.robots.Frenzy;
+package algoFormers.tablero.colocable.robots.decepticon;
+
+import algoFormers.tablero.colocable.robots.armas.*;
+import algoFormers.tablero.colocable.robots.AlgoFormer;
 
 
 import static org.junit.Assert.*;

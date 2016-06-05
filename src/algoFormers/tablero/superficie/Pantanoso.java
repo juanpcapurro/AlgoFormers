@@ -1,6 +1,6 @@
 package algoFormers.tablero.superficie;
 
-import algoFormers.tablero.colocable.robots.Ataque;
+import algoFormers.tablero.colocable.robots.armas.Ataque;
 
 class Pantanoso extends Superficie{
     private static Pantanoso ourInstance = new Pantanoso();

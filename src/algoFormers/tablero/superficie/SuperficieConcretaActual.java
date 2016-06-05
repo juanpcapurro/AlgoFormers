@@ -1,7 +1,7 @@
 package algoFormers.tablero.superficie;
 
 import algoFormers.tablero.Atacable;
-import algoFormers.tablero.colocable.robots.Ataque;
+import algoFormers.tablero.colocable.robots.armas.Ataque;
 
 /**
  * Created by Charly on 5/29/16.

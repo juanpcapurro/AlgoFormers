@@ -2,7 +2,7 @@ package algoFormers.tablero;
 
 import algoFormers.tablero.colocable.Colocable;
 import algoFormers.tablero.colocable.robots.AlgoFormer;
-import algoFormers.tablero.colocable.robots.Ataque;
+import algoFormers.tablero.colocable.robots.armas.Ataque;
 
 public class Tablero{
 	private final int DIMENSION;

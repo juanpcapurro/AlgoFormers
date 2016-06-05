@@ -1,7 +1,8 @@
 package algoFormers.juego;
 
 import algoFormers.tablero.Tablero;
-import algoFormers.tablero.colocable.robots.*;
+import algoFormers.tablero.colocable.robots.decepticon.*;
+import algoFormers.tablero.colocable.robots.autobot.*;
 
 
 public class Partida {

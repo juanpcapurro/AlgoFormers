@@ -1,7 +1,6 @@
 package algoFormers.tablero.superficie;
 
-import algoFormers.tablero.colocable.robots.Ataque;
-import algoFormers.tablero.colocable.robots.Misil;
+import algoFormers.tablero.colocable.robots.armas.*;
 import org.junit.Before;
 import org.junit.Test;
 

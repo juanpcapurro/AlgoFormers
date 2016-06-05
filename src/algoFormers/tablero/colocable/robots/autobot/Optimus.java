@@ -1,6 +1,5 @@
-package algoFormers.tablero.colocable.robots;
+package algoFormers.tablero.colocable.robots.autobot;
 
-import algoFormers.tablero.colocable.robots.Autobot;
 
 public class Optimus extends Autobot {
     public Optimus(){

@@ -1,6 +1,7 @@
 package algoFormers.tablero.colocable.robots;
 
 import algoFormers.tablero.colocable.Colocable;
+import algoFormers.tablero.colocable.robots.armas.*;
 
 public class AlgoFormer extends Colocable {
 	

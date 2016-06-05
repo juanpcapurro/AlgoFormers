@@ -1,6 +1,4 @@
-package algoFormers.tablero.colocable.robots;
-
-import algoFormers.tablero.colocable.robots.Autobot;
+package algoFormers.tablero.colocable.robots.autobot;
 
 public class Ratchet extends Autobot {
     public Ratchet(){

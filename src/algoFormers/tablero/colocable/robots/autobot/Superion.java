@@ -1,9 +1,6 @@
-package algoFormers.tablero.colocable;
+package algoFormers.tablero.colocable.robots.autobot;
 
 import algoFormers.tablero.colocable.robots.AlgoFormer;
-import algoFormers.tablero.colocable.robots.Bumblebee;
-import algoFormers.tablero.colocable.robots.Optimus;
-import algoFormers.tablero.colocable.robots.Ratchet;
 
 public class Superion extends AlgoFormer {
     private final Optimus optimus;

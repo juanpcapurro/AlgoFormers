@@ -1,9 +1,6 @@
-package algoFormers.tablero.colocable;
+package algoFormers.tablero.colocable.robots.decepticon;
 
 import algoFormers.tablero.colocable.robots.AlgoFormer;
-import algoFormers.tablero.colocable.robots.BoneCrusher;
-import algoFormers.tablero.colocable.robots.Frenzy;
-import algoFormers.tablero.colocable.robots.Megatron;
 
 public class Menasor extends AlgoFormer {
 

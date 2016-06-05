@@ -1,6 +1,9 @@
 package algoFormers.juego;
 
-import algoFormers.tablero.colocable.robots.*;
+import algoFormers.tablero.colocable.robots.decepticon.*;
+import algoFormers.tablero.colocable.robots.autobot.*;
+import algoFormers.tablero.colocable.robots.AlgoFormer;
+import algoFormers.tablero.colocable.robots.armas.*;
 import org.junit.Before;
 import org.junit.Test;
 

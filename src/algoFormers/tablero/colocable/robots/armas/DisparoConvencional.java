@@ -1,4 +1,4 @@
-package algoFormers.tablero.colocable.robots;
+package algoFormers.tablero.colocable.robots.armas;
 
 import algoFormers.tablero.Atacable;
 
