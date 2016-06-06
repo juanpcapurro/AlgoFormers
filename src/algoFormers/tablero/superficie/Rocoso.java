@@ -3,19 +3,11 @@ package algoFormers.tablero.superficie;
 import algoFormers.tablero.colocable.robots.armas.Ataque;
 
 
-class Rocoso extends Superficie{
-    private static Rocoso ourInstance = new Rocoso();
-
-    public static Rocoso getInstance() {
-        return ourInstance;
-    }
-
-    private Rocoso() {
-    }
+class Rocoso extends StateSuperficie {
 
 	@Override
-	public void recibirAtaque(SuperficieConcretaActual superficieActual,Ataque unAtaque) {
-	    superficieActual.cambiarActual(Llano.getInstance());
+	public void recibirAtaque(Superficie superficieActual, Ataque unAtaque) {
+	    superficieActual.cambiarActual(new Llano());
 	}
 
 }

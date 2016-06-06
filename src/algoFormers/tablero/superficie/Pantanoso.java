@@ -2,18 +2,11 @@ package algoFormers.tablero.superficie;
 
 import algoFormers.tablero.colocable.robots.armas.Ataque;
 
-class Pantanoso extends Superficie{
-    private static Pantanoso ourInstance = new Pantanoso();
+class Pantanoso extends StateSuperficie {
 
-    public static Pantanoso getInstance() {
-        return ourInstance;
-    }
-
-    private Pantanoso() {
-    }
 
     @Override
-    public void recibirAtaque(SuperficieConcretaActual superficieActual, Ataque ataque) {
+    public void recibirAtaque(Superficie superficieActual, Ataque ataque) {
     }
 
 }

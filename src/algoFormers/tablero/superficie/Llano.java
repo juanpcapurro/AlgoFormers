@@ -2,18 +2,11 @@ package algoFormers.tablero.superficie;
 
 import algoFormers.tablero.colocable.robots.armas.Ataque;
 
-class Llano extends Superficie {
-    private static Llano ourInstance = new Llano();
+class Llano extends StateSuperficie {
 
-    public static Llano getInstance() {
-        return ourInstance;
-    }
-
-    private Llano() {
-    }
 
     @Override
-    public void recibirAtaque(SuperficieConcretaActual superficieActual, Ataque ataque) {
+    public void recibirAtaque(Superficie superficieActual, Ataque ataque) {
     }
 
 

@@ -7,11 +7,11 @@ import algoFormers.tablero.superficie.*;
 
 public class Casillero {
     private Colocable colocado;
-    private SuperficieConcretaActual superficieActual;
+    private Superficie superficieActual;
 
     Casillero(){
         colocado= new EspacioVacio();
-        superficieActual= new SuperficieConcretaActual();
+        superficieActual= new Superficie();
     }
 
     public boolean estaOcupado(){
