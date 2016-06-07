@@ -10,7 +10,7 @@ public class Jugador {
 
 
 
-	public String nombreDeJugador;
+	private String nombreDeJugador;
 	List<AlgoFormer> equipo;
 	
 	public Jugador(String nuevoNombre){
@@ -19,15 +19,15 @@ public class Jugador {
 	}
 
 	
-	public String getNombreDeJugador() {
+	String getNombreDeJugador() {
 		return this.nombreDeJugador;
 	}
 
 
-	public void agregarUnidad(AlgoFormer nuevoAlgoBot) {
+	void agregarUnidad(AlgoFormer nuevoAlgoBot) {
 		equipo.add(nuevoAlgoBot);
 	}
-	public boolean equipovivo(){
+	boolean equipovivo(){
 		for (AlgoFormer algoformer : equipo)
 			if (algoformer.estaVivo())
 				return true;

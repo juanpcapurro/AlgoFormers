@@ -25,14 +25,14 @@ public class Tablero{
 		}
 	}
 
-    public boolean estaTodoVacio(){
+    boolean estaTodoVacio(){
         for (Casillero casillero : listaCasilleros)
             if (casillero.estaOcupado())
                 return false;
         return true;
     }
 
-	public void colocar(Posicion posicion,Colocable aColocar){
+	private void colocar(Posicion posicion,Colocable aColocar){
         controlador.validarCoordenadas(posicion);
 		Casillero casillero= obtenerCasilleroAsociadoAPosicion(posicion);
 		casillero.colocar(aColocar);

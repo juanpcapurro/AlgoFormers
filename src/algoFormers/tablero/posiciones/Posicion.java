@@ -1,8 +1,8 @@
 package algoFormers.tablero.posiciones;
 
 public class Posicion {
-    int x;
-    int y;
+    private int x;
+    private int y;
 
 
     public Posicion(int unaPosicionX, int unaPosicionY){

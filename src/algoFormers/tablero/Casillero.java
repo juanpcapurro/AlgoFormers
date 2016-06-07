@@ -21,31 +21,31 @@ public class Casillero {
         superficieActual= new Superficie();
     }
 
-    public boolean estaOcupado(){
+    boolean estaOcupado(){
         return colocado.ocupaLugar();
     }
 
 
-    public void colocar(Colocable aColocar) {
+    void colocar(Colocable aColocar) {
         if (this.estaOcupado())
                 throw new CasilleroYaOcupado();
         colocado=aColocar;
     }
 
-	public void vaciar(){
+	void vaciar(){
 		colocado = new EspacioVacio();
 	}
 	
-	public Colocable obtenerColocado(){
+	Colocable obtenerColocado(){
 		return colocado;
 	}
 
-    public void atacarCasillero(Ataque ataque) {
+    void atacarCasillero(Ataque ataque) {
         superficieActual.recibirAtaque(ataque);
         colocado.recibirAtaque(ataque);
     }
 
-    public boolean compararPosicion(Posicion posicionAComparar) {
+    boolean compararPosicion(Posicion posicionAComparar) {
         return posicion.compararPosicion(posicionAComparar);
     }
 }
