@@ -1,17 +1,17 @@
 package algoFormers.tablero;
 
-import static org.junit.Assert.*;
-
+import algoFormers.tablero.colocable.robots.AlgoFormer;
 import org.junit.Before;
 import org.junit.Test;
 
-import algoFormers.tablero.colocable.robots.AlgoFormer;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 public class CasilleroTest {
 	Casillero casillero;
 	
 	@Before
-	public void setUp() throws Exception {
+	public void setUp(){
 		casillero = new Casillero();
 	}
 

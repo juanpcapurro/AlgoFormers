@@ -8,7 +8,13 @@ import algoFormers.tablero.superficie.*;
 public class Casillero {
     private Colocable colocado;
     private Superficie superficieActual;
+    private Posicion posicion;
 
+    Casillero(Posicion nuevaPosicion){
+        colocado= new EspacioVacio();
+        superficieActual= new Superficie();
+        posicion=nuevaPosicion;
+    }
     Casillero(){
         colocado= new EspacioVacio();
         superficieActual= new Superficie();
@@ -36,5 +42,9 @@ public class Casillero {
     public void atacarCasillero(Ataque ataque) {
         superficieActual.recibirAtaque(ataque);
         colocado.recibirAtaque(ataque);
+    }
+
+    public boolean compararPosicion(Posicion posicionAComparar) {
+        return posicion.compararPosicion(posicionAComparar);
     }
 }

@@ -4,67 +4,76 @@ import algoFormers.tablero.colocable.Colocable;
 import algoFormers.tablero.colocable.robots.AlgoFormer;
 import algoFormers.tablero.colocable.robots.armas.Ataque;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Tablero{
 	private final int DIMENSION;
-	private Casillero[][] matrizCasilleros;
+	private List<Casillero> listaCasilleros;
 
 	public Tablero(int dimension_pedida){
-		matrizCasilleros = new Casillero[dimension_pedida][dimension_pedida];
+        ControladorPosiciones.getInstance().resetPosiciones();
+		listaCasilleros = new ArrayList<>();
 		DIMENSION = dimension_pedida;
-		for (Casillero[] row: matrizCasilleros) {//Este for llena la matriz
-			for(int i=0;i<DIMENSION;i++)
-				row[i]= new Casillero();
+		for(int i=0;i<DIMENSION*DIMENSION;i++){
+			Casillero casillero=new Casillero(new Posicion());
+			listaCasilleros.add(casillero);
 		}
 	}
 
     public boolean estaTodoVacio(){
-        for (Casillero[] row : this.matrizCasilleros)
-            for (Casillero casillero : row)
-                if (casillero.estaOcupado())
-                    return false;
+        for (Casillero casillero : listaCasilleros)
+            if (casillero.estaOcupado())
+                return false;
         return true;
     }
 
-	public void colocar(int fila, int columna,Colocable aColocar){
-		this.vericarCoordenadas(fila,columna);
-		Casillero casillero= this.matrizCasilleros[fila][columna];
+	public void colocar(Posicion posicion,Colocable aColocar){
+        posicion.validarCoordenadas();
+		Casillero casillero= obtenerCasilleroAsociadoAPosicion(posicion);
 		casillero.colocar(aColocar);
 	}
 
-	public void colocarAlgoformer(int fila,int columna){
-		this.colocar(fila,columna, new AlgoFormer());
+    private Casillero obtenerCasilleroAsociadoAPosicion(Posicion posicion){
+        for (Casillero casillero : listaCasilleros){
+            if (casillero.compararPosicion(posicion))
+                return casillero;
+        }
+        return null;
+    }
+
+	public void colocarAlgoformer(Posicion posicion){
+
+		this.colocar(posicion, new AlgoFormer());
 	}
 
-	public void mover(int filaOrigen, int columnaOrigen, int filaDestino, int columnaDestino){
+	public void mover(Posicion posicionOrigen, Posicion posicionDestino){
 		/*MOVER DEBE SER MEJORADO PARA CONSIDERAR:
 		 * -Distancias permitidas de los algoformers
 		 * -Posibilidad de elegir paso a paso el casillero siguiente
 		 * -En cada eleccion, el tablero validaria si es posible o no.*/
-		this.vericarCoordenadas(filaDestino, columnaDestino);
-		this.vericarCoordenadas(filaOrigen, filaDestino);
+        posicionOrigen.validarCoordenadas();
+        posicionDestino.validarCoordenadas();
 		
-		Colocable colocableAMover = (this.matrizCasilleros[filaOrigen][columnaOrigen]).obtenerColocado();
-		this.vaciarPosicion(filaOrigen, columnaOrigen);
-		this.colocar(filaDestino, columnaDestino, colocableAMover);
+		Colocable colocableAMover = obtenerCasilleroAsociadoAPosicion(posicionOrigen).obtenerColocado();
+		this.vaciarPosicion(posicionOrigen);
+		this.colocar(posicionDestino, colocableAMover);
 	}
 	
-	public boolean estaOcupadoEnPosicion(int fila, int columna){
-		this.vericarCoordenadas(fila,columna);
-		Casillero casillero= this.matrizCasilleros[fila][columna];
+	public boolean estaOcupadoEnPosicion(Posicion posicion){
+		posicion.validarCoordenadas();
+		Casillero casillero= obtenerCasilleroAsociadoAPosicion(posicion);
 		return casillero.estaOcupado();
 	}
 
-	private void vericarCoordenadas(int fila, int columna) {
-		if (fila<0 || columna <0 || fila >= DIMENSION || columna >= DIMENSION)
-			throw new CoordenadasInvalidas() ;
-	}
-	public void vaciarPosicion(int fila, int columna){
-		this.vericarCoordenadas(fila, columna);
-		this.matrizCasilleros[fila][columna].vaciar();
+
+	public void vaciarPosicion(Posicion posicion){
+		posicion.validarCoordenadas();
+		obtenerCasilleroAsociadoAPosicion(posicion).vaciar();
 	}
 
-	public void atacar(int fila , int columna,Ataque ataque){
-		vericarCoordenadas(fila,columna);
-		(matrizCasilleros[fila][columna]).atacarCasillero(ataque);
+	public void atacar(Posicion posicion,Ataque ataque){
+		posicion.validarCoordenadas();
+		(obtenerCasilleroAsociadoAPosicion(posicion)).atacarCasillero(ataque);
 	}
 }

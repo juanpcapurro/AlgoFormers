@@ -20,69 +20,79 @@ public class TableroTest{
 
     @Test
     public void test02colocarYVericarQueCasilleroNoEsteVacio(){
-        tablero.colocarAlgoformer(3,4);
-        assertTrue(tablero.estaOcupadoEnPosicion(3,4));
+        Posicion posicion=new Posicion(3,4);
+        tablero.colocarAlgoformer(posicion);
+        assertTrue(tablero.estaOcupadoEnPosicion(posicion));
     }
 
     @Test(expected= CasilleroYaOcupado.class)
     public void test03colocarDosObjetosMismaPosicionTiraExcepcion(){
-        tablero.colocarAlgoformer(3,4);
-        tablero.colocarAlgoformer(3,4);
+        Posicion posicion=new Posicion(3,4);
+        tablero.colocarAlgoformer(posicion);
+        tablero.colocarAlgoformer(posicion);
     }
 
     @Test(expected = CoordenadasInvalidas.class)
     public void test04ColocarCoordenadaInvalidaNumeroNegativo(){
-        tablero.colocarAlgoformer(-3,4);
+        Posicion posicion= new Posicion(-3,4);
+        tablero.colocarAlgoformer(posicion);
     }
     @Test(expected = CoordenadasInvalidas.class)
     public void test05ColocarCoordenadaInvalidaExcedeTamanio(){
-        tablero.colocarAlgoformer(17,23);
+        Posicion posicion= new Posicion(17,23);
+        tablero.colocarAlgoformer(posicion);
     }
 	
 	@Test
 	public void test06sacarUnAlgoformer (){
-		tablero.colocarAlgoformer(2,5);
-		assertTrue(tablero.estaOcupadoEnPosicion(2,5));
+        Posicion posicion=new Posicion(2,5);
+		tablero.colocarAlgoformer(posicion);
+		assertTrue(tablero.estaOcupadoEnPosicion(posicion));
 		assertFalse(tablero.estaTodoVacio());
 
-		tablero.vaciarPosicion(2,5);
-		assertFalse(tablero.estaOcupadoEnPosicion(2,5));
+		tablero.vaciarPosicion(posicion);
+		assertFalse(tablero.estaOcupadoEnPosicion(posicion));
 		assertTrue(tablero.estaTodoVacio());
 	}
 
     @Test
     public void test07VaciarUnEspacioVacio(){
-        tablero.vaciarPosicion(3,4);
-        assertFalse(tablero.estaOcupadoEnPosicion(3,4));
+        Posicion posicion= new Posicion(3,4);
+        tablero.vaciarPosicion(posicion);
+        assertFalse(tablero.estaOcupadoEnPosicion(posicion));
     }
 
     @Test
     public void test08colocarEnPosicionLuegoDeVaciar(){
-        tablero.colocarAlgoformer(3,4);
-        tablero.vaciarPosicion(3,4);
-        assertFalse(tablero.estaOcupadoEnPosicion(3,4));
-        tablero.colocarAlgoformer(3,4);
-        assertTrue(tablero.estaOcupadoEnPosicion(3,4));
+        Posicion posicion= new Posicion(3,4);
+        tablero.colocarAlgoformer(posicion);
+        tablero.vaciarPosicion(posicion);
+        assertFalse(tablero.estaOcupadoEnPosicion(posicion));
+        tablero.colocarAlgoformer(posicion);
+        assertTrue(tablero.estaOcupadoEnPosicion(posicion));
     }
     
     @Test
     public void test09MoverColocable(){
-        tablero.colocarAlgoformer(3,4);
-        assertTrue(tablero.estaOcupadoEnPosicion(3,4));
-        assertFalse(tablero.estaOcupadoEnPosicion(4,4));
-        tablero.mover(3, 4, 4, 4);
+        Posicion posicion=new Posicion(3,4);
+        Posicion posicionDesocupada=new Posicion(4,4);
+        tablero.colocarAlgoformer(posicion);
+        assertTrue(tablero.estaOcupadoEnPosicion(posicion));
+        assertFalse(tablero.estaOcupadoEnPosicion(posicionDesocupada));
+        tablero.mover(posicion, posicionDesocupada);
 
-        assertTrue(tablero.estaOcupadoEnPosicion(4,4));
-        assertFalse(tablero.estaOcupadoEnPosicion(3,4));
+        assertTrue(tablero.estaOcupadoEnPosicion(posicionDesocupada));
+        assertFalse(tablero.estaOcupadoEnPosicion(posicion));
     }
     
     @Test
     public void test10MoverColocableAMismaPosicion(){
-        tablero.colocarAlgoformer(3,4);
-        assertTrue(tablero.estaOcupadoEnPosicion(3,4));
+        Posicion posicion=new Posicion(3,4);
+        tablero.colocarAlgoformer(posicion);
+        assertTrue(tablero.estaOcupadoEnPosicion(posicion));
         
-        tablero.mover(3, 4, 3, 4);
-        assertTrue(tablero.estaOcupadoEnPosicion(3,4));
+        tablero.mover(posicion,posicion);
+        assertTrue(tablero.estaOcupadoEnPosicion(posicion));
     }
     
 
