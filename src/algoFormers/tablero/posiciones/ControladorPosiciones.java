@@ -29,7 +29,7 @@ public class ControladorPosiciones {
     public void validarCoordenadas(Posicion posicion) {
         int posicionX=posicion.verCoordenadaX();
         int posicionY=posicion.verCoordenadaY();
-        if (posicionX>dimension || posicionY>dimension || posicionX<0 || posicionY<0)
+        if (posicionX>=dimension || posicionY>=dimension || posicionX<0 || posicionY<0)
             throw new CoordenadasInvalidas();
     }
 }
