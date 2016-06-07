@@ -1,5 +1,7 @@
 package algoFormers.tablero;
 
+import algoFormers.tablero.posiciones.CoordenadasInvalidas;
+import algoFormers.tablero.posiciones.Posicion;
 import org.junit.Before;
 import org.junit.Test;
 

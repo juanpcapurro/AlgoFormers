@@ -1,5 +1,6 @@
 package algoFormers.tablero;
 
+import algoFormers.tablero.posiciones.Posicion;
 import algoFormers.tablero.colocable.Colocable;
 import algoFormers.tablero.colocable.EspacioVacio;
 import algoFormers.tablero.colocable.robots.armas.Ataque;

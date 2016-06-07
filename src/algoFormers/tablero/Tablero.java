@@ -1,5 +1,7 @@
 package algoFormers.tablero;
 
+import algoFormers.tablero.posiciones.ControladorPosiciones;
+import algoFormers.tablero.posiciones.Posicion;
 import algoFormers.tablero.colocable.Colocable;
 import algoFormers.tablero.colocable.robots.AlgoFormer;
 import algoFormers.tablero.colocable.robots.armas.Ataque;
@@ -10,13 +12,15 @@ import java.util.List;
 public class Tablero{
 	private final int DIMENSION;
 	private List<Casillero> listaCasilleros;
+    ControladorPosiciones controlador;
 
 	public Tablero(int dimension_pedida){
-        ControladorPosiciones.getInstance().resetPosiciones();
+        controlador= new ControladorPosiciones(dimension_pedida);
 		listaCasilleros = new ArrayList<>();
 		DIMENSION = dimension_pedida;
 		for(int i=0;i<DIMENSION*DIMENSION;i++){
-			Casillero casillero=new Casillero(new Posicion());
+            Posicion posicion=controlador.inicializarPosicion();
+			Casillero casillero=new Casillero(posicion);
 			listaCasilleros.add(casillero);
 		}
 	}
@@ -29,7 +33,7 @@ public class Tablero{
     }
 
 	public void colocar(Posicion posicion,Colocable aColocar){
-        posicion.validarCoordenadas();
+        controlador.validarCoordenadas(posicion);
 		Casillero casillero= obtenerCasilleroAsociadoAPosicion(posicion);
 		casillero.colocar(aColocar);
 	}
@@ -52,28 +56,28 @@ public class Tablero{
 		 * -Distancias permitidas de los algoformers
 		 * -Posibilidad de elegir paso a paso el casillero siguiente
 		 * -En cada eleccion, el tablero validaria si es posible o no.*/
-        posicionOrigen.validarCoordenadas();
-        posicionDestino.validarCoordenadas();
-		
+        controlador.validarCoordenadas(posicionOrigen);
+        controlador.validarCoordenadas(posicionDestino);
+
 		Colocable colocableAMover = obtenerCasilleroAsociadoAPosicion(posicionOrigen).obtenerColocado();
 		this.vaciarPosicion(posicionOrigen);
 		this.colocar(posicionDestino, colocableAMover);
 	}
 	
 	public boolean estaOcupadoEnPosicion(Posicion posicion){
-		posicion.validarCoordenadas();
+		controlador.validarCoordenadas(posicion);
 		Casillero casillero= obtenerCasilleroAsociadoAPosicion(posicion);
 		return casillero.estaOcupado();
 	}
 
 
 	public void vaciarPosicion(Posicion posicion){
-		posicion.validarCoordenadas();
+		controlador.validarCoordenadas(posicion);
 		obtenerCasilleroAsociadoAPosicion(posicion).vaciar();
 	}
 
 	public void atacar(Posicion posicion,Ataque ataque){
-		posicion.validarCoordenadas();
+        controlador.validarCoordenadas(posicion);
 		(obtenerCasilleroAsociadoAPosicion(posicion)).atacarCasillero(ataque);
 	}
 }
