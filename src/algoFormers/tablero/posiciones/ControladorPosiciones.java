@@ -12,8 +12,6 @@ public class ControladorPosiciones {
     }
     
     void incrementarPosiciones(){
-        if (ultimaPosicionY>=dimension-1 && ultimaPosicionX>=dimension-1)
-            return;
         if (ultimaPosicionX >= dimension-1) {
             ultimaPosicionX = 0;
             ultimaPosicionY++;
