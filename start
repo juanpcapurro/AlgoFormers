@@ -1,19 +1,14 @@
 vim -s <(echo $'
 
-:tabnew ./src/algoFormers/tablero/superficie/SuperficieConcreta.java \n
-:vsp ./test/algoFormers/tablero/superficie/SuperficieTest.java \n
-:tabnew ./src/algoFormers/tablero/superficie/Llano.java \n
-:tabnew ./src/algoFormers/tablero/Tablero.java \n
-:vsp ./test/algoFormers/tablero/TableroTest.java \n
-:tabnew ./src/algoFormers/tablero/colocable/Colocable.java \n
-:vsp ./test/algoFormers/tablero/colocable/ColocableTest.java \n
+:tabnew ./src/algoFormers/tablero/colocable/robots/AlgoFormer.java \n
+:sp ./src/algoFormers/tablero/colocable/robots/EstadoAlgoFormer.java \n
 
-:tabnew ./src/algoFormers/tablero/superficie/EspacioVacio.java \n
-:tabnew ./src/algoFormers/tablero/Casillero.java \n
-:vsp ./test/algoFormers/tablero/CasilleroTest.java \n
-:tabnew ./src/algoFormers/tablero/colocable/AlgoFormer.java \n
-:vsp ./test/algoFormers/tablero/colocable/AlgoFormerTest.java \n
-:tabnew ./src/algoFormers/tablero/Atacable.java \n
+:tabnew ./src/algoFormers/tablero/colocable/robots/ModoAlternoTerrestre.java \n
+:sp ./src/algoFormers/tablero/colocable/robots/ModoHumanoide.java \n
+
+:tabnew ./src/algoFormers/tablero/colocable/robots/autobot/Bumblebee.java \n
+:sp ./test/algoFormers/tablero/colocable/robots/autobot/BumblebeeTest.java \n
+
 
 gt \n
 :q \n

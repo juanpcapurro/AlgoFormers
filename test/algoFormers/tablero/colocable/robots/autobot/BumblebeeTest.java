@@ -5,8 +5,7 @@ import algoFormers.tablero.colocable.robots.AlgoFormer;
 import algoFormers.tablero.colocable.robots.armas.*;
 import org.junit.Test;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 public class BumblebeeTest {
 
@@ -25,4 +24,19 @@ public class BumblebeeTest {
         mauricio.recibirAtaque(new DisparoConvencional(550));
         assertFalse(mauricio.estaVivo());
     }
+	
+	@Test
+	public void testStatsModoHumanoide (){
+		assertEquals(mauricio.getAtaque(), 40);
+		assertEquals(mauricio.getDistanciaDeAtaque(), 1);
+		assertEquals(mauricio.getVelocidad(),2 );
+	}
+	
+	@Test
+	public void testStatsModoAlterno(){
+		mauricio.pasarAModoAlterno();
+		assertEquals(mauricio.getAtaque(), 20);
+		assertEquals(mauricio.getDistanciaDeAtaque(), 3);
+		assertEquals(mauricio.getVelocidad(),5);
+	}
 }
