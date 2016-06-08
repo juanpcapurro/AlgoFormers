@@ -1,6 +1,6 @@
 package algoFormers.tablero.colocable.robots.autobot;
 
-import algoFormers.tablero.colocable.robots.AlgoFormer;
+import algoFormers.tablero.colocable.robots.*;
 
 public class Superion extends AlgoFormer {
     private final Optimus optimus;
@@ -12,6 +12,9 @@ public class Superion extends AlgoFormer {
         this.bumblebee = bumblebee;
         this.ratchet = ratchet;
         this.ptosDeVida = optimus.getPuntosDeVida() + bumblebee.getPuntosDeVida() + ratchet.getPuntosDeVida();
-
+		this.estadoActual=new ModoHumanoide(100,2,3);
     }
+	public void cambiarModo(){
+		
+	}
 }

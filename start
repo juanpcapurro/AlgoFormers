@@ -9,6 +9,15 @@ vim -s <(echo $'
 :tabnew ./src/algoFormers/tablero/colocable/robots/autobot/Bumblebee.java \n
 :sp ./test/algoFormers/tablero/colocable/robots/autobot/BumblebeeTest.java \n
 
+:tabnew ./src/algoFormers/tablero/colocable/robots/autobot/Optimus.java \n
+:sp ./test/algoFormers/tablero/colocable/robots/autobot/OptimusTest.java \n
+
+:tabnew ./src/algoFormers/tablero/colocable/robots/autobot/Ratchet.java \n
+:sp ./test/algoFormers/tablero/colocable/robots/autobot/RatchetTest.java \n
+
+:tabnew ./src/algoFormers/tablero/colocable/robots/autobot/Superion.java \n
+:sp ./test/algoFormers/tablero/colocable/robots/autobot/SuperionTest.java \n
+
 
 gt \n
 :q \n

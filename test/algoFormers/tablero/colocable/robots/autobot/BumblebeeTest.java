@@ -1,6 +1,5 @@
 package algoFormers.tablero.colocable.robots.autobot;
 
-
 import algoFormers.tablero.colocable.robots.AlgoFormer;
 import algoFormers.tablero.colocable.robots.armas.*;
 import org.junit.Test;
