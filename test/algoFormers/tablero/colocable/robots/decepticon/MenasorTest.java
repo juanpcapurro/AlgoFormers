@@ -6,8 +6,7 @@ import algoFormers.tablero.colocable.robots.AlgoFormer;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 public class MenasorTest {
 
@@ -98,7 +97,19 @@ public class MenasorTest {
         assertFalse(menasorDecepticonsHeridos.estaVivo());
         assertTrue(menasorDecepticonsHeridos.getPuntosDeVida()==0);
     }
-
+	@Test
+	public void testStatsModoHumanoide (){
+		assertEquals(menasor.getAtaque(), 115);
+		assertEquals(menasor.getDistanciaDeAtaque(), 2);
+		assertEquals(menasor.getVelocidad(),2 );
+	}
+	@Test
+	public void testStatsNoCambianAlCambiarModo(){
+		menasor.pasarAModoAlterno();
+		assertEquals(menasor.getAtaque(), 115);
+		assertEquals(menasor.getDistanciaDeAtaque(), 2);
+		assertEquals(menasor.getVelocidad(),2 );
+	}
 
 
 }

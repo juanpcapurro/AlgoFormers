@@ -9,14 +9,17 @@ vim -s <(echo $'
 :tabnew ./src/algoFormers/tablero/colocable/robots/autobot/Bumblebee.java \n
 :sp ./test/algoFormers/tablero/colocable/robots/autobot/BumblebeeTest.java \n
 
-:tabnew ./src/algoFormers/tablero/colocable/robots/autobot/Optimus.java \n
-:sp ./test/algoFormers/tablero/colocable/robots/autobot/OptimusTest.java \n
+:tabnew ./src/algoFormers/tablero/colocable/robots/decepticon/Megatron.java \n
+:sp ./test/algoFormers/tablero/colocable/robots/decepticon/MegatronTest.java \n
 
-:tabnew ./src/algoFormers/tablero/colocable/robots/autobot/Ratchet.java \n
-:sp ./test/algoFormers/tablero/colocable/robots/autobot/RatchetTest.java \n
+:tabnew ./src/algoFormers/tablero/colocable/robots/decepticon/BoneCrusher.java \n
+:sp ./test/algoFormers/tablero/colocable/robots/decepticon/BoneCrusherTest.java \n
 
-:tabnew ./src/algoFormers/tablero/colocable/robots/autobot/Superion.java \n
-:sp ./test/algoFormers/tablero/colocable/robots/autobot/SuperionTest.java \n
+:tabnew ./src/algoFormers/tablero/colocable/robots/decepticon/Frenzy.java \n
+:sp ./test/algoFormers/tablero/colocable/robots/decepticon/FrenzyTest.java \n
+
+:tabnew ./src/algoFormers/tablero/colocable/robots/decepticon/Menasor.java \n
+:sp ./test/algoFormers/tablero/colocable/robots/decepticon/MenasorTest.java \n
 
 
 gt \n

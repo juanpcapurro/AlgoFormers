@@ -1,6 +1,6 @@
 package algoFormers.tablero.colocable.robots.decepticon;
 
-import algoFormers.tablero.colocable.robots.AlgoFormer;
+import algoFormers.tablero.colocable.robots.*;
 
 public class Menasor extends AlgoFormer {
 
@@ -13,6 +13,12 @@ public class Menasor extends AlgoFormer {
         this.boneCrusher = boneCrusher;
         this.frenzy = frenzy;
         this.ptosDeVida = megatron.getPuntosDeVida() + boneCrusher.getPuntosDeVida() + frenzy.getPuntosDeVida();
+		this.estadoActual = new ModoHumanoide(115,2,2);
     }
-    
+    public void pasarAModoAlterno(){
+	
+	}
+	public void pasarAModoHumanoide(){
+
+	}
 }
