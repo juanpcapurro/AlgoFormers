@@ -2,15 +2,17 @@ package algoFormers.tablero.superficie;
 
 import algoFormers.tablero.colocable.robots.armas.Ataque;
 import algoFormers.tablero.colocable.robots.armas.Misil;
+import algoFormers.tablero.superficieTerrestre.SuperficieTerrestre;
+
 import org.junit.Before;
 import org.junit.Test;
 
 
 public class SuperficieTest {
-    Superficie superficieActual;
+    SuperficieTerrestre superficieActual;
     @Before
     public void initialize(){
-        superficieActual=new Superficie();
+        superficieActual=new SuperficieTerrestre();
     }
     @Test
     public void test01SuperficieInicialEsLlano(){

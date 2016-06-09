@@ -5,20 +5,25 @@ import algoFormers.tablero.colocable.Colocable;
 import algoFormers.tablero.colocable.EspacioVacio;
 import algoFormers.tablero.colocable.robots.armas.Ataque;
 import algoFormers.tablero.superficie.*;
+import algoFormers.tablero.superficieAerea.SuperficieAerea;
+import algoFormers.tablero.superficieTerrestre.SuperficieTerrestre;
 
 public class Casillero {
     private Colocable colocado;
-    private Superficie superficieActual;
+    private SuperficieTerrestre superficieTerrestreActual;
+    private SuperficieAerea superficieAereaActual;
     private Posicion posicion;
 
     Casillero(Posicion nuevaPosicion){
         colocado= new EspacioVacio();
-        superficieActual= new Superficie();
+        /*superficieTerrestreActual= ;
+        */
         posicion=nuevaPosicion;
     }
+    
     Casillero(){
         colocado= new EspacioVacio();
-        superficieActual= new Superficie();
+        /*superficieActual= new Superficie();*/
     }
 
     boolean estaOcupado(){
@@ -41,7 +46,7 @@ public class Casillero {
 	}
 
     void atacarCasillero(Ataque ataque) {
-        superficieActual.recibirAtaque(ataque);
+        superficieTerrestreActual.recibirAtaque(ataque);
         colocado.recibirAtaque(ataque);
     }
 
