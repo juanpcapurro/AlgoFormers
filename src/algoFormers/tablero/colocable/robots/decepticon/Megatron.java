@@ -8,7 +8,7 @@ public class Megatron extends Decepticon {
 		this.estadoActual = new ModoHumanoide(10,3,1);
     }
 	public void pasarAModoAlterno(){
-		estadoActual =new ModoAlternoTerrestre(55,2,8);
+		estadoActual =new ModoAlternoAereo(55,2,8);
 	}
 	public void pasarAModoHumanoide(){
 		estadoActual =new ModoHumanoide(10,3,1);
