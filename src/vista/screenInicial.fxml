@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.*?>
+<?import java.net.*?>
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id="panelSuperior" prefHeight="650.0" prefWidth="1000.0" styleClass="background" stylesheets="@fondoScreenPrincipal.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vista.ScreenInicialController">
+   <children>
+      <Button layoutX="370.0" layoutY="522.0" mnemonicParsing="false" onAction="#pasarAIngresoDeNombres" prefHeight="67.0" prefWidth="287.0" styleClass="background" stylesheets="@botonEmpezarJuego.css" />
+      <Button layoutX="749.0" layoutY="14.0" mnemonicParsing="false" onAction="#salir" prefHeight="35.0" prefWidth="160.0" styleClass="background" stylesheets="@botonSalir.css" />
+   </children></AnchorPane>

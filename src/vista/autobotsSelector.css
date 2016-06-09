@@ -1,0 +1,28 @@
+.background {
+    -fx-background-image: url("imagenes/optimus.png");
+    -fx-background-position: center center;
+    -fx-background-size: cover;
+    -fx-background-repeat: no-repeat;
+}
+
+.backgroundOptimus {
+    -fx-background-image: url("imagenes/optimus.png");
+    -fx-background-position: center center; 
+   	-fx-background-size: cover;                     
+    -fx-background-repeat: no-repeat;
+}
+
+.backgroundBumblebee {
+    -fx-background-image: url("imagenes/bumblebee.png");
+    -fx-background-position: center center; 
+   	-fx-background-size: cover;                     
+    -fx-background-repeat: no-repeat;
+}
+
+
+.backgroundRatchet {
+    -fx-background-image: url("imagenes/ratchet.png");
+    -fx-background-position: center center; 
+   	-fx-background-size: cover;                     
+    -fx-background-repeat: no-repeat;
+}
