@@ -52,16 +52,20 @@ public class Tablero{
 	}
 
 	public void mover(Posicion posicionOrigen, Posicion posicionDestino){
-		/*MOVER DEBE SER MEJORADO PARA CONSIDERAR:
-		 * -Distancias permitidas de los algoformers
-		 * -Posibilidad de elegir paso a paso el casillero siguiente
-		 * -En cada eleccion, el tablero validaria si es posible o no.*/
         controlador.validarCoordenadas(posicionOrigen);
         controlador.validarCoordenadas(posicionDestino);
 
 		Colocable colocableAMover = obtenerCasilleroAsociadoAPosicion(posicionOrigen).obtenerColocado();
 		this.vaciarPosicion(posicionOrigen);
 		this.colocar(posicionDestino, colocableAMover);
+	}
+
+	void recorrer(Posicion posicionOrigen,Posicion posicionDestino){
+		Movimiento movimiento= new Movimiento(posicionOrigen,posicionDestino);
+		while (movimiento.continuarMovimiento()){
+			mover(movimiento.getActual(),movimiento.obtenerSiguiente());
+			movimiento.avanzar();
+		}
 	}
 	
 	public boolean estaOcupadoEnPosicion(Posicion posicion){

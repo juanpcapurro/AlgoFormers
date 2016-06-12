@@ -21,4 +21,18 @@ public class Posicion {
     int verCoordenadaY() {
         return y;
     }
+
+    public Posicion obtenerSiguiente(Posicion posicionDestino) {
+        int diferencia=x-posicionDestino.verCoordenadaX();
+        if (diferencia<0)
+            return new Posicion(x+1,y);
+        if(diferencia>0)
+            return new Posicion(x-1,y);
+        diferencia=y-posicionDestino.verCoordenadaY();
+        if(diferencia<0)
+            return new Posicion(x,y+1);
+        if(diferencia>0)
+            return new Posicion(x,y-1);
+        return this;
+    }
 }
