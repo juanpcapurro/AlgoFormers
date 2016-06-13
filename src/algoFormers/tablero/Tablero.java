@@ -47,13 +47,14 @@ public class Tablero{
     }
 
 	public void colocarAlgoformer(Posicion posicion){
-
 		this.colocar(posicion, new AlgoFormer());
 	}
 
 	public void mover(Posicion posicionOrigen, Posicion posicionDestino){
         controlador.validarCoordenadas(posicionOrigen);
         controlador.validarCoordenadas(posicionDestino);
+
+//		if (posicionOrigen.estaAdistancia1De(posicionDestino)){}
 
 		Colocable colocableAMover = obtenerCasilleroAsociadoAPosicion(posicionOrigen).obtenerColocado();
 		this.vaciarPosicion(posicionOrigen);

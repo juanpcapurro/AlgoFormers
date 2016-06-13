@@ -27,10 +27,13 @@ public class Jugador {
 	void agregarUnidad(AlgoFormer nuevoAlgoBot) {
 		equipo.add(nuevoAlgoBot);
 	}
+
 	boolean equipovivo(){
 		for (AlgoFormer algoformer : equipo)
 			if (algoformer.estaVivo())
 				return true;
 		return false;
 	}
+
+
 }

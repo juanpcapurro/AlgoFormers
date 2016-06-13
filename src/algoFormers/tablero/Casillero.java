@@ -17,7 +17,7 @@ public class Casillero {
     Casillero(Posicion nuevaPosicion){
         colocado= new EspacioVacio();
         /*superficieTerrestreActual= ;
-        */
+        Hay que hacer que las superficies se elijan random*/
         posicion=nuevaPosicion;
     }
     

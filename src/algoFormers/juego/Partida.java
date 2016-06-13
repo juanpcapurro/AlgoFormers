@@ -32,10 +32,9 @@ public class Partida {
     }
 
     private void jugar(Tablero tablero, Turno turno){
-        Jugador jugadorActual=turno.obtenerProximoJugador();
+        Jugador jugadorActual=turno.obtenerJugadorQueDebeJugar();
         while (jugadorActual.equipovivo()){
             pedirJugada(tablero,jugadorActual);
-            jugadorActual=turno.obtenerProximoJugador();
         }
     }
 
