@@ -5,4 +5,7 @@ import algoFormers.tablero.colocable.robots.armas.Ataque;
 
 public abstract class Superficie implements Atacable {
 
+    public void recibirAtaque(Ataque unAtaque) {
+
+    }
 }

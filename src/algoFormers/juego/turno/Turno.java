@@ -1,6 +1,6 @@
-package algoFormers.juego;
+package algoFormers.juego.turno;
 
-import algoFormers.tablero.posiciones.Posicion;
+import algoFormers.juego.Jugador;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +11,7 @@ public class Turno {
     private List<Jugador> jugadores;
     private int cantidadDeJugadores;
     private boolean turnoFinalizado;
-    private ModoTurno modoTurno;  //definir State.
+    private ContextoTurno tipoTurno;  //definir State.
 
     public Turno( int cantJugadores) {
         this.cantidadDeJugadores=cantJugadores;
@@ -20,10 +20,9 @@ public class Turno {
         turnoFinalizado = false;
     }
     
-	Jugador obtenerJugadorQueDebeJugar() {
+	public Jugador obtenerJugadorQueDebeJugar() {
         turnoFinalizado = false;
         return jugadores.get( turno % cantidadDeJugadores);
-
     }
 
     void finalizar(){
@@ -31,34 +30,35 @@ public class Turno {
         turnoFinalizado = true;
     }
 
-    void agregarJugador(Jugador nuevoJugador){
+    public void agregarJugador(Jugador nuevoJugador){
         jugadores.add(nuevoJugador);
     }
 
 
     public void deCombinacion() {
-        modoTurno = new TurnoDeCombinacion();
+        tipoTurno.combinacion();
     }
 
 
     public void deTransformacion() {
-        modoTurno = new TurnoDeTransformacion();
+        tipoTurno.transformacion();
     }
 
 
     public void deMovimiento() {
-        modoTurno = new TurnoDeMovimiento();
+        tipoTurno.movimiento();
     }
 
 
     public void deAtaque() {
-        modoTurno = new TurnoDeAtaque;
+        tipoTurno.ataque();
     }
 
     public boolean finalizado() {
         return turnoFinalizado;
     }
 
+    /*
     public void jugarCon(String algoFormer) {
 
         Jugador jugadorActual = this.obtenerJugadorQueDebeJugar();
@@ -91,5 +91,5 @@ public class Turno {
     public void combinarAlgoformers() {
         Jugador jugadorActual = this.obtenerJugadorQueDebeJugar();
         jugadorActual.combinarAlgoformers();
-    }
+    }*/
 }

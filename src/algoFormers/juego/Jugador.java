@@ -24,7 +24,7 @@ public class Jugador {
 	}
 
 
-	void agregarUnidad(AlgoFormer nuevoAlgoBot) {
+	public void agregarUnidad(AlgoFormer nuevoAlgoBot) {
 		equipo.add(nuevoAlgoBot);
 	}
 

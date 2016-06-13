@@ -5,7 +5,6 @@ import algoFormers.tablero.superficie.Superficie;
 
 class NebulosaDeAndromeda extends StateSuperficieAerea {
 
-	@Override
 	public void recibirAtaque(Superficie superficieActual, Ataque ataque) {
 	}
 

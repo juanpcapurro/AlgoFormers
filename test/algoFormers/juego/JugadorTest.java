@@ -65,12 +65,14 @@ public class JugadorTest {
 
 		assertFalse(miJugador.equipovivo());
 	}
+
 	@Test
 	public void test06JugadorCombinaSusAutobots(){
 		miJugador.agregarUnidad(new Bumblebee());
 		miJugador.agregarUnidad(new Ratchet());
 		miJugador.agregarUnidad(new Optimus());
-		miJugador.combinarMisAlgoformers();
+		//PENDIENTE
+		//miJugador.combinarMisAlgoformers();
 	}
 
 	@Test
