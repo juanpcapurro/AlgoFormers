@@ -11,7 +11,7 @@ public class Turno {
     private List<Jugador> jugadores;
     private int cantidadDeJugadores;
     private boolean turnoFinalizado;
-    private ModoTurno modoTurno;
+    private ModoTurno modoTurno;  //definir State.
 
     public Turno( int cantJugadores) {
         this.cantidadDeJugadores=cantJugadores;
@@ -76,6 +76,7 @@ public class Turno {
     public void mover(Posicion posicionOrigen, Posicion posicionDestino) {
         Jugador jugadorActual = this.obtenerJugadorQueDebeJugar();
         jugadorActual.mover(posicionOrigen, posicionDestino);
+        // el jugador deberia poder pedirle al tablero los casilleros que va a necesitar.
         this.modoTurno.restarUnPaso(); //el modo estaria seteado en movimiento
 
     }
