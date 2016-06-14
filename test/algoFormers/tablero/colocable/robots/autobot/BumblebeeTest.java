@@ -1,7 +1,6 @@
 package algoFormers.tablero.colocable.robots.autobot;
 
-import algoFormers.tablero.colocable.robots.*;
-import algoFormers.tablero.colocable.robots.armas.*;
+import algoFormers.tablero.colocable.robots.armas.DisparoConvencional;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -33,7 +32,7 @@ public class BumblebeeTest {
 	
 	@Test
 	public void testStatsModoAlterno(){
-		mauricio.pasarAModoAlterno();
+		mauricio.cambiarModo();
 		assertEquals(mauricio.getAtaque(), 20);
 		assertEquals(mauricio.getDistanciaDeAtaque(), 3);
 		assertEquals(mauricio.getVelocidad(),5);

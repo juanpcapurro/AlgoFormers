@@ -1,7 +1,6 @@
 package algoFormers.tablero.colocable.robots.autobot;
 
-import algoFormers.tablero.colocable.robots.AlgoFormer;
-import algoFormers.tablero.colocable.robots.armas.*;
+import algoFormers.tablero.colocable.robots.armas.DisparoConvencional;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -33,7 +32,7 @@ public class RatchetTest {
 	
 	@Test
 	public void testStatsModoAlterno(){
-		mauricio.pasarAModoAlterno();
+		mauricio.cambiarModo();
 		assertEquals(mauricio.getAtaque(), 35);
 		assertEquals(mauricio.getDistanciaDeAtaque(), 2);
 		assertEquals(mauricio.getVelocidad(),8);

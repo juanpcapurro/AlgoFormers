@@ -6,4 +6,5 @@ public abstract class Colocable implements Atacable{
 	public abstract boolean ocupaLugar();
 
 
+
 }

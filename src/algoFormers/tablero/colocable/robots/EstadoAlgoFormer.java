@@ -1,12 +1,16 @@
 package algoFormers.tablero.colocable.robots;
 
-import algoFormers.tablero.colocable.robots.armas.*;
-
-public abstract class EstadoAlgoFormer extends AlgoFormer{
+public  class EstadoAlgoFormer extends AlgoFormer{
 	protected int velocidad;
 	protected int distanciaDeAtaque;
 	protected int ataque;
-	
+
+	EstadoAlgoFormer(int unAtaque, int unaDistancia, int unaVelocidad){
+		ataque=unAtaque;
+		velocidad=unaVelocidad;
+		distanciaDeAtaque=unaDistancia;
+	}
+
 	public int getVelocidad(){
 		return velocidad;
 	}
@@ -16,6 +20,9 @@ public abstract class EstadoAlgoFormer extends AlgoFormer{
 	public int getDistanciaDeAtaque(){
 		return distanciaDeAtaque;
 	}
+
+
+
 
 
 

@@ -5,12 +5,9 @@ import algoFormers.tablero.colocable.robots.*;
 public class Megatron extends Decepticon {
     public Megatron(){
         this.ptosDeVida = 550;
-		this.estadoActual = new ModoHumanoide(10,3,1);
+		this.modoActual= new ContextoModoAlgoformer();
+		modoActual.setActual( new ModoHumanoide(10,3,1));
+        modoActual.setAlternativo(new ModoAlternoAereo(55,2,8));
     }
-	public void pasarAModoAlterno(){
-		estadoActual =new ModoAlternoAereo(55,2,8);
-	}
-	public void pasarAModoHumanoide(){
-		estadoActual =new ModoHumanoide(10,3,1);
-	}
+
 }

@@ -5,12 +5,8 @@ public class Optimus extends Autobot {
 	
     public Optimus(){
         this.ptosDeVida = 500;
-		this.estadoActual = new ModoHumanoide(50,2,2);
+		modoActual=new ContextoModoAlgoformer();
+		modoActual.setActual(new ModoHumanoide(50,2,2));
+		modoActual.setAlternativo(new ModoAlternoTerrestre(15,4,5));
     }
-	public void pasarAModoAlterno(){
-		estadoActual =new ModoAlternoTerrestre(15,4,5);
-	}
-	public void pasarAModoHumanoide(){
-		estadoActual =new ModoHumanoide(50,2,2);
-	}
 }

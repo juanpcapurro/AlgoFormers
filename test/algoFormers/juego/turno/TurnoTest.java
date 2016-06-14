@@ -24,27 +24,25 @@ public class  TurnoTest {
 	
 	@Test
 	public void test01TurnoArrancaEn1(){
-		assertEquals(turno.obtenerJugadorQueDebeJugar(),miJugador1);
+		assertEquals(turno.avanzarTurno(),miJugador1);
 	}
 	
 	@Test
 	public void test02TurnoSeIncrementa(){
-		turno.finalizar();
-		assertEquals(turno.obtenerJugadorQueDebeJugar(),miJugador2);
+		turno.avanzarTurno();
+		assertEquals(turno.avanzarTurno(),miJugador2);
 
 	}
 	@Test
 	public void test03TercerTurnoEsDelPrimeroJugador(){
-		turno.finalizar();
-		turno.finalizar();
-		assertEquals(turno.obtenerJugadorQueDebeJugar(),miJugador1);
+		assertEquals(turno.avanzarTurno(),miJugador1);
 	}
 	@Test
 	public void test04CuartoTurnoEsDelSegundoJugador(){
-		turno.finalizar();
-		turno.finalizar();
-		turno.finalizar();
-		assertEquals(turno.obtenerJugadorQueDebeJugar(),miJugador2);
+		turno.avanzarTurno();
+		turno.avanzarTurno();
+		turno.avanzarTurno();
+		assertEquals(turno.avanzarTurno(),miJugador2);
 	}
 	/*
 	@Test

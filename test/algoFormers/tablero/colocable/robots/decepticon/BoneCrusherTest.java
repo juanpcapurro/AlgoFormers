@@ -1,8 +1,6 @@
 package algoFormers.tablero.colocable.robots.decepticon;
 
-import algoFormers.tablero.colocable.robots.armas.*;
-import algoFormers.tablero.colocable.robots.AlgoFormer;
-
+import algoFormers.tablero.colocable.robots.armas.DisparoConvencional;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -34,7 +32,7 @@ public class BoneCrusherTest {
 	}
 	@Test
 	public void testStatsModoAlterno(){
-		mauricio.pasarAModoAlterno();
+		mauricio.cambiarModo();
 		assertEquals(mauricio.getAtaque(), 30);
 		assertEquals(mauricio.getDistanciaDeAtaque(), 3);
 		assertEquals(mauricio.getVelocidad(),8);

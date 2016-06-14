@@ -1,8 +1,6 @@
 package algoFormers.tablero.colocable.robots.decepticon;
 
-import algoFormers.tablero.colocable.robots.armas.*;
-import algoFormers.tablero.colocable.robots.AlgoFormer;
-
+import algoFormers.tablero.colocable.robots.armas.DisparoConvencional;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -105,7 +103,7 @@ public class MenasorTest {
 	}
 	@Test
 	public void testStatsNoCambianAlCambiarModo(){
-		menasor.pasarAModoAlterno();
+		menasor.cambiarModo();
 		assertEquals(menasor.getAtaque(), 115);
 		assertEquals(menasor.getDistanciaDeAtaque(), 2);
 		assertEquals(menasor.getVelocidad(),2 );

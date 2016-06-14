@@ -13,6 +13,7 @@ public class Partida {
     private Jugador jugadorUno;
     private Jugador jugadorDos;
     static final int DOSJUGADORES=2;
+
     public Partida(String nombreJugadorUno, String nombreJugadorDos, int dimension) {
     	iniciarPartidaDosJugadores(nombreJugadorUno,nombreJugadorDos,dimension);
 
@@ -33,7 +34,7 @@ public class Partida {
     }
 
     private void jugar(Tablero tablero, Turno turno){
-        Jugador jugadorActual=turno.obtenerJugadorQueDebeJugar();
+        Jugador jugadorActual=turno.avanzarTurno();
         while (jugadorActual.equipovivo()){
             pedirJugada(tablero,jugadorActual);
         }

@@ -5,12 +5,8 @@ public class Ratchet extends Autobot {
 	
     public Ratchet(){
         this.ptosDeVida = 150;
-		this.estadoActual = new ModoHumanoide(5,5,1);
+		modoActual=new ContextoModoAlgoformer();
+		modoActual.setActual(new ModoHumanoide(5,5,1));
+		modoActual.setAlternativo(new ModoAlternoAereo(35,2,8));
     }
-	public void pasarAModoAlterno(){
-		estadoActual =new ModoAlternoAereo(35,2,8);
-	}
-	public void pasarAModoHumanoide(){
-		estadoActual =new ModoHumanoide(5,5,1);
-	}
 }

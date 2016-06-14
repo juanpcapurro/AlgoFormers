@@ -1,6 +1,7 @@
 package algoFormers.juego.turno;
 
 import algoFormers.juego.Jugador;
+import algoFormers.juego.Modificadores;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,25 +11,19 @@ public class Turno {
     private int turno;
     private List<Jugador> jugadores;
     private int cantidadDeJugadores;
-    private boolean turnoFinalizado;
-    private ContextoTurno tipoTurno;  //definir State.
+    private ContextoTurno tipoTurno;
 
     public Turno( int cantJugadores) {
         this.cantidadDeJugadores=cantJugadores;
         jugadores=new ArrayList<>();
         turno=0;
-        turnoFinalizado = false;
     }
     
-	public Jugador obtenerJugadorQueDebeJugar() {
-        turnoFinalizado = false;
-        return jugadores.get( turno % cantidadDeJugadores);
+	public Jugador avanzarTurno() {
+        Modificadores.notificar();
+        return jugadores.get( turno++ % cantidadDeJugadores);
     }
 
-    void finalizar(){
-        turno++;
-        turnoFinalizado = true;
-    }
 
     public void agregarJugador(Jugador nuevoJugador){
         jugadores.add(nuevoJugador);
@@ -54,9 +49,6 @@ public class Turno {
         tipoTurno.ataque();
     }
 
-    public boolean finalizado() {
-        return turnoFinalizado;
-    }
 
     /*
     public void jugarCon(String algoFormer) {

@@ -1,7 +1,6 @@
 package algoFormers.tablero.colocable.robots.autobot;
 
-import algoFormers.tablero.colocable.robots.AlgoFormer;
-import algoFormers.tablero.colocable.robots.armas.*;
+import algoFormers.tablero.colocable.robots.armas.DisparoConvencional;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -105,7 +104,7 @@ public class SuperionTest {
 	
 	@Test
 	public void testCambiarDeModoNoAfectaLosStats(){
-		superion.pasarAModoAlterno();
+		superion.cambiarModo();
 		assertEquals(superion.getAtaque(), 100);
 		assertEquals(superion.getDistanciaDeAtaque(), 2);
 		assertEquals(superion.getVelocidad(),3);
