@@ -42,16 +42,16 @@ public class BumblebeeTest {
 	@Test
 	public void tests03ModificadorBumblebeeDisminuyeStats(){
 		Modificador modificador=new Modificador();
-		modificador.setModificadorAtaque(10);
+		modificador.setModificadorAtaque(50);
 		mauricio.setModificadorDeEstado(modificador);
-		assertEquals(mauricio.getAtaque(),30);
+		assertEquals(mauricio.getAtaque(),20);
 	}
 	@Test
 	public void tests03ModificadorBumblebeeDisminuyeStatsEnModoAlterno(){
 		Modificador modificador=new Modificador();
-		modificador.setModificadorVelocidad(5);
+		modificador.setModificadorAtaque(50);
 		mauricio.setModificadorDeEstado(modificador);
 		mauricio.cambiarModo();
-		assertEquals(mauricio.getVelocidad(),0);
+		assertEquals(mauricio.getVelocidad(),5);
 	}
 }
