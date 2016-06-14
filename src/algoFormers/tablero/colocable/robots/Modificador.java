@@ -1,34 +1,36 @@
 package algoFormers.tablero.colocable.robots;
 
+import algoFormers.juego.NotificableTurno;
 import algoFormers.tablero.colocable.robots.armas.DisparoConvencional;
 
-public class Modificador {
+public class Modificador extends NotificableTurno {
     int modificadorAtaque=0;
     int modificadorVelocidad=0;
     int modificadorDistancia=0;
     int modificadorVida=0;
     int duracion=0;
-    int tiempoExistencia= (int) Float.POSITIVE_INFINITY;
+    int tiempoExistencia=(int) Float.POSITIVE_INFINITY;
     AlgoFormer afectado;
 
-    Modificador(){
+    public Modificador(int unTope){
+        tiempoExistencia=unTope;
+        notificarON();
     }
-    Modificador(int unTiempoExistencia){
-        tiempoExistencia=unTiempoExistencia;
+    public Modificador(){
     }
 
-    void setModificadorAtaque(int nuevoAtaque){
+    public void setModificadorAtaque(int nuevoAtaque){
         modificadorAtaque=nuevoAtaque;
     }
 
-    void setModificadorVelocidad(int nuevaVelocidad){
+    public void setModificadorVelocidad(int nuevaVelocidad){
         modificadorVelocidad=nuevaVelocidad;
     }
 
-    void setModificadorDistancia(int nuevaDistancia){
+    public void setModificadorDistancia(int nuevaDistancia){
         modificadorDistancia=nuevaDistancia;
     }
-    void setModificadorVida(int danio){
+    public void setModificadorVida(int danio){
         modificadorVida=danio;
     }
 
@@ -50,9 +52,12 @@ public class Modificador {
     void actualizarVida(){
         afectado.recibirAtaque(new DisparoConvencional(modificadorVida));
     }
+
     public void actualizar(){
-        if(duracion>=tiempoExistencia)
+        if(duracion>=tiempoExistencia) {
             afectado.setModificadorDeEstado(new Modificador());
+            notificarOFF();
+        }
         actualizarVida();
         duracion++;
     }
