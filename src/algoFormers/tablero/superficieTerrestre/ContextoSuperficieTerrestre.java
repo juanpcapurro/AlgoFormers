@@ -6,11 +6,9 @@ public class ContextoSuperficieTerrestre {
     StateSuperficieTerrestre actual;
 
     public ContextoSuperficieTerrestre(){
-        actual=new Llano ();
+        actual=new Rocoso();
     }
-    void cambiarLlano(){
-        actual=new Llano();
-     }
+
     void cambiarEspinas(){
         actual=new Espinas();
     }
