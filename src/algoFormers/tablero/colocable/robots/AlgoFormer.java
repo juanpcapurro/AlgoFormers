@@ -8,11 +8,7 @@ import algoFormers.tablero.superficie.Superficie;
 public abstract class AlgoFormer extends Colocable {
 	protected ContextoModoAlgoformer modoActual;
 	protected int ptosDeVida;
-	Modificador modificadorDeEstado;
 
-    public AlgoFormer(){
-	modificadorDeEstado=new Modificador();
-	}
 
 	public boolean ocupaLugar(){
 		return true;
