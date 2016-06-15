@@ -1,5 +1,6 @@
 package algoFormers.tablero.colocable.robots.autobot;
 
+import algoFormers.tablero.colocable.robots.Modificador;
 import algoFormers.tablero.colocable.robots.armas.DisparoConvencional;
 import org.junit.Test;
 
@@ -35,6 +36,22 @@ public class BumblebeeTest {
 		mauricio.transformar();
 		assertEquals(mauricio.getAtaque(), 20);
 		assertEquals(mauricio.getDistanciaDeAtaque(), 3);
+		assertEquals(mauricio.getVelocidad(),5);
+	}
+
+	@Test
+	public void tests03ModificadorBumblebeeDisminuyeStats(){
+		Modificador modificador=new Modificador();
+		modificador.setModificadorAtaque(50);
+		mauricio.setModificadorDeEstado(modificador);
+		assertEquals(mauricio.getAtaque(),20);
+	}
+	@Test
+	public void tests03ModificadorBumblebeeDisminuyeStatsEnModoAlterno(){
+		Modificador modificador=new Modificador();
+		modificador.setModificadorAtaque(50);
+		mauricio.setModificadorDeEstado(modificador);
+		mauricio.cambiarModo();
 		assertEquals(mauricio.getVelocidad(),5);
 	}
 }

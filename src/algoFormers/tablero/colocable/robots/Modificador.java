@@ -1,58 +1,70 @@
 package algoFormers.tablero.colocable.robots;
 
-import algoFormers.tablero.colocable.robots.armas.DisparoConvencional;
+import algoFormers.juego.NotificableTurno;
 
-public class Modificador {
-    int modificadorAtaque=0;
-    int modificadorVelocidad=0;
-    int modificadorDistancia=0;
+public class Modificador extends NotificableTurno {
+    float modificadorAtaque=0;
+    float modificadorVelocidad=0;
+    float modificadorAlcance=0;
     int modificadorVida=0;
-    int duracion=0;
-    int tiempoExistencia= (int) Float.POSITIVE_INFINITY;
-    AlgoFormer afectado;
+    float duracion=0;
+    static final int PORCENTAJE=100;
+    static final int INFINITO=(int)Float.POSITIVE_INFINITY;
+    int tiempoExistencia=INFINITO;
+    EstadoAlgoFormer estado;
+    ModoAlgoformer modoAfectado;
 
-    Modificador(){
+    public Modificador(int unTope){
+        tiempoExistencia=unTope;
+        notificarON();
     }
-    Modificador(int unTiempoExistencia){
-        tiempoExistencia=unTiempoExistencia;
-    }
-
-    void setModificadorAtaque(int nuevoAtaque){
-        modificadorAtaque=nuevoAtaque;
-    }
-
-    void setModificadorVelocidad(int nuevaVelocidad){
-        modificadorVelocidad=nuevaVelocidad;
+    public Modificador(){
+        estado=new EstadoAlgoFormer(0,0,0);
     }
 
-    void setModificadorDistancia(int nuevaDistancia){
-        modificadorDistancia=nuevaDistancia;
+    public void setModificadorAtaque(int porcentajeAtaque){
+        modificadorAtaque=(float)(porcentajeAtaque)/PORCENTAJE;
     }
-    void setModificadorVida(int danio){
+
+    public void setModificadorVelocidad(int porcentajeVelocidad){
+        modificadorVelocidad=(float)(porcentajeVelocidad)/PORCENTAJE;
+    }
+
+    public void setModificadorDistancia(int porcentajeAlcance){
+        modificadorAlcance=(float)(porcentajeAlcance)/PORCENTAJE;
+    }
+    public void setModificadorVida(int danio){
         modificadorVida=danio;
     }
 
-    void setAfectado(AlgoFormer algoFormer){
-        afectado=algoFormer;
+    public void setEstado(EstadoAlgoFormer unEstado,ModoAlgoformer unModo){
+        estado=unEstado;
+        modoAfectado=unModo;
     }
 
-    int ModificadorVelocidad(EstadoAlgoFormer estado){
-        return estado.getVelocidad()-modificadorVelocidad;
+    int ModificadorVelocidad(){
+        return estado.getVelocidad()-(int)(estado.getVelocidad()*modificadorVelocidad);
     }
-    int ModificadorDistancia(EstadoAlgoFormer estado){
-        return estado.getDistanciaDeAtaque()-modificadorDistancia;
+    int ModificadorDistancia(){
+        return (estado.getDistanciaDeAtaque()-(int)(estado.getDistanciaDeAtaque()*modificadorAlcance));
     }
-    int ModificadorAtaque(EstadoAlgoFormer estado){
-        return estado.getAtaque()-modificadorAtaque;
+    int ModificadorAtaque(){
+        return estado.getAtaque()-(int)(estado.getAtaque()*modificadorAtaque);
     }
 
 
     void actualizarVida(){
-        afectado.recibirAtaque(new DisparoConvencional(modificadorVida));
+
     }
+
+    private void resetModificador(){
+        modoAfectado.setModificador(new Modificador());
+        notificarOFF();
+    }
+
     public void actualizar(){
         if(duracion>=tiempoExistencia)
-            afectado.setModificadorDeEstado(new Modificador());
+            resetModificador();
         actualizarVida();
         duracion++;
     }

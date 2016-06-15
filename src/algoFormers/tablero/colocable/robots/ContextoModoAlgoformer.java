@@ -33,4 +33,21 @@ public class ContextoModoAlgoformer {
     public boolean estaEnModoAlterno() {
         return (modoActual.estaEnModoAlterno());
     }
+
+    public void pasarPor(Superficie superficieTerrestre,Superficie superficieAerea) {
+        modoActual.pasarPor(superficieTerrestre,superficieAerea);
+    }
+    public int getAtaque(){
+        return modoActual.getAtaque();
+    }
+    public int getVelocidad(){
+        return modoActual.getVelocidad();
+    }
+    public int getDistanciaDeAtaque(){
+        return modoActual.getDistancia();
+    }
+
+    public void setModificador(Modificador modificador){
+        modoActual.setModificador(modificador);
+    }
 }
