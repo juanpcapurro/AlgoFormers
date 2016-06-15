@@ -1,7 +1,6 @@
 package algoFormers.tablero.colocable.robots;
 
 import algoFormers.juego.NotificableTurno;
-import algoFormers.tablero.colocable.robots.armas.DisparoConvencional;
 
 public class Modificador extends NotificableTurno {
     float modificadorAtaque=0;
@@ -9,15 +8,18 @@ public class Modificador extends NotificableTurno {
     float modificadorAlcance=0;
     int modificadorVida=0;
     float duracion=0;
-    float tiempoExistencia=(int) Float.POSITIVE_INFINITY;
     static final int PORCENTAJE=100;
-    AlgoFormer afectado;
+    static final int INFINITO=(int)Float.POSITIVE_INFINITY;
+    int tiempoExistencia=INFINITO;
+    EstadoAlgoFormer estado;
+    ModoAlgoformer modoAfectado;
 
     public Modificador(int unTope){
         tiempoExistencia=unTope;
         notificarON();
     }
     public Modificador(){
+        estado=new EstadoAlgoFormer(0,0,0);
     }
 
     public void setModificadorAtaque(int porcentajeAtaque){
@@ -35,30 +37,34 @@ public class Modificador extends NotificableTurno {
         modificadorVida=danio;
     }
 
-    void setAfectado(AlgoFormer algoFormer){
-        afectado=algoFormer;
+    public void setEstado(EstadoAlgoFormer unEstado,ModoAlgoformer unModo){
+        estado=unEstado;
+        modoAfectado=unModo;
     }
 
-    int ModificadorVelocidad(EstadoAlgoFormer estado){
+    int ModificadorVelocidad(){
         return estado.getVelocidad()-(int)(estado.getVelocidad()*modificadorVelocidad);
     }
-    int ModificadorDistancia(EstadoAlgoFormer estado){
+    int ModificadorDistancia(){
         return (estado.getDistanciaDeAtaque()-(int)(estado.getDistanciaDeAtaque()*modificadorAlcance));
     }
-    int ModificadorAtaque(EstadoAlgoFormer estado){
+    int ModificadorAtaque(){
         return estado.getAtaque()-(int)(estado.getAtaque()*modificadorAtaque);
     }
 
 
     void actualizarVida(){
-        afectado.recibirAtaque(new DisparoConvencional(modificadorVida));
+
+    }
+
+    private void resetModificador(){
+        modoAfectado.setModificador(new Modificador());
+        notificarOFF();
     }
 
     public void actualizar(){
-        if(duracion>=tiempoExistencia) {
-            afectado.setModificadorDeEstado(new Modificador());
-            notificarOFF();
-        }
+        if(duracion>=tiempoExistencia)
+            resetModificador();
         actualizarVida();
         duracion++;
     }

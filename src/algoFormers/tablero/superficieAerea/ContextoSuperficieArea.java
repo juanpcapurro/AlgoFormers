@@ -1,6 +1,7 @@
 package algoFormers.tablero.superficieAerea;
 
 import algoFormers.tablero.colocable.robots.armas.Ataque;
+import algoFormers.tablero.superficie.Superficie;
 
 public class ContextoSuperficieArea {
     StateSuperficieAerea actual;
@@ -20,5 +21,8 @@ public class ContextoSuperficieArea {
 
     void recibirAtaque(Ataque ataque){
         actual.recibirAtaque(ataque);
+    }
+    Superficie getState(){
+        return actual;
     }
 }

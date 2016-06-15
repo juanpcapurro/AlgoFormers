@@ -2,6 +2,7 @@ package algoFormers.tablero.colocable.robots;
 
 import algoFormers.tablero.colocable.Colocable;
 import algoFormers.tablero.colocable.robots.armas.*;
+import algoFormers.tablero.superficie.Superficie;
 
 public class AlgoFormer extends Colocable {
 	protected ContextoModoAlgoformer modoActual;
@@ -9,34 +10,38 @@ public class AlgoFormer extends Colocable {
 	Modificador modificadorDeEstado;
 
     public AlgoFormer(){
-	modificadorDeEstado=new Modificador();
 	}
 
 	public boolean ocupaLugar(){
 		return true;
 	}
 	public int getVelocidad(){
-		return modificadorDeEstado.ModificadorVelocidad(modoActual.verEstadoActual());
+		return modoActual.getVelocidad();
 	}
 	public int getAtaque(){
-		return modificadorDeEstado.ModificadorAtaque(modoActual.verEstadoActual());
+		return modoActual.getAtaque();
 	}
 	public int getDistanciaDeAtaque(){
-		return modificadorDeEstado.ModificadorDistancia(modoActual.verEstadoActual());
+		return modoActual.getDistanciaDeAtaque();
 	}
 	public  boolean estaVivo(){return ptosDeVida>0;}
 	public void cambiarModo(){
 		modoActual.cambiarModo();
 	}
-	public void setModificadorDeEstado(Modificador modificador){
-		modificador.setAfectado(this);
-		modificadorDeEstado=modificador;
-	}
+
     public int getPuntosDeVida(){ return ptosDeVida;}
 
 	@Override
 	public void recibirAtaque(Ataque unAtaque) {
 		ptosDeVida-=(unAtaque.getDanio());
+	}
+
+	@Override
+	public void pasarPor(Superficie superficieTerrestre,Superficie superficieAerea) {
+		modoActual.pasarPor(superficieTerrestre, superficieAerea);
+	}
+	public void setModificadorDeEstado(Modificador modificador){
+		modoActual.setModificador(modificador);
 	}
 }
 

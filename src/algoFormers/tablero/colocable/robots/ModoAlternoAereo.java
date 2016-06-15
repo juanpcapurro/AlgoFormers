@@ -1,8 +1,17 @@
 package algoFormers.tablero.colocable.robots;
 
+import algoFormers.tablero.superficie.Superficie;
+
 public class ModoAlternoAereo extends ModoAlgoformer {
 
 	public ModoAlternoAereo(int ataque, int distanciaDeAtaque, int velocidad) {
 		super(ataque, distanciaDeAtaque, velocidad);
 	}
+
+	@Override
+	public void pasarPor(Superficie superficieTerrestre, Superficie superficieArea) {
+		superficieArea.afectarUnidadAerea(this);
+	}
+
+
 }

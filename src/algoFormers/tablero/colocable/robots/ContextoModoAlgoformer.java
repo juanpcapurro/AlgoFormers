@@ -1,5 +1,7 @@
 package algoFormers.tablero.colocable.robots;
 
+import algoFormers.tablero.superficie.Superficie;
+
 public class ContextoModoAlgoformer {
     ModoAlgoformer modoActual;
     ModoAlgoformer modoAlternativo;
@@ -23,5 +25,22 @@ public class ContextoModoAlgoformer {
 
     public EstadoAlgoFormer verEstadoActual(){
         return modoActual.verEstado();
+    }
+
+    public void pasarPor(Superficie superficieTerrestre,Superficie superficieAerea) {
+        modoActual.pasarPor(superficieTerrestre,superficieAerea);
+    }
+    public int getAtaque(){
+        return modoActual.getAtaque();
+    }
+    public int getVelocidad(){
+        return modoActual.getVelocidad();
+    }
+    public int getDistanciaDeAtaque(){
+        return modoActual.getDistancia();
+    }
+
+    public void setModificador(Modificador modificador){
+        modoActual.setModificador(modificador);
     }
 }
