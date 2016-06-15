@@ -1,5 +1,7 @@
 package algoFormers.tablero;
 
+import algoFormers.tablero.colocable.robots.AlgoFormer;
+import algoFormers.tablero.colocable.robots.autobot.Bumblebee;
 import algoFormers.tablero.posiciones.CoordenadasInvalidas;
 import algoFormers.tablero.posiciones.Posicion;
 import org.junit.Before;
@@ -9,10 +11,12 @@ import static org.junit.Assert.*;
 
 public class TableroTest{
     Tablero tablero;
+    AlgoFormer algoFormerDePrueba;
 
     @Before
     public void initialize(){
         tablero = new Tablero(8);
+        algoFormerDePrueba = new Bumblebee();
     }
 
     @Test
@@ -23,32 +27,32 @@ public class TableroTest{
     @Test
     public void test02colocarYVericarQueCasilleroNoEsteVacio(){
         Posicion posicion=new Posicion(3,4);
-        tablero.colocarAlgoformer(posicion);
+        tablero.colocarAlgoformer(posicion,algoFormerDePrueba);
         assertTrue(tablero.estaOcupadoEnPosicion(posicion));
     }
 
     @Test(expected= CasilleroYaOcupado.class)
     public void test03colocarDosObjetosMismaPosicionTiraExcepcion(){
         Posicion posicion=new Posicion(3,4);
-        tablero.colocarAlgoformer(posicion);
-        tablero.colocarAlgoformer(posicion);
+        tablero.colocarAlgoformer(posicion,algoFormerDePrueba);
+        tablero.colocarAlgoformer(posicion,algoFormerDePrueba);
     }
 
     @Test(expected = CoordenadasInvalidas.class)
     public void test04ColocarCoordenadaInvalidaNumeroNegativo(){
         Posicion posicion= new Posicion(-3,4);
-        tablero.colocarAlgoformer(posicion);
+        tablero.colocarAlgoformer(posicion,algoFormerDePrueba);
     }
     @Test(expected = CoordenadasInvalidas.class)
     public void test05ColocarCoordenadaInvalidaExcedeTamanio(){
         Posicion posicion= new Posicion(17,23);
-        tablero.colocarAlgoformer(posicion);
+        tablero.colocarAlgoformer(posicion,algoFormerDePrueba);
     }
 	
 	@Test
 	public void test06sacarUnAlgoformer (){
         Posicion posicion=new Posicion(2,5);
-		tablero.colocarAlgoformer(posicion);
+		tablero.colocarAlgoformer(posicion,algoFormerDePrueba);
 		assertTrue(tablero.estaOcupadoEnPosicion(posicion));
 		assertFalse(tablero.estaTodoVacio());
 
@@ -67,10 +71,10 @@ public class TableroTest{
     @Test
     public void test08colocarEnPosicionLuegoDeVaciar(){
         Posicion posicion= new Posicion(3,4);
-        tablero.colocarAlgoformer(posicion);
+        tablero.colocarAlgoformer(posicion,algoFormerDePrueba);
         tablero.vaciarPosicion(posicion);
         assertFalse(tablero.estaOcupadoEnPosicion(posicion));
-        tablero.colocarAlgoformer(posicion);
+        tablero.colocarAlgoformer(posicion,algoFormerDePrueba);
         assertTrue(tablero.estaOcupadoEnPosicion(posicion));
     }
     
@@ -78,7 +82,7 @@ public class TableroTest{
     public void test09MoverColocable(){
         Posicion posicion=new Posicion(3,4);
         Posicion posicionDesocupada=new Posicion(4,4);
-        tablero.colocarAlgoformer(posicion);
+        tablero.colocarAlgoformer(posicion,algoFormerDePrueba);
         assertTrue(tablero.estaOcupadoEnPosicion(posicion));
         assertFalse(tablero.estaOcupadoEnPosicion(posicionDesocupada));
         tablero.mover(posicion, posicionDesocupada);
@@ -90,7 +94,7 @@ public class TableroTest{
     @Test
     public void test10MoverColocableAMismaPosicion(){
         Posicion posicion=new Posicion(3,4);
-        tablero.colocarAlgoformer(posicion);
+        tablero.colocarAlgoformer(posicion,algoFormerDePrueba);
         assertTrue(tablero.estaOcupadoEnPosicion(posicion));
         
         tablero.mover(posicion,posicion);

@@ -37,7 +37,7 @@ public class OptimusTest {
 	
 	@Test
 	public void testStatsModoAlterno(){
-		mauricio.cambiarModo();
+		mauricio.transformar();
 		assertEquals(mauricio.getAtaque(), 15);
 		assertEquals(mauricio.getDistanciaDeAtaque(), 4);
 		assertEquals(mauricio.getVelocidad(),5);

@@ -24,4 +24,13 @@ public class ContextoModoAlgoformer {
     public EstadoAlgoFormer verEstadoActual(){
         return modoActual.verEstado();
     }
+
+
+    public boolean esHumanoide() {
+        return modoActual.esHumanoide();
+    }
+
+    public boolean estaEnModoAlterno() {
+        return (modoActual.estaEnModoAlterno());
+    }
 }

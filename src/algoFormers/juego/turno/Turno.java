@@ -2,6 +2,8 @@ package algoFormers.juego.turno;
 
 import algoFormers.juego.Jugador;
 import algoFormers.juego.Modificadores;
+import algoFormers.tablero.colocable.robots.AlgoFormer;
+import algoFormers.tablero.posiciones.Posicion;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,11 +14,13 @@ public class Turno {
     private List<Jugador> jugadores;
     private int cantidadDeJugadores;
     private ContextoTurno tipoTurno;
+    private boolean finalizado;
 
     public Turno( int cantJugadores) {
         this.cantidadDeJugadores=cantJugadores;
         jugadores=new ArrayList<>();
         turno=0;
+        tipoTurno = new ContextoTurno();
     }
     
 	public Jugador avanzarTurno() {
@@ -49,12 +53,21 @@ public class Turno {
         tipoTurno.ataque();
     }
 
+    public Jugador obtenerJugadorQueDebeJugar(){
 
-    /*
-    public void jugarCon(String algoFormer) {
+        this.finalizado = false;
+        if (jugadores.get(turno % cantidadDeJugadores).enProcesoDeCombinacion()) {
+            jugadores.get(turno % cantidadDeJugadores).pasoTurno();
+            return this.avanzarTurno();
+        }
+        else{
+            return jugadores.get(turno % cantidadDeJugadores);
+        }
+    }
 
-        Jugador jugadorActual = this.obtenerJugadorQueDebeJugar();
-        jugadorActual.jugarCon(algoFormer);
+    public void jugarCon(AlgoFormer algoFormer) {
+
+        this.obtenerJugadorQueDebeJugar().jugarCon(algoFormer);
     }
 
     public void atacar(Posicion posicionDestino) {
@@ -68,9 +81,9 @@ public class Turno {
     public void mover(Posicion posicionOrigen, Posicion posicionDestino) {
         Jugador jugadorActual = this.obtenerJugadorQueDebeJugar();
         jugadorActual.mover(posicionOrigen, posicionDestino);
-        // el jugador deberia poder pedirle al tablero los casilleros que va a necesitar.
-        this.modoTurno.restarUnPaso(); //el modo estaria seteado en movimiento
-
+        if(jugadorActual.seQuedoSinMovimientos()){
+            this.finalizar();
+        }
     }
 
     public void transformar() {
@@ -83,5 +96,15 @@ public class Turno {
     public void combinarAlgoformers() {
         Jugador jugadorActual = this.obtenerJugadorQueDebeJugar();
         jugadorActual.combinarAlgoformers();
-    }*/
+        this.finalizar();
+    }
+
+    public void finalizar() {
+        this.finalizado = true;
+        this.avanzarTurno();
+    }
+
+    public boolean finalizado() {
+        return this.finalizado;
+    }
 }

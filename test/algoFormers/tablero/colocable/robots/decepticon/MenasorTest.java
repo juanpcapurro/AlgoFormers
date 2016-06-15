@@ -103,7 +103,7 @@ public class MenasorTest {
 	}
 	@Test
 	public void testStatsNoCambianAlCambiarModo(){
-		menasor.cambiarModo();
+		menasor.transformar();
 		assertEquals(menasor.getAtaque(), 115);
 		assertEquals(menasor.getDistanciaDeAtaque(), 2);
 		assertEquals(menasor.getVelocidad(),2 );

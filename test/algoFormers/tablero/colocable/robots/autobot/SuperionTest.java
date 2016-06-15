@@ -104,7 +104,7 @@ public class SuperionTest {
 	
 	@Test
 	public void testCambiarDeModoNoAfectaLosStats(){
-		superion.cambiarModo();
+		superion.transformar();
 		assertEquals(superion.getAtaque(), 100);
 		assertEquals(superion.getDistanciaDeAtaque(), 2);
 		assertEquals(superion.getVelocidad(),3);

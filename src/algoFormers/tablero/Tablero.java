@@ -38,6 +38,10 @@ public class Tablero{
 		casillero.colocar(aColocar);
 	}
 
+	public void colocarAlgoformer(Posicion posicion, AlgoFormer algoFormer) {
+		this.colocar(posicion, algoFormer);
+	}
+
     private Casillero obtenerCasilleroAsociadoAPosicion(Posicion posicion){
         for (Casillero casillero : listaCasilleros){
             if (casillero.compararPosicion(posicion))
@@ -46,9 +50,6 @@ public class Tablero{
         return null;
     }
 
-	public void colocarAlgoformer(Posicion posicion){
-		this.colocar(posicion, new AlgoFormer());
-	}
 
 	public void mover(Posicion posicionOrigen, Posicion posicionDestino){
         controlador.validarCoordenadas(posicionOrigen);
@@ -85,4 +86,6 @@ public class Tablero{
         controlador.validarCoordenadas(posicion);
 		(obtenerCasilleroAsociadoAPosicion(posicion)).atacarCasillero(ataque);
 	}
+
+
 }

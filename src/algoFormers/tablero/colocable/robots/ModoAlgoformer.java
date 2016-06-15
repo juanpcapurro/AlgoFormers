@@ -18,4 +18,7 @@ public abstract class ModoAlgoformer {
     public EstadoAlgoFormer verEstado(){
         return estado;
     }
+    public abstract boolean esHumanoide();
+
+    public abstract boolean estaEnModoAlterno();
 }

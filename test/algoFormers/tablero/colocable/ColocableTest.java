@@ -1,5 +1,6 @@
 package algoFormers.tablero.colocable;
 
+import algoFormers.tablero.colocable.robots.autobot.Optimus;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -16,7 +17,8 @@ public class ColocableTest{
 	
 	@Test
 	public void test02AlgoFormerOcupaLugar (){
-		Colocable unAlgoFormer = new AlgoFormer();
+		Optimus optimus = new Optimus();
+		Colocable unAlgoFormer = optimus;
 		assertTrue(unAlgoFormer.ocupaLugar());
 	}
 }

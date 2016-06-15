@@ -13,6 +13,7 @@ public class ContextoTurno {
     void transformacion(){
         actual=new TurnoDeTransformacion();
     }
+
     void movimiento(){
         actual=new TurnoDeMovimiento();
     }
@@ -20,7 +21,10 @@ public class ContextoTurno {
     void ataque(){
         actual=new TurnoDeAtaque();
     }
+
     void jugar(){
         actual.jugar();
     }
+
+
 }

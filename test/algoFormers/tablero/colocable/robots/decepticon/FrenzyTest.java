@@ -32,7 +32,7 @@ public class FrenzyTest {
 	}
 	@Test
 	public void testStatsModoAlterno(){
-		mauricio.cambiarModo();
+		mauricio.transformar();
 		assertEquals(mauricio.getAtaque(), 25);
 		assertEquals(mauricio.getDistanciaDeAtaque(), 2);
 		assertEquals(mauricio.getVelocidad(),6);

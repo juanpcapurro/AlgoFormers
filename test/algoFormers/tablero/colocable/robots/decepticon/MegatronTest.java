@@ -32,7 +32,7 @@ public class MegatronTest {
 	}
 	@Test
 	public void testStatsModoAlterno(){
-		mauricio.cambiarModo();
+		mauricio.transformar();
 		assertEquals(mauricio.getAtaque(), 55);
 		assertEquals(mauricio.getDistanciaDeAtaque(), 2);
 		assertEquals(mauricio.getVelocidad(),8);

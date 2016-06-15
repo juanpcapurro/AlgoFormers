@@ -32,7 +32,7 @@ public class BumblebeeTest {
 	
 	@Test
 	public void testStatsModoAlterno(){
-		mauricio.cambiarModo();
+		mauricio.transformar();
 		assertEquals(mauricio.getAtaque(), 20);
 		assertEquals(mauricio.getDistanciaDeAtaque(), 3);
 		assertEquals(mauricio.getVelocidad(),5);
