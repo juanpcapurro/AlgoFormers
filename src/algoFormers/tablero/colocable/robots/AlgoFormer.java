@@ -27,7 +27,7 @@ public abstract class AlgoFormer extends Colocable {
 		return modoActual.getDistanciaDeAtaque();
 	}
 	public  boolean estaVivo(){return ptosDeVida>0;}
-	public void cambiarModo(){
+	public void transformar(){
 		modoActual.cambiarModo();
 	}
 
@@ -50,6 +50,7 @@ public abstract class AlgoFormer extends Colocable {
 
 	public  void mover(Posicion posicionOrigen, Posicion posicionDestino){}
 
+
 	public  void descombinar(){}
 
 	public  boolean estaEnModoHumanoide(){
@@ -60,5 +61,6 @@ public abstract class AlgoFormer extends Colocable {
 	public boolean estaEnModoAlterno(){
 		return  modoActual.estaEnModoAlterno();
 	}
-}
 
+
+}

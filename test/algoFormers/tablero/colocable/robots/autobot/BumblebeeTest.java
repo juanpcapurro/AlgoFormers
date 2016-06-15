@@ -51,7 +51,7 @@ public class BumblebeeTest {
 		Modificador modificador=new Modificador();
 		modificador.setModificadorAtaque(50);
 		mauricio.setModificadorDeEstado(modificador);
-		mauricio.cambiarModo();
+		mauricio.transformar();
 		assertEquals(mauricio.getVelocidad(),5);
 	}
 }

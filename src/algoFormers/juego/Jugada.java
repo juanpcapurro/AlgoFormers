@@ -13,11 +13,11 @@ public class Jugada {
     private int movimientosDisponibles;
 
     public Jugada(){
-        this.tipoDeJugada = new JugadaAlgoformerSinCombinar();
+        tipoDeJugada = new JugadaAlgoformerSinCombinar();
     }
 
     public void transformar() {
-        algoFormerDeLaJugada.transformar();
+        tipoDeJugada.transformar(algoFormerDeLaJugada);
     }
 
     public void combinar(List<AlgoFormer> equipo) {
@@ -40,11 +40,10 @@ public class Jugada {
     }
 
     public void mover(Posicion posicionOrigen, Posicion posicionDestino) {
-        if(movimientosDisponibles>0){
+        if (movimientosDisponibles > 0) {
             this.tipoDeJugada.mover(algoFormerDeLaJugada, posicionOrigen, posicionDestino);
-            movimientosDisponibles -=1;
-        }
-        else{
+            movimientosDisponibles -= 1;
+        } else {
             throw new YaUtilizoPasosDisponibles();
         }
     }
@@ -60,6 +59,7 @@ public class Jugada {
     public void pasoTurno() {
         tipoDeJugada.pasoTurno();
     }
+
 
     public int getMovimientosDisponibles() {
         return movimientosDisponibles;
