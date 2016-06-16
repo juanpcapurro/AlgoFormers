@@ -1,6 +1,11 @@
 package algoFormers.tablero.colocable.robots.autobot;
 
 import algoFormers.tablero.colocable.robots.armas.DisparoConvencional;
+import algoFormers.tablero.superficie.Superficie;
+import algoFormers.tablero.superficieAerea.Nube;
+import algoFormers.tablero.superficieAerea.TormentaPsionica;
+import algoFormers.tablero.superficieTerrestre.Espinas;
+
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -37,4 +42,18 @@ public class RatchetTest {
 		assertEquals(mauricio.getDistanciaDeAtaque(), 2);
 		assertEquals(mauricio.getVelocidad(),8);
 	}
+	
+	@Test
+	public void afectadoAlPasarPorTormenta(){
+		Superficie superficieTerrestre =new Espinas();
+		Superficie superficieAerea=new TormentaPsionica();
+		mauricio.transformar();
+		int vida=mauricio.getPuntosDeVida();
+		int ataque=mauricio.getAtaque();
+		mauricio.pasarPor(superficieTerrestre,superficieAerea);
+		//assertTrue(mauricio.getPuntosDeVida()<vida);
+		assertTrue(mauricio.getAtaque()<ataque);
+	}
+	
+	
 }
