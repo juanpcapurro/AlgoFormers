@@ -33,5 +33,11 @@ public class Decepticons extends Equipo {
     public BoneCrusher getBoneCrusher() {
         return boneCrusher;
     }
+    public Frenzy getFrenzy() {
+        return frenzy;
+    }
+    public Megatron getMegatron() {
+        return megatron;
+    }
 
 }
