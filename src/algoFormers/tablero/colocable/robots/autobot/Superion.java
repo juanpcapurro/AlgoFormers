@@ -11,9 +11,9 @@ public class Superion extends AlgoFormer {
         this.optimus = optimus;
         this.bumblebee = bumblebee;
         this.ratchet = ratchet;
-        this.ptosDeVida = optimus.getPuntosDeVida() + bumblebee.getPuntosDeVida() + ratchet.getPuntosDeVida();
+        this.ptosDeVida =new Vida(optimus.getPuntosDeVida() + bumblebee.getPuntosDeVida() + ratchet.getPuntosDeVida());
 		modoActual=new ContextoModoAlgoformer();
-        modoActual.setActual(new ModoHumanoide(100,2,3));
-        modoActual.setAlternativo(new ModoHumanoide(100,2,3));
+        modoActual.setActual(new ModoHumanoide(ptosDeVida,100,2,3));
+        modoActual.setAlternativo(new ModoHumanoide(ptosDeVida,100,2,3));
     }
 }

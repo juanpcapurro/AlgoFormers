@@ -4,8 +4,8 @@ import algoFormers.tablero.superficie.Superficie;
 
 public class ModoAlternoAereo extends ModoAlgoformer {
 
-	public ModoAlternoAereo(int ataque, int distanciaDeAtaque, int velocidad) {
-		super(ataque, distanciaDeAtaque, velocidad);
+	public ModoAlternoAereo(Vida vida,int ataque, int distanciaDeAtaque, int velocidad) {
+		super(vida,ataque, distanciaDeAtaque, velocidad);
 	}
 
 	@Override

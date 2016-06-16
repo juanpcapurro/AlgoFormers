@@ -4,8 +4,8 @@ import algoFormers.tablero.superficie.Superficie;
 
 public class ModoHumanoide extends ModoAlgoformer{
 
-	public ModoHumanoide(int ataque, int distanciaDeAtaque, int velocidad) {
-		super(ataque, distanciaDeAtaque, velocidad);
+	public ModoHumanoide(Vida vida,int ataque, int distanciaDeAtaque, int velocidad) {
+		super(vida,ataque, distanciaDeAtaque, velocidad);
 
 	}
 

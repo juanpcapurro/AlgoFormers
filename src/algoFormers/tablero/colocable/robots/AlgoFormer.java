@@ -1,13 +1,13 @@
 package algoFormers.tablero.colocable.robots;
 
 import algoFormers.tablero.colocable.Colocable;
-import algoFormers.tablero.colocable.robots.armas.*;
+import algoFormers.tablero.colocable.robots.armas.Ataque;
 import algoFormers.tablero.posiciones.Posicion;
 import algoFormers.tablero.superficie.Superficie;
 
 public abstract class AlgoFormer extends Colocable {
 	protected ContextoModoAlgoformer modoActual;
-	protected int ptosDeVida;
+	protected Vida ptosDeVida;
 
 
 	public boolean ocupaLugar(){
@@ -22,24 +22,21 @@ public abstract class AlgoFormer extends Colocable {
 	public int getDistanciaDeAtaque(){
 		return modoActual.getDistanciaDeAtaque();
 	}
-	public  boolean estaVivo(){return ptosDeVida>0;}
+	public  boolean estaVivo(){return ptosDeVida.getVida()>0;}
 	public void transformar(){
 		modoActual.cambiarModo();
 	}
 
-    public int getPuntosDeVida(){ return ptosDeVida;}
+    public int getPuntosDeVida(){ return ptosDeVida.getVida();}
 
 	@Override
 	public void recibirAtaque(Ataque unAtaque) {
-		ptosDeVida-=(unAtaque.getDanio());
+		ptosDeVida.setVida(ptosDeVida.getVida()-unAtaque.getDanio());
 	}
 
 	@Override
 	public void pasarPor(Superficie superficieTerrestre,Superficie superficieAerea) {
 		modoActual.pasarPor(superficieTerrestre, superficieAerea);
-	}
-	public void setModificadorDeEstado(Modificador modificador){
-		modoActual.setModificador(modificador);
 	}
 
 	public void atacar(Posicion posicionDestino){};

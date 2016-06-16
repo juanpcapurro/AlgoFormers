@@ -49,7 +49,5 @@ public class ContextoModoAlgoformer {
         return modoActual.getDistancia();
     }
 
-    public void setModificador(Modificador modificador){
-        modoActual.setModificador(modificador);
-    }
+
 }

@@ -4,9 +4,9 @@ import algoFormers.tablero.colocable.robots.*;
 public class Optimus extends AlgoFormer {
 	
     public Optimus(){
-        this.ptosDeVida = 500;
+        this.ptosDeVida = new Vida(500);
 		modoActual=new ContextoModoAlgoformer();
-		modoActual.setActual(new ModoHumanoide(50,2,2));
-		modoActual.setAlternativo(new ModoAlternoTerrestre(15,4,5));
+		modoActual.setActual(new ModoHumanoide(ptosDeVida,50,2,2));
+		modoActual.setAlternativo(new ModoAlternoTerrestre(ptosDeVida,15,4,5));
     }
 }

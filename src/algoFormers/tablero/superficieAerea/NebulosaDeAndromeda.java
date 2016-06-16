@@ -1,8 +1,8 @@
 package algoFormers.tablero.superficieAerea;
 
-import algoFormers.tablero.colocable.robots.Modificador;
 import algoFormers.tablero.colocable.robots.ModoAlgoformer;
 import algoFormers.tablero.colocable.robots.armas.Ataque;
+import algoFormers.tablero.colocable.robots.modificadores.DebuffNebulosa;
 import algoFormers.tablero.superficie.Superficie;
 
 class NebulosaDeAndromeda extends StateSuperficieAerea {
@@ -17,8 +17,6 @@ class NebulosaDeAndromeda extends StateSuperficieAerea {
 
 	@Override
 	public void afectarUnidadAerea(ModoAlgoformer modoAlgoformer) {
-		Modificador modificador=new Modificador(3);
-		modificador.setModificadorVelocidad(100);
-		modoAlgoformer.setModificador(modificador);
+		modoAlgoformer.afectarEstado(new DebuffNebulosa());
 	}
 }

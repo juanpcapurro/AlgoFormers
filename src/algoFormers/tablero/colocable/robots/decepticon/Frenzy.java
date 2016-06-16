@@ -4,9 +4,9 @@ import algoFormers.tablero.colocable.robots.*;
 
 public class Frenzy extends AlgoFormer {
     public Frenzy(){
-        this.ptosDeVida = 400;
+        this.ptosDeVida = new Vida(400);
 		this.modoActual = new ContextoModoAlgoformer();
-		modoActual.setActual(new ModoHumanoide(10, 5, 2));
-		modoActual.setAlternativo(new ModoAlternoTerrestre(25,2,6));
+		modoActual.setActual(new ModoHumanoide(ptosDeVida,10, 5, 2));
+		modoActual.setAlternativo(new ModoAlternoTerrestre(ptosDeVida,25,2,6));
     }
 }

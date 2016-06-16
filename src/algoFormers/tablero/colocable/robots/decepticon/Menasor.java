@@ -12,10 +12,10 @@ public class Menasor extends AlgoFormer {
         this.megatron = megatron;
         this.boneCrusher = boneCrusher;
         this.frenzy = frenzy;
-        this.ptosDeVida = megatron.getPuntosDeVida() + boneCrusher.getPuntosDeVida() + frenzy.getPuntosDeVida();
+        this.ptosDeVida = new Vida(megatron.getPuntosDeVida() + boneCrusher.getPuntosDeVida() + frenzy.getPuntosDeVida());
         modoActual=new ContextoModoAlgoformer();
-		modoActual.setActual(new ModoHumanoide(115,2,2));
-        modoActual.setAlternativo(new ModoHumanoide(115,2,2));
+		modoActual.setActual(new ModoHumanoide(ptosDeVida,115,2,2));
+        modoActual.setAlternativo(new ModoHumanoide(ptosDeVida,115,2,2));
     }
 
 }

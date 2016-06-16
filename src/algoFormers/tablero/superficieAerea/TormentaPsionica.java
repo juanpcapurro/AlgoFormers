@@ -2,6 +2,7 @@ package algoFormers.tablero.superficieAerea;
 
 import algoFormers.tablero.colocable.robots.ModoAlgoformer;
 import algoFormers.tablero.colocable.robots.armas.Ataque;
+import algoFormers.tablero.colocable.robots.modificadores.DebuffTormenta;
 import algoFormers.tablero.superficie.Superficie;
 
 class TormentaPsionica extends StateSuperficieAerea {
@@ -17,6 +18,6 @@ class TormentaPsionica extends StateSuperficieAerea {
 
 	@Override
 	public void afectarUnidadAerea(ModoAlgoformer modoAlgoformer) {
-
+		modoAlgoformer.afectarEstado(new DebuffTormenta());
 	}
 }

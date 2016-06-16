@@ -1,10 +1,10 @@
 package algoFormers.tablero.superficieTerrestre;
 
-import algoFormers.tablero.colocable.robots.Modificador;
 import algoFormers.tablero.colocable.robots.ModoAlgoformer;
 import algoFormers.tablero.colocable.robots.armas.Ataque;
+import algoFormers.tablero.colocable.robots.modificadores.DebuffEspinas;
 
-class Espinas extends StateSuperficieTerrestre {
+public class Espinas extends StateSuperficieTerrestre {
 
 	public void recibirAtaque(StateSuperficieTerrestre superficieActual, Ataque ataque) {
 	}
@@ -12,15 +12,11 @@ class Espinas extends StateSuperficieTerrestre {
 
 	@Override
 	public void afectarUnidadTerrestre(ModoAlgoformer modoAlgoformer) {
-		Modificador modificador=new Modificador(3);
-		modificador.setModificadorVida(5);
-		modoAlgoformer.setModificador(modificador);
+		modoAlgoformer.afectarEstado(new DebuffEspinas());
 	}
 
 	@Override
 	public void afectarUnidadAerea(ModoAlgoformer modoAlgoformer) {
-		Modificador modificador=new Modificador(3);
-		modificador.setModificadorVida(5);
-		modoAlgoformer.setModificador(modificador);
+		modoAlgoformer.afectarEstado(new DebuffEspinas());
 	}
 }

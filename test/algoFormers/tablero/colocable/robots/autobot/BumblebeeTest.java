@@ -1,7 +1,9 @@
 package algoFormers.tablero.colocable.robots.autobot;
 
-import algoFormers.tablero.colocable.robots.Modificador;
 import algoFormers.tablero.colocable.robots.armas.DisparoConvencional;
+import algoFormers.tablero.superficie.Superficie;
+import algoFormers.tablero.superficieAerea.Nube;
+import algoFormers.tablero.superficieTerrestre.Espinas;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -40,18 +42,12 @@ public class BumblebeeTest {
 	}
 
 	@Test
-	public void tests03ModificadorBumblebeeDisminuyeStats(){
-		Modificador modificador=new Modificador();
-		modificador.setModificadorAtaque(50);
-		mauricio.setModificadorDeEstado(modificador);
-		assertEquals(mauricio.getAtaque(),20);
+	public void afectadoAlPasarPorEspinas(){
+		Superficie superficieTerrestre =new Espinas();
+		Superficie superficieAerea=new Nube();
+		int vida=mauricio.getPuntosDeVida();
+		mauricio.pasarPor(superficieTerrestre,superficieAerea);
+		assertTrue(mauricio.getPuntosDeVida()<vida);
 	}
-	@Test
-	public void tests03ModificadorBumblebeeDisminuyeStatsEnModoAlterno(){
-		Modificador modificador=new Modificador();
-		modificador.setModificadorAtaque(50);
-		mauricio.setModificadorDeEstado(modificador);
-		mauricio.transformar();
-		assertEquals(mauricio.getVelocidad(),5);
-	}
+
 }
