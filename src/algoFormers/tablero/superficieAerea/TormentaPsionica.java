@@ -5,7 +5,7 @@ import algoFormers.tablero.colocable.robots.armas.Ataque;
 import algoFormers.tablero.colocable.robots.modificadores.DebuffTormenta;
 import algoFormers.tablero.superficie.Superficie;
 
-public class TormentaPsionica extends StateSuperficieAerea {
+class TormentaPsionica extends StateSuperficieAerea {
 
 	public void recibirAtaque(Superficie superficieActual, Ataque ataque) {
 	}

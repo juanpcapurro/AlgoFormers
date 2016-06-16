@@ -4,8 +4,6 @@ import algoFormers.tablero.colocable.robots.armas.DisparoConvencional;
 import algoFormers.tablero.superficie.Superficie;
 import algoFormers.tablero.superficieAerea.Nube;
 import algoFormers.tablero.superficieTerrestre.Espinas;
-import algoFormers.tablero.superficieTerrestre.Rocoso;
-
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -52,12 +50,4 @@ public class BumblebeeTest {
 		assertTrue(mauricio.getPuntosDeVida()<vida);
 	}
 
-	@Test
-	public void noafectadoAlPasarPorRocoso(){
-		Superficie superficieTerrestre =new Rocoso();
-		Superficie superficieAerea=new Nube();
-		int vida=mauricio.getPuntosDeVida();
-		mauricio.pasarPor(superficieTerrestre,superficieAerea);
-		assertTrue(mauricio.getPuntosDeVida()==vida);
-	}
 }
