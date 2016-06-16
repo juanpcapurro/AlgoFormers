@@ -1,6 +1,7 @@
 package algoFormers.juego;
 
 import algoFormers.tablero.colocable.robots.AlgoFormer;
+import algoFormers.tablero.colocable.robots.Equipo;
 import algoFormers.tablero.colocable.robots.autobot.Bumblebee;
 import algoFormers.tablero.colocable.robots.autobot.Optimus;
 import algoFormers.tablero.colocable.robots.autobot.Ratchet;
@@ -24,20 +25,8 @@ public class JugadaAlgoformersCombinados extends TipoDeJugada {
 
     }
     
-    public AlgoFormer combinar(List<AlgoFormer> equipo) {
-        return this.crearCombinado(equipo.get(0),equipo.get(1),equipo.get(2));
-    }
-
-    private AlgoFormer crearCombinado(AlgoFormer algoFormer, AlgoFormer algoFormer1, AlgoFormer algoFormer2) {
-        return new Optimus(); //esto no sirve falta, SI O SI BORRAR
-    }
-
-    private AlgoFormer crearCombinado(Bumblebee bumblebee, Ratchet ratchet, Optimus optimus ) {
-        return new Superion(optimus, bumblebee, ratchet);
-    }
-
-    private AlgoFormer crearCombinado(BoneCrusher boneCrusher, Frenzy frenzy, Megatron megatron ) {
-        return new Menasor(megatron, boneCrusher, frenzy);
+    public AlgoFormer combinar(Equipo equipo) {
+        return equipo.combinarme();
     }
 
     @Override

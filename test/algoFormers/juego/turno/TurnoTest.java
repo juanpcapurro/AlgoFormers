@@ -1,10 +1,13 @@
 package algoFormers.juego.turno;
 
 import algoFormers.juego.Jugador;
+import algoFormers.tablero.colocable.robots.Equipo;
+import algoFormers.tablero.colocable.robots.autobot.Autobots;
 import algoFormers.tablero.colocable.robots.autobot.Bumblebee;
 import algoFormers.tablero.colocable.robots.autobot.Optimus;
 import algoFormers.tablero.colocable.robots.autobot.Ratchet;
 import algoFormers.tablero.colocable.robots.decepticon.BoneCrusher;
+import algoFormers.tablero.colocable.robots.decepticon.Decepticons;
 import algoFormers.tablero.posiciones.Posicion;
 import org.junit.Before;
 import org.junit.Test;
@@ -55,9 +58,8 @@ public class  TurnoTest {
 	@Test
 	public void test05Jugador1EligeCombinarYNoJuegaProximos2Turnos(){
 		Jugador jugadorActual = turno.obtenerJugadorQueDebeJugar();
-		jugadorActual.agregarUnidad(new Bumblebee());
-		jugadorActual.agregarUnidad(new Ratchet());
-		jugadorActual.agregarUnidad(new Optimus());
+		jugadorActual.asignarEquipo(new Autobots());
+
 		turno.deCombinacion();
 		turno.combinarAlgoformers(); // combina y se finaliza el turno
 
@@ -71,21 +73,26 @@ public class  TurnoTest {
 
 	@Test
 	public void test06JugadoresUsanSuTurnoParaTransformarUnoDeSusAlgoformers(){
+		Jugador jugadorActual = turno.obtenerJugadorQueDebeJugar();
+		Autobots equipo = new Autobots();
+		jugadorActual.asignarEquipo(equipo);
 
-		Optimus optimus = new Optimus();
+		Optimus optimus = equipo.getOptimus();
 		assertTrue(optimus.estaEnModoHumanoide());
 
-		turno.obtenerJugadorQueDebeJugar().agregarUnidad(optimus);
+
 		turno.deTransformacion();
 		turno.jugarCon(optimus);
 		turno.transformar();
 
 		assertTrue(optimus.estaEnModoAlterno());
 
-		BoneCrusher boneCrusher = new BoneCrusher();
-		assertTrue(boneCrusher.estaEnModoHumanoide());
+		Jugador jugadorSiguiente = turno.obtenerJugadorQueDebeJugar();
+		Decepticons decepticons = new Decepticons();
+		jugadorSiguiente.asignarEquipo(decepticons);
 
-		turno.obtenerJugadorQueDebeJugar().agregarUnidad(boneCrusher);
+		BoneCrusher boneCrusher = decepticons.getBoneCrusher();
+		assertTrue(boneCrusher.estaEnModoHumanoide());
 		turno.deTransformacion();
 		turno.jugarCon(boneCrusher);
 		turno.transformar();
@@ -99,8 +106,11 @@ public class  TurnoTest {
 
 	@Test
 	public void test07JugadorUsaElTurnoParaMoverOptimusUsaTodaDistanciaValida(){
-		Optimus optimus = new Optimus();
-		turno.obtenerJugadorQueDebeJugar().agregarUnidad(optimus);
+		Jugador jugadorActual = turno.obtenerJugadorQueDebeJugar();
+		Autobots equipo = new Autobots();
+		jugadorActual.asignarEquipo(equipo);
+		Optimus optimus = equipo.getOptimus();
+
 		turno.deMovimiento();
 		turno.jugarCon(optimus);
 		//optimus en modo humanoide puede moverse hasta 2 casilleros de distancia = 2 pasos.
@@ -123,8 +133,11 @@ public class  TurnoTest {
 	@Test
 	public void test08JugadorUsaElTurnoParaMoverOptimusUsaMediaDistanciaValidaYFinalizaTurno(){
 
-		Optimus optimus = new Optimus();
-		turno.obtenerJugadorQueDebeJugar().agregarUnidad(optimus);
+		Jugador jugadorActual = turno.obtenerJugadorQueDebeJugar();
+		Autobots equipo = new Autobots();
+		jugadorActual.asignarEquipo(equipo);
+		Optimus optimus = equipo.getOptimus();
+
 		turno.deMovimiento();
 		turno.jugarCon(optimus);
 
@@ -186,8 +199,12 @@ public class  TurnoTest {
 
 	@Test
 	public void test23JugadorUsaElTurnoParaAtacar(){
-		Optimus optimus = new Optimus();
-		turno.obtenerJugadorQueDebeJugar().agregarUnidad(optimus);
+		Jugador jugadorActual = turno.obtenerJugadorQueDebeJugar();
+		Autobots equipo = new Autobots();
+		jugadorActual.asignarEquipo(equipo);
+
+		Optimus optimus = equipo.getOptimus();
+
 		turno.deAtaque();
 		turno.jugarCon(optimus);
 

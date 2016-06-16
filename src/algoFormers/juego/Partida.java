@@ -45,15 +45,12 @@ public class Partida {
     }
 
     private void crearAutobots(Jugador jugador){
-        jugador.agregarUnidad(new Bumblebee());
-        jugador.agregarUnidad(new Ratchet());
-        jugador.agregarUnidad(new Optimus());
+        jugador.asignarEquipo(new Autobots());
     }
 
     private void crearDecepticons(Jugador jugador){
-        jugador.agregarUnidad(new BoneCrusher());
-        jugador.agregarUnidad(new Frenzy());
-        jugador.agregarUnidad(new Megatron());
+       jugador.asignarEquipo(new Decepticons());
+
     }
 
 

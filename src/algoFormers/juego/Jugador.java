@@ -2,6 +2,9 @@
 package algoFormers.juego;
 
 import algoFormers.tablero.colocable.robots.AlgoFormer;
+import algoFormers.tablero.colocable.robots.Equipo;
+import algoFormers.tablero.colocable.robots.autobot.Autobots;
+import algoFormers.tablero.colocable.robots.autobot.Bumblebee;
 import algoFormers.tablero.posiciones.Posicion;
 
 import java.util.ArrayList;
@@ -12,13 +15,12 @@ public class Jugador {
 
 
 	private String nombreDeJugador;
-	List<AlgoFormer> equipo;
+	Equipo equipo;
 	Jugada jugadaEnCurso;
 
 
 	public Jugador(String nuevoNombre){
 		this.nombreDeJugador = nuevoNombre;
-		equipo= new ArrayList<>();
 		jugadaEnCurso = new Jugada();
 	}
 
@@ -28,25 +30,22 @@ public class Jugador {
 	}
 
 
-	public void agregarUnidad(AlgoFormer nuevoAlgoBot) {
-		equipo.add(nuevoAlgoBot);
-	}
-
 	boolean equipovivo(){
-		for (AlgoFormer algoformer : equipo)
-			if (algoformer.estaVivo())
-				return true;
-		return false;
+		return equipo.estaVivo();
 	}
 
 	public void combinarAlgoformers() {
-		if(equipovivo()){
+		if(equipoTotalmentevivo()){
 			jugadaEnCurso.vaASerDeCombinacion();
 			jugadaEnCurso.combinar(equipo);
 		}
 		else{
 			throw new AlgoformersDeSuEquipoHanMuerto("Solo puede combinar sus algoformers si los 3 permanecen con vida");
 		}
+	}
+
+	private boolean equipoTotalmentevivo() {
+		return equipo.estanTodosAlgoformersVivos();
 	}
 
 	public void transformar() {
@@ -76,4 +75,9 @@ public class Jugador {
 	public boolean seQuedoSinMovimientos() {
 		return (jugadaEnCurso.getMovimientosDisponibles()==0);
 	}
+
+	public void asignarEquipo(Equipo equipo) {
+		this.equipo = equipo;
+	}
+
 }

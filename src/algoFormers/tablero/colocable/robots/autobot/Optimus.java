@@ -1,7 +1,7 @@
 package algoFormers.tablero.colocable.robots.autobot;
 
 import algoFormers.tablero.colocable.robots.*;
-public class Optimus extends Autobot {
+public class Optimus extends AlgoFormer {
 	
     public Optimus(){
         this.ptosDeVida = 500;

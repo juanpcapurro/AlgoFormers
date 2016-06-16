@@ -1,6 +1,7 @@
 package algoFormers.juego;
 
 import algoFormers.tablero.colocable.robots.AlgoFormer;
+import algoFormers.tablero.colocable.robots.Equipo;
 import algoFormers.tablero.posiciones.Posicion;
 
 import java.util.List;
@@ -8,7 +9,7 @@ import java.util.List;
 
 public abstract class TipoDeJugada {
 
-    public abstract AlgoFormer combinar(List<AlgoFormer> equipo);
+    public abstract AlgoFormer combinar(Equipo equipo);
 
     public  abstract void atacar(Posicion posicionDestino, AlgoFormer algoFormerDeLaJugada);
 

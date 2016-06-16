@@ -1,13 +1,14 @@
 package algoFormers.juego;
 
 import algoFormers.tablero.colocable.robots.AlgoFormer;
+import algoFormers.tablero.colocable.robots.Equipo;
 import algoFormers.tablero.posiciones.Posicion;
 
 import java.util.List;
 
 public class JugadaAlgoformerSinCombinar extends TipoDeJugada {
     @Override
-    public AlgoFormer combinar(List<AlgoFormer> equipo) {
+    public AlgoFormer combinar(Equipo equipo) {
         throw new EnCursoJugadaDeUnAlgoFormerSinCombinar();
     }
 

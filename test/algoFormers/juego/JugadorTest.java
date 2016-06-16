@@ -15,8 +15,9 @@ public class JugadorTest {
 	Jugador miJugador;
 	static final String NOMBREJUGADOR="Barry";
 	static final int VIDABUMBLEBEE=350;
-	static final int VIDAFRENZY=400;
+	static final int VIDAOPTIMUS=500;
 	static final int VIDARATCHET=150;
+	static final int VIDABONECRUSHER=200;
 
 	@Before
 	public void setUp()  {
@@ -28,62 +29,100 @@ public class JugadorTest {
 		assertEquals(miJugador.getNombreDeJugador(),NOMBREJUGADOR);
 	}
 	@Test
-	public void test02equipoVacioNoEstaVivo() {
-		assertFalse(miJugador.equipovivo());
+	public void test02equipoAutobotsEstaVivo() {
+		miJugador.asignarEquipo(new Autobots());
+		assertTrue(miJugador.equipovivo());
 	}
 
 	@Test
-	public void test03EquipoConUnAlgoformerEstaVivo() {
-		miJugador.agregarUnidad(new Bumblebee());
+	public void test03EquipoAutobotsEstaVivo() {
+
+		miJugador.asignarEquipo(new Autobots());
 		assertTrue(miJugador.equipovivo());
 	}
 	
 	@Test
 	public void test04JugadorEquipoNoMuereConAlgoformersActivos() {
-		AlgoFormer bumblebee=new Bumblebee();
-		AlgoFormer ratchet=new Ratchet();
-		AlgoFormer frenzy=new Frenzy();
-		miJugador.agregarUnidad(bumblebee);
-		miJugador.agregarUnidad(ratchet);
-		miJugador.agregarUnidad(frenzy);
+
+		Autobots autobots = new Autobots();
+		miJugador.asignarEquipo(autobots);
+
+		Bumblebee bumblebee = autobots.getBumblebee();
 
 		bumblebee.recibirAtaque(new DisparoConvencional(VIDABUMBLEBEE));
 		assertTrue(miJugador.equipovivo());
 	}
 	@Test
 	public void test05JugadorEquipoMuereConAlgoformersInactivos(){
-		AlgoFormer bumblebee=new Bumblebee();
-		AlgoFormer ratchet=new Ratchet();
-		AlgoFormer frenzy=new Frenzy();
-		miJugador.agregarUnidad(bumblebee);
-		miJugador.agregarUnidad(ratchet);
-		miJugador.agregarUnidad(frenzy);
+		Autobots autobots = new Autobots();
+		miJugador.asignarEquipo(autobots);
+
+		Bumblebee bumblebee = autobots.getBumblebee();
+		Ratchet ratchet = autobots.getRatchet();
+		Optimus optimus = autobots.getOptimus();
 
 		bumblebee.recibirAtaque(new DisparoConvencional(VIDABUMBLEBEE));
 		ratchet.recibirAtaque(new DisparoConvencional(VIDARATCHET));
-		frenzy.recibirAtaque(new DisparoConvencional(VIDAFRENZY));
+		optimus.recibirAtaque(new DisparoConvencional(VIDAOPTIMUS));
 
 		assertFalse(miJugador.equipovivo());
 	}
 
-	@Test
-	public void test06JugadorCombinaSusAutobots(){
-		miJugador.agregarUnidad(new Bumblebee());
-		miJugador.agregarUnidad(new Ratchet());
-		miJugador.agregarUnidad(new Optimus());
-		//PENDIENTE
-		//miJugador.combinarMisAlgoformers();
-	}
+	@Test (expected = AlgoformersDeSuEquipoHanMuerto.class)
+	public void test06JugadorNoPuedeCombinarSusAutobotsSiUnoMurio(){
+		Autobots autobots = new Autobots();
+		miJugador.asignarEquipo(autobots);
 
-	@Test
-	public void test07JugadorCombinaSusDecepticons(){
+		Bumblebee bumblebee = autobots.getBumblebee();
+		bumblebee.recibirAtaque(new DisparoConvencional(VIDABUMBLEBEE));
+
+		miJugador.combinarAlgoformers();
 
 	}
 
-	@Test
-	public void test08JugadorEligeUnoDeSusAlgoformersEnModoAlternoYLosTranformaAModoHumanoide(){}
+	@Test (expected = AlgoformersDeSuEquipoHanMuerto.class)
+	public void test07JugadorNoPuedeCombinaSusDecepticonsSiUnoMurio(){
+		Decepticons decepticons = new Decepticons();
+		miJugador.asignarEquipo(decepticons);
+
+		BoneCrusher boneCrusher = decepticons.getBoneCrusher();
+		boneCrusher.recibirAtaque(new DisparoConvencional(VIDABONECRUSHER));
+
+		miJugador.combinarAlgoformers();
+
+
+	}
 
 	@Test
-	public void test08JugadorEligeUnoDeSusAlgoformersEnModoHumaniodeYLosTranformaAModoAlterno(){}
+	public void test08JugadorEligeUnoDeSusAlgoformersEnModoAlternoYLosTranformaAModoHumanoide(){
+		Decepticons decepticons = new Decepticons();
+		miJugador.asignarEquipo(decepticons);
+
+		BoneCrusher boneCrusher = decepticons.getBoneCrusher();
+
+		assertTrue(boneCrusher.estaEnModoHumanoide());
+
+		miJugador.jugarCon(boneCrusher);
+		miJugador.transformar();
+
+		assertTrue(boneCrusher.estaEnModoAlterno());
+	}
+
+	@Test
+	public void test08JugadorEligeUnoDeSusAlgoformersEnModoHumaniodeYLosTranformaAModoAlterno(){
+		Decepticons decepticons = new Decepticons();
+		miJugador.asignarEquipo(decepticons);
+
+		BoneCrusher boneCrusher = decepticons.getBoneCrusher();
+		assertTrue(boneCrusher.estaEnModoHumanoide());
+
+		boneCrusher.transformar();
+		assertTrue(boneCrusher.estaEnModoAlterno());
+
+		miJugador.jugarCon(boneCrusher);
+		miJugador.transformar();
+		assertTrue(boneCrusher.estaEnModoHumanoide());
+
+	}
 	
 }

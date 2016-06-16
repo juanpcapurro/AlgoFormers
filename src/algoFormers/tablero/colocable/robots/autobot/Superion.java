@@ -16,5 +16,4 @@ public class Superion extends AlgoFormer {
         modoActual.setActual(new ModoHumanoide(100,2,3));
         modoActual.setAlternativo(new ModoHumanoide(100,2,3));
     }
-
 }

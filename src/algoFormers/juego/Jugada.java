@@ -1,6 +1,7 @@
 package algoFormers.juego;
 
 import algoFormers.tablero.colocable.robots.AlgoFormer;
+import algoFormers.tablero.colocable.robots.Equipo;
 import algoFormers.tablero.posiciones.Posicion;
 
 
@@ -20,7 +21,7 @@ public class Jugada {
         tipoDeJugada.transformar(algoFormerDeLaJugada);
     }
 
-    public void combinar(List<AlgoFormer> equipo) {
+    public void combinar(Equipo equipo) {
         algoFormerDeLaJugada = tipoDeJugada.combinar(equipo);
     }
 
