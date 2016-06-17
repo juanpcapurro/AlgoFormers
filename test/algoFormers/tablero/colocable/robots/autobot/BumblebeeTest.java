@@ -30,14 +30,14 @@ public class BumblebeeTest {
     }
 	
 	@Test
-	public void test03StatsModoHumanoide (){
+	public void testStatsModoHumanoide (){
 		assertEquals(mauricio.getAtaque(), 40);
 		assertEquals(mauricio.getDistanciaDeAtaque(), 1);
 		assertEquals(mauricio.getVelocidad(),2 );
 	}
 	
 	@Test
-	public void test04StatsModoAlterno(){
+	public void testStatsModoAlterno(){
 		mauricio.transformar();
 		assertEquals(mauricio.getAtaque(), 20);
 		assertEquals(mauricio.getDistanciaDeAtaque(), 3);
@@ -45,7 +45,7 @@ public class BumblebeeTest {
 	}
 
 	@Test
-	public void test05BumblebeeAfectadoAlPasarPorEspinas(){
+	public void unidadTerrestreHumanoideAfectadoAlPasarPorEspinas(){
 		Superficie superficieTerrestre =new Espinas();
 		Superficie superficieAerea=new Nube();
 		int vida=mauricio.getPuntosDeVida();
@@ -54,28 +54,17 @@ public class BumblebeeTest {
 	}
 	
 	@Test
-	public void test06BumblebeeAlternoAfectadoAlPasarPorEspinas(){
+	public void unidadTerrestreAlternaAfectadoAlPasarPorEspinas(){
 		Superficie superficieTerrestre =new Espinas();
 		Superficie superficieAerea=new Nube();
-		mauricio.transformar();
 		int vida=mauricio.getPuntosDeVida();
 		mauricio.pasarPor(superficieTerrestre,superficieAerea);
 		assertTrue(mauricio.getPuntosDeVida()<vida);
 	}
 
-	@Test
-	public void test07BumblebeeNoafectadoAlPasarPorTormentaPsionica(){
-		Superficie superficieTerrestre =new Pantanoso();
-		Superficie superficieAerea=new TormentaPsionica();
-		int velocidad=mauricio.getVelocidad();
-		int ataque=mauricio.getAtaque();
-		mauricio.pasarPor(superficieTerrestre,superficieAerea);
-		assertTrue(mauricio.getVelocidad()<velocidad);
-		assertEquals(mauricio.getAtaque(),ataque);
-	}
 	
 	@Test
-	public void test08BumblebeeAlternoNoafectadoAlPasarPorTormentaPsionica(){
+	public void unidadTerrestreHumanoideNoafectadoAlPasarPorTormentaPsionica(){
 		Superficie superficieTerrestre =new Pantanoso();
 		Superficie superficieAerea=new TormentaPsionica();
 		mauricio.transformar();
@@ -85,16 +74,29 @@ public class BumblebeeTest {
 		assertTrue(mauricio.getVelocidad()<velocidad);
 		assertEquals(mauricio.getAtaque(),ataque);
 	}
+	
+	
+	@Test
+	public void unidadTerrestreAlternaNoafectadoAlPasarPorTormentaPsionica(){
+		Superficie superficieTerrestre =new Pantanoso();
+		Superficie superficieAerea=new TormentaPsionica();
+		mauricio.transformar();
+		int velocidad=mauricio.getVelocidad();
+		int ataque=mauricio.getAtaque();
+		mauricio.pasarPor(superficieTerrestre,superficieAerea);
+		assertTrue(mauricio.getVelocidad()<velocidad);
+		assertEquals(mauricio.getAtaque(),ataque);
+	}
 
 	@Test
-	public void test09AtaqueBonusSeDuplicaEnModoHumanoide(){
+	public void ataqueBonusSeDuplicaEnModoHumanoide(){
 		int ataque=mauricio.getAtaque();
 		mauricio.recibirColocable(new DobleCanion());
 		assertTrue(ataque<mauricio.getAtaque());
 	}
 
 	@Test
-	public void test10AtaqueBonusSeDuplicaEnModoAlterno(){
+	public void ataqueBonusSeDuplicaEnModoAlterno(){
 		mauricio.transformar();
 		int ataque=mauricio.getAtaque();
 		mauricio.recibirColocable(new DobleCanion());
