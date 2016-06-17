@@ -5,7 +5,7 @@ import algoFormers.tablero.colocable.robots.armas.Ataque;
 import algoFormers.tablero.colocable.robots.modificadores.DebuffNebulosa;
 import algoFormers.tablero.superficie.Superficie;
 
-class NebulosaDeAndromeda extends StateSuperficieAerea {
+public class NebulosaDeAndromeda extends StateSuperficieAerea {
 
 	public void recibirAtaque(Superficie superficieActual, Ataque ataque) {
 	}

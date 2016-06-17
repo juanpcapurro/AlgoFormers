@@ -16,6 +16,12 @@ public class Autobots extends Equipo {
     }
 
     @Override
+    public void notificar(){
+        optimus.notificar();
+        bumblebee.notificar();
+        ratchet.notificar();
+    }
+    @Override
     public AlgoFormer combinarme() {
         return new Superion(optimus,bumblebee,ratchet);
     }
@@ -42,4 +48,5 @@ public class Autobots extends Equipo {
     public Ratchet getRatchet() {
         return ratchet;
     }
+
 }

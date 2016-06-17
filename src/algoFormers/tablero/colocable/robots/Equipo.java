@@ -7,4 +7,6 @@ public abstract class Equipo {
     public abstract boolean estaVivo();
 
     public abstract boolean estanTodosAlgoformersVivos();
+
+    public abstract void notificar();
 }

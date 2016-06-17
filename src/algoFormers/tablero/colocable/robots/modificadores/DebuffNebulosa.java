@@ -9,13 +9,12 @@ public class DebuffNebulosa extends Modificador {
     public void actualizar(){
         if (contador>cantidadTurnos){
             estadoAfectado.setVelocidad(velocidadOriginal);
-            notificarOFF();
+            modificadores.remove(this);
         }
         contador++;
     }
     @Override
     public void activar(){
-        notificarON();
         velocidadOriginal=estadoAfectado.getVelocidad();
         estadoAfectado.setVelocidad(0);
     }

@@ -1,5 +1,6 @@
 package algoFormers.tablero.colocable.robots;
 
+import algoFormers.tablero.colocable.robots.modificadores.Modificador;
 import algoFormers.tablero.superficie.Superficie;
 
 public class ContextoModoAlgoformer {
@@ -48,6 +49,12 @@ public class ContextoModoAlgoformer {
     public int getDistanciaDeAtaque(){
         return modoActual.getDistancia();
     }
-
-
+    public void afectarEstado(Modificador modificador){
+        modoActual.afectarEstado(modificador);
+        modoAlternativo.afectarEstado(modificador);
+    }
+    public void notificar(){
+        modoActual.notificar();
+        modoAlternativo.notificar();
+    }
 }

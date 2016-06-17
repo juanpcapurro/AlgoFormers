@@ -55,9 +55,11 @@ public class Tablero{
         controlador.validarCoordenadas(posicionOrigen);
         controlador.validarCoordenadas(posicionDestino);
 
-//		if (posicionOrigen.estaAdistancia1De(posicionDestino)){}
-
 		Colocable colocableAMover = obtenerCasilleroAsociadoAPosicion(posicionOrigen).obtenerColocado();
+		Colocable colocableEndestino=obtenerCasilleroAsociadoAPosicion(posicionDestino).obtenerColocado();
+		if (colocableEndestino.ocupaLugar())
+			return;
+		colocableAMover.recibirColocable(colocableEndestino);
 		this.vaciarPosicion(posicionOrigen);
 		this.colocar(posicionDestino, colocableAMover);
 	}

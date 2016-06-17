@@ -1,7 +1,6 @@
 package algoFormers.juego.turno;
 
 import algoFormers.juego.Jugador;
-import algoFormers.juego.NotificadorTurno;
 import algoFormers.tablero.colocable.robots.AlgoFormer;
 import algoFormers.tablero.posiciones.Posicion;
 
@@ -24,8 +23,13 @@ public class Turno {
     }
     
 	public Jugador avanzarTurno() {
-        NotificadorTurno.notificar();
+        notificarJugadores();
         return jugadores.get( turno++ % cantidadDeJugadores);
+    }
+
+    public void notificarJugadores(){
+        for (Jugador jugador : jugadores)
+            jugador.notificar();
     }
 
 

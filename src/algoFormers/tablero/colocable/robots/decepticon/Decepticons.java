@@ -30,6 +30,13 @@ public class Decepticons extends Equipo {
         return (boneCrusher.estaVivo() && frenzy.estaVivo() && megatron.estaVivo());
     }
 
+    @Override
+    public void notificar() {
+        boneCrusher.notificar();
+        frenzy.notificar();
+        megatron.notificar();
+    }
+
     public BoneCrusher getBoneCrusher() {
         return boneCrusher;
     }

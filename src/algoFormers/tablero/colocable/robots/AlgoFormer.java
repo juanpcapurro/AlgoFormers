@@ -39,6 +39,10 @@ public abstract class AlgoFormer extends Colocable {
 		modoActual.pasarPor(superficieTerrestre, superficieAerea);
 	}
 
+	@Override
+	public void recibirColocable(Colocable colocableEnDestino){
+		colocableEnDestino.afectarColocable(modoActual);
+	}
 	public void atacar(Posicion posicionDestino){};
 
 	public  void mover(Posicion posicionOrigen, Posicion posicionDestino){}
@@ -56,5 +60,12 @@ public abstract class AlgoFormer extends Colocable {
 	}
 
 
+	public void notificar(){
+		modoActual.notificar();
+	}
+	@Override
+	public void afectarColocable(ContextoModoAlgoformer modo){
+		
+	}
 
 }
