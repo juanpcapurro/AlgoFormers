@@ -10,6 +10,7 @@ public class ModoAlternoAereo extends ModoAlgoformer {
 
 	@Override
 	public void pasarPor(Superficie superficieTerrestre, Superficie superficieArea) {
+		superficieTerrestre.afectarUnidadAerea(this);
 		superficieArea.afectarUnidadAerea(this);
 	}
 

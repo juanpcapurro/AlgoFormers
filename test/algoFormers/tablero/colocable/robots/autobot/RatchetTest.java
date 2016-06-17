@@ -66,4 +66,13 @@ public class RatchetTest {
 		assertEquals(mauricio.getPuntosDeVida(),vida);
 	}
 
+	@Test
+	public void afectadoAlPasarPorEspinas(){
+		Superficie superficieTerrestre =new Espinas();
+		Superficie superficieAerea=new Nube();
+		mauricio.transformar();
+		int vida=mauricio.getPuntosDeVida();
+		mauricio.pasarPor(superficieTerrestre,superficieAerea);
+		assertTrue(mauricio.getPuntosDeVida()<vida);
+	}
 }
