@@ -45,7 +45,16 @@ public class BumblebeeTest {
 	}
 
 	@Test
-	public void afectadoAlPasarPorEspinas(){
+	public void unidadTerrestreHumanoideAfectadoAlPasarPorEspinas(){
+		Superficie superficieTerrestre =new Espinas();
+		Superficie superficieAerea=new Nube();
+		int vida=mauricio.getPuntosDeVida();
+		mauricio.pasarPor(superficieTerrestre,superficieAerea);
+		assertTrue(mauricio.getPuntosDeVida()<vida);
+	}
+	
+	@Test
+	public void unidadTerrestreAlternaAfectadoAlPasarPorEspinas(){
 		Superficie superficieTerrestre =new Espinas();
 		Superficie superficieAerea=new Nube();
 		int vida=mauricio.getPuntosDeVida();
@@ -53,8 +62,22 @@ public class BumblebeeTest {
 		assertTrue(mauricio.getPuntosDeVida()<vida);
 	}
 
+	
 	@Test
-	public void unidadTerrestreNoafectadoAlPasarPorTormentaPsiónica(){
+	public void unidadTerrestreHumanoideNoafectadoAlPasarPorTormentaPsionica(){
+		Superficie superficieTerrestre =new Pantanoso();
+		Superficie superficieAerea=new TormentaPsionica();
+		mauricio.transformar();
+		int velocidad=mauricio.getVelocidad();
+		int ataque=mauricio.getAtaque();
+		mauricio.pasarPor(superficieTerrestre,superficieAerea);
+		assertTrue(mauricio.getVelocidad()<velocidad);
+		assertEquals(mauricio.getAtaque(),ataque);
+	}
+	
+	
+	@Test
+	public void unidadTerrestreAlternaNoafectadoAlPasarPorTormentaPsionica(){
 		Superficie superficieTerrestre =new Pantanoso();
 		Superficie superficieAerea=new TormentaPsionica();
 		mauricio.transformar();

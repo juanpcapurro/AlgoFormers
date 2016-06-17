@@ -1,6 +1,11 @@
 package algoFormers.tablero.colocable.robots.decepticon;
 
 import algoFormers.tablero.colocable.robots.armas.DisparoConvencional;
+import algoFormers.tablero.superficie.Superficie;
+import algoFormers.tablero.superficieAerea.Nube;
+import algoFormers.tablero.superficieAerea.TormentaPsionica;
+import algoFormers.tablero.superficieTerrestre.Pantanoso;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -36,6 +41,29 @@ public class MegatronTest {
 		assertEquals(mauricio.getAtaque(), 55);
 		assertEquals(mauricio.getDistanciaDeAtaque(), 2);
 		assertEquals(mauricio.getVelocidad(),8);
+	}
+	
+	
+	@Test
+	public void unidadAereaAfectadaAlPasarPorTormentaPsionica(){
+		Superficie superficieTerrestre =new Pantanoso();
+		Superficie superficieAerea=new TormentaPsionica();
+		mauricio.transformar();
+		int velocidad=mauricio.getVelocidad();
+		int ataque=mauricio.getAtaque();
+		mauricio.pasarPor(superficieTerrestre,superficieAerea);
+		assertEquals(velocidad,mauricio.getVelocidad());
+		assertTrue(mauricio.getAtaque()<ataque);
+	}
+	
+	@Test
+	public void unidadAereaNoAfectadaAlPasarPorNube(){
+		Superficie superficieTerrestre =new Pantanoso();
+		Superficie superficieAerea=new Nube();
+		mauricio.transformar();
+		int vida=mauricio.getPuntosDeVida();
+		mauricio.pasarPor(superficieTerrestre,superficieAerea);
+		assertEquals(mauricio.getPuntosDeVida(),vida);
 	}
 }
 

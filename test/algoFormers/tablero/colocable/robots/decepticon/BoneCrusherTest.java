@@ -1,6 +1,12 @@
 package algoFormers.tablero.colocable.robots.decepticon;
 
 import algoFormers.tablero.colocable.robots.armas.DisparoConvencional;
+import algoFormers.tablero.superficie.Superficie;
+import algoFormers.tablero.superficieAerea.Nube;
+import algoFormers.tablero.superficieAerea.TormentaPsionica;
+import algoFormers.tablero.superficieTerrestre.Espinas;
+import algoFormers.tablero.superficieTerrestre.Pantanoso;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -36,5 +42,49 @@ public class BoneCrusherTest {
 		assertEquals(mauricio.getAtaque(), 30);
 		assertEquals(mauricio.getDistanciaDeAtaque(), 3);
 		assertEquals(mauricio.getVelocidad(),8);
+	}
+	
+	@Test
+	public void unidadTerrestreHumanoideAfectadoAlPasarPorEspinas(){
+		Superficie superficieTerrestre =new Espinas();
+		Superficie superficieAerea=new Nube();
+		int vida=mauricio.getPuntosDeVida();
+		mauricio.pasarPor(superficieTerrestre,superficieAerea);
+		assertTrue(mauricio.getPuntosDeVida()<vida);
+	}
+	
+	@Test
+	public void unidadTerrestreAlternaAfectadoAlPasarPorEspinas(){
+		Superficie superficieTerrestre =new Espinas();
+		Superficie superficieAerea=new Nube();
+		int vida=mauricio.getPuntosDeVida();
+		mauricio.pasarPor(superficieTerrestre,superficieAerea);
+		assertTrue(mauricio.getPuntosDeVida()<vida);
+	}
+
+	
+	@Test
+	public void unidadTerrestreHumanoideNoafectadoAlPasarPorTormentaPsionica(){
+		Superficie superficieTerrestre =new Pantanoso();
+		Superficie superficieAerea=new TormentaPsionica();
+		mauricio.transformar();
+		int velocidad=mauricio.getVelocidad();
+		int ataque=mauricio.getAtaque();
+		mauricio.pasarPor(superficieTerrestre,superficieAerea);
+		assertTrue(mauricio.getVelocidad()<velocidad);
+		assertEquals(mauricio.getAtaque(),ataque);
+	}
+	
+	
+	@Test
+	public void unidadTerrestreAlternaNoafectadoAlPasarPorTormentaPsionica(){
+		Superficie superficieTerrestre =new Pantanoso();
+		Superficie superficieAerea=new TormentaPsionica();
+		mauricio.transformar();
+		int velocidad=mauricio.getVelocidad();
+		int ataque=mauricio.getAtaque();
+		mauricio.pasarPor(superficieTerrestre,superficieAerea);
+		assertTrue(mauricio.getVelocidad()<velocidad);
+		assertEquals(mauricio.getAtaque(),ataque);
 	}
 }

@@ -1,6 +1,12 @@
 package algoFormers.tablero.colocable.robots.decepticon;
 
 import algoFormers.tablero.colocable.robots.armas.DisparoConvencional;
+import algoFormers.tablero.superficie.Superficie;
+import algoFormers.tablero.superficieAerea.Nube;
+import algoFormers.tablero.superficieAerea.TormentaPsionica;
+import algoFormers.tablero.superficieTerrestre.Espinas;
+import algoFormers.tablero.superficieTerrestre.Pantanoso;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -96,18 +102,43 @@ public class MenasorTest {
         assertTrue(menasorDecepticonsHeridos.getPuntosDeVida()==0);
     }
 	@Test
-	public void testStatsModoHumanoide (){
+	public void test08StatsModoHumanoide (){
 		assertEquals(menasor.getAtaque(), 115);
 		assertEquals(menasor.getDistanciaDeAtaque(), 2);
 		assertEquals(menasor.getVelocidad(),2 );
 	}
 	@Test
-	public void testStatsNoCambianAlCambiarModo(){
+	public void test09StatsNoCambianAlCambiarModo(){
 		menasor.transformar();
 		assertEquals(menasor.getAtaque(), 115);
 		assertEquals(menasor.getDistanciaDeAtaque(), 2);
 		assertEquals(menasor.getVelocidad(),2 );
 	}
+	
+
+	@Test
+	public void test10menasorAfectadoAlPasarPorEspinas(){
+		Superficie superficieTerrestre =new Espinas();
+		Superficie superficieAerea=new Nube();
+		int vida=menasor.getPuntosDeVida();
+		menasor.pasarPor(superficieTerrestre,superficieAerea);
+		assertTrue(menasor.getPuntosDeVida()<vida);
+	}
+	
+	
+	@Test
+	public void test11MenasorNoafectadoAlPasarPorTormentaPsionica(){
+		Superficie superficieTerrestre =new Pantanoso();
+		Superficie superficieAerea=new TormentaPsionica();
+		menasor.transformar();
+		int velocidad=menasor.getVelocidad();
+		int ataque=menasor.getAtaque();
+		menasor.pasarPor(superficieTerrestre,superficieAerea);
+		assertTrue(menasor.getVelocidad()<velocidad);
+		assertEquals(menasor.getAtaque(),ataque);
+	}
+	
+
 
 
 }
