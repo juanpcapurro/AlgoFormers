@@ -3,19 +3,14 @@ package algoFormers.juego;
 
 import algoFormers.tablero.colocable.robots.AlgoFormer;
 import algoFormers.tablero.colocable.robots.Equipo;
-import algoFormers.tablero.colocable.robots.autobot.Autobots;
-import algoFormers.tablero.colocable.robots.autobot.Bumblebee;
 import algoFormers.tablero.posiciones.Posicion;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class Jugador {
 
 
 
 	private String nombreDeJugador;
-	Equipo equipo;
+	Equipo equipo=null;
 	Jugada jugadaEnCurso;
 
 
@@ -80,4 +75,8 @@ public class Jugador {
 		this.equipo = equipo;
 	}
 
+	public void notificar() {
+		if(equipo!=null)
+		equipo.notificar();
+	}
 }

@@ -6,6 +6,11 @@ public class DebuffTormenta extends Modificador {
     int ataqueOriginal;
 
     @Override
+    public void actualizar() {
+
+    }
+
+    @Override
     public void activar() {
         if (AfectadosPorTormenta.getInstance().fueAfectado(estadoAfectado))
             return;

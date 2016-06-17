@@ -10,4 +10,8 @@ public class Bumblebee extends AlgoFormer {
 		modoActual.setAlternativo(new ModoAlternoTerrestre(ptosDeVida,20,3,5));
     }
 
+    @Override
+    public void afectarColocable(ContextoModoAlgoformer modo) {
+
+    }
 }

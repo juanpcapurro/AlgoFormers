@@ -39,7 +39,8 @@ public  class EstadoAlgoFormer extends AlgoFormer{
 	}
 
 
+	@Override
+	public void afectarColocable(ContextoModoAlgoformer modo) {
 
-
-
+	}
 }

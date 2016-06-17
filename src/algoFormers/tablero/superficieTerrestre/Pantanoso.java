@@ -2,9 +2,9 @@ package algoFormers.tablero.superficieTerrestre;
 
 import algoFormers.tablero.colocable.robots.ModoAlgoformer;
 import algoFormers.tablero.colocable.robots.armas.Ataque;
-import algoFormers.tablero.colocable.robots.modificadores.DebuffEspinas;
+import algoFormers.tablero.colocable.robots.modificadores.DebuffPantano;
 
-class Pantanoso extends StateSuperficieTerrestre {
+public class Pantanoso extends StateSuperficieTerrestre {
 
     public void recibirAtaque(StateSuperficieTerrestre superficieActual, Ataque ataque) {
     }
@@ -12,7 +12,7 @@ class Pantanoso extends StateSuperficieTerrestre {
 
     @Override
     public void afectarUnidadTerrestre(ModoAlgoformer modoAlgoformer) {
-        modoAlgoformer.afectarEstado(new DebuffEspinas());
+        modoAlgoformer.afectarEstado(new DebuffPantano());
     }
 
     @Override

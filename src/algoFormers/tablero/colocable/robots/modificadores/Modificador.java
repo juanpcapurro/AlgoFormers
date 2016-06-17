@@ -1,20 +1,21 @@
 package algoFormers.tablero.colocable.robots.modificadores;
 
-import algoFormers.juego.NotificableTurno;
 import algoFormers.tablero.colocable.robots.EstadoAlgoFormer;
 
-public class Modificador extends NotificableTurno {
+import java.util.List;
+
+public abstract class Modificador {
     EstadoAlgoFormer estadoAfectado;
-    @Override
-    public void actualizar() {
+    List<Modificador> modificadores;
+    public void setEstado(EstadoAlgoFormer estado,List<Modificador> listaModificadores){
+        estadoAfectado=estado;
+        modificadores=listaModificadores;
+        activar();
     }
 
-    public void setEstado(EstadoAlgoFormer estado) {
-        this.estadoAfectado = estado;
-        this.activar();
-    }
+    public abstract void actualizar();
 
-    public void activar(){
+    public abstract void activar();
 
-    }
+
 }
