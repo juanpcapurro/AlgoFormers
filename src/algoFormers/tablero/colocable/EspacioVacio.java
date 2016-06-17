@@ -27,5 +27,10 @@ class EspacioVacio extends Colocable{
 
 	}
 
+	@Override
+	public boolean esMovible() {
+		return false;
+	}
+
 
 }

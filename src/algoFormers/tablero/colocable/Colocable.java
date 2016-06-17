@@ -10,4 +10,6 @@ public abstract class Colocable implements Atacable{
 	public abstract void pasarPor(Superficie superficieTerrestre,Superficie superficieAerea);
 
 	public abstract void afectarColocable(ContextoModoAlgoformer modo);
+
+	public abstract boolean esMovible();
 }

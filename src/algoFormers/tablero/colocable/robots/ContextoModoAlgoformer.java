@@ -57,4 +57,8 @@ public class ContextoModoAlgoformer {
         modoActual.notificar();
         modoAlternativo.notificar();
     }
+
+    public boolean tieneMovimientosDisponibles() {
+        return modoActual.tieneMovimientosDisponibles();
+    }
 }

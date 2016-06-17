@@ -1,5 +1,6 @@
 package algoFormers.tablero;
 
+import algoFormers.tablero.colocable.bonus.DobleCanion;
 import algoFormers.tablero.colocable.robots.AlgoFormer;
 import algoFormers.tablero.colocable.robots.autobot.Bumblebee;
 import algoFormers.tablero.posiciones.CoordenadasInvalidas;
@@ -101,6 +102,32 @@ public class TableroTest{
         assertTrue(tablero.estaOcupadoEnPosicion(posicion));
     }
     
+    @Test
+    public void test11MoverAlgoformerPasaPorEspinasYEsDaniado(){
+        Posicion posicionEspinas= new Posicion(3,4);
+        Posicion posicionBumble=new Posicion(1,4);
+        Posicion posicionDestino=new Posicion(4,4);
+        Bumblebee bumblebee=new Bumblebee();
+        int vidaAntesDeEspinas=bumblebee.getPuntosDeVida();
+        tablero.colocarEspinas(posicionEspinas);
+        tablero.colocarAlgoformer(posicionBumble,bumblebee);
+        tablero.recorrer(posicionBumble,posicionDestino);
+        assertTrue(bumblebee.getPuntosDeVida()<vidaAntesDeEspinas);
+    }
+
+    @Test
+    public void test11MoverAlgoformerPasaPorBonusYEsAumentaAtaque(){
+        Posicion posicionBonus= new Posicion(2,4);
+        Posicion posicionBumble=new Posicion(2,2);
+        DobleCanion dobleCanion=new DobleCanion();
+        Posicion posicionDestino=new Posicion(2,6);
+        Bumblebee bumblebee=new Bumblebee();
+        int ataqueAntesDeBonus=bumblebee.getAtaque();
+        tablero.colocar(posicionBonus,dobleCanion);
+        tablero.colocarAlgoformer(posicionBumble,bumblebee);
+        tablero.recorrer(posicionBumble,posicionDestino);
+        assertTrue(bumblebee.getAtaque()>ataqueAntesDeBonus);
+    }
 
 
 

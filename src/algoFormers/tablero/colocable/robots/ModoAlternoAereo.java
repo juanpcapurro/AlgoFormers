@@ -24,4 +24,6 @@ public class ModoAlternoAereo extends ModoAlgoformer {
 	public boolean estaEnModoAlterno() {
 		return true;
 	}
+
+
 }

@@ -32,7 +32,7 @@ public class Tablero{
         return true;
     }
 
-	private void colocar(Posicion posicion,Colocable aColocar){
+	void colocar(Posicion posicion,Colocable aColocar){
         controlador.validarCoordenadas(posicion);
 		Casillero casillero= obtenerCasilleroAsociadoAPosicion(posicion);
 		casillero.colocar(aColocar);
@@ -54,15 +54,18 @@ public class Tablero{
 	public void mover(Posicion posicionOrigen, Posicion posicionDestino){
         controlador.validarCoordenadas(posicionOrigen);
         controlador.validarCoordenadas(posicionDestino);
-
-		Colocable colocableAMover = obtenerCasilleroAsociadoAPosicion(posicionOrigen).obtenerColocado();
-		Colocable colocableEndestino=obtenerCasilleroAsociadoAPosicion(posicionDestino).obtenerColocado();
-		if (colocableEndestino.ocupaLugar())
-			return;
-		colocableAMover.recibirColocable(colocableEndestino);
-		this.vaciarPosicion(posicionOrigen);
-		this.colocar(posicionDestino, colocableAMover);
+		Casillero casilleroOrigen=obtenerCasilleroAsociadoAPosicion(posicionOrigen);
+		Casillero casilleroDestino=obtenerCasilleroAsociadoAPosicion(posicionDestino);
+		casilleroOrigen.moverColocable(casilleroDestino);
 	}
+/*
+	Colocable colocableAMover = obtenerCasilleroAsociadoAPosicion(posicionOrigen).obtenerColocado();
+	Colocable colocableEndestino=obtenerCasilleroAsociadoAPosicion(posicionDestino).obtenerColocado();
+	if (colocableEndestino.ocupaLugar())
+			return;
+	colocableAMover.recibirColocable(colocableEndestino);
+	this.vaciarPosicion(posicionOrigen);
+	this.colocar(posicionDestino, colocableAMover);*/
 
 	void recorrer(Posicion posicionOrigen,Posicion posicionDestino){
 		Movimiento movimiento= new Movimiento(posicionOrigen,posicionDestino);
@@ -87,6 +90,11 @@ public class Tablero{
 	public void atacar(Posicion posicion,Ataque ataque){
         controlador.validarCoordenadas(posicion);
 		(obtenerCasilleroAsociadoAPosicion(posicion)).atacarCasillero(ataque);
+	}
+
+	public void colocarEspinas(Posicion posicion){
+		Casillero casillero= obtenerCasilleroAsociadoAPosicion(posicion);
+		casillero.cambiarAEspinas();
 	}
 
 

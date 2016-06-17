@@ -3,12 +3,17 @@ package algoFormers.tablero.superficieAerea;
 import algoFormers.tablero.colocable.robots.armas.Ataque;
 import algoFormers.tablero.superficie.Superficie;
 
+import java.util.Random;
+
 public class ContextoSuperficieArea {
     StateSuperficieAerea actual;
 
     public ContextoSuperficieArea(){
-        actual=new Nube();
+        int i = (new Random()).nextInt(Integer.MAX_VALUE)%3;
+        StateSuperficieAerea[] vectorRandom= {new Nube(), new NebulosaDeAndromeda(), new TormentaPsionica()};
+        actual=vectorRandom[i];
     }
+
     void cambiarANebulosa(){
         actual=new NebulosaDeAndromeda();
     }
@@ -22,7 +27,7 @@ public class ContextoSuperficieArea {
     void recibirAtaque(Ataque ataque){
         actual.recibirAtaque(ataque);
     }
-    Superficie getState(){
+    public Superficie getActual(){
         return actual;
     }
 }

@@ -3,26 +3,31 @@ package algoFormers.tablero.superficieTerrestre;
 import algoFormers.tablero.colocable.robots.armas.Ataque;
 import algoFormers.tablero.superficie.Superficie;
 
+import java.util.Random;
+
 public class ContextoSuperficieTerrestre {
     StateSuperficieTerrestre actual;
 
     public ContextoSuperficieTerrestre(){
-        actual=new Rocoso();
+        int i = (new Random()).nextInt(Integer.MAX_VALUE)%3;
+        StateSuperficieTerrestre[] vectorRandom= {new Rocoso(), new Espinas(), new Pantanoso()};
+        actual=vectorRandom[i];
     }
 
-    void cambiarEspinas(){
+
+    public void cambiarEspinas(){
         actual=new Espinas();
     }
-    void cambiarPantanoso(){
+    public void cambiarPantanoso(){
         actual=new Pantanoso();
     }
-    void cambiarRocoso(){
+    public void cambiarRocoso(){
         actual=new Rocoso();
     }
     public void recibirAtaque(Ataque ataque){
         actual.recibirAtaque(ataque);
     }
-    Superficie getActual(){
+    public Superficie getActual(){
         return actual;
     }
 }

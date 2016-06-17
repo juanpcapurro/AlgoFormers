@@ -9,10 +9,12 @@ import java.util.List;
 public abstract class ModoAlgoformer {
     EstadoAlgoFormer estado;
     List <Modificador> modificadores;
+    int movimientosRealizados;
 
     public ModoAlgoformer(Vida vida,int ataque, int distanciaDeAtaque, int velocidad) {
         estado = new EstadoAlgoFormer(vida,ataque, distanciaDeAtaque, velocidad);
         modificadores=new ArrayList<>();
+        movimientosRealizados=0;
     }
     public void afectarEstado(Modificador modificador){
         modificadores.add(modificador);
@@ -22,6 +24,7 @@ public abstract class ModoAlgoformer {
     public void notificar(){
         for (Modificador modificador : modificadores)
             modificador.actualizar();
+        movimientosRealizados=0;
     }
     public EstadoAlgoFormer verEstado(){
         return estado;
@@ -41,5 +44,10 @@ public abstract class ModoAlgoformer {
 
     public int getDistancia() {
         return estado.getDistanciaDeAtaque();
+    }
+
+    public  boolean tieneMovimientosDisponibles(){
+        return movimientosRealizados<estado.getVelocidad();
+
     }
 }
