@@ -1,10 +1,12 @@
 package algoFormers.tablero.colocable.robots.modificadores;
 
 public class BuffDobleCanion extends Modificador{
-    static double PORCENTAJE= 1.5;
+    static double PORCENTAJE= 2;
     int ataqueOriginal;
     int contador=0;
     int cantidadTurnos=6;
+    //Deberia ser
+    //int cantidadTurnos=3;
 
     @Override
     public void actualizar(){
