@@ -95,4 +95,15 @@ public class RatchetTest {
 		mauricio.pasarPor(superficieTerrestre,superficieAerea);
 		assertEquals(mauricio.getVelocidad(),velocidad);
 	}
+	@Test
+	public void NoEsafectadoAlPasarPorPantanosoEnAereo(){
+		Superficie superficieTerrestre =new Pantanoso();
+		Superficie superficieAerea=new Nube();
+		mauricio.transformar();
+		int velocidad=mauricio.getVelocidad();
+		mauricio.pasarPor(superficieTerrestre,superficieAerea);
+		assertTrue(mauricio.getVelocidad()==velocidad);
+	}
+
+
 }

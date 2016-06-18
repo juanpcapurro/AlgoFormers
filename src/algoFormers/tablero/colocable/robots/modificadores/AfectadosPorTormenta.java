@@ -22,7 +22,7 @@ public class AfectadosPorTormenta {
 
     boolean fueAfectado(EstadoAlgoFormer estado){
         for (EstadoAlgoFormer afectado : afectados)
-            if (afectados.equals(estado))
+            if (afectado.equals(estado))
                 return true;
         return false;
     }
