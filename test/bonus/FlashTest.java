@@ -404,10 +404,10 @@ public class FlashTest {
 	public void test12AlternoBoneCrusherTomaFlashYTriplicaVelocidadPorTresTurnos(){
 		
 		this.decepticons.getBoneCrusher().transformar();		
-		//Velocidad pre bonus
+		// pre bonus
 		assertEquals(this.decepticons.getBoneCrusher().getVelocidad(),8);
 		
-		//turno de obtencion del flash
+		//turno de obtencion
 		this.turno.avanzarTurno();
 		assertEquals(this.turno.obtenerJugadorQueDebeJugar(),Allen);
 		this.decepticons.getBoneCrusher().recibirColocable(new Flash());
@@ -415,111 +415,111 @@ public class FlashTest {
 		this.turno.avanzarTurno();
 		this.turno.avanzarTurno();
 		
-		//primer turno con flash
+		//primer turno
 		assertEquals(this.decepticons.getBoneCrusher().getVelocidad(),24);
 		this.turno.avanzarTurno();
 		this.turno.avanzarTurno();
 		
-		//segundo turno con flash
+		//segundo turno
 		assertEquals(this.decepticons.getBoneCrusher().getVelocidad(),24);
 		this.turno.avanzarTurno();
 		this.turno.avanzarTurno();
 		
-		//tercer turno con flash
+		//tercer turno
 		assertEquals(this.decepticons.getBoneCrusher().getVelocidad(),24);
 		this.turno.avanzarTurno();
 		
-		//Cuarto turno sin flash
+		//Cuarto turno
 		assertEquals(this.decepticons.getBoneCrusher().getVelocidad(),8);
 		this.turno.finalizar();
 	}
 	
-	/*@Test
+	@Test
 	public void test13SuperionTomaFlashYTriplicaVelocidadPorTresTurnos(){
 		
 		assertEquals(this.turno.obtenerJugadorQueDebeJugar(),Barry);
 		this.turno.combinarAlgoformers();
-		Superion superion = (Superion) this.Barry.obtenerJugadaActual().getAlgoformerDeJugada();
 		
 		assertEquals(this.turno.obtenerJugadorQueDebeJugar(),Allen);
+		this.turno.finalizar();
 		assertEquals(this.turno.obtenerJugadorQueDebeJugar(),Allen);
+		this.turno.finalizar();
 		assertEquals(this.turno.obtenerJugadorQueDebeJugar(),Allen);
 		this.turno.finalizar();
 		assertEquals(this.turno.obtenerJugadorQueDebeJugar(),Barry);
-		this.turno.avanzarTurno();
+
 
 		//Velocidad pre bonus
-		assertEquals(superion.getVelocidad(),3);
+		assertEquals(this.Barry.obtenerJugadaActual().getAlgoformerDeJugada().getVelocidad(),3);
 		
 		//turno de obtencion del flash
 		assertEquals(this.turno.obtenerJugadorQueDebeJugar(),Barry);
-		superion.recibirColocable(new Flash());
-		assertEquals(superion.getVelocidad(),9);
+		this.Barry.obtenerJugadaActual().getAlgoformerDeJugada().recibirColocable(new Flash());
+		assertEquals(this.Barry.obtenerJugadaActual().getAlgoformerDeJugada().getVelocidad(),9);
 		this.turno.avanzarTurno();
 		this.turno.avanzarTurno();
 		
 		//primer turno con flash
-		assertEquals(superion.getVelocidad(),9);
+		assertEquals(this.Barry.obtenerJugadaActual().getAlgoformerDeJugada().getVelocidad(),9);
 		this.turno.avanzarTurno();
 		this.turno.avanzarTurno();
 		
 		//segundo turno con flash
-		assertEquals(superion.getVelocidad(),9);
+		assertEquals(this.Barry.obtenerJugadaActual().getAlgoformerDeJugada().getVelocidad(),9);
 		this.turno.avanzarTurno();
 		this.turno.avanzarTurno();
 		
 		//tercer turno con flash
-		assertEquals(superion.getVelocidad(),9);
+		assertEquals(this.Barry.obtenerJugadaActual().getAlgoformerDeJugada().getVelocidad(),9);
 		this.turno.avanzarTurno();
 		
 		//Cuarto turno sin flash
-		assertEquals(superion.getVelocidad(),3);
+		assertEquals(this.Barry.obtenerJugadaActual().getAlgoformerDeJugada().getVelocidad(),3);
 		this.turno.finalizar();
 		
 	}
-	*/
+
 	
-	
-/*@Test
+/*
+	@Test
 	public void test14MenasorTomaFlashYTriplicaVelocidadPorTresTurnos(){
 
-		this.turno.avanzarTurno();
 		assertEquals(this.turno.obtenerJugadorQueDebeJugar(),Allen);
 		this.turno.combinarAlgoformers();
-		Menasor menasor = (Menasor) this.Allen.obtenerJugadaActual().getAlgoformerDeJugada();
 		
 		assertEquals(this.turno.obtenerJugadorQueDebeJugar(),Barry);
+		this.turno.finalizar();
+		assertEquals(this.turno.obtenerJugadorQueDebeJugar(),Barry);
+		this.turno.finalizar();
 		assertEquals(this.turno.obtenerJugadorQueDebeJugar(),Barry);
 		this.turno.finalizar();
 		assertEquals(this.turno.obtenerJugadorQueDebeJugar(),Allen);
-		this.turno.avanzarTurno();
 
 		//Velocidad pre bonus
-		assertEquals(menasor.getVelocidad(),2);
+		assertEquals(this.Allen.obtenerJugadaActual().getAlgoformerDeJugada().getVelocidad(),2);
 		
 		//turno de obtencion del flash
-		assertEquals(this.turno.obtenerJugadorQueDebeJugar(),Allen);
-		menasor.recibirColocable(new Flash());
-		assertEquals(menasor.getVelocidad(),6);
+		this.Allen.obtenerJugadaActual().getAlgoformerDeJugada().recibirColocable(new Flash());
+		assertEquals(this.Allen.obtenerJugadaActual().getAlgoformerDeJugada().getVelocidad(),6);
 		this.turno.avanzarTurno();
 		this.turno.avanzarTurno();
 		
 		//primer turno con flash
-		assertEquals(menasor.getVelocidad(),6);
+		assertEquals(this.Allen.obtenerJugadaActual().getAlgoformerDeJugada().getVelocidad(),6);
 		this.turno.avanzarTurno();
 		this.turno.avanzarTurno();
 		
 		//segundo turno con flash
-		assertEquals(menasor.getVelocidad(),6);
+		assertEquals(this.Allen.obtenerJugadaActual().getAlgoformerDeJugada().getVelocidad(),6);
 		this.turno.avanzarTurno();
 		this.turno.avanzarTurno();
 		
 		//tercer turno con flash
-		assertEquals(menasor.getVelocidad(),6);
+		assertEquals(this.Allen.obtenerJugadaActual().getAlgoformerDeJugada().getVelocidad(),6);
 		this.turno.avanzarTurno();
 		
 		//Cuarto turno sin flash
-		assertEquals(menasor.getVelocidad(),2);
+		assertEquals(this.Allen.obtenerJugadaActual().getAlgoformerDeJugada().getVelocidad(),2);
 		this.turno.finalizar();
 	}
 */
