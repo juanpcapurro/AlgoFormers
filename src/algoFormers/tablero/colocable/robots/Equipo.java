@@ -9,4 +9,6 @@ public abstract class Equipo {
     public abstract boolean estanTodosAlgoformersVivos();
 
     public abstract void notificar();
+
+    public abstract boolean estaCombinado();
 }

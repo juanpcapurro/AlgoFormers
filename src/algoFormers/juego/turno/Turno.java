@@ -24,6 +24,7 @@ public class Turno {
     
 	public Jugador avanzarTurno() {
         notificarJugadores();
+
         return jugadores.get( turno++ % cantidadDeJugadores);
     }
 
@@ -62,11 +63,10 @@ public class Turno {
         this.finalizado = false;
         if (jugadores.get(turno % cantidadDeJugadores).enProcesoDeCombinacion()) {
             jugadores.get(turno % cantidadDeJugadores).pasoTurno();
-            return this.avanzarTurno();
+            turno+=1;
         }
-        else{
-            return jugadores.get(turno % cantidadDeJugadores);
-        }
+        return jugadores.get(turno % cantidadDeJugadores);
+
     }
 
     public void jugarCon(AlgoFormer algoFormer) {
@@ -105,7 +105,7 @@ public class Turno {
 
     public void finalizar() {
         this.finalizado = true;
-        this.avanzarTurno();
+        this.turno+=1;
     }
 
     public boolean finalizado() {

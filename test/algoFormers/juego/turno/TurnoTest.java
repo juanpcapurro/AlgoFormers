@@ -8,6 +8,8 @@ import algoFormers.tablero.colocable.robots.autobot.Optimus;
 import algoFormers.tablero.colocable.robots.autobot.Ratchet;
 import algoFormers.tablero.colocable.robots.decepticon.BoneCrusher;
 import algoFormers.tablero.colocable.robots.decepticon.Decepticons;
+import algoFormers.tablero.colocable.robots.decepticon.Frenzy;
+import algoFormers.tablero.colocable.robots.decepticon.Megatron;
 import algoFormers.tablero.posiciones.Posicion;
 import org.junit.Before;
 import org.junit.Test;
@@ -58,16 +60,24 @@ public class  TurnoTest {
 	@Test
 	public void test05Jugador1EligeCombinarYNoJuegaProximos2Turnos(){
 		Jugador jugadorActual = turno.obtenerJugadorQueDebeJugar();
+		assertEquals(jugadorActual,miJugador1);
+
 		jugadorActual.asignarEquipo(new Autobots());
 
 		turno.deCombinacion();
 		turno.combinarAlgoformers(); // combina y se finaliza el turno
 
-		assertEquals(turno.obtenerJugadorQueDebeJugar(),miJugador2);
-		assertEquals(turno.obtenerJugadorQueDebeJugar(),miJugador2);
-		assertEquals(turno.obtenerJugadorQueDebeJugar(),miJugador2);
+		jugadorActual = turno.obtenerJugadorQueDebeJugar();
+		assertEquals(jugadorActual,miJugador2);
+		turno.finalizar();
+		jugadorActual = turno.obtenerJugadorQueDebeJugar();
+		assertEquals(jugadorActual,miJugador2);
+		turno.finalizar();
+		jugadorActual = turno.obtenerJugadorQueDebeJugar();
+		assertEquals(jugadorActual,miJugador2);
 		turno.finalizar();
 		assertEquals(turno.obtenerJugadorQueDebeJugar(),miJugador1);
+
 
 	}
 
@@ -101,8 +111,6 @@ public class  TurnoTest {
 
 
 	}
-
-
 
 	@Test
 	public void test07JugadorUsaElTurnoParaMoverOptimusUsaTodaDistanciaValida(){
@@ -156,37 +164,218 @@ public class  TurnoTest {
 	}
 
 	@Test
-	public void test09JugadorUsaElTurnoParaMoverRatchetUsaTodaDistanciaValida(){}
+	public void test09JugadorUsaElTurnoParaMoverRatchetUsaTodaDistanciaValida(){
+		Jugador jugadorActual = turno.obtenerJugadorQueDebeJugar();
+		Autobots equipo = new Autobots();
+		jugadorActual.asignarEquipo(equipo);
+		Ratchet ratchet = equipo.getRatchet();
+
+		turno.deMovimiento();
+		turno.jugarCon(ratchet);
+
+		Posicion posicionOrigen = new Posicion(0,1);
+		Posicion posicionDestino = new Posicion(1,1);
+		turno.mover(posicionOrigen,posicionDestino);
+
+		assertTrue(turno.finalizado());
+	}
 
 	@Test
-	public void test10JugadorUsaElTurnoParaMoverRatchetUsaMediaDistanciaValidaYFinalizaTurno(){}
+	public void test10JugadorDecidePasarElTurno(){
+		Jugador jugadorActual = turno.obtenerJugadorQueDebeJugar();
+
+		turno.finalizar();
+
+		assertTrue(turno.finalizado());
+
+	}
 
 	@Test
-	public void test11JugadorUsaElTurnoParaMoverBumblebeeUsaTodaDistanciaValida(){}
+	public void test11JugadorUsaElTurnoParaMoverBumblebeeUsaTodaDistanciaValida(){
+		Jugador jugadorActual = turno.obtenerJugadorQueDebeJugar();
+		Autobots equipo = new Autobots();
+		jugadorActual.asignarEquipo(equipo);
+		Bumblebee bumblebee = equipo.getBumblebee();
+
+		turno.deMovimiento();
+		turno.jugarCon(bumblebee);
+
+
+		Posicion posicionOrigen = new Posicion(0,1);
+		Posicion posicionDestino = new Posicion(1,1);
+		turno.mover(posicionOrigen,posicionDestino);
+
+		assertFalse(turno.finalizado()); //le queda un paso disponible.
+
+		posicionOrigen = posicionDestino;
+		posicionDestino = new Posicion(2,1);
+		turno.mover(posicionOrigen,posicionDestino);  //se queda sin pasos.
+
+		assertTrue(turno.finalizado());
+	}
 
 	@Test
-	public void test12JugadorUsaElTurnoParaMoverBumblebeeUsaMediaDistanciaValidaYFinalizaTurno(){}
+	public void test12JugadorUsaElTurnoParaMoverBumblebeeUsaMediaDistanciaValidaYFinalizaTurno(){
+
+		Jugador jugadorActual = turno.obtenerJugadorQueDebeJugar();
+		Autobots equipo = new Autobots();
+		jugadorActual.asignarEquipo(equipo);
+		Bumblebee bumblebee = equipo.getBumblebee();
+
+		turno.deMovimiento();
+		turno.jugarCon(bumblebee);
+
+
+		Posicion posicionOrigen = new Posicion(0,1);
+		Posicion posicionDestino = new Posicion(1,1);
+		turno.mover(posicionOrigen,posicionDestino);
+
+		assertFalse(turno.finalizado()); //le queda un paso disponible.
+
+		//decide no moverse mas.
+		turno.finalizar();
+
+		assertTrue(turno.finalizado());
+
+	}
 
 	@Test
-	public void test13JugadorUsaElTurnoParaMoverBoneCrusherUsaTodaDistanciaValida(){}
+	public void test13JugadorUsaElTurnoParaMoverBoneCrusherUsaTodaDistanciaValida(){
+		Jugador jugadorActual = turno.obtenerJugadorQueDebeJugar();
+		Decepticons equipo = new Decepticons();
+		jugadorActual.asignarEquipo(equipo);
+		BoneCrusher boneCrusher = equipo.getBoneCrusher();
+
+		turno.jugarCon(boneCrusher);
+
+		Posicion posicionOrigen = new Posicion(0,1);
+		Posicion posicionDestino = new Posicion(1,1);
+		turno.mover(posicionOrigen,posicionDestino);
+
+		assertTrue(turno.finalizado());
+
+	}
 
 	@Test
-	public void test14JugadorUsaElTurnoParaMoverBoneCrusherUsaMediaDistanciaValidaYFinalizaTurno(){}
+	public void test14JugadorUsaElTurnoParaMoverBoneCrusherEnModoAlterno(){
+		Jugador jugadorActual = turno.obtenerJugadorQueDebeJugar();
+		Decepticons equipo = new Decepticons();
+		jugadorActual.asignarEquipo(equipo);
+		BoneCrusher boneCrusher = equipo.getBoneCrusher();
+		boneCrusher.transformar();
+
+		turno.jugarCon(boneCrusher);
+
+		Posicion posicionOrigen = new Posicion(0,1);
+		Posicion posicionDestino = new Posicion(1,1);
+		turno.mover(posicionOrigen,posicionDestino);
+
+		assertFalse(turno.finalizado());
+
+		posicionOrigen = posicionDestino;
+		posicionDestino = new Posicion(2,1);
+		turno.mover(posicionOrigen,posicionDestino);
+
+		assertFalse(turno.finalizado());
+	}
 
 	@Test
-	public void test15JugadorUsaElTurnoParaMoverFrenzyUsaTodaDistanciaValida(){}
+	public void test15JugadorUsaElTurnoParaMoverFrenzyUsaTodaDistanciaValida(){
+		Jugador jugadorActual = turno.obtenerJugadorQueDebeJugar();
+		Decepticons equipo = new Decepticons();
+		jugadorActual.asignarEquipo(equipo);
+		Frenzy frenzy = equipo.getFrenzy();
+
+
+		turno.jugarCon(frenzy);
+
+		Posicion posicionOrigen = new Posicion(0,1);
+		Posicion posicionDestino = new Posicion(1,1);
+		turno.mover(posicionOrigen,posicionDestino);
+
+		assertFalse(turno.finalizado());
+
+		posicionOrigen = posicionDestino;
+		posicionDestino = new Posicion(2,1);
+		turno.mover(posicionOrigen,posicionDestino);
+
+		assertTrue(turno.finalizado());
+	}
 
 	@Test
-	public void test16JugadorUsaElTurnoParaMoverFrenzyUsaMediaDistanciaValidaYFinalizaTurno(){}
+	public void test16JugadorUsaElTurnoParaMoverFrenzyUsaMediaDistanciaValidaYFinalizaTurno(){
+		Jugador jugadorActual = turno.obtenerJugadorQueDebeJugar();
+		Decepticons equipo = new Decepticons();
+		jugadorActual.asignarEquipo(equipo);
+		Frenzy frenzy = equipo.getFrenzy();
+
+
+		turno.jugarCon(frenzy);
+
+		Posicion posicionOrigen = new Posicion(0,1);
+		Posicion posicionDestino = new Posicion(1,1);
+		turno.mover(posicionOrigen,posicionDestino);
+
+		assertFalse(turno.finalizado());
+
+		turno.finalizar();
+		assertTrue(turno.finalizado());
+	}
 
 	@Test
-	public void test17JugadorUsaElTurnoParaMoverMegatronUsaTodaDistanciaValida(){}
+	public void test17JugadorUsaElTurnoParaMoverMegatronUsaTodaDistanciaValida(){
+		Jugador jugadorActual = turno.obtenerJugadorQueDebeJugar();
+		Decepticons equipo = new Decepticons();
+		jugadorActual.asignarEquipo(equipo);
+		Megatron megatron = equipo.getMegatron();
+
+		turno.jugarCon(megatron);
+
+		Posicion posicionOrigen = new Posicion(0,1);
+		Posicion posicionDestino = new Posicion(1,1);
+		turno.mover(posicionOrigen,posicionDestino);
+
+		assertTrue(turno.finalizado());
+	}
 
 	@Test
-	public void test18JugadorUsaElTurnoParaMoverMegatronUsaMediaDistanciaValidaYFinalizaTurno(){}
+	public void test18JugadorUsaElTurnoParaMoverMegatronEnModoAlterno(){
+		Jugador jugadorActual = turno.obtenerJugadorQueDebeJugar();
+		Decepticons equipo = new Decepticons();
+		jugadorActual.asignarEquipo(equipo);
+		Megatron megatron = equipo.getMegatron();
+		megatron.transformar();
+
+		turno.jugarCon(megatron);
+
+		Posicion posicionOrigen = new Posicion(0,1);
+		Posicion posicionDestino = new Posicion(1,1);
+		turno.mover(posicionOrigen,posicionDestino);
+
+		assertFalse(turno.finalizado());
+	}
 
 	@Test
-	public void test19JugadorUsaElTurnoParaMoverSuperionUsaTodaDistanciaValida(){}
+	public void test19JugadorUsaElTurnoTransformarElSuperion(){
+		Jugador jugadorActual = turno.obtenerJugadorQueDebeJugar();
+		Autobots equipo = new Autobots();
+		jugadorActual.asignarEquipo(equipo);
+
+		turno.combinarAlgoformers();
+
+		assertEquals(turno.obtenerJugadorQueDebeJugar(),miJugador2);
+		turno.finalizar();
+		assertEquals(turno.obtenerJugadorQueDebeJugar(),miJugador2);
+		turno.finalizar();
+		assertEquals(turno.obtenerJugadorQueDebeJugar(),miJugador2);
+		turno.finalizar();
+
+
+		turno.transformar();
+
+		assertTrue(equipo.estaCombinado());
+
+	}
 
 	@Test
 	public void test20JugadorUsaElTurnoParaMoverSuperionUsaMediaDistanciaValidaYFinalizaTurno(){}

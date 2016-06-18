@@ -21,12 +21,18 @@ public class Jugada {
         tipoDeJugada.transformar(algoFormerDeLaJugada);
     }
 
+    public void vaASerDeCombinacion() {
+        tipoDeJugada = new JugadaAlgoformersCombinados();
+    }
+
     public void combinar(Equipo equipo) {
+
         algoFormerDeLaJugada = tipoDeJugada.combinar(equipo);
     }
 
     public void descombinar(){
         tipoDeJugada.descombinar(algoFormerDeLaJugada);
+        tipoDeJugada = new JugadaAlgoformerSinCombinar();
     }
 
     public void atacar(Posicion posicionDestino) {
@@ -44,13 +50,11 @@ public class Jugada {
         if (movimientosDisponibles > 0) {
             this.tipoDeJugada.mover(algoFormerDeLaJugada, posicionOrigen, posicionDestino);
             movimientosDisponibles -= 1;
-        } else {
+//            if(movimientosDisponibles == 0){ throw new YaUtilizoPasosDisponibles();}
+        } else if(movimientosDisponibles <= 0) {
             throw new YaUtilizoPasosDisponibles();
         }
-    }
 
-    public void vaASerDeCombinacion() {
-        tipoDeJugada = new JugadaAlgoformersCombinados(algoFormerDeLaJugada);
     }
 
     public boolean enProcesoDeCombinacion() {
@@ -64,5 +68,9 @@ public class Jugada {
 
     public int getMovimientosDisponibles() {
         return movimientosDisponibles;
+    }
+
+    public boolean esDeCombinacion() {
+        return tipoDeJugada.esDeCombinacion();
     }
 }

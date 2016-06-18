@@ -22,4 +22,6 @@ public abstract class TipoDeJugada {
     public abstract boolean enProcesoDeCombinacion();
 
     public abstract void pasoTurno();
+
+    public abstract boolean esDeCombinacion();
 }

@@ -8,11 +8,13 @@ public class Autobots extends Equipo {
     private final Optimus optimus;
     private final Bumblebee bumblebee;
     private final Ratchet ratchet;
+    private boolean estaCombinado;
 
     public Autobots(){
         this.optimus = new Optimus();
         this.bumblebee = new Bumblebee();
         this.ratchet = new Ratchet();
+        estaCombinado = false;
     }
 
     @Override
@@ -21,9 +23,17 @@ public class Autobots extends Equipo {
         bumblebee.notificar();
         ratchet.notificar();
     }
+
+    @Override
+    public boolean estaCombinado() {
+        return estaCombinado;
+    }
+
     @Override
     public AlgoFormer combinarme() {
+        estaCombinado = true;
         return new Superion(optimus,bumblebee,ratchet);
+
     }
 
     @Override

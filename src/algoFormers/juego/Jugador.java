@@ -34,6 +34,9 @@ public class Jugador {
 			jugadaEnCurso.vaASerDeCombinacion();
 			jugadaEnCurso.combinar(equipo);
 		}
+		else if(jugadaEnCurso.esDeCombinacion()){
+			throw new JugadaEnCursoNoEsDeCombinacion();
+		}
 		else{
 			throw new AlgoformersDeSuEquipoHanMuerto("Solo puede combinar sus algoformers si los 3 permanecen con vida");
 		}

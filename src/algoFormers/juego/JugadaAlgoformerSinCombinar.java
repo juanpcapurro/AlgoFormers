@@ -42,4 +42,9 @@ public class JugadaAlgoformerSinCombinar extends TipoDeJugada {
     public void pasoTurno() {
 
     }
+
+    @Override
+    public boolean esDeCombinacion() {
+        return false;
+    }
 }

@@ -20,11 +20,12 @@ public class JugadaAlgoformersCombinados extends TipoDeJugada {
     private int turnosRestantesParaFinalizarLaCombinacion;
 
 
-    public JugadaAlgoformersCombinados(AlgoFormer algoFormerDeLaJugada){
-        this.turnosRestantesParaFinalizarLaCombinacion = 2;
 
+
+    public JugadaAlgoformersCombinados() {
+        this.turnosRestantesParaFinalizarLaCombinacion = 2;
     }
-    
+
     public AlgoFormer combinar(Equipo equipo) {
         return equipo.combinarme();
     }
@@ -77,12 +78,17 @@ public class JugadaAlgoformersCombinados extends TipoDeJugada {
 
     @Override
     public boolean enProcesoDeCombinacion() {
-        return (turnosRestantesParaFinalizarLaCombinacion>0);
+        return (turnosRestantesParaFinalizarLaCombinacion > 0);
     }
 
     @Override
     public void pasoTurno() {
-        turnosRestantesParaFinalizarLaCombinacion-=1;
+        turnosRestantesParaFinalizarLaCombinacion -=1;
+    }
+
+    @Override
+    public boolean esDeCombinacion() {
+        return true;
     }
 
     public void combinar(){
