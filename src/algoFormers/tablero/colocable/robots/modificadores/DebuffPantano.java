@@ -13,4 +13,9 @@ public class DebuffPantano extends Modificador {
         velocidadOriginal=estadoAfectado.getVelocidad();
         estadoAfectado.setVelocidad(velocidadOriginal-(int)(velocidadOriginal*PORCENTAJE));
     }
+
+    @Override
+    public Modificador copia() {
+        return new DebuffPantano();
+    }
 }

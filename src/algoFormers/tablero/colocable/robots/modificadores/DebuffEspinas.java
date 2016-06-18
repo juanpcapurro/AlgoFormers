@@ -15,4 +15,9 @@ public class DebuffEspinas extends Modificador {
         estadoAfectado.setVida(vida-(int)(vida*porcentaje));
         modificadores.remove(this);
     }
+
+    @Override
+    public Modificador copia() {
+        return new DebuffEspinas();
+    }
 }

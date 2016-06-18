@@ -17,5 +17,5 @@ public abstract class Modificador {
 
     public abstract void activar();
 
-
+    public abstract Modificador copia();
 }

@@ -18,4 +18,9 @@ public class DebuffNebulosa extends Modificador {
         velocidadOriginal=estadoAfectado.getVelocidad();
         estadoAfectado.setVelocidad(0);
     }
+
+    @Override
+    public Modificador copia() {
+        return new DebuffNebulosa();
+    }
 }

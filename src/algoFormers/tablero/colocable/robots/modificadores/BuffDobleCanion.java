@@ -5,8 +5,7 @@ public class BuffDobleCanion extends Modificador{
     int ataqueOriginal;
     int contador=0;
     int cantidadTurnos=6;
-    //Deberia ser
-    //int cantidadTurnos=3;
+
 
     @Override
     public void actualizar(){
@@ -20,5 +19,10 @@ public class BuffDobleCanion extends Modificador{
     public void activar(){
         ataqueOriginal= estadoAfectado.getAtaque();
         estadoAfectado.setAtaque((int)(ataqueOriginal*PORCENTAJE));
+    }
+
+    @Override
+    public Modificador copia() {
+        return new BuffDobleCanion();
     }
 }

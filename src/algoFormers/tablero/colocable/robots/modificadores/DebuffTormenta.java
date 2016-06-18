@@ -18,4 +18,9 @@ public class DebuffTormenta extends Modificador {
         ataqueOriginal=estadoAfectado.getAtaque();
         estadoAfectado.setAtaque(ataqueOriginal-(int)(ataqueOriginal*PORCENTAJE));
     }
+
+    @Override
+    public Modificador copia() {
+        return new DebuffTormenta();
+    }
 }

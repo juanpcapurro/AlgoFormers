@@ -51,7 +51,7 @@ public class ContextoModoAlgoformer {
     }
     public void afectarEstado(Modificador modificador){
         modoActual.afectarEstado(modificador);
-        modoAlternativo.afectarEstado(modificador);
+        modoAlternativo.afectarEstado(modificador.copia());
     }
     public void notificar(){
         modoActual.notificar();

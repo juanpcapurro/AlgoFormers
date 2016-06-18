@@ -22,8 +22,8 @@ public abstract class ModoAlgoformer {
     }
 
     public void notificar(){
-        for (Modificador modificador : modificadores)
-            modificador.actualizar();
+        for (int i=0; i<modificadores.size();i++)
+            (modificadores.get(i)).actualizar();
         movimientosRealizados=0;
     }
     public EstadoAlgoFormer verEstado(){

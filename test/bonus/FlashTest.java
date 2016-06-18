@@ -1,10 +1,5 @@
 package bonus;
 
-import static org.junit.Assert.*;
-
-import org.junit.Before;
-import org.junit.Test;
-
 import algoFormers.juego.Jugador;
 import algoFormers.juego.turno.Turno;
 import algoFormers.tablero.colocable.bonus.Flash;
@@ -12,7 +7,10 @@ import algoFormers.tablero.colocable.robots.autobot.Autobots;
 import algoFormers.tablero.colocable.robots.autobot.Superion;
 import algoFormers.tablero.colocable.robots.decepticon.Decepticons;
 import algoFormers.tablero.colocable.robots.decepticon.Menasor;
-import algoFormers.tablero.posiciones.Posicion;
+import org.junit.Before;
+import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
 
 public class FlashTest {
 	
@@ -43,26 +41,28 @@ public class FlashTest {
 
 		this.autobots.getOptimus().recibirColocable(new Flash());
 		assertEquals(this.autobots.getOptimus().getVelocidad(),6);
-		
-		/*assertEquals(this.turno.obtenerJugadorQueDebeJugar(),Barry);
+
+		assertEquals(this.turno.obtenerJugadorQueDebeJugar(),Barry);
 		this.autobots.getOptimus().recibirColocable(new Flash());
-		assertEquals(this.autobots.getOptimus().getVelocidad(),6);
+		assertEquals(this.autobots.getOptimus().getVelocidad(),18);
 		this.turno.avanzarTurno();
 		assertEquals(this.turno.obtenerJugadorQueDebeJugar(),Allen);
 		this.turno.avanzarTurno();
 		assertEquals(this.turno.obtenerJugadorQueDebeJugar(),Barry);
-		assertEquals(this.autobots.getOptimus().getVelocidad(),6);
+		assertEquals(this.autobots.getOptimus().getVelocidad(),18);
 		this.turno.avanzarTurno();
 		assertEquals(this.turno.obtenerJugadorQueDebeJugar(),Allen);
 		this.turno.avanzarTurno();
 		assertEquals(this.turno.obtenerJugadorQueDebeJugar(),Barry);
-		assertEquals(this.autobots.getOptimus().getVelocidad(),6);
+		assertEquals(this.autobots.getOptimus().getVelocidad(),18);
 		this.turno.avanzarTurno();
 		assertEquals(this.turno.obtenerJugadorQueDebeJugar(),Allen);
 		this.turno.avanzarTurno();
 		assertEquals(this.turno.obtenerJugadorQueDebeJugar(),Barry);
+		assertEquals(this.autobots.getOptimus().getVelocidad(),18);
+		this.turno.avanzarTurno();
 		assertEquals(this.autobots.getOptimus().getVelocidad(),2);
-		this.turno.finalizar();*/
+		this.turno.finalizar();
 	}
 	
 	@Test

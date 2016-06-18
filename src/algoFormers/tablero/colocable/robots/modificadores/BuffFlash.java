@@ -5,12 +5,14 @@ public class BuffFlash extends Modificador{
     int velocidadOriginal;
     int contador=0;
     int cantidadTurnos=6;
-    //Deberia ser
-    //int cantidadTurnos=3;
+
+    public BuffFlash(){
+        super();
+    }
     @Override
     public void actualizar(){
         if (contador>=cantidadTurnos){
-           modificadores.remove(this);
+            modificadores.remove(this);
             estadoAfectado.setVelocidad(velocidadOriginal);
         }
         contador++;
@@ -19,5 +21,10 @@ public class BuffFlash extends Modificador{
     public void activar(){
         velocidadOriginal= estadoAfectado.getVelocidad();
         estadoAfectado.setVelocidad((int)(velocidadOriginal*PORCENTAJE));
+    }
+
+    @Override
+    public Modificador copia() {
+        return new BuffFlash();
     }
 }
