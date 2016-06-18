@@ -17,7 +17,6 @@ public abstract class ModoAlgoformer {
         movimientosRealizados=0;
     }
     public void afectarEstado(Modificador modificador){
-        modificadores.add(modificador);
         modificador.setEstado(estado,modificadores);
     }
 

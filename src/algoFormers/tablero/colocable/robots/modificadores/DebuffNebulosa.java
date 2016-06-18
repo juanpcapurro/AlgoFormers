@@ -15,6 +15,9 @@ public class DebuffNebulosa extends Modificador {
     }
     @Override
     public void activar(){
+        if (yaFueAplicado())
+            return;
+        modificadores.add(this);
         velocidadOriginal=estadoAfectado.getVelocidad();
         estadoAfectado.setVelocidad(0);
     }

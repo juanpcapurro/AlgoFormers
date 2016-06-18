@@ -13,7 +13,6 @@ public class DebuffEspinas extends Modificador {
     public void activar(){
         int vida=estadoAfectado.getVida();
         estadoAfectado.setVida(vida-(int)(vida*porcentaje));
-        modificadores.remove(this);
     }
 
     @Override

@@ -18,4 +18,11 @@ public abstract class Modificador {
     public abstract void activar();
 
     public abstract Modificador copia();
+
+    public boolean yaFueAplicado(){
+        for (Modificador modificador : modificadores)
+            if ((modificador.getClass()).equals(this.getClass()))
+                return true;
+        return false;
+    }
 }

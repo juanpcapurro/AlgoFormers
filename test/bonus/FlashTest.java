@@ -44,22 +44,22 @@ public class FlashTest {
 
 		assertEquals(this.turno.obtenerJugadorQueDebeJugar(),Barry);
 		this.autobots.getOptimus().recibirColocable(new Flash());
-		assertEquals(this.autobots.getOptimus().getVelocidad(),18);
+		assertEquals(this.autobots.getOptimus().getVelocidad(),6);
 		this.turno.avanzarTurno();
 		assertEquals(this.turno.obtenerJugadorQueDebeJugar(),Allen);
 		this.turno.avanzarTurno();
 		assertEquals(this.turno.obtenerJugadorQueDebeJugar(),Barry);
-		assertEquals(this.autobots.getOptimus().getVelocidad(),18);
+		assertEquals(this.autobots.getOptimus().getVelocidad(),6);
 		this.turno.avanzarTurno();
 		assertEquals(this.turno.obtenerJugadorQueDebeJugar(),Allen);
 		this.turno.avanzarTurno();
 		assertEquals(this.turno.obtenerJugadorQueDebeJugar(),Barry);
-		assertEquals(this.autobots.getOptimus().getVelocidad(),18);
+		assertEquals(this.autobots.getOptimus().getVelocidad(),6);
 		this.turno.avanzarTurno();
 		assertEquals(this.turno.obtenerJugadorQueDebeJugar(),Allen);
 		this.turno.avanzarTurno();
 		assertEquals(this.turno.obtenerJugadorQueDebeJugar(),Barry);
-		assertEquals(this.autobots.getOptimus().getVelocidad(),18);
+		assertEquals(this.autobots.getOptimus().getVelocidad(),6);
 		this.turno.avanzarTurno();
 		assertEquals(this.autobots.getOptimus().getVelocidad(),2);
 		this.turno.finalizar();

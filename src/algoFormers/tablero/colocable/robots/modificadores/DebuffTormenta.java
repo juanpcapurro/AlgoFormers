@@ -12,9 +12,9 @@ public class DebuffTormenta extends Modificador {
 
     @Override
     public void activar() {
-        if (AfectadosPorTormenta.getInstance().fueAfectado(estadoAfectado))
+        if (yaFueAplicado())
             return;
-        AfectadosPorTormenta.getInstance().agregar(estadoAfectado);
+        modificadores.add(this);
         ataqueOriginal=estadoAfectado.getAtaque();
         estadoAfectado.setAtaque(ataqueOriginal-(int)(ataqueOriginal*PORCENTAJE));
     }

@@ -10,6 +10,9 @@ public class DebuffPantano extends Modificador {
     }
 
     public void activar(){
+        if(yaFueAplicado())
+            return;
+        modificadores.add(this);
         velocidadOriginal=estadoAfectado.getVelocidad();
         estadoAfectado.setVelocidad(velocidadOriginal-(int)(velocidadOriginal*PORCENTAJE));
     }

@@ -17,6 +17,9 @@ public class BuffDobleCanion extends Modificador{
     }
     @Override
     public void activar(){
+        if (yaFueAplicado())
+            return;
+        modificadores.add(this);
         ataqueOriginal= estadoAfectado.getAtaque();
         estadoAfectado.setAtaque((int)(ataqueOriginal*PORCENTAJE));
     }
