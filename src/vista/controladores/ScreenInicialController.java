@@ -1,11 +1,13 @@
-package vista;
+package vista.controladores;
 
 import java.awt.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-
+import vista.ControlledScreen;
+import vista.ScreensController;
+import vista.mainApp;
 
 
 public class ScreenInicialController implements Initializable, ControlledScreen {
