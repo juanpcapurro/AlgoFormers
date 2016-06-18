@@ -187,7 +187,6 @@ public class  TurnoTest {
 		turno.finalizar();
 
 		assertTrue(turno.finalizado());
-
 	}
 
 	@Test
@@ -370,7 +369,6 @@ public class  TurnoTest {
 		assertEquals(turno.obtenerJugadorQueDebeJugar(),miJugador2);
 		turno.finalizar();
 
-
 		turno.transformar();
 
 		assertTrue(equipo.estaCombinado());
@@ -378,10 +376,60 @@ public class  TurnoTest {
 	}
 
 	@Test
-	public void test20JugadorUsaElTurnoParaMoverSuperionUsaMediaDistanciaValidaYFinalizaTurno(){}
+	public void test20JugadorUsaElTurnoParaMoverSuperion(){
+		Jugador jugadorActual = turno.obtenerJugadorQueDebeJugar();
+		Autobots equipo = new Autobots();
+		jugadorActual.asignarEquipo(equipo);
+
+		turno.combinarAlgoformers();
+
+		assertEquals(turno.obtenerJugadorQueDebeJugar(),miJugador2);
+		turno.finalizar();
+		assertEquals(turno.obtenerJugadorQueDebeJugar(),miJugador2);
+		turno.finalizar();
+		assertEquals(turno.obtenerJugadorQueDebeJugar(),miJugador2);
+		turno.finalizar();
+
+		Posicion posicionOrigen = new Posicion(0,1);
+		Posicion posicionDestino = new Posicion(1,1);
+		turno.mover(posicionOrigen,posicionDestino);
+		posicionOrigen = new Posicion(1,1);
+		posicionDestino = new Posicion(1,2);
+		turno.mover(posicionOrigen,posicionDestino);
+		posicionOrigen = new Posicion(1,2);
+		posicionDestino = new Posicion(1,3);
+		turno.mover(posicionOrigen,posicionDestino);
+
+		assertEquals(turno.obtenerJugadorQueDebeJugar(),miJugador2);
+
+	}
 
 	@Test
-	public void test21JugadorUsaElTurnoParaMoverMenasorUsaTodaDistanciaValida(){}
+	public void test21JugadorUsaElTurnoParaMoverSuperionUsaParteDistanciaValidaYFinalizaTurno(){
+		Jugador jugadorActual = turno.obtenerJugadorQueDebeJugar();
+		Autobots equipo = new Autobots();
+		jugadorActual.asignarEquipo(equipo);
+
+		turno.combinarAlgoformers();
+
+		assertEquals(turno.obtenerJugadorQueDebeJugar(),miJugador2);
+		turno.finalizar();
+		assertEquals(turno.obtenerJugadorQueDebeJugar(),miJugador2);
+		turno.finalizar();
+		assertEquals(turno.obtenerJugadorQueDebeJugar(),miJugador2);
+		turno.finalizar();
+
+		Posicion posicionOrigen = new Posicion(0,1);
+		Posicion posicionDestino = new Posicion(1,1);
+		turno.mover(posicionOrigen,posicionDestino);
+		posicionOrigen = new Posicion(1,1);
+		posicionDestino = new Posicion(1,2);
+		turno.mover(posicionOrigen,posicionDestino);
+		turno.finalizar();
+
+		assertEquals(turno.obtenerJugadorQueDebeJugar(),miJugador2);
+
+	}
 
 	@Test
 	public void test22JugadorUsaElTurnoParaMoverMenasorUsaMediaDistanciaValidaYFinalizaTurno(){}

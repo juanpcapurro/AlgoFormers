@@ -26,8 +26,8 @@ public class Jugada {
     }
 
     public void combinar(Equipo equipo) {
-
         algoFormerDeLaJugada = tipoDeJugada.combinar(equipo);
+        movimientosDisponibles = algoFormerDeLaJugada.getVelocidad();
     }
 
     public void descombinar(){
