@@ -23,7 +23,7 @@ public class JugadaAlgoformersCombinadosTest {
     }
 
     @Test
-    public void test01Pasan2Turnos() {
+    public void test02Pasan2Turnos() {
         jugadaAlgoformersCombinados.pasoTurno();
         jugadaAlgoformersCombinados.pasoTurno();
         assertFalse(jugadaAlgoformersCombinados.enProcesoDeCombinacion());
