@@ -8,7 +8,6 @@ import org.junit.Test;
 import algoFormers.juego.Jugador;
 import algoFormers.juego.turno.Turno;
 import algoFormers.tablero.colocable.bonus.BurbujaInmaculada;
-import algoFormers.tablero.colocable.bonus.Flash;
 import algoFormers.tablero.colocable.robots.armas.DisparoConvencional;
 import algoFormers.tablero.colocable.robots.autobot.Autobots;
 import algoFormers.tablero.colocable.robots.decepticon.Decepticons;
@@ -340,6 +339,157 @@ public class BurbujaInmaculadaTest {
 		assertEquals(this.autobots.getBumblebee().getPuntosDeVida(),50);
 		this.turno.finalizar();
 	}
+	
+	@Test
+	public void test09RatchetConVidaTotalTomaBurbujaYNoPierdeVidaPor2Turnos(){
+
+		//Vida pre bonus
+		assertEquals(this.autobots.getRatchet().getPuntosDeVida(),150);
 		
+		//turno de obtencion
+		assertEquals(this.turno.obtenerJugadorQueDebeJugar(),Monica);
+		this.autobots.getRatchet().recibirColocable(new BurbujaInmaculada());
+		assertEquals(this.autobots.getRatchet().getPuntosDeVida(),150);
+		this.autobots.getRatchet().recibirAtaque(new DisparoConvencional(100));
+		this.turno.avanzarTurno();
+		this.turno.avanzarTurno();
+		
+		//primer turno con burbuja
+		assertEquals(this.autobots.getRatchet().getPuntosDeVida(),150);
+		this.autobots.getRatchet().recibirAtaque(new DisparoConvencional(60));
+		this.turno.avanzarTurno();
+		this.turno.avanzarTurno();
+		
+		//segundo turno con burbuja.Recupero vida perdida antes
+		assertEquals(this.autobots.getRatchet().getPuntosDeVida(),150);
+		this.autobots.getRatchet().recibirAtaque(new DisparoConvencional(60));
+		this.turno.avanzarTurno();
+		this.turno.avanzarTurno();
+		
+		//tercer turno con burbuja.Recupera vida perdida antes
+		assertEquals(this.autobots.getRatchet().getPuntosDeVida(),150);
+		this.autobots.getRatchet().recibirAtaque(new DisparoConvencional(60));
+		assertEquals(this.autobots.getRatchet().getPuntosDeVida(),90);
+		this.turno.avanzarTurno();
+		
+		//Cuarto turno con burbuja. No recupera vida
+		assertEquals(this.autobots.getRatchet().getPuntosDeVida(),90);
+		this.turno.finalizar();
+	}
+
+	@Test
+	public void test10RatchetDaniadoTomaBurbujaYNoPierdeVidaPor2Turnos(){
+
+		//Vida pre bonus
+		this.autobots.getRatchet().recibirAtaque(new DisparoConvencional(10));
+		assertEquals(this.autobots.getRatchet().getPuntosDeVida(),140);
+		
+		//turno de obtencion
+		assertEquals(this.turno.obtenerJugadorQueDebeJugar(),Monica);
+		this.autobots.getRatchet().recibirColocable(new BurbujaInmaculada());
+		assertEquals(this.autobots.getRatchet().getPuntosDeVida(),140);
+		this.autobots.getRatchet().recibirAtaque(new DisparoConvencional(100));
+		this.turno.avanzarTurno();
+		this.turno.avanzarTurno();
+		
+		//primer turno con burbuja
+		assertEquals(this.autobots.getRatchet().getPuntosDeVida(),140);
+		this.autobots.getRatchet().recibirAtaque(new DisparoConvencional(60));
+		this.turno.avanzarTurno();
+		this.turno.avanzarTurno();
+		
+		//segundo turno con burbuja.Recupero vida perdida antes
+		assertEquals(this.autobots.getRatchet().getPuntosDeVida(),140);
+		this.autobots.getRatchet().recibirAtaque(new DisparoConvencional(60));
+		this.turno.avanzarTurno();
+		this.turno.avanzarTurno();
+		
+		//tercer turno con burbuja.Recupera vida perdida antes
+		assertEquals(this.autobots.getRatchet().getPuntosDeVida(),140);
+		this.autobots.getRatchet().recibirAtaque(new DisparoConvencional(60));
+		assertEquals(this.autobots.getRatchet().getPuntosDeVida(),80);
+		this.turno.avanzarTurno();
+		
+		//Cuarto turno con burbuja. No recupera vida
+		assertEquals(this.autobots.getRatchet().getPuntosDeVida(),80);
+		this.turno.finalizar();
+	}
+	
+	@Test
+	public void test11RatchetAlternoConVidaTotalTomaBurbujaYNoPierdeVidaPor2Turnos(){
+
+		//Vida pre bonus
+		this.autobots.getRatchet().transformar();
+		assertEquals(this.autobots.getRatchet().getPuntosDeVida(),150);
+		
+		//turno de obtencion
+		assertEquals(this.turno.obtenerJugadorQueDebeJugar(),Monica);
+		this.autobots.getRatchet().recibirColocable(new BurbujaInmaculada());
+		assertEquals(this.autobots.getRatchet().getPuntosDeVida(),150);
+		this.autobots.getRatchet().recibirAtaque(new DisparoConvencional(100));
+		this.turno.avanzarTurno();
+		this.turno.avanzarTurno();
+		
+		//primer turno con burbuja
+		assertEquals(this.autobots.getRatchet().getPuntosDeVida(),150);
+		this.autobots.getRatchet().recibirAtaque(new DisparoConvencional(60));
+		this.turno.avanzarTurno();
+		this.turno.avanzarTurno();
+		
+		//segundo turno con burbuja.Recupero vida perdida antes
+		assertEquals(this.autobots.getRatchet().getPuntosDeVida(),150);
+		this.autobots.getRatchet().recibirAtaque(new DisparoConvencional(60));
+		this.turno.avanzarTurno();
+		this.turno.avanzarTurno();
+		
+		//tercer turno con burbuja.Recupera vida perdida antes
+		assertEquals(this.autobots.getRatchet().getPuntosDeVida(),150);
+		this.autobots.getRatchet().recibirAtaque(new DisparoConvencional(60));
+		assertEquals(this.autobots.getRatchet().getPuntosDeVida(),90);
+		this.turno.avanzarTurno();
+		
+		//Cuarto turno con burbuja. No recupera vida
+		assertEquals(this.autobots.getRatchet().getPuntosDeVida(),90);
+		this.turno.finalizar();
+	}
+
+	@Test
+	public void test12RatchetAlternoDaniadoTomaBurbujaYNoPierdeVidaPor2Turnos(){
+		//Vida pre bonus
+		this.autobots.getRatchet().transformar();
+		this.autobots.getRatchet().recibirAtaque(new DisparoConvencional(10));
+		assertEquals(this.autobots.getRatchet().getPuntosDeVida(),140);
+		
+		//turno de obtencion
+		assertEquals(this.turno.obtenerJugadorQueDebeJugar(),Monica);
+		this.autobots.getRatchet().recibirColocable(new BurbujaInmaculada());
+		assertEquals(this.autobots.getRatchet().getPuntosDeVida(),140);
+		this.autobots.getRatchet().recibirAtaque(new DisparoConvencional(100));
+		this.turno.avanzarTurno();
+		this.turno.avanzarTurno();
+		
+		//primer turno con burbuja
+		assertEquals(this.autobots.getRatchet().getPuntosDeVida(),140);
+		this.autobots.getRatchet().recibirAtaque(new DisparoConvencional(60));
+		this.turno.avanzarTurno();
+		this.turno.avanzarTurno();
+		
+		//segundo turno con burbuja.Recupero vida perdida antes
+		assertEquals(this.autobots.getRatchet().getPuntosDeVida(),140);
+		this.autobots.getRatchet().recibirAtaque(new DisparoConvencional(60));
+		this.turno.avanzarTurno();
+		this.turno.avanzarTurno();
+		
+		//tercer turno con burbuja.Recupera vida perdida antes
+		assertEquals(this.autobots.getRatchet().getPuntosDeVida(),140);
+		this.autobots.getRatchet().recibirAtaque(new DisparoConvencional(60));
+		assertEquals(this.autobots.getRatchet().getPuntosDeVida(),80);
+		this.turno.avanzarTurno();
+		
+		//Cuarto turno con burbuja. No recupera vida
+		assertEquals(this.autobots.getRatchet().getPuntosDeVida(),80);
+		this.turno.finalizar();
+	}
+
 }
 
