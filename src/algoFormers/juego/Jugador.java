@@ -82,4 +82,10 @@ public class Jugador {
 		if(equipo!=null)
 		equipo.notificar();
 	}
+
+
+	public Jugada obtenerJugadaActual() {
+		// TODO Auto-generated method stub
+		return jugadaEnCurso;
+	}
 }

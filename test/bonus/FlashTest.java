@@ -7,6 +7,7 @@ import algoFormers.tablero.colocable.robots.autobot.Autobots;
 import algoFormers.tablero.colocable.robots.autobot.Superion;
 import algoFormers.tablero.colocable.robots.decepticon.Decepticons;
 import algoFormers.tablero.colocable.robots.decepticon.Menasor;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -24,7 +25,7 @@ public class FlashTest {
 	@Before
 	public void setUp() throws Exception {
 		this.Barry = new Jugador("Barry");
-		this.Allen = new Jugador("Oliver");
+		this.Allen = new Jugador("Allen");
 		this.decepticons = new Decepticons();
 		this.autobots = new Autobots();
 		
@@ -37,118 +38,490 @@ public class FlashTest {
 	}
 
 	@Test
-	public void test01OptimusTomaFlashYTriplicaVelocidad(){
+	public void test01OptimusTomaFlashYTriplicaVelocidadPorTresTurnos(){
 
+		//Velocidad pre bonus
+		assertEquals(this.autobots.getOptimus().getVelocidad(),2);
+		
+		//turno de obtencion del flash
+		assertEquals(this.turno.obtenerJugadorQueDebeJugar(),Barry);
 		this.autobots.getOptimus().recibirColocable(new Flash());
 		assertEquals(this.autobots.getOptimus().getVelocidad(),6);
-
-		assertEquals(this.turno.obtenerJugadorQueDebeJugar(),Barry);
-		this.autobots.getOptimus().recibirColocable(new Flash());
+		this.turno.avanzarTurno();
+		this.turno.avanzarTurno();
+		
+		//primer turno con flash
 		assertEquals(this.autobots.getOptimus().getVelocidad(),6);
 		this.turno.avanzarTurno();
-		assertEquals(this.turno.obtenerJugadorQueDebeJugar(),Allen);
 		this.turno.avanzarTurno();
-		assertEquals(this.turno.obtenerJugadorQueDebeJugar(),Barry);
+		
+		//segundo turno con flash
 		assertEquals(this.autobots.getOptimus().getVelocidad(),6);
 		this.turno.avanzarTurno();
-		assertEquals(this.turno.obtenerJugadorQueDebeJugar(),Allen);
 		this.turno.avanzarTurno();
-		assertEquals(this.turno.obtenerJugadorQueDebeJugar(),Barry);
+		
+		//tercer turno con flash
 		assertEquals(this.autobots.getOptimus().getVelocidad(),6);
 		this.turno.avanzarTurno();
-		assertEquals(this.turno.obtenerJugadorQueDebeJugar(),Allen);
-		this.turno.avanzarTurno();
-		assertEquals(this.turno.obtenerJugadorQueDebeJugar(),Barry);
-		assertEquals(this.autobots.getOptimus().getVelocidad(),6);
-		this.turno.avanzarTurno();
+		
+		//Cuarto turno sin flash
 		assertEquals(this.autobots.getOptimus().getVelocidad(),2);
 		this.turno.finalizar();
 	}
 	
 	@Test
-	public void test02BumblebeeTomaFlashYTriplicaVelocidad(){
+	public void test02BumblebeeTomaFlashYTriplicaVelocidadPorTresTurnos(){
+
+		//Velocidad pre bonus
+		assertEquals(this.autobots.getBumblebee().getVelocidad(),2);
+		
+		//turno de obtencion del flash
+		assertEquals(this.turno.obtenerJugadorQueDebeJugar(),Barry);
 		this.autobots.getBumblebee().recibirColocable(new Flash());
 		assertEquals(this.autobots.getBumblebee().getVelocidad(),6);
+		this.turno.avanzarTurno();
+		this.turno.avanzarTurno();
+		
+		//primer turno con flash
+		assertEquals(this.autobots.getBumblebee().getVelocidad(),6);
+		this.turno.avanzarTurno();
+		this.turno.avanzarTurno();
+		
+		//segundo turno con flash
+		assertEquals(this.autobots.getBumblebee().getVelocidad(),6);
+		this.turno.avanzarTurno();
+		this.turno.avanzarTurno();
+		
+		//tercer turno con flash
+		assertEquals(this.autobots.getBumblebee().getVelocidad(),6);
+		this.turno.avanzarTurno();
+		
+		//Cuarto turno sin flash
+		assertEquals(this.autobots.getBumblebee().getVelocidad(),2);
+		this.turno.finalizar();
 	}
 	
 	@Test
-	public void test03RatchetTomaFlashYTriplicaVelocidad(){
+	public void test03RatchetTomaFlashYTriplicaVelocidadPorTresTurnos(){
+		
+		//Velocidad pre bonus
+		assertEquals(this.autobots.getRatchet().getVelocidad(),1);
+		
+		//turno de obtencion del flash
+		assertEquals(this.turno.obtenerJugadorQueDebeJugar(),Barry);
 		this.autobots.getRatchet().recibirColocable(new Flash());
 		assertEquals(this.autobots.getRatchet().getVelocidad(),3);
+		this.turno.avanzarTurno();
+		this.turno.avanzarTurno();
+		
+		//primer turno con flash
+		assertEquals(this.autobots.getRatchet().getVelocidad(),3);
+		this.turno.avanzarTurno();
+		this.turno.avanzarTurno();
+		
+		//segundo turno con flash
+		assertEquals(this.autobots.getRatchet().getVelocidad(),3);
+		this.turno.avanzarTurno();
+		this.turno.avanzarTurno();
+		
+		//tercer turno con flash
+		assertEquals(this.autobots.getRatchet().getVelocidad(),3);
+		this.turno.avanzarTurno();
+		
+		//Cuarto turno sin flash
+		assertEquals(this.autobots.getRatchet().getVelocidad(),1);
+		this.turno.finalizar();
+		
 	}
 	
 	@Test
-	public void test04MegatronTomaFlashYTriplicaVelocidad(){
+	public void test04MegatronTomaFlashYTriplicaVelocidadPorTresTurnos(){
+
+		//Velocidad pre bonus
+		assertEquals(this.decepticons.getMegatron().getVelocidad(),1);
+		
+		//turno de obtencion del flash
+		this.turno.avanzarTurno();
+		assertEquals(this.turno.obtenerJugadorQueDebeJugar(),Allen);
 		this.decepticons.getMegatron().recibirColocable(new Flash());
 		assertEquals(this.decepticons.getMegatron().getVelocidad(),3);
+		this.turno.avanzarTurno();
+		this.turno.avanzarTurno();
+		
+		//primer turno con flash
+		assertEquals(this.decepticons.getMegatron().getVelocidad(),3);
+		this.turno.avanzarTurno();
+		this.turno.avanzarTurno();
+		
+		//segundo turno con flash
+		assertEquals(this.decepticons.getMegatron().getVelocidad(),3);
+		this.turno.avanzarTurno();
+		this.turno.avanzarTurno();
+		
+		//tercer turno con flash
+		assertEquals(this.decepticons.getMegatron().getVelocidad(),3);
+		this.turno.avanzarTurno();
+		
+		//Cuarto turno sin flash
+		assertEquals(this.decepticons.getMegatron().getVelocidad(),1);
+		this.turno.finalizar();
 	}
 	
 	@Test
-	public void test05FrenzyTomaFlashYTriplicaVelocidad(){
+	public void test05FrenzyTomaFlashYTriplicaVelocidadPorTresTurnos(){
+		
+		//Velocidad pre bonus
+		assertEquals(this.decepticons.getFrenzy().getVelocidad(),2);
+		
+		//turno de obtencion del flash
+		this.turno.avanzarTurno();
+		assertEquals(this.turno.obtenerJugadorQueDebeJugar(),Allen);
 		this.decepticons.getFrenzy().recibirColocable(new Flash());
 		assertEquals(this.decepticons.getFrenzy().getVelocidad(),6);
+		this.turno.avanzarTurno();
+		this.turno.avanzarTurno();
+		
+		//primer turno con flash
+		assertEquals(this.decepticons.getFrenzy().getVelocidad(),6);
+		this.turno.avanzarTurno();
+		this.turno.avanzarTurno();
+		
+		//segundo turno con flash
+		assertEquals(this.decepticons.getFrenzy().getVelocidad(),6);
+		this.turno.avanzarTurno();
+		this.turno.avanzarTurno();
+		
+		//tercer turno con flash
+		assertEquals(this.decepticons.getFrenzy().getVelocidad(),6);
+		this.turno.avanzarTurno();
+		
+		//Cuarto turno sin flash
+		assertEquals(this.decepticons.getFrenzy().getVelocidad(),2);
+		this.turno.finalizar();
 	}
 	
 	@Test
-	public void test06BoneCrusherTomaFlashYTriplicaVelocidad(){
+	public void test06BoneCrusherTomaFlashYTriplicaVelocidadPorTresTurnos(){
+
+		//Velocidad pre bonus
+		assertEquals(this.decepticons.getBoneCrusher().getVelocidad(),1);
+		
+		//turno de obtencion del flash
+		this.turno.avanzarTurno();
+		assertEquals(this.turno.obtenerJugadorQueDebeJugar(),Allen);
 		this.decepticons.getBoneCrusher().recibirColocable(new Flash());
 		assertEquals(this.decepticons.getBoneCrusher().getVelocidad(),3);
+		this.turno.avanzarTurno();
+		this.turno.avanzarTurno();
+		
+		//primer turno con flash
+		assertEquals(this.decepticons.getBoneCrusher().getVelocidad(),3);
+		this.turno.avanzarTurno();
+		this.turno.avanzarTurno();
+		
+		//segundo turno con flash
+		assertEquals(this.decepticons.getBoneCrusher().getVelocidad(),3);
+		this.turno.avanzarTurno();
+		this.turno.avanzarTurno();
+		
+		//tercer turno con flash
+		assertEquals(this.decepticons.getBoneCrusher().getVelocidad(),3);
+		this.turno.avanzarTurno();
+		
+		//Cuarto turno sin flash
+		assertEquals(this.decepticons.getBoneCrusher().getVelocidad(),1);
+		this.turno.finalizar();
+		
 	}
 	
 	@Test
-	public void test07AlternoOptimusTomaFlashYTriplicaVelocidad(){
-		this.autobots.getOptimus().transformar();
+	public void test07AlternoOptimusTomaFlashYTriplicaVelocidadPorTresTurnos(){
+		
+		this.autobots.getOptimus().transformar();		
+		//Velocidad pre bonus
+		assertEquals(this.autobots.getOptimus().getVelocidad(),5);
+		
+		//turno de obtencion del flash
+		assertEquals(this.turno.obtenerJugadorQueDebeJugar(),Barry);
 		this.autobots.getOptimus().recibirColocable(new Flash());
 		assertEquals(this.autobots.getOptimus().getVelocidad(),15);
+		this.turno.avanzarTurno();
+		this.turno.avanzarTurno();
+		
+		//primer turno con flash
+		assertEquals(this.autobots.getOptimus().getVelocidad(),15);
+		this.turno.avanzarTurno();
+		this.turno.avanzarTurno();
+		
+		//segundo turno con flash
+		assertEquals(this.autobots.getOptimus().getVelocidad(),15);
+		this.turno.avanzarTurno();
+		this.turno.avanzarTurno();
+		
+		//tercer turno con flash
+		assertEquals(this.autobots.getOptimus().getVelocidad(),15);
+		this.turno.avanzarTurno();
+		
+		//Cuarto turno sin flash
+		assertEquals(this.autobots.getOptimus().getVelocidad(),5);
+		this.turno.finalizar();
 	}
 	
 	@Test
-	public void test08AlternoBumblebeeTomaFlashYTriplicaVelocidad(){
-		this.autobots.getBumblebee().transformar();
+	public void test08AlternoBumblebeeTomaFlashYTriplicaVelocidadPorTresTurnos(){
+		
+		this.autobots.getBumblebee().transformar();		
+		//Velocidad pre bonus
+		assertEquals(this.autobots.getBumblebee().getVelocidad(),5);
+		
+		//turno de obtencion del flash
+		assertEquals(this.turno.obtenerJugadorQueDebeJugar(),Barry);
 		this.autobots.getBumblebee().recibirColocable(new Flash());
 		assertEquals(this.autobots.getBumblebee().getVelocidad(),15);
+		this.turno.avanzarTurno();
+		this.turno.avanzarTurno();
+		
+		//primer turno con flash
+		assertEquals(this.autobots.getBumblebee().getVelocidad(),15);
+		this.turno.avanzarTurno();
+		this.turno.avanzarTurno();
+		
+		//segundo turno con flash
+		assertEquals(this.autobots.getBumblebee().getVelocidad(),15);
+		this.turno.avanzarTurno();
+		this.turno.avanzarTurno();
+		
+		//tercer turno con flash
+		assertEquals(this.autobots.getBumblebee().getVelocidad(),15);
+		this.turno.avanzarTurno();
+		
+		//Cuarto turno sin flash
+		assertEquals(this.autobots.getBumblebee().getVelocidad(),5);
+		this.turno.finalizar();
 	}
 	
 	@Test
-	public void test09AlternoRatchetTomaFlashYTriplicaVelocidad(){
-		this.autobots.getRatchet().transformar();
+	public void test09AlternoRatchetTomaFlashYTriplicaVelocidadPorTresTurnos(){
+		
+		this.autobots.getRatchet().transformar();		
+		//Velocidad pre bonus
+		assertEquals(this.autobots.getRatchet().getVelocidad(),8);
+		
+		//turno de obtencion del flash
+		assertEquals(this.turno.obtenerJugadorQueDebeJugar(),Barry);
 		this.autobots.getRatchet().recibirColocable(new Flash());
 		assertEquals(this.autobots.getRatchet().getVelocidad(),24);
+		this.turno.avanzarTurno();
+		this.turno.avanzarTurno();
+		
+		//primer turno con flash
+		assertEquals(this.autobots.getRatchet().getVelocidad(),24);
+		this.turno.avanzarTurno();
+		this.turno.avanzarTurno();
+		
+		//segundo turno con flash
+		assertEquals(this.autobots.getRatchet().getVelocidad(),24);
+		this.turno.avanzarTurno();
+		this.turno.avanzarTurno();
+		
+		//tercer turno con flash
+		assertEquals(this.autobots.getRatchet().getVelocidad(),24);
+		this.turno.avanzarTurno();
+		
+		//Cuarto turno sin flash
+		assertEquals(this.autobots.getRatchet().getVelocidad(),8);
+		this.turno.finalizar();
 	}
 	
 	@Test
-	public void test10AlternoMegatronTomaFlashYTriplicaVelocidad(){
+	public void test10AlternoMegatronTomaFlashYTriplicaVelocidadPorTresTurnos(){
+		
 		this.decepticons.getMegatron().transformar();
+		//Velocidad pre bonus
+		assertEquals(this.decepticons.getMegatron().getVelocidad(),8);
+		
+		//turno de obtencion del flash
+		this.turno.avanzarTurno();
+		assertEquals(this.turno.obtenerJugadorQueDebeJugar(),Allen);
 		this.decepticons.getMegatron().recibirColocable(new Flash());
 		assertEquals(this.decepticons.getMegatron().getVelocidad(),24);
+		this.turno.avanzarTurno();
+		this.turno.avanzarTurno();
+		
+		//primer turno con flash
+		assertEquals(this.decepticons.getMegatron().getVelocidad(),24);
+		this.turno.avanzarTurno();
+		this.turno.avanzarTurno();
+		
+		//segundo turno con flash
+		assertEquals(this.decepticons.getMegatron().getVelocidad(),24);
+		this.turno.avanzarTurno();
+		this.turno.avanzarTurno();
+		
+		//tercer turno con flash
+		assertEquals(this.decepticons.getMegatron().getVelocidad(),24);
+		this.turno.avanzarTurno();
+		
+		//Cuarto turno sin flash
+		assertEquals(this.decepticons.getMegatron().getVelocidad(),8);
+		this.turno.finalizar();
 	}
 	
 	@Test
-	public void test11AlternoFrenzyTomaFlashYTriplicaVelocidad(){
+	public void test11AlternoFrenzyTomaFlashYTriplicaVelocidadPorTresTurnos(){
+		
 		this.decepticons.getFrenzy().transformar();
+		//Velocidad pre bonus
+		assertEquals(this.decepticons.getFrenzy().getVelocidad(),6);
+		
+		//turno de obtencion del flash
+		this.turno.avanzarTurno();
+		assertEquals(this.turno.obtenerJugadorQueDebeJugar(),Allen);
 		this.decepticons.getFrenzy().recibirColocable(new Flash());
 		assertEquals(this.decepticons.getFrenzy().getVelocidad(),18);
+		this.turno.avanzarTurno();
+		this.turno.avanzarTurno();
+		
+		//primer turno con flash
+		assertEquals(this.decepticons.getFrenzy().getVelocidad(),18);
+		this.turno.avanzarTurno();
+		this.turno.avanzarTurno();
+		
+		//segundo turno con flash
+		assertEquals(this.decepticons.getFrenzy().getVelocidad(),18);
+		this.turno.avanzarTurno();
+		this.turno.avanzarTurno();
+		
+		//tercer turno con flash
+		assertEquals(this.decepticons.getFrenzy().getVelocidad(),18);
+		this.turno.avanzarTurno();
+		
+		//Cuarto turno sin flash
+		assertEquals(this.decepticons.getFrenzy().getVelocidad(),6);
+		this.turno.finalizar();
 	}
 	
 	@Test
-	public void test12AlternoBoneCrusherTomaFlashYTriplicaVelocidad(){
-		this.decepticons.getBoneCrusher().transformar();
+	public void test12AlternoBoneCrusherTomaFlashYTriplicaVelocidadPorTresTurnos(){
+		
+		this.decepticons.getBoneCrusher().transformar();		
+		//Velocidad pre bonus
+		assertEquals(this.decepticons.getBoneCrusher().getVelocidad(),8);
+		
+		//turno de obtencion del flash
+		this.turno.avanzarTurno();
+		assertEquals(this.turno.obtenerJugadorQueDebeJugar(),Allen);
 		this.decepticons.getBoneCrusher().recibirColocable(new Flash());
 		assertEquals(this.decepticons.getBoneCrusher().getVelocidad(),24);
+		this.turno.avanzarTurno();
+		this.turno.avanzarTurno();
+		
+		//primer turno con flash
+		assertEquals(this.decepticons.getBoneCrusher().getVelocidad(),24);
+		this.turno.avanzarTurno();
+		this.turno.avanzarTurno();
+		
+		//segundo turno con flash
+		assertEquals(this.decepticons.getBoneCrusher().getVelocidad(),24);
+		this.turno.avanzarTurno();
+		this.turno.avanzarTurno();
+		
+		//tercer turno con flash
+		assertEquals(this.decepticons.getBoneCrusher().getVelocidad(),24);
+		this.turno.avanzarTurno();
+		
+		//Cuarto turno sin flash
+		assertEquals(this.decepticons.getBoneCrusher().getVelocidad(),8);
+		this.turno.finalizar();
 	}
 	
-	@Test
-	public void test13SuperionTomaFlashYTriplicaVelocidad(){
-		Superion superion = (Superion) this.autobots.combinarme();
+	/*@Test
+	public void test13SuperionTomaFlashYTriplicaVelocidadPorTresTurnos(){
+		
+		assertEquals(this.turno.obtenerJugadorQueDebeJugar(),Barry);
+		this.turno.combinarAlgoformers();
+		Superion superion = (Superion) this.Barry.obtenerJugadaActual().getAlgoformerDeJugada();
+		
+		assertEquals(this.turno.obtenerJugadorQueDebeJugar(),Allen);
+		assertEquals(this.turno.obtenerJugadorQueDebeJugar(),Allen);
+		assertEquals(this.turno.obtenerJugadorQueDebeJugar(),Allen);
+		this.turno.finalizar();
+		assertEquals(this.turno.obtenerJugadorQueDebeJugar(),Barry);
+		this.turno.avanzarTurno();
+
+		//Velocidad pre bonus
+		assertEquals(superion.getVelocidad(),3);
+		
+		//turno de obtencion del flash
+		assertEquals(this.turno.obtenerJugadorQueDebeJugar(),Barry);
 		superion.recibirColocable(new Flash());
 		assertEquals(superion.getVelocidad(),9);
+		this.turno.avanzarTurno();
+		this.turno.avanzarTurno();
+		
+		//primer turno con flash
+		assertEquals(superion.getVelocidad(),9);
+		this.turno.avanzarTurno();
+		this.turno.avanzarTurno();
+		
+		//segundo turno con flash
+		assertEquals(superion.getVelocidad(),9);
+		this.turno.avanzarTurno();
+		this.turno.avanzarTurno();
+		
+		//tercer turno con flash
+		assertEquals(superion.getVelocidad(),9);
+		this.turno.avanzarTurno();
+		
+		//Cuarto turno sin flash
+		assertEquals(superion.getVelocidad(),3);
+		this.turno.finalizar();
+		
 	}
+	*/
 	
-	@Test
-	public void test14MenasorTomaFlashYTriplicaVelocidad(){
-		Menasor menasor = (Menasor) this.decepticons.combinarme();
+	
+/*@Test
+	public void test14MenasorTomaFlashYTriplicaVelocidadPorTresTurnos(){
+
+		this.turno.avanzarTurno();
+		assertEquals(this.turno.obtenerJugadorQueDebeJugar(),Allen);
+		this.turno.combinarAlgoformers();
+		Menasor menasor = (Menasor) this.Allen.obtenerJugadaActual().getAlgoformerDeJugada();
+		
+		assertEquals(this.turno.obtenerJugadorQueDebeJugar(),Barry);
+		assertEquals(this.turno.obtenerJugadorQueDebeJugar(),Barry);
+		this.turno.finalizar();
+		assertEquals(this.turno.obtenerJugadorQueDebeJugar(),Allen);
+		this.turno.avanzarTurno();
+
+		//Velocidad pre bonus
+		assertEquals(menasor.getVelocidad(),2);
+		
+		//turno de obtencion del flash
+		assertEquals(this.turno.obtenerJugadorQueDebeJugar(),Allen);
 		menasor.recibirColocable(new Flash());
 		assertEquals(menasor.getVelocidad(),6);
+		this.turno.avanzarTurno();
+		this.turno.avanzarTurno();
+		
+		//primer turno con flash
+		assertEquals(menasor.getVelocidad(),6);
+		this.turno.avanzarTurno();
+		this.turno.avanzarTurno();
+		
+		//segundo turno con flash
+		assertEquals(menasor.getVelocidad(),6);
+		this.turno.avanzarTurno();
+		this.turno.avanzarTurno();
+		
+		//tercer turno con flash
+		assertEquals(menasor.getVelocidad(),6);
+		this.turno.avanzarTurno();
+		
+		//Cuarto turno sin flash
+		assertEquals(menasor.getVelocidad(),2);
+		this.turno.finalizar();
 	}
-
+*/
 }

@@ -5,8 +5,6 @@ import algoFormers.tablero.colocable.robots.Equipo;
 import algoFormers.tablero.posiciones.Posicion;
 
 
-import java.util.List;
-
 public class Jugada {
 
     protected AlgoFormer algoFormerDeLaJugada;
@@ -73,4 +71,9 @@ public class Jugada {
     public boolean esDeCombinacion() {
         return tipoDeJugada.esDeCombinacion();
     }
+
+	public AlgoFormer getAlgoformerDeJugada() {
+		// TODO Auto-generated method stub
+		return algoFormerDeLaJugada;
+	}
 }
