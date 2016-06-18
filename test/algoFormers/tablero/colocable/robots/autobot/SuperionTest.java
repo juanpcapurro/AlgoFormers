@@ -1,6 +1,14 @@
 package algoFormers.tablero.colocable.robots.autobot;
 
+import algoFormers.tablero.colocable.bonus.DobleCanion;
 import algoFormers.tablero.colocable.robots.armas.DisparoConvencional;
+import algoFormers.tablero.superficie.Superficie;
+import algoFormers.tablero.superficieAerea.Nube;
+import algoFormers.tablero.superficieAerea.TormentaPsionica;
+import algoFormers.tablero.superficieTerrestre.Espinas;
+import algoFormers.tablero.superficieTerrestre.Pantanoso;
+import algoFormers.tablero.superficieTerrestre.Rocoso;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -96,18 +104,63 @@ public class SuperionTest {
      }
 
 	@Test
-	public void testStatsModoHumanoide (){
+	public void test08StatsModoHumanoide (){
 		assertEquals(superion.getAtaque(), 100);
 		assertEquals(superion.getDistanciaDeAtaque(), 2);
 		assertEquals(superion.getVelocidad(),3 );
 	}
 	
 	@Test
-	public void testCambiarDeModoNoAfectaLosStats(){
+	public void test09CambiarDeModoNoAfectaLosStats(){
 		superion.transformar();
 		assertEquals(superion.getAtaque(), 100);
 		assertEquals(superion.getDistanciaDeAtaque(), 2);
 		assertEquals(superion.getVelocidad(),3);
 	}
 
+	@Test
+	public void test10SuperionAfectadoAlPasarPorEspinas(){
+		Superficie superficieTerrestre =new Espinas();
+		Superficie superficieAerea=new Nube();
+		int vida=superion.getPuntosDeVida();
+		superion.pasarPor(superficieTerrestre,superficieAerea);
+		assertTrue(superion.getPuntosDeVida()<vida);
+	}
+	
+
+	@Test
+	public void test11SuperionNoafectadoAlPasarPorTormentaPsionica(){
+		Superficie superficieTerrestre =new Rocoso();
+		Superficie superficieAerea=new TormentaPsionica();
+		int ataque=superion.getAtaque();
+		superion.pasarPor(superficieTerrestre,superficieAerea);
+		assertEquals(superion.getAtaque(),ataque);
+	}
+	
+	
+	@Test
+	public void test12SuperionAfectadoAlPasarPorPantanoso(){
+		Superficie superficieTerrestre =new Pantanoso();
+		Superficie superficieAerea=new Nube();
+		int velocidad=superion.getVelocidad();
+		superion.pasarPor(superficieTerrestre,superficieAerea);
+		assertTrue(superion.getVelocidad()<velocidad);
+	}
+	
+	
+	@Test
+	public void test13ataqueBonusSeDuplicaEnModoHumanoide(){
+		int ataque=superion.getAtaque();
+		superion.recibirColocable(new DobleCanion());
+		assertTrue(ataque<superion.getAtaque());
+	}
+
+	@Test
+	public void test14ataqueBonusSeDuplicaEnModoAlterno(){
+		superion.transformar();
+		int ataque=superion.getAtaque();
+		superion.recibirColocable(new DobleCanion());
+		assertTrue(ataque<superion.getAtaque());
+	}
+	
 }

@@ -6,6 +6,7 @@ import algoFormers.tablero.superficieAerea.Nube;
 import algoFormers.tablero.superficieAerea.TormentaPsionica;
 import algoFormers.tablero.superficieTerrestre.Espinas;
 import algoFormers.tablero.superficieTerrestre.Pantanoso;
+import algoFormers.tablero.superficieTerrestre.Rocoso;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -35,61 +36,74 @@ public class OptimusTest {
     }
 	
 	@Test
-	public void testStatsModoHumanoide (){
+	public void test04StatsModoHumanoide (){
 		assertEquals(mauricio.getAtaque(), 50);
 		assertEquals(mauricio.getDistanciaDeAtaque(), 2);
 		assertEquals(mauricio.getVelocidad(),2 );
 	}
 	
 	@Test
-	public void testStatsModoAlterno(){
+	public void test04StatsModoAlterno(){
 		mauricio.transformar();
 		assertEquals(mauricio.getAtaque(), 15);
 		assertEquals(mauricio.getDistanciaDeAtaque(), 4);
 		assertEquals(mauricio.getVelocidad(),5);
 	}
-	
-	@Test
-	public void unidadTerrestreHumanoideAfectadoAlPasarPorEspinas(){
-		Superficie superficieTerrestre =new Espinas();
-		Superficie superficieAerea=new Nube();
-		int vida=mauricio.getPuntosDeVida();
-		mauricio.pasarPor(superficieTerrestre,superficieAerea);
-		assertTrue(mauricio.getPuntosDeVida()<vida);
-	}
-	
-	@Test
-	public void unidadTerrestreAlternaAfectadoAlPasarPorEspinas(){
-		Superficie superficieTerrestre =new Espinas();
-		Superficie superficieAerea=new Nube();
-		int vida=mauricio.getPuntosDeVida();
-		mauricio.pasarPor(superficieTerrestre,superficieAerea);
-		assertTrue(mauricio.getPuntosDeVida()<vida);
-	}
 
+	@Test
+	public void test05OptimusAfectadoAlPasarPorEspinas(){
+		Superficie superficieTerrestre =new Espinas();
+		Superficie superficieAerea=new Nube();
+		int vida=mauricio.getPuntosDeVida();
+		mauricio.pasarPor(superficieTerrestre,superficieAerea);
+		assertTrue(mauricio.getPuntosDeVida()<vida);
+	}
 	
 	@Test
-	public void unidadTerrestreHumanoideNoafectadoAlPasarPorTormentaPsionica(){
-		Superficie superficieTerrestre =new Pantanoso();
-		Superficie superficieAerea=new TormentaPsionica();
+	public void test06OptimusAlternoAfectadoAlPasarPorEspinas(){
+		Superficie superficieTerrestre =new Espinas();
+		Superficie superficieAerea=new Nube();
+		int vida=mauricio.getPuntosDeVida();
 		mauricio.transformar();
-		int velocidad=mauricio.getVelocidad();
+		mauricio.pasarPor(superficieTerrestre,superficieAerea);
+		assertTrue(mauricio.getPuntosDeVida()<vida);
+	}
+	
+	@Test
+	public void test07OptimusNoafectadoAlPasarPorTormentaPsionica(){
+		Superficie superficieTerrestre =new Rocoso();
+		Superficie superficieAerea=new TormentaPsionica();
 		int ataque=mauricio.getAtaque();
 		mauricio.pasarPor(superficieTerrestre,superficieAerea);
-		assertTrue(mauricio.getVelocidad()<velocidad);
 		assertEquals(mauricio.getAtaque(),ataque);
 	}
 	
-	
 	@Test
-	public void unidadTerrestreAlternaNoafectadoAlPasarPorTormentaPsionica(){
-		Superficie superficieTerrestre =new Pantanoso();
+	public void test08OptimusAlternoNoafectadoAlPasarPorTormentaPsionica(){
+		Superficie superficieTerrestre =new Rocoso();
 		Superficie superficieAerea=new TormentaPsionica();
 		mauricio.transformar();
-		int velocidad=mauricio.getVelocidad();
 		int ataque=mauricio.getAtaque();
 		mauricio.pasarPor(superficieTerrestre,superficieAerea);
-		assertTrue(mauricio.getVelocidad()<velocidad);
 		assertEquals(mauricio.getAtaque(),ataque);
+	}
+	
+	@Test
+	public void test09OptimusAfectadoAlPasarPorPantanoso(){
+		Superficie superficieTerrestre =new Pantanoso();
+		Superficie superficieAerea=new Nube();
+		int velocidad=mauricio.getVelocidad();
+		mauricio.pasarPor(superficieTerrestre,superficieAerea);
+		assertTrue(mauricio.getVelocidad()<velocidad);
+	}
+	
+	@Test
+	public void test10OptimusAlternoAfectadoAlPasarPorPantanoso(){
+		Superficie superficieTerrestre =new Pantanoso();
+		Superficie superficieAerea=new Nube();
+		mauricio.transformar(); 
+		int velocidad=mauricio.getVelocidad();
+		mauricio.pasarPor(superficieTerrestre,superficieAerea);
+		assertTrue(mauricio.getVelocidad()<velocidad);
 	}
 }

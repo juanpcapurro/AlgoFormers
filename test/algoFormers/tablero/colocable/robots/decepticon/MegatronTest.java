@@ -4,7 +4,9 @@ import algoFormers.tablero.colocable.robots.armas.DisparoConvencional;
 import algoFormers.tablero.superficie.Superficie;
 import algoFormers.tablero.superficieAerea.Nube;
 import algoFormers.tablero.superficieAerea.TormentaPsionica;
+import algoFormers.tablero.superficieTerrestre.Espinas;
 import algoFormers.tablero.superficieTerrestre.Pantanoso;
+import algoFormers.tablero.superficieTerrestre.Rocoso;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -30,13 +32,13 @@ public class MegatronTest {
         assertFalse(mauricio.estaVivo());
     }
 	@Test
-	public void testStatsModoHumanoide (){
+	public void test03StatsModoHumanoide (){
 		assertEquals(mauricio.getAtaque(), 10);
 		assertEquals(mauricio.getDistanciaDeAtaque(), 3);
 		assertEquals(mauricio.getVelocidad(),1 );
 	}
 	@Test
-	public void testStatsModoAlterno(){
+	public void test04StatsModoAlterno(){
 		mauricio.transformar();
 		assertEquals(mauricio.getAtaque(), 55);
 		assertEquals(mauricio.getDistanciaDeAtaque(), 2);
@@ -45,25 +47,52 @@ public class MegatronTest {
 	
 	
 	@Test
-	public void unidadAereaAfectadaAlPasarPorTormentaPsionica(){
-		Superficie superficieTerrestre =new Pantanoso();
-		Superficie superficieAerea=new TormentaPsionica();
-		mauricio.transformar();
-		int velocidad=mauricio.getVelocidad();
-		int ataque=mauricio.getAtaque();
+	public void test05MegatronAfectadoAlPasarPorEspinas(){
+		Superficie superficieTerrestre =new Espinas();
+		Superficie superficieAerea=new Nube();
+		int vida=mauricio.getPuntosDeVida();
 		mauricio.pasarPor(superficieTerrestre,superficieAerea);
-		assertEquals(velocidad,mauricio.getVelocidad());
-		assertTrue(mauricio.getAtaque()<ataque);
+		assertTrue(mauricio.getPuntosDeVida()<vida);
 	}
 	
 	@Test
-	public void unidadAereaNoAfectadaAlPasarPorNube(){
+	public void test06MegatronAlternoAfectadoAlPasarPorEspinas(){
+		Superficie superficieTerrestre =new Espinas();
+		Superficie superficieAerea=new Nube();
+		int vida=mauricio.getPuntosDeVida();
+		mauricio.transformar();
+		mauricio.pasarPor(superficieTerrestre,superficieAerea);
+		assertTrue(mauricio.getPuntosDeVida()<vida);
+	}
+	
+	@Test
+	public void test07MegatronNoafectadoAlPasarPorTormentaPsionica(){
+		Superficie superficieTerrestre =new Rocoso();
+		Superficie superficieAerea=new TormentaPsionica();
+		int ataque=mauricio.getAtaque();
+		mauricio.pasarPor(superficieTerrestre,superficieAerea);
+		assertEquals(mauricio.getAtaque(),ataque);
+	}
+	
+	@Test
+	public void test08MegatronAlternoAfectadoAlPasarPorTormentaPsionica(){
+		Superficie superficieTerrestre =new Rocoso();
+		Superficie superficieAerea=new TormentaPsionica();
+		mauricio.transformar();
+		int ataque=mauricio.getAtaque();
+		mauricio.pasarPor(superficieTerrestre,superficieAerea);
+		assertTrue(mauricio.getAtaque()<ataque);
+	}
+	
+
+	@Test
+	public void test09MegatronAlternoNoAfectadoAlPasarPorPantanoso(){
 		Superficie superficieTerrestre =new Pantanoso();
 		Superficie superficieAerea=new Nube();
-		mauricio.transformar();
-		int vida=mauricio.getPuntosDeVida();
+		mauricio.transformar(); 
+		int velocidad=mauricio.getVelocidad();
 		mauricio.pasarPor(superficieTerrestre,superficieAerea);
-		assertEquals(mauricio.getPuntosDeVida(),vida);
+		assertEquals(mauricio.getVelocidad(),velocidad);
 	}
 }
 

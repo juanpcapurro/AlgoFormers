@@ -7,6 +7,8 @@ import algoFormers.tablero.superficieAerea.Nube;
 import algoFormers.tablero.superficieAerea.TormentaPsionica;
 import algoFormers.tablero.superficieTerrestre.Espinas;
 import algoFormers.tablero.superficieTerrestre.Pantanoso;
+import algoFormers.tablero.superficieTerrestre.Rocoso;
+
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -30,14 +32,14 @@ public class BumblebeeTest {
     }
 	
 	@Test
-	public void testStatsModoHumanoide (){
+	public void test03StatsModoHumanoide (){
 		assertEquals(mauricio.getAtaque(), 40);
 		assertEquals(mauricio.getDistanciaDeAtaque(), 1);
 		assertEquals(mauricio.getVelocidad(),2 );
 	}
 	
 	@Test
-	public void testStatsModoAlterno(){
+	public void test04StatsModoAlterno(){
 		mauricio.transformar();
 		assertEquals(mauricio.getAtaque(), 20);
 		assertEquals(mauricio.getDistanciaDeAtaque(), 3);
@@ -45,7 +47,7 @@ public class BumblebeeTest {
 	}
 
 	@Test
-	public void unidadTerrestreHumanoideAfectadoAlPasarPorEspinas(){
+	public void test05BumblebeeAfectadoAlPasarPorEspinas(){
 		Superficie superficieTerrestre =new Espinas();
 		Superficie superficieAerea=new Nube();
 		int vida=mauricio.getPuntosDeVida();
@@ -54,49 +56,63 @@ public class BumblebeeTest {
 	}
 	
 	@Test
-	public void unidadTerrestreAlternaAfectadoAlPasarPorEspinas(){
+	public void test06BumblebeeAlternoAfectadoAlPasarPorEspinas(){
 		Superficie superficieTerrestre =new Espinas();
 		Superficie superficieAerea=new Nube();
 		int vida=mauricio.getPuntosDeVida();
+		mauricio.transformar();
 		mauricio.pasarPor(superficieTerrestre,superficieAerea);
 		assertTrue(mauricio.getPuntosDeVida()<vida);
 	}
-
 	
 	@Test
-	public void unidadTerrestreHumanoideNoafectadoAlPasarPorTormentaPsionica(){
-		Superficie superficieTerrestre =new Pantanoso();
+	public void test07BumblebeeNoafectadoAlPasarPorTormentaPsionica(){
+		Superficie superficieTerrestre =new Rocoso();
 		Superficie superficieAerea=new TormentaPsionica();
-		mauricio.transformar();
-		int velocidad=mauricio.getVelocidad();
 		int ataque=mauricio.getAtaque();
 		mauricio.pasarPor(superficieTerrestre,superficieAerea);
-		assertTrue(mauricio.getVelocidad()<velocidad);
 		assertEquals(mauricio.getAtaque(),ataque);
+	}
+	
+	@Test
+	public void test08BumblebeeAlternoNoafectadoAlPasarPorTormentaPsionica(){
+		Superficie superficieTerrestre =new Rocoso();
+		Superficie superficieAerea=new TormentaPsionica();
+		mauricio.transformar();
+		int ataque=mauricio.getAtaque();
+		mauricio.pasarPor(superficieTerrestre,superficieAerea);
+		assertEquals(mauricio.getAtaque(),ataque);
+	}
+	
+	@Test
+	public void test09BumblebeeAfectadoAlPasarPorPantanoso(){
+		Superficie superficieTerrestre =new Pantanoso();
+		Superficie superficieAerea=new Nube();
+		int velocidad=mauricio.getVelocidad();
+		mauricio.pasarPor(superficieTerrestre,superficieAerea);
+		assertTrue(mauricio.getVelocidad()<velocidad);
+	}
+	
+	@Test
+	public void test10BumblebeeAlternoAfectadoAlPasarPorPantanoso(){
+		Superficie superficieTerrestre =new Pantanoso();
+		Superficie superficieAerea=new Nube();
+		mauricio.transformar(); 
+		int velocidad=mauricio.getVelocidad();
+		mauricio.pasarPor(superficieTerrestre,superficieAerea);
+		assertTrue(mauricio.getVelocidad()<velocidad);
 	}
 	
 	
 	@Test
-	public void unidadTerrestreAlternaNoafectadoAlPasarPorTormentaPsionica(){
-		Superficie superficieTerrestre =new Pantanoso();
-		Superficie superficieAerea=new TormentaPsionica();
-		mauricio.transformar();
-		int velocidad=mauricio.getVelocidad();
-		int ataque=mauricio.getAtaque();
-		mauricio.pasarPor(superficieTerrestre,superficieAerea);
-		assertTrue(mauricio.getVelocidad()<velocidad);
-		assertEquals(mauricio.getAtaque(),ataque);
-	}
-
-	@Test
-	public void ataqueBonusSeDuplicaEnModoHumanoide(){
+	public void test11ataqueBonusSeDuplicaEnModoHumanoide(){
 		int ataque=mauricio.getAtaque();
 		mauricio.recibirColocable(new DobleCanion());
 		assertTrue(ataque<mauricio.getAtaque());
 	}
 
 	@Test
-	public void ataqueBonusSeDuplicaEnModoAlterno(){
+	public void test12ataqueBonusSeDuplicaEnModoAlterno(){
 		mauricio.transformar();
 		int ataque=mauricio.getAtaque();
 		mauricio.recibirColocable(new DobleCanion());

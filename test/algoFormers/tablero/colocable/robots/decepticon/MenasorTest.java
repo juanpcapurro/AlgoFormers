@@ -1,11 +1,13 @@
 package algoFormers.tablero.colocable.robots.decepticon;
 
+import algoFormers.tablero.colocable.bonus.DobleCanion;
 import algoFormers.tablero.colocable.robots.armas.DisparoConvencional;
 import algoFormers.tablero.superficie.Superficie;
 import algoFormers.tablero.superficieAerea.Nube;
 import algoFormers.tablero.superficieAerea.TormentaPsionica;
 import algoFormers.tablero.superficieTerrestre.Espinas;
 import algoFormers.tablero.superficieTerrestre.Pantanoso;
+import algoFormers.tablero.superficieTerrestre.Rocoso;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -115,9 +117,8 @@ public class MenasorTest {
 		assertEquals(menasor.getVelocidad(),2 );
 	}
 	
-
 	@Test
-	public void test10menasorAfectadoAlPasarPorEspinas(){
+	public void test10MenasorAfectadoAlPasarPorEspinas(){
 		Superficie superficieTerrestre =new Espinas();
 		Superficie superficieAerea=new Nube();
 		int vida=menasor.getPuntosDeVida();
@@ -125,19 +126,41 @@ public class MenasorTest {
 		assertTrue(menasor.getPuntosDeVida()<vida);
 	}
 	
-	
+
 	@Test
 	public void test11MenasorNoafectadoAlPasarPorTormentaPsionica(){
-		Superficie superficieTerrestre =new Pantanoso();
+		Superficie superficieTerrestre =new Rocoso();
 		Superficie superficieAerea=new TormentaPsionica();
-		menasor.transformar();
-		int velocidad=menasor.getVelocidad();
 		int ataque=menasor.getAtaque();
 		menasor.pasarPor(superficieTerrestre,superficieAerea);
-		assertTrue(menasor.getVelocidad()<velocidad);
 		assertEquals(menasor.getAtaque(),ataque);
 	}
 	
+	
+	@Test
+	public void test12MenasorAfectadoAlPasarPorPantanoso(){
+		Superficie superficieTerrestre =new Pantanoso();
+		Superficie superficieAerea=new Nube();
+		int velocidad=menasor.getVelocidad();
+		menasor.pasarPor(superficieTerrestre,superficieAerea);
+		assertTrue(menasor.getVelocidad()<velocidad);
+	}
+	
+	
+	@Test
+	public void test13ataqueBonusSeDuplicaEnModoHumanoide(){
+		int ataque=menasor.getAtaque();
+		menasor.recibirColocable(new DobleCanion());
+		assertTrue(ataque<menasor.getAtaque());
+	}
+
+	@Test
+	public void test14ataqueBonusSeDuplicaEnModoAlterno(){
+		menasor.transformar();
+		int ataque=menasor.getAtaque();
+		menasor.recibirColocable(new DobleCanion());
+		assertTrue(ataque<menasor.getAtaque());
+	}
 
 
 
