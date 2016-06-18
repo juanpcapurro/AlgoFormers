@@ -75,7 +75,7 @@ public class BurbujaInmaculadaTest {
 	}
 
 	@Test
-	public void test02OptimusDañadoTomaBurbujaYNoPierdeVidaPor2Turnos(){
+	public void test02OptimusDaniadoTomaBurbujaYNoPierdeVidaPor2Turnos(){
 
 		//Vida pre bonus
 		this.autobots.getOptimus().recibirAtaque(new DisparoConvencional(100));
@@ -151,7 +151,7 @@ public class BurbujaInmaculadaTest {
 	}
 
 	@Test
-	public void test04OptimusAlternoDañadoTomaBurbujaYNoPierdeVidaPor2Turnos(){
+	public void test04OptimusAlternoDaniadoTomaBurbujaYNoPierdeVidaPor2Turnos(){
 
 		//Vida pre bonus
 		this.autobots.getOptimus().transformar();
@@ -188,4 +188,158 @@ public class BurbujaInmaculadaTest {
 		assertEquals(this.autobots.getOptimus().getPuntosDeVida(),200);
 		this.turno.finalizar();
 	}
+
+	@Test
+	public void test05BumblebeeConVidaTotalTomaBurbujaYNoPierdeVidaPor2Turnos(){
+
+		//Vida pre bonus
+		assertEquals(this.autobots.getBumblebee().getPuntosDeVida(),350);
+		
+		//turno de obtencion
+		assertEquals(this.turno.obtenerJugadorQueDebeJugar(),Monica);
+		this.autobots.getBumblebee().recibirColocable(new BurbujaInmaculada());
+		assertEquals(this.autobots.getBumblebee().getPuntosDeVida(),350);
+		this.autobots.getBumblebee().recibirAtaque(new DisparoConvencional(100));
+		this.turno.avanzarTurno();
+		this.turno.avanzarTurno();
+		
+		//primer turno con burbuja
+		assertEquals(this.autobots.getBumblebee().getPuntosDeVida(),350);
+		this.autobots.getBumblebee().recibirAtaque(new DisparoConvencional(200));
+		this.turno.avanzarTurno();
+		this.turno.avanzarTurno();
+		
+		//segundo turno con burbuja.Recupero vida perdida antes
+		assertEquals(this.autobots.getBumblebee().getPuntosDeVida(),350);
+		this.autobots.getBumblebee().recibirAtaque(new DisparoConvencional(200));
+		this.turno.avanzarTurno();
+		this.turno.avanzarTurno();
+		
+		//tercer turno con burbuja.Recupera vida perdida antes
+		assertEquals(this.autobots.getBumblebee().getPuntosDeVida(),350);
+		this.autobots.getBumblebee().recibirAtaque(new DisparoConvencional(200));
+		assertEquals(this.autobots.getBumblebee().getPuntosDeVida(),150);
+		this.turno.avanzarTurno();
+		
+		//Cuarto turno con burbuja. No recupera vida
+		assertEquals(this.autobots.getBumblebee().getPuntosDeVida(),150);
+		this.turno.finalizar();
+	}
+
+	@Test
+	public void test06BumblebeeDaniadoTomaBurbujaYNoPierdeVidaPor2Turnos(){
+
+		//Vida pre bonus
+		assertEquals(this.autobots.getBumblebee().getPuntosDeVida(),350);
+		this.autobots.getBumblebee().recibirAtaque(new DisparoConvencional(100));
+		
+		//turno de obtencion
+		assertEquals(this.turno.obtenerJugadorQueDebeJugar(),Monica);
+		this.autobots.getBumblebee().recibirColocable(new BurbujaInmaculada());
+		assertEquals(this.autobots.getBumblebee().getPuntosDeVida(),250);
+		this.autobots.getBumblebee().recibirAtaque(new DisparoConvencional(100));
+		this.turno.avanzarTurno();
+		this.turno.avanzarTurno();
+		
+		//primer turno con burbuja
+		assertEquals(this.autobots.getBumblebee().getPuntosDeVida(),250);
+		this.autobots.getBumblebee().recibirAtaque(new DisparoConvencional(200));
+		this.turno.avanzarTurno();
+		this.turno.avanzarTurno();
+		
+		//segundo turno con burbuja.Recupero vida perdida antes
+		assertEquals(this.autobots.getBumblebee().getPuntosDeVida(),250);
+		this.autobots.getBumblebee().recibirAtaque(new DisparoConvencional(200));
+		this.turno.avanzarTurno();
+		this.turno.avanzarTurno();
+		
+		//tercer turno con burbuja.Recupera vida perdida antes
+		assertEquals(this.autobots.getBumblebee().getPuntosDeVida(),250);
+		this.autobots.getBumblebee().recibirAtaque(new DisparoConvencional(200));
+		assertEquals(this.autobots.getBumblebee().getPuntosDeVida(),50);
+		this.turno.avanzarTurno();
+		
+		//Cuarto turno con burbuja. No recupera vida
+		assertEquals(this.autobots.getBumblebee().getPuntosDeVida(),50);
+		this.turno.finalizar();
+	}
+	
+	@Test
+	public void test07BumblebeeAlternoConVidaTotalTomaBurbujaYNoPierdeVidaPor2Turnos(){
+
+		this.autobots.getOptimus().transformar();
+		//Vida pre bonus
+		assertEquals(this.autobots.getBumblebee().getPuntosDeVida(),350);
+		
+		//turno de obtencion
+		assertEquals(this.turno.obtenerJugadorQueDebeJugar(),Monica);
+		this.autobots.getBumblebee().recibirColocable(new BurbujaInmaculada());
+		assertEquals(this.autobots.getBumblebee().getPuntosDeVida(),350);
+		this.autobots.getBumblebee().recibirAtaque(new DisparoConvencional(100));
+		this.turno.avanzarTurno();
+		this.turno.avanzarTurno();
+		
+		//primer turno con burbuja
+		assertEquals(this.autobots.getBumblebee().getPuntosDeVida(),350);
+		this.autobots.getBumblebee().recibirAtaque(new DisparoConvencional(200));
+		this.turno.avanzarTurno();
+		this.turno.avanzarTurno();
+		
+		//segundo turno con burbuja.Recupero vida perdida antes
+		assertEquals(this.autobots.getBumblebee().getPuntosDeVida(),350);
+		this.autobots.getBumblebee().recibirAtaque(new DisparoConvencional(200));
+		this.turno.avanzarTurno();
+		this.turno.avanzarTurno();
+		
+		//tercer turno con burbuja.Recupera vida perdida antes
+		assertEquals(this.autobots.getBumblebee().getPuntosDeVida(),350);
+		this.autobots.getBumblebee().recibirAtaque(new DisparoConvencional(200));
+		assertEquals(this.autobots.getBumblebee().getPuntosDeVida(),150);
+		this.turno.avanzarTurno();
+		
+		//Cuarto turno con burbuja. No recupera vida
+		assertEquals(this.autobots.getBumblebee().getPuntosDeVida(),150);
+		this.turno.finalizar();
+	}
+
+	@Test
+	public void test08BumblebeeAlternoDaniadoTomaBurbujaYNoPierdeVidaPor2Turnos(){
+
+		this.autobots.getBumblebee().transformar();
+		//Vida pre bonus
+		assertEquals(this.autobots.getBumblebee().getPuntosDeVida(),350);
+		this.autobots.getBumblebee().recibirAtaque(new DisparoConvencional(100));
+		
+		//turno de obtencion
+		assertEquals(this.turno.obtenerJugadorQueDebeJugar(),Monica);
+		this.autobots.getBumblebee().recibirColocable(new BurbujaInmaculada());
+		assertEquals(this.autobots.getBumblebee().getPuntosDeVida(),250);
+		this.autobots.getBumblebee().recibirAtaque(new DisparoConvencional(100));
+		this.turno.avanzarTurno();
+		this.turno.avanzarTurno();
+		
+		//primer turno con burbuja
+		assertEquals(this.autobots.getBumblebee().getPuntosDeVida(),250);
+		this.autobots.getBumblebee().recibirAtaque(new DisparoConvencional(200));
+		this.turno.avanzarTurno();
+		this.turno.avanzarTurno();
+		
+		//segundo turno con burbuja.Recupero vida perdida antes
+		assertEquals(this.autobots.getBumblebee().getPuntosDeVida(),250);
+		this.autobots.getBumblebee().recibirAtaque(new DisparoConvencional(200));
+		this.turno.avanzarTurno();
+		this.turno.avanzarTurno();
+		
+		//tercer turno con burbuja.Recupera vida perdida antes
+		assertEquals(this.autobots.getBumblebee().getPuntosDeVida(),250);
+		this.autobots.getBumblebee().recibirAtaque(new DisparoConvencional(200));
+		assertEquals(this.autobots.getBumblebee().getPuntosDeVida(),50);
+		this.turno.avanzarTurno();
+		
+		//Cuarto turno con burbuja. No recupera vida
+		assertEquals(this.autobots.getBumblebee().getPuntosDeVida(),50);
+		this.turno.finalizar();
+	}
+		
 }
+
