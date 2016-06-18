@@ -9,7 +9,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane fx:id="panelSuperior" prefHeight="650.0" prefWidth="1011.0" styleClass="background" stylesheets="@fondoScreenPrincipal.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vista.ScreenInicialController">
+<AnchorPane fx:id="panelSuperior" prefHeight="650.0" prefWidth="1011.0" styleClass="background" stylesheets="@fondoScreenPrincipal.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vista.controladores.ScreenInicialController">
    <children>
       <Button layoutX="823.0" layoutY="14.0" mnemonicParsing="false" onAction="#salir" prefHeight="35.0" prefWidth="160.0" styleClass="background" stylesheets="@botonSalir.css" />
       <GridPane alignment="CENTER" layoutX="32.0" layoutY="531.0" prefHeight="105.0" prefWidth="961.0">

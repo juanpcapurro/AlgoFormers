@@ -10,7 +10,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane fx:id="panelSuperior" prefHeight="650.0" prefWidth="1000.0" styleClass="background" stylesheets="@fondoScreenSeleccionDeEquipos.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vista.ScreenSeleccionDeEquiposController">
+<AnchorPane fx:id="panelSuperior" prefHeight="650.0" prefWidth="1000.0" styleClass="background" stylesheets="@fondoScreenSeleccionDeEquipos.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vista.controladores.ScreenSeleccionDeEquiposController">
    <children>
       <GridPane alignment="BOTTOM_CENTER" layoutY="-6.0" prefHeight="647.0" prefWidth="973.0" stylesheets="@fondoScreenSeleccionDeEquipos.css" AnchorPane.bottomAnchor="9.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="-6.0">
         <columnConstraints>

@@ -1,10 +1,12 @@
-package vista;
+package vista.controladores;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.MenuItem;
 import javafx.scene.layout.AnchorPane;
+import vista.ControlledScreen;
+import vista.ScreensController;
 
 import java.net.URL;
 import java.util.ResourceBundle;
