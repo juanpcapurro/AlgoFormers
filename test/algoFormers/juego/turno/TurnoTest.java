@@ -1,6 +1,7 @@
 package algoFormers.juego.turno;
 
 import algoFormers.juego.Jugador;
+import algoFormers.juego.YaUtilizoPasosDisponibles;
 import algoFormers.tablero.colocable.robots.Equipo;
 import algoFormers.tablero.colocable.robots.autobot.Autobots;
 import algoFormers.tablero.colocable.robots.autobot.Bumblebee;
@@ -432,7 +433,29 @@ public class  TurnoTest {
 	}
 
 	@Test
-	public void test22JugadorUsaElTurnoParaMoverMenasorUsaMediaDistanciaValidaYFinalizaTurno(){}
+	public void test22JugadorUsaElTurnoParaMoverMenasor(){
+		Jugador jugadorActual = turno.obtenerJugadorQueDebeJugar();
+		Decepticons equipo = new Decepticons();
+		jugadorActual.asignarEquipo(equipo);
+
+		turno.combinarAlgoformers();
+
+		assertEquals(turno.obtenerJugadorQueDebeJugar(),miJugador2);
+		turno.finalizar();
+		assertEquals(turno.obtenerJugadorQueDebeJugar(),miJugador2);
+		turno.finalizar();
+		assertEquals(turno.obtenerJugadorQueDebeJugar(),miJugador2);
+		turno.finalizar();
+
+		Posicion posicionOrigen = new Posicion(0,1);
+		Posicion posicionDestino = new Posicion(1,1);
+		turno.mover(posicionOrigen,posicionDestino);
+		posicionOrigen = new Posicion(1,1);
+		posicionDestino = new Posicion(1,2);
+		turno.mover(posicionOrigen,posicionDestino);
+
+		assertEquals(turno.obtenerJugadorQueDebeJugar(),miJugador2);
+	}
 
 	@Test
 	public void test23JugadorUsaElTurnoParaAtacar(){
@@ -450,6 +473,33 @@ public class  TurnoTest {
 
 		assertTrue(turno.finalizado());
 
+	}
+
+
+	@Test (expected= YaUtilizoPasosDisponibles.class)
+	public void test24JugadorUsaElTurnoParaMoverMenasorYExcedePasosDisponibles() {
+		Jugador jugadorActual = turno.obtenerJugadorQueDebeJugar();
+		Decepticons equipo = new Decepticons();
+		jugadorActual.asignarEquipo(equipo);
+
+		turno.combinarAlgoformers();
+
+		assertEquals(turno.obtenerJugadorQueDebeJugar(), miJugador2);
+		turno.finalizar();
+		assertEquals(turno.obtenerJugadorQueDebeJugar(), miJugador2);
+		turno.finalizar();
+		assertEquals(turno.obtenerJugadorQueDebeJugar(), miJugador2);
+		turno.finalizar();
+
+		Posicion posicionOrigen = new Posicion(0, 1);
+		Posicion posicionDestino = new Posicion(1, 1);
+		turno.mover(posicionOrigen, posicionDestino);
+		posicionOrigen = new Posicion(1, 1);
+		posicionDestino = new Posicion(1, 2);
+		turno.mover(posicionOrigen, posicionDestino);
+		posicionOrigen = new Posicion(1, 2);
+		posicionDestino = new Posicion(1, 3);
+		turno.mover(posicionOrigen, posicionDestino);
 	}
 
 
