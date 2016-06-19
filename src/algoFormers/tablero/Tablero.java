@@ -42,7 +42,7 @@ public class Tablero{
 		this.colocar(posicion, algoFormer);
 	}
 
-    private Casillero obtenerCasilleroAsociadoAPosicion(Posicion posicion){
+    public Casillero obtenerCasilleroAsociadoAPosicion(Posicion posicion){
         for (Casillero casillero : listaCasilleros){
             if (casillero.compararPosicion(posicion))
                 return casillero;

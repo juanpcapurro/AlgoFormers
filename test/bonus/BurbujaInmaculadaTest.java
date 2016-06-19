@@ -1,17 +1,15 @@
 package bonus;
 
-import static org.junit.Assert.*;
-
-import org.junit.Before;
-import org.junit.Test;
-
 import algoFormers.juego.Jugador;
 import algoFormers.juego.turno.Turno;
 import algoFormers.tablero.colocable.bonus.BurbujaInmaculada;
-import algoFormers.tablero.colocable.bonus.Flash;
 import algoFormers.tablero.colocable.robots.armas.DisparoConvencional;
 import algoFormers.tablero.colocable.robots.autobot.Autobots;
 import algoFormers.tablero.colocable.robots.decepticon.Decepticons;
+import org.junit.Before;
+import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
 
 public class BurbujaInmaculadaTest {
 	

@@ -4,6 +4,7 @@ import algoFormers.tablero.colocable.Colocable;
 import algoFormers.tablero.colocable.EspacioVacio;
 import algoFormers.tablero.colocable.robots.armas.Ataque;
 import algoFormers.tablero.posiciones.Posicion;
+import algoFormers.tablero.superficie.Superficie;
 import algoFormers.tablero.superficieAerea.ContextoSuperficieArea;
 import algoFormers.tablero.superficieTerrestre.ContextoSuperficieTerrestre;
 
@@ -69,5 +70,17 @@ public class Casillero {
         Colocable aColocar=colocado;
         colocado=new EspacioVacio();
         casilleroDestino.colocar(aColocar);
+    }
+
+    public Superficie getSuperficieTerrestre() {
+        return superficieTerrestreActual.getActual();
+    }
+
+    public Superficie getSuperficieAerea() {
+        return superficieAereaActual.getActual();
+    }
+
+    public Colocable getColocable() {
+        return colocado;
     }
 }

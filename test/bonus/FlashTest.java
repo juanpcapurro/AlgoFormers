@@ -480,10 +480,10 @@ public class FlashTest {
 	}
 
 	
-/*
+
 	@Test
 	public void test14MenasorTomaFlashYTriplicaVelocidadPorTresTurnos(){
-
+		this.turno.avanzarTurno();
 		assertEquals(this.turno.obtenerJugadorQueDebeJugar(),Allen);
 		this.turno.combinarAlgoformers();
 		
@@ -522,5 +522,5 @@ public class FlashTest {
 		assertEquals(this.Allen.obtenerJugadaActual().getAlgoformerDeJugada().getVelocidad(),2);
 		this.turno.finalizar();
 	}
-*/
+
 }

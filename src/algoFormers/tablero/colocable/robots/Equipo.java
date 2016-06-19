@@ -1,5 +1,7 @@
 package algoFormers.tablero.colocable.robots;
 
+import algoFormers.tablero.Tablero;
+
 public abstract class Equipo {
 
     public abstract AlgoFormer combinarme();
@@ -11,4 +13,6 @@ public abstract class Equipo {
     public abstract void notificar();
 
     public abstract boolean estaCombinado();
+
+    public abstract void ubicarUnidades(Tablero tablero);
 }

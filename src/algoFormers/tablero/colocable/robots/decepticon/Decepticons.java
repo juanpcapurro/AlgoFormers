@@ -1,7 +1,9 @@
 package algoFormers.tablero.colocable.robots.decepticon;
 
+import algoFormers.tablero.Tablero;
 import algoFormers.tablero.colocable.robots.AlgoFormer;
 import algoFormers.tablero.colocable.robots.Equipo;
+import algoFormers.tablero.posiciones.Posicion;
 
 public class Decepticons extends Equipo {
 
@@ -21,6 +23,15 @@ public class Decepticons extends Equipo {
     public AlgoFormer combinarme() {
         estaCombinado = true;
         return new Menasor(megatron,boneCrusher,frenzy);
+    }
+
+    public void ubicarUnidades(Tablero tablero){
+        Posicion posicion1=new Posicion(2,6);
+        Posicion posicion2=new Posicion(0,3);
+        Posicion posicion3=new Posicion(7,4);
+        tablero.colocarAlgoformer(posicion1,boneCrusher);
+        tablero.colocarAlgoformer(posicion2,frenzy);
+        tablero.colocarAlgoformer(posicion3,megatron);
     }
 
     @Override
