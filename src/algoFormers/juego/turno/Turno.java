@@ -111,4 +111,8 @@ public class Turno {
     public boolean finalizado() {
         return this.finalizado;
     }
+
+    public String getNombreJugadorQueDebeJugar() {
+        return jugadores.get(turno % cantidadDeJugadores).getNombreDeJugador();
+    }
 }

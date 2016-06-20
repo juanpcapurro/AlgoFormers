@@ -110,4 +110,8 @@ public class Partida {
     public String getNombreJugador2() {
         return jugadorDos.getNombreDeJugador();
     }
+
+    public String getNombreJugadorQueDebeJugar() {
+        return turno.getNombreJugadorQueDebeJugar();
+    }
 }
