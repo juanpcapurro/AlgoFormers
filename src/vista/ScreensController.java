@@ -18,11 +18,15 @@ import vista.ControlledScreen;
 public class ScreensController  extends StackPane {
 
 
+
     private HashMap<String, Node> screens = new HashMap<>();
 
-    public ScreensController() {
+    public ScreensController(mainApp mainApp) {
         super();
+
     }
+
+
 
     public void addScreen(String name, Node screen) {
         screens.put(name, screen);

@@ -7,6 +7,7 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.layout.AnchorPane;
 import vista.ControlledScreen;
 import vista.ScreensController;
+import vista.mainApp;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -50,6 +51,8 @@ public class ScreenSeleccionDeEquiposController implements Initializable, Contro
     public void initialize(URL url, ResourceBundle rb) {
         this.autobot = "optimus";
         this.decepticon = "megatron";
+//        this.autobotJugador.setText(mainApp.getNombreJugador1());
+//        this.decepticonJugador.setText(mainApp.getNombreJugador2());
     }
 
     public void setScreenParent(ScreensController screenParent) {

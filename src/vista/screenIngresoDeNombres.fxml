@@ -41,7 +41,7 @@
                   <Font name="Transformers Movie" size="30.0" />
                </font>
             </TextField>
-            <TextField alignment="CENTER" prefHeight="52.0" prefWidth="428.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+            <TextField alignment="CENTER" onAction="#iniciarJuego" prefHeight="52.0" prefWidth="428.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
                <font>
                   <Font name="Transformers Movie" size="30.0" />
                </font>

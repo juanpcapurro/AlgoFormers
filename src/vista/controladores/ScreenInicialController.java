@@ -9,6 +9,8 @@ import vista.ControlledScreen;
 import vista.ScreensController;
 import vista.mainApp;
 
+import static vista.mainApp.*;
+
 
 public class ScreenInicialController implements Initializable, ControlledScreen {
 
@@ -20,7 +22,8 @@ public class ScreenInicialController implements Initializable, ControlledScreen 
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
+        nombreJugador1 = new TextField();
+        nombreJugador2 = new TextField();
     }
 
     public void setScreenParent(ScreensController screenParent) {
@@ -29,22 +32,16 @@ public class ScreenInicialController implements Initializable, ControlledScreen 
 
     @FXML
     public void iniciarJuego(){
-        myController.setScreen(mainApp.screenSeleccionDeEquipos);
+//        iniciarPartida(nombreJugador1.getText(),nombreJugador2.getText());
+        myController.setScreen(screenSeleccionDeEquipos);
     }
     @FXML
     public void pasarAIngresoDeNombres(){
-        myController.setScreen(mainApp.screenIngresoDeNombres);
+        myController.setScreen(screenIngresoDeNombres);
     }
     @FXML
     public void salir(){
-        mainApp.primaryStage.close();
+        primaryStage.close();
     }
-    @FXML
-    public void ingresoNombreJugador1(){
-       mainApp.setearNombreJugador1(nombreJugador1.getText());
-    }
-    @FXML
-    public void ingresoNombreJugador2(){
-        mainApp.setearNombreJugado2(nombreJugador2.getText());
-    }
+
 }

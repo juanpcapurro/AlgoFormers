@@ -86,4 +86,11 @@ public class Partida {
     public void avanzarIterador(){
         posicionIterador=iterador.inicializarPosicion();
     }
+    public String getNombreJugador1() {
+        return jugadorUno.getNombreDeJugador();
+    }
+
+    public String getNombreJugador2() {
+        return jugadorDos.getNombreDeJugador();
+    }
 }

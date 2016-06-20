@@ -1,5 +1,7 @@
 package vista;
 
+import algoFormers.juego.Jugador;
+import algoFormers.juego.Partida;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.scene.Group;
@@ -16,12 +18,23 @@ public class mainApp extends Application {
     public static String screenSeleccionDeEquipos;
     private static String screenSeleccionDeEquiposFile = "screenSeleccionDeEquipos.fxml";
 
+    private static Partida partida;
+
+    public static String getNombreJugador1() {
+        return partida.getNombreJugador1();
+    }
+
+    public static String getNombreJugador2() {
+        return partida.getNombreJugador2();
+    }
+
+
     @Override
     public void start(Stage primaryStage) {
 
         this.primaryStage = primaryStage;
 
-        mainContainer = new ScreensController();
+        mainContainer = new ScreensController(this);
 
         this.cargarScreensEnElContenedor();
 
@@ -50,9 +63,8 @@ public class mainApp extends Application {
         launch(args);
     }
 
-    public static void setearNombreJugador1(String nombre) {
-    }
-
-    public static void setearNombreJugado2(String nombre) {
-    }
+//
+//    public static void iniciarPartida(String nombreJ1, String nombreJ2) {
+//        partida = new Partida(nombreJ1,nombreJ2,8);
+//    }
 }
