@@ -1,10 +1,12 @@
 package vista.controladores;
 
 import java.awt.*;
+import java.awt.TextField;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.*;
 import vista.ControlledScreen;
 import vista.ScreensController;
 import vista.mainApp;
@@ -13,17 +15,15 @@ import static vista.mainApp.*;
 
 
 public class ScreenInicialController implements Initializable, ControlledScreen {
+    public javafx.scene.control.TextField nombreJugador1;
+    public javafx.scene.control.TextField nombreJugador2;
 
     ScreensController myController;
-    @FXML
-    TextField nombreJugador1;
-    @FXML
-    TextField nombreJugador2;
+
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        nombreJugador1 = new TextField();
-        nombreJugador2 = new TextField();
+
     }
 
     public void setScreenParent(ScreensController screenParent) {
@@ -32,7 +32,8 @@ public class ScreenInicialController implements Initializable, ControlledScreen 
 
     @FXML
     public void iniciarJuego(){
-//        iniciarPartida(nombreJugador1.getText(),nombreJugador2.getText());
+        mainApp.nombreJ1 = nombreJugador1.getText();
+        mainApp.nombreJ2 = nombreJugador2.getText();
         myController.setScreen(screenSeleccionDeEquipos);
     }
     @FXML

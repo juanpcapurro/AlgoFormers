@@ -67,7 +67,7 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <MenuButton fx:id="autobotJugador" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="61.0" prefWidth="242.0" text="JUGADOR" textAlignment="CENTER" GridPane.columnIndex="1">
+                  <MenuButton fx:id="autobotJugador" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#setearEtiquetas" prefHeight="61.0" prefWidth="242.0" text="JUGADOR" textAlignment="CENTER" GridPane.columnIndex="1">
                     <items>
                       <MenuItem fx:id="jugador1Autobot" mnemonicParsing="false" onAction="#autobotJugador1" text="JUGADOR 1" />
                       <MenuItem fx:id="jugador2Autobot" mnemonicParsing="false" onAction="#autobotJugador2" text="JUGADOR 2" />

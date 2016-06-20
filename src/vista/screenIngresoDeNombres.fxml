@@ -36,16 +36,18 @@
                </font>
             </Label>
             <Button mnemonicParsing="false" onAction="#iniciarJuego" prefHeight="52.0" prefWidth="240.0" styleClass="background" stylesheets="@botonEmpezarJuego.css" GridPane.columnIndex="4" GridPane.rowIndex="1" />
-            <TextField alignment="CENTER" prefHeight="72.0" prefWidth="467.0" GridPane.rowIndex="1">
+            <TextField fx:id="nombreJugador1" alignment="CENTER" prefHeight="72.0" prefWidth="467.0" GridPane.rowIndex="1">
                <font>
                   <Font name="Transformers Movie" size="30.0" />
                </font>
             </TextField>
-            <TextField alignment="CENTER" onAction="#iniciarJuego" prefHeight="52.0" prefWidth="428.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+            <TextField fx:id="nombreJugador2" alignment="CENTER" onAction="#iniciarJuego" prefHeight="52.0" prefWidth="428.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
                <font>
                   <Font name="Transformers Movie" size="30.0" />
                </font>
             </TextField>
          </children>
       </GridPane>
+      <AmbientLight color="CHARTREUSE" layoutX="167.0" layoutY="139.0" lightOn="true" />
+      <PerspectiveCamera layoutX="168.0" layoutY="325.0" />
    </children></AnchorPane>
