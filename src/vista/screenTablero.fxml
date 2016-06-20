@@ -9,7 +9,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane fx:id="panelSuperior" prefHeight="650.0" prefWidth="1000.0" styleClass="background" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vista.controladores.ScreenTableroController">
+<AnchorPane fx:id="panelSuperior" prefHeight="650.0" prefWidth="1000.0" styleClass="background" stylesheets="@fondoScreenSeleccionDeEquipos.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vista.controladores.ScreenTableroController">
    <children>
       <BorderPane layoutX="-61.0" layoutY="-2.0" prefHeight="650.0" prefWidth="1000.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <top>
@@ -34,12 +34,12 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Label prefHeight="33.0" prefWidth="283.0" text="ES EL TURNO DE:">
+                        <Label prefHeight="33.0" prefWidth="283.0" text="ES EL TURNO DE:" textFill="#eee340">
                            <font>
                               <Font name="Transformers Movie" size="36.0" />
                            </font>
                         </Label>
-                        <Label fx:id="nombreJugadorTurno" prefHeight="33.0" prefWidth="193.0" text="NOMBRE JUGADOR" GridPane.columnIndex="1">
+                        <Label fx:id="nombreJugadorTurno" prefHeight="33.0" prefWidth="193.0" text="NOMBRE JUGADOR" textFill="#e8e24a" GridPane.columnIndex="1">
                            <font>
                               <Font name="Transformers Movie" size="17.0" />
                            </font>
@@ -63,12 +63,30 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Button mnemonicParsing="false" prefHeight="128.0" prefWidth="206.0" text="COMBINAR" />
-                  <Button mnemonicParsing="false" prefHeight="113.0" prefWidth="222.0" text="TRANSFORMAR" GridPane.rowIndex="1" />
-                  <Button mnemonicParsing="false" prefHeight="121.0" prefWidth="280.0" text="MOVER" GridPane.rowIndex="2" />
-                  <Button mnemonicParsing="false" prefHeight="114.0" prefWidth="241.0" text="ATACAR" GridPane.rowIndex="3" />
-                  <Button mnemonicParsing="false" prefHeight="163.0" prefWidth="259.0" text="DESCOMBINAR" GridPane.rowIndex="4" />
-                  <Button mnemonicParsing="false" prefHeight="130.0" prefWidth="285.0" text="FINALIZAR TURNO" GridPane.rowIndex="5" />
+                  <Button mnemonicParsing="false" prefHeight="128.0" prefWidth="206.0" text="COMBINAR">
+                     <font>
+                        <Font name="Transformers Movie" size="16.0" />
+                     </font></Button>
+                  <Button mnemonicParsing="false" prefHeight="113.0" prefWidth="222.0" text="TRANSFORMAR" GridPane.rowIndex="1">
+                     <font>
+                        <Font name="Transformers Movie" size="16.0" />
+                     </font></Button>
+                  <Button mnemonicParsing="false" prefHeight="121.0" prefWidth="280.0" text="MOVER" GridPane.rowIndex="2">
+                     <font>
+                        <Font name="Transformers Movie" size="16.0" />
+                     </font></Button>
+                  <Button mnemonicParsing="false" prefHeight="114.0" prefWidth="241.0" text="ATACAR" GridPane.rowIndex="3">
+                     <font>
+                        <Font name="Transformers Movie" size="16.0" />
+                     </font></Button>
+                  <Button mnemonicParsing="false" prefHeight="163.0" prefWidth="259.0" text="DESCOMBINAR" GridPane.rowIndex="4">
+                     <font>
+                        <Font name="Transformers Movie" size="16.0" />
+                     </font></Button>
+                  <Button mnemonicParsing="false" prefHeight="130.0" prefWidth="285.0" text="FINALIZAR TURNO" GridPane.rowIndex="5">
+                     <font>
+                        <Font name="Transformers Movie" size="16.0" />
+                     </font></Button>
                </children>
             </GridPane>
          </right>
