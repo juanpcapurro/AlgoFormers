@@ -32,8 +32,7 @@ public class Partida {
         jugadorUno=new Jugador(nombreJugadorUno);
         jugadorDos=new Jugador(nombreJugadorDos);
         this.tablero = new Tablero(dimension);
-        crearAutobots(jugadorUno,tablero);
-        crearDecepticons(jugadorDos,tablero);
+
 
         this.turno = new Turno(DOSJUGADORES);
         turno.agregarJugador(jugadorUno);
@@ -67,6 +66,24 @@ public class Partida {
 
     }
 
+    public void asignarAutobotsAJugador(int jugador ){
+        if(jugador == 1){
+            crearAutobots(jugadorUno,tablero);
+        }
+        else if (jugador == 2){
+            crearAutobots(jugadorDos,tablero);
+        }
+    }
+
+    public void asignarDecepticonsAJugador(int jugador){
+        if(jugador == 1){
+            crearDecepticons(jugadorUno,tablero);
+        }
+        else if (jugador == 2){
+            crearDecepticons(jugadorDos,tablero);
+        }
+
+    }
 
 
     public Superficie obtenerSuperficieTerrestre() {
