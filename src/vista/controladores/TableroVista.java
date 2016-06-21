@@ -56,7 +56,7 @@ public class TableroVista extends GridPane{
 
                     finalCoordinates.add(GridPane.getColumnIndex(pane));
                     finalCoordinates.add(GridPane.getRowIndex(pane));
-                    partida.mover(initialCoordinates,finalCoordinates);
+                  //  partida.mover(initialCoordinates,finalCoordinates);
                     initialCoordinates.remove(0);
                     initialCoordinates.remove(1);
 

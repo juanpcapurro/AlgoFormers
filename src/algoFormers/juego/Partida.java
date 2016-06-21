@@ -93,4 +93,16 @@ public class Partida {
     public String getNombreJugador2() {
         return jugadorDos.getNombreDeJugador();
     }
+
+    public void asignarAutobotsAJugador(int i) {
+        if (i==1)
+            jugadorUno.asignarEquipo(new Autobots());
+        else jugadorUno.asignarEquipo(new Decepticons());
+    }
+
+    public void asignarDecepticonsAJugador(int i) {
+        if (i==1)
+            jugadorDos.asignarEquipo(new Autobots());
+        else jugadorDos.asignarEquipo(new Decepticons());
+    }
 }
