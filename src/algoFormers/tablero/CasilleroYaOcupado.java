@@ -1,6 +1,6 @@
 package algoFormers.tablero;
 
 
-class CasilleroYaOcupado extends RuntimeException {
+public class CasilleroYaOcupado extends RuntimeException {
 
 }
