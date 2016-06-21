@@ -3,7 +3,6 @@ package algoFormers.tablero.colocable.robots.autobot;
 import algoFormers.tablero.Tablero;
 import algoFormers.tablero.colocable.robots.AlgoFormer;
 import algoFormers.tablero.colocable.robots.Equipo;
-import algoFormers.tablero.posiciones.Posicion;
 
 public class Autobots extends Equipo {
 
@@ -11,6 +10,7 @@ public class Autobots extends Equipo {
     private final Bumblebee bumblebee;
     private final Ratchet ratchet;
     private boolean estaCombinado;
+    private Superion superion=null;
 
     public Autobots(){
         this.optimus = new Optimus();
@@ -20,16 +20,15 @@ public class Autobots extends Equipo {
     }
 
     public void ubicarUnidades(Tablero tablero){
-        Posicion posicion1=new Posicion(3,4);
-        Posicion posicion2=new Posicion(4,7);
-        Posicion posicion3=new Posicion(1,3);
-        tablero.colocarAlgoformer(posicion1,optimus);
-        tablero.colocarAlgoformer(posicion2,bumblebee);
-        tablero.colocarAlgoformer(posicion3,ratchet);
+        tablero.colocarRandom(optimus);
+        tablero.colocarRandom(bumblebee);
+        tablero.colocarRandom(ratchet);
     }
 
     @Override
     public void notificar(){
+        if(estaCombinado())
+            superion.notificar();
         optimus.notificar();
         bumblebee.notificar();
         ratchet.notificar();
@@ -43,7 +42,8 @@ public class Autobots extends Equipo {
     @Override
     public AlgoFormer combinarme() {
         estaCombinado = true;
-        return new Superion(optimus,bumblebee,ratchet);
+        superion=new Superion(optimus,bumblebee,ratchet);
+        return superion;
 
     }
 

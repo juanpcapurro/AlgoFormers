@@ -64,12 +64,13 @@ public class Casillero {
 
     public void moverColocable(Casillero casilleroDestino) {
         Colocable colocableEndestino=casilleroDestino.obtenerColocado();
-        if (colocableEndestino.ocupaLugar() && !colocableEndestino.esMovible())
-            return;
+        if (colocableEndestino.ocupaLugar())
+            throw new CasilleroYaOcupado();
+        if (!colocado.esMovible())
+            throw new SinMovimientosDisponibles();
         colocado.recibirColocable(colocableEndestino);
-        Colocable aColocar=colocado;
+        casilleroDestino.colocar(colocado);
         colocado=new EspacioVacio();
-        casilleroDestino.colocar(aColocar);
     }
 
     public Superficie getSuperficieTerrestre() {

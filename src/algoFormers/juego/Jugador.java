@@ -76,6 +76,8 @@ public class Jugador {
 
 	public void asignarEquipo(Equipo equipo) {
 		this.equipo = equipo;
+
+
 	}
 
 	public void notificar() {

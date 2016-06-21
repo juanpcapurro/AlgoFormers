@@ -1,16 +1,23 @@
 package vista.controladores;
 
 import algoFormers.juego.Partida;
-import javafx.scene.effect.DropShadow;
+import javafx.event.EventHandler;
+import javafx.scene.Node;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
-import javafx.scene.paint.Color;
 
+import java.util.ArrayList;
 import java.util.Hashtable;
+import java.util.List;
 
 public class TableroVista extends GridPane{
 
+    final int HEIGTH=85;
+    final int WIDTH =120;
+    static List<Integer> initialCoordinates=new ArrayList<>();
+    static List<Integer> finalCoordinates=new ArrayList<>();
     public TableroVista(Partida partida) {
         ImageView imagenTerrestre;
         ImageView imagenAerea;
@@ -22,11 +29,12 @@ public class TableroVista extends GridPane{
         setGridLinesVisible(true);
         for (int j = 0; j < 8; j++) {
             for (int i = 0; i < 8; i++) {
-                pane=new StackPane();
-                imagenTerrestre=obtenerimagenTerrestre(imagenes,partida);
-                imagenAerea=obtenerimagenAerea(imagenes,partida);
-                objeto=obtenerimagenObjeto(imagenes,partida);
-                pane.getChildren().addAll(imagenTerrestre,imagenAerea,objeto);
+                pane = new StackPane();
+                imagenTerrestre = obtenerimagenTerrestre(imagenes, partida);
+                imagenAerea = obtenerimagenAerea(imagenes, partida);
+                objeto = obtenerimagenObjeto(imagenes, partida);
+                pane.getChildren().addAll(imagenTerrestre, imagenAerea, objeto);
+                setHandlerCasilleroSeleccionado(pane,partida);
                 GridPane.setConstraints(pane, j, i);
                 partida.avanzarIterador();
                 getChildren().add(pane);
@@ -34,13 +42,41 @@ public class TableroVista extends GridPane{
         }
     }
 
+    void setHandlerCasilleroSeleccionado(Node node,Partida partida){
+        node.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                GridPane grid=(GridPane)event.getSource();
+                StackPane pane= (StackPane) event.getTarget();
+                if (initialCoordinates.size()==0) {
+                    initialCoordinates.add( GridPane.getColumnIndex(pane));
+                    initialCoordinates.add( GridPane.getRowIndex(pane));
+                }
+                else {
+
+                    finalCoordinates.add(GridPane.getColumnIndex(pane));
+                    finalCoordinates.add(GridPane.getRowIndex(pane));
+                    partida.mover(initialCoordinates,finalCoordinates);
+                    initialCoordinates.remove(0);
+                    initialCoordinates.remove(1);
+
+                }
+                event.consume();
+            }
+        });
+    }
+
+
+
     ImageView obtenerimagenTerrestre(Hashtable<String,String> imagenes,Partida partida){
         String imagen;
         ImageView imagenTerrestre;
         imagen=imagenes.get((partida.obtenerSuperficieTerrestre()).getClass().toString());
         imagenTerrestre = new ImageView(imagen);
-        imagenTerrestre.setFitHeight(100);
-        imagenTerrestre.setFitWidth(100);
+        imagenTerrestre.setFitHeight(HEIGTH);
+        imagenTerrestre.setFitWidth(WIDTH);
+        imagenTerrestre.setPickOnBounds(false);
+        imagenTerrestre.setMouseTransparent(true);
         return imagenTerrestre;
     }
 
@@ -49,10 +85,11 @@ public class TableroVista extends GridPane{
         ImageView imagenAerea;
         imagen=imagenes.get((partida.obtenerSuperficieAerea()).getClass().toString());
         imagenAerea = new ImageView(imagen);
-        imagenAerea.setFitHeight(100);
-        imagenAerea.setFitWidth(100);
+        imagenAerea.setFitHeight(HEIGTH);
+        imagenAerea.setFitWidth(WIDTH);
         imagenAerea.setOpacity(0.5);
-        imagenAerea.setEffect(new DropShadow(1000, Color.WHITE));
+        imagenAerea.setPickOnBounds(false);
+        imagenAerea.setMouseTransparent(true);
         return imagenAerea;
     }
 
@@ -61,26 +98,27 @@ public class TableroVista extends GridPane{
         ImageView imagenColocable;
         imagen=imagenes.get((partida.obtenerColocable()).getClass().toString());
         imagenColocable=new ImageView(imagen);
-        imagenColocable.setFitHeight(100);
-        imagenColocable.setFitWidth(100);
+        imagenColocable.setFitHeight(HEIGTH-20);
+        imagenColocable.setFitWidth(WIDTH-20);
+        imagenColocable.setPickOnBounds(false);
+        imagenColocable.setMouseTransparent(true);
         return imagenColocable;
     }
 
     Hashtable<String,String> getImagenes(){
         Hashtable<String,String> imagenes=new Hashtable<>();
-        imagenes.put("class algoFormers.tablero.superficieTerrestre.Rocoso","file:src/vista/imagenes/rocoso.jpg");
-        imagenes.put("class algoFormers.tablero.superficieTerrestre.Pantanoso","file:src/vista/imagenes/pantanoso.jpeg");
-        imagenes.put("class algoFormers.tablero.superficieTerrestre.Espinas","file:src/vista/imagenes/espinoso.jpg");
+        imagenes.put("class algoFormers.tablero.superficieTerrestre.Rocoso","file:src/vista/imagenes/rocoso.png");
+        imagenes.put("class algoFormers.tablero.superficieTerrestre.Pantanoso","file:src/vista/imagenes/pantano.png");
+        imagenes.put("class algoFormers.tablero.superficieTerrestre.Espinas","file:src/vista/imagenes/espinas.png");
         imagenes.put("class algoFormers.tablero.superficieAerea.NebulosaDeAndromeda","file:src/vista/imagenes/nebulosa.png");
-        imagenes.put("class algoFormers.tablero.superficieAerea.Nube","file:src/vista/imagenes/nube.png");
-        imagenes.put("class algoFormers.tablero.superficieAerea.TormentaPsionica","file:src/vista/imagenes/tormentaPsionica.png");
-        imagenes.put("class algoFormers.tablero.colocable.robots.autobot.Bumblebee","file:src/vista/imagenes/bumblebee.png");
-        imagenes.put("class algoFormers.tablero.colocable.robots.autobot.Optimus","file:src/vista/imagenes/optimus.png");
-        imagenes.put("class algoFormers.tablero.colocable.robots.autobot.Ratchet","file:src/vista/imagenes/ratchet.png");
-        imagenes.put("class algoFormers.tablero.colocable.robots.decepticon.BoneCrusher","file:src/vista/imagenes/boneCrusher.png");
-        imagenes.put("class algoFormers.tablero.colocable.robots.decepticon.Frenzy","file:src/vista/imagenes/frenzy.png");
-        imagenes.put("class algoFormers.tablero.colocable.robots.decepticon.Megatron","file:src/vista/imagenes/megatron.png");
-        imagenes.put("class algoFormers.tablero.colocable.robots.decepticon.Megatron","file:src/vista/imagenes/megatron.png");
+        imagenes.put("class algoFormers.tablero.superficieAerea.Nube","file:src/vista/imagenes/nubes.png");
+        imagenes.put("class algoFormers.tablero.superficieAerea.TormentaPsionica","file:src/vista/imagenes/tormentapz<sionica.png");
+        imagenes.put("class algoFormers.tablero.colocable.robots.autobot.Bumblebee","file:src/vista/imagenes/BumblebeeHumanoide.png");
+        imagenes.put("class algoFormers.tablero.colocable.robots.autobot.Optimus","file:src/vista/imagenes/OptimusHumanoide.png");
+        imagenes.put("class algoFormers.tablero.colocable.robots.autobot.Ratchet","file:src/vista/imagenes/RatchetHumanoide.png");
+        imagenes.put("class algoFormers.tablero.colocable.robots.decepticon.BoneCrusher","file:src/vista/imagenes/BonecrusherHumanoide.png");
+        imagenes.put("class algoFormers.tablero.colocable.robots.decepticon.Frenzy","file:src/vista/imagenes/FrenzyHumanoide.png");
+        imagenes.put("class algoFormers.tablero.colocable.robots.decepticon.Megatron","file:src/vista/imagenes/MegatronHumanoide.png");
         imagenes.put("class algoFormers.tablero.colocable.EspacioVacio","file:src/vista/imagenes/EspacioVacio.png");
 
 

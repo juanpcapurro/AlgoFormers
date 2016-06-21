@@ -476,7 +476,7 @@ public class FlashTest {
 		//Cuarto turno sin flash
 		assertEquals(this.Barry.obtenerJugadaActual().getAlgoformerDeJugada().getVelocidad(),3);
 		this.turno.finalizar();
-		
+
 	}
 
 	

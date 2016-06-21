@@ -1,5 +1,7 @@
 package algoFormers.tablero.posiciones;
 
+import java.util.Random;
+
 public class ControladorPosiciones {
     int ultimaPosicionX;
     int ultimaPosicionY;
@@ -31,5 +33,10 @@ public class ControladorPosiciones {
         int posicionY=posicion.verCoordenadaY();
         if (posicionX>=dimension || posicionY>=dimension || posicionX<0 || posicionY<0)
             throw new CoordenadasInvalidas();
+    }
+
+    public Posicion getRandomPosition() {
+        Posicion posicion=new Posicion((new Random()).nextInt(Integer.MAX_VALUE)%dimension,new Random().nextInt(Integer.MAX_VALUE)%dimension);
+        return posicion;
     }
 }

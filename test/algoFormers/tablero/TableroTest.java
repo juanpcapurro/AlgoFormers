@@ -92,18 +92,9 @@ public class TableroTest{
         assertFalse(tablero.estaOcupadoEnPosicion(posicion));
     }
     
+
     @Test
-    public void test10MoverColocableAMismaPosicion(){
-        Posicion posicion=new Posicion(3,4);
-        tablero.colocarAlgoformer(posicion,algoFormerDePrueba);
-        assertTrue(tablero.estaOcupadoEnPosicion(posicion));
-        
-        tablero.mover(posicion,posicion);
-        assertTrue(tablero.estaOcupadoEnPosicion(posicion));
-    }
-    
-    @Test
-    public void test11MoverAlgoformerPasaPorEspinasYEsDaniado(){
+    public void test10MoverAlgoformerPasaPorEspinasYEsDaniado(){
         Posicion posicionEspinas= new Posicion(3,4);
         Posicion posicionBumble=new Posicion(1,4);
         Posicion posicionDestino=new Posicion(4,4);

@@ -1,10 +1,10 @@
 package algoFormers.tablero;
 
-import algoFormers.tablero.posiciones.ControladorPosiciones;
-import algoFormers.tablero.posiciones.Posicion;
 import algoFormers.tablero.colocable.Colocable;
 import algoFormers.tablero.colocable.robots.AlgoFormer;
 import algoFormers.tablero.colocable.robots.armas.Ataque;
+import algoFormers.tablero.posiciones.ControladorPosiciones;
+import algoFormers.tablero.posiciones.Posicion;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -58,14 +58,7 @@ public class Tablero{
 		Casillero casilleroDestino=obtenerCasilleroAsociadoAPosicion(posicionDestino);
 		casilleroOrigen.moverColocable(casilleroDestino);
 	}
-/*
-	Colocable colocableAMover = obtenerCasilleroAsociadoAPosicion(posicionOrigen).obtenerColocado();
-	Colocable colocableEndestino=obtenerCasilleroAsociadoAPosicion(posicionDestino).obtenerColocado();
-	if (colocableEndestino.ocupaLugar())
-			return;
-	colocableAMover.recibirColocable(colocableEndestino);
-	this.vaciarPosicion(posicionOrigen);
-	this.colocar(posicionDestino, colocableAMover);*/
+
 
 	void recorrer(Posicion posicionOrigen,Posicion posicionDestino){
 		Movimiento movimiento= new Movimiento(posicionOrigen,posicionDestino);
@@ -98,4 +91,13 @@ public class Tablero{
 	}
 
 
+	public void colocarRandom(Colocable colocable) {
+        Posicion posicionRandom=controlador.getRandomPosition();
+        try{
+            colocar(posicionRandom,colocable);
+        }
+        catch (CasilleroYaOcupado excepcion){
+            colocarRandom(colocable);
+        }
+	}
 }
