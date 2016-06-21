@@ -120,7 +120,7 @@
                   <AnchorPane fx:id="decepticons" prefHeight="485.0" prefWidth="489.0" styleClass="backgroundMegatron" stylesheets="@decepticonsSelector.css" />
                </children>
             </GridPane>
-            <Button mnemonicParsing="false" prefHeight="52.0" prefWidth="103.0" text="JUGAR" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <Button mnemonicParsing="false" onAction="#jugar" prefHeight="52.0" prefWidth="103.0" text="JUGAR" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <font>
                   <Font name="Transformers Movie" size="24.0" />
                </font>

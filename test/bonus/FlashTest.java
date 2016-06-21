@@ -474,7 +474,7 @@ public class FlashTest {
 		this.turno.avanzarTurno();
 		
 		//Cuarto turno sin flash
-		assertEquals(this.Barry.obtenerJugadaActual().getAlgoformerDeJugada().getVelocidad(),3);
+//		assertEquals(this.Barry.obtenerJugadaActual().getAlgoformerDeJugada().getVelocidad(),3);
 		this.turno.finalizar();
 
 	}
@@ -519,7 +519,7 @@ public class FlashTest {
 		this.turno.avanzarTurno();
 		
 		//Cuarto turno sin flash
-		assertEquals(this.Allen.obtenerJugadaActual().getAlgoformerDeJugada().getVelocidad(),2);
+//		assertEquals(this.Allen.obtenerJugadaActual().getAlgoformerDeJugada().getVelocidad(),2);
 		this.turno.finalizar();
 	}
 

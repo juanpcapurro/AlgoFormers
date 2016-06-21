@@ -11,8 +11,6 @@ import algoFormers.tablero.posiciones.ControladorPosiciones;
 import algoFormers.tablero.posiciones.Posicion;
 import algoFormers.tablero.superficie.Superficie;
 
-import java.util.List;
-
 
 public class Partida {
 	
@@ -94,15 +92,5 @@ public class Partida {
 
     public String getNombreJugador2() {
         return jugadorDos.getNombreDeJugador();
-    }
-
-    public void mover(List<Integer> initialCoordinates, List<Integer> finalCoordinates) {
-        Posicion posicionInicial=new Posicion(initialCoordinates.get(0),initialCoordinates.get(1));
-        Posicion posicionFinal= new Posicion(finalCoordinates.get(0),finalCoordinates.get(1));
-        tablero.mover(posicionInicial,posicionFinal);
-    }
-
-    public void resetIterador(){
-        iterador=new ControladorPosiciones(8);
     }
 }

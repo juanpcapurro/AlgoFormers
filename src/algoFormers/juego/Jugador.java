@@ -20,7 +20,7 @@ public class Jugador {
 	}
 
 	
-	String getNombreDeJugador() {
+	public String getNombreDeJugador() {
 		return this.nombreDeJugador;
 	}
 
@@ -87,7 +87,8 @@ public class Jugador {
 
 
 	public Jugada obtenerJugadaActual() {
-		// TODO Auto-generated method stub
 		return jugadaEnCurso;
 	}
+
+
 }

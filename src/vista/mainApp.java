@@ -19,8 +19,10 @@ public class mainApp extends Application {
     public static String screenIngresoDeNombresFile = "screenIngresoDeNombres.fxml";
     public static String screenSeleccionDeEquipos;
     private static String screenSeleccionDeEquiposFile = "screenSeleccionDeEquipos.fxml";
+    public static String screenTablero = "screenTablero";
+    private static String screenTablerolFile = "screenTablero.fxml";
 
-    private static Partida partida;
+    public static Partida partida;
 
     public static String getNombreJugador1() {
         return partida.getNombreJugador1();
@@ -57,6 +59,7 @@ public class mainApp extends Application {
         mainContainer.loadScreen(mainApp.screenInicial, mainApp.screenInicialFile);
         mainContainer.loadScreen(mainApp.screenIngresoDeNombres, mainApp.screenIngresoDeNombresFile);
         mainContainer.loadScreen(mainApp.screenSeleccionDeEquipos, mainApp.screenSeleccionDeEquiposFile);
+        mainContainer.loadScreen(mainApp.screenTablero, mainApp.screenTablerolFile);
 
     }
 
@@ -65,8 +68,9 @@ public class mainApp extends Application {
         launch(args);
     }
 
-//
-//    public static void iniciarPartida(String nombreJ1, String nombreJ2) {
-//        partida = new Partida(nombreJ1,nombreJ2,8);
-//    }
+    public static void iniciarPartida(String equipoJugador1, String equipoJugador2) {
+        partida = new Partida(nombreJ1,nombreJ2,8);
+
+    }
+
 }
