@@ -1,6 +1,5 @@
 package vista;
 
-import java.util.HashMap;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
@@ -12,7 +11,8 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.layout.StackPane;
 import javafx.util.Duration;
-import vista.ControlledScreen;
+
+import java.util.HashMap;
 
 
 public class ScreensController  extends StackPane {
@@ -49,6 +49,7 @@ public class ScreensController  extends StackPane {
 
 
     public boolean setScreen(final String name) {
+        System.out.printf("Pasa %d %s %s\n",getChildren().size(), name, screens.get(name));
         if (screens.get(name) != null) {
             final DoubleProperty opacity = opacityProperty();
 

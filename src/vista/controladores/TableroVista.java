@@ -135,7 +135,7 @@ public class TableroVista extends GridPane {
         return imagenColocable;
     }
 
-    Hashtable<String, String> getImagenes() {
+    static Hashtable<String, String> getImagenes() {
         Hashtable<String, String> imagenes = new Hashtable<>();
         imagenes.put("class algoFormers.tablero.superficieTerrestre.Rocoso", "file:src/vista/imagenes/rocoso.png");
         imagenes.put("class algoFormers.tablero.superficieTerrestre.Pantanoso", "file:src/vista/imagenes/pantano.png");
