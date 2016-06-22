@@ -1,7 +1,7 @@
 package algoFormers.tablero.colocable.robots.decepticon;
 
 import algoFormers.tablero.colocable.bonus.DobleCanion;
-import algoFormers.tablero.colocable.robots.armas.DisparoConvencional;
+import algoFormers.tablero.colocable.robots.armas.Ataque;
 import algoFormers.tablero.superficie.Superficie;
 import algoFormers.tablero.superficieAerea.Nube;
 import algoFormers.tablero.superficieAerea.TormentaPsionica;
@@ -44,7 +44,7 @@ public class MenasorTest {
     }
     @Test
     public void  test03MenasorRecibeAtaqueYSigueConVida() {
-        menasor.recibirAtaque(new DisparoConvencional(100));
+        menasor.recibirAtaque(new Ataque(100));
 
         assertTrue(menasor.estaVivo());
         assertTrue(menasor.getPuntosDeVida() == 1050);
@@ -52,16 +52,16 @@ public class MenasorTest {
 
     @Test
     public void  test04MenasorRecibeAtaqueYMuere() {
-        menasor.recibirAtaque(new DisparoConvencional(1150));
+        menasor.recibirAtaque(new Ataque(1150));
         assertFalse(menasor.estaVivo());
     }
 
     @Test
     public void  test05MenasorCreadoConDecepticonsHeridos() {
 
-        megatron.recibirAtaque(new DisparoConvencional(450));
-        boneCrusher.recibirAtaque(new DisparoConvencional(100));
-        frenzy.recibirAtaque(new DisparoConvencional(300));
+        megatron.recibirAtaque(new Ataque(450));
+        boneCrusher.recibirAtaque(new Ataque(100));
+        frenzy.recibirAtaque(new Ataque(300));
 
         assertTrue(megatron.getPuntosDeVida()==100);
         assertTrue(boneCrusher.getPuntosDeVida()==100);
@@ -73,32 +73,32 @@ public class MenasorTest {
     }
     @Test
     public void  test06MenasorCreadoConDecepticonsHeridosRecibeAtaqueYSigueConVida() {
-        megatron.recibirAtaque(new DisparoConvencional(450));
-        boneCrusher.recibirAtaque(new DisparoConvencional(100));
-        frenzy.recibirAtaque(new DisparoConvencional(300));
+        megatron.recibirAtaque(new Ataque(450));
+        boneCrusher.recibirAtaque(new Ataque(100));
+        frenzy.recibirAtaque(new Ataque(300));
 
         assertTrue(megatron.getPuntosDeVida()==100);
         assertTrue(boneCrusher.getPuntosDeVida()==100);
         assertTrue(frenzy.getPuntosDeVida()==100);
 
         menasorDecepticonsHeridos = new Menasor(megatron, boneCrusher, frenzy);
-        menasorDecepticonsHeridos.recibirAtaque(new DisparoConvencional(10));
+        menasorDecepticonsHeridos.recibirAtaque(new Ataque(10));
 
         assertTrue(menasorDecepticonsHeridos.estaVivo());
         assertTrue(menasorDecepticonsHeridos.getPuntosDeVida()==290);
     }
     @Test
     public void  test07MenasorCreadoConDecepticonsHeridosRecibeAtaqueYMuere() {
-        megatron.recibirAtaque(new DisparoConvencional(450));
-        boneCrusher.recibirAtaque(new DisparoConvencional(100));
-        frenzy.recibirAtaque(new DisparoConvencional(300));
+        megatron.recibirAtaque(new Ataque(450));
+        boneCrusher.recibirAtaque(new Ataque(100));
+        frenzy.recibirAtaque(new Ataque(300));
 
         assertTrue(megatron.getPuntosDeVida()==100);
         assertTrue(boneCrusher.getPuntosDeVida()==100);
         assertTrue(frenzy.getPuntosDeVida()==100);
 
         menasorDecepticonsHeridos = new Menasor(megatron, boneCrusher, frenzy);
-        menasorDecepticonsHeridos.recibirAtaque(new DisparoConvencional(300));
+        menasorDecepticonsHeridos.recibirAtaque(new Ataque(300));
 
         assertFalse(menasorDecepticonsHeridos.estaVivo());
         assertTrue(menasorDecepticonsHeridos.getPuntosDeVida()==0);

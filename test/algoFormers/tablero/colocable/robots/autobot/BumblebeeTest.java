@@ -1,7 +1,7 @@
 package algoFormers.tablero.colocable.robots.autobot;
 
 import algoFormers.tablero.colocable.bonus.DobleCanion;
-import algoFormers.tablero.colocable.robots.armas.DisparoConvencional;
+import algoFormers.tablero.colocable.robots.armas.Ataque;
 import algoFormers.tablero.superficie.Superficie;
 import algoFormers.tablero.superficieAerea.Nube;
 import algoFormers.tablero.superficieAerea.TormentaPsionica;
@@ -20,14 +20,14 @@ public class BumblebeeTest {
     @Test
     public void test01BumblebeeRecibeAtaqueYSigueConVida() {
 
-        mauricio.recibirAtaque(new DisparoConvencional(4));
+        mauricio.recibirAtaque(new Ataque(4));
         assertTrue(mauricio.estaVivo());
     }
 
     @Test
     public void test02BumblebeeRecibeAtaqueYMuere() {
 
-        mauricio.recibirAtaque(new DisparoConvencional(550));
+        mauricio.recibirAtaque(new Ataque(550));
         assertFalse(mauricio.estaVivo());
     }
 	

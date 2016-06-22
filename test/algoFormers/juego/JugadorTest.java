@@ -49,7 +49,7 @@ public class JugadorTest {
 
 		Bumblebee bumblebee = autobots.getBumblebee();
 
-		bumblebee.recibirAtaque(new DisparoConvencional(VIDABUMBLEBEE));
+		bumblebee.recibirAtaque(new Ataque(VIDABUMBLEBEE));
 		assertTrue(miJugador.equipovivo());
 	}
 	@Test
@@ -61,9 +61,9 @@ public class JugadorTest {
 		Ratchet ratchet = autobots.getRatchet();
 		Optimus optimus = autobots.getOptimus();
 
-		bumblebee.recibirAtaque(new DisparoConvencional(VIDABUMBLEBEE));
-		ratchet.recibirAtaque(new DisparoConvencional(VIDARATCHET));
-		optimus.recibirAtaque(new DisparoConvencional(VIDAOPTIMUS));
+		bumblebee.recibirAtaque(new Ataque(VIDABUMBLEBEE));
+		ratchet.recibirAtaque(new Ataque(VIDARATCHET));
+		optimus.recibirAtaque(new Ataque(VIDAOPTIMUS));
 
 		assertFalse(miJugador.equipovivo());
 	}
@@ -74,7 +74,7 @@ public class JugadorTest {
 		miJugador.asignarEquipo(autobots);
 
 		Bumblebee bumblebee = autobots.getBumblebee();
-		bumblebee.recibirAtaque(new DisparoConvencional(VIDABUMBLEBEE));
+		bumblebee.recibirAtaque(new Ataque(VIDABUMBLEBEE));
 
 		miJugador.combinarAlgoformers();
 
@@ -86,7 +86,7 @@ public class JugadorTest {
 		miJugador.asignarEquipo(decepticons);
 
 		BoneCrusher boneCrusher = decepticons.getBoneCrusher();
-		boneCrusher.recibirAtaque(new DisparoConvencional(VIDABONECRUSHER));
+		boneCrusher.recibirAtaque(new Ataque(VIDABONECRUSHER));
 
 		miJugador.combinarAlgoformers();
 

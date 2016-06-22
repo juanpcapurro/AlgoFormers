@@ -1,6 +1,6 @@
 package algoFormers.tablero.colocable.robots.autobot;
 
-import algoFormers.tablero.colocable.robots.armas.DisparoConvencional;
+import algoFormers.tablero.colocable.robots.armas.Ataque;
 import algoFormers.tablero.superficie.Superficie;
 import algoFormers.tablero.superficieAerea.Nube;
 import algoFormers.tablero.superficieAerea.TormentaPsionica;
@@ -19,14 +19,14 @@ public class RatchetTest {
     @Test
     public void test01RatchetRecibeAtaqueYSigueConVida() {
 
-        mauricio.recibirAtaque(new DisparoConvencional(4));
+        mauricio.recibirAtaque(new Ataque(4));
         assertTrue(mauricio.estaVivo());
     }
 
     @Test
     public void test02RatchetRecibeAtaqueYMuere() {
 
-        mauricio.recibirAtaque(new DisparoConvencional(250));
+        mauricio.recibirAtaque(new Ataque(250));
         assertFalse(mauricio.estaVivo());
     }
 	

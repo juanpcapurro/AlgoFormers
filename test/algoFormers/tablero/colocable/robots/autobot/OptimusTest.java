@@ -1,6 +1,6 @@
 package algoFormers.tablero.colocable.robots.autobot;
 
-import algoFormers.tablero.colocable.robots.armas.DisparoConvencional;
+import algoFormers.tablero.colocable.robots.armas.Ataque;
 import algoFormers.tablero.superficie.Superficie;
 import algoFormers.tablero.superficieAerea.Nube;
 import algoFormers.tablero.superficieAerea.TormentaPsionica;
@@ -24,14 +24,14 @@ public class OptimusTest {
     @Test
     public void test01OptimusRecibeAtaqueYSigueConVida() {
 
-        mauricio.recibirAtaque(new DisparoConvencional(4));
+        mauricio.recibirAtaque(new Ataque(4));
         assertTrue(mauricio.estaVivo());
     }
 
     @Test
     public void test02OptimusRecibeAtaqueYMuere() {
 
-        mauricio.recibirAtaque(new DisparoConvencional(550));
+        mauricio.recibirAtaque(new Ataque(550));
         assertFalse(mauricio.estaVivo());
     }
 	

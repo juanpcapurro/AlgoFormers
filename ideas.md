@@ -6,7 +6,7 @@
 
   2. Vamos a hacerlo de tamaño variable, obviamente. ¿Pero que tan variable?¿ Vamos a dar la posibilidad de que el usuario ingrese exactamente el tamaño del tablero?¿ O vamos a darle una serie de tamaños predefinidos?( Ej.: chico,mediano,grande, muy grande).
 
-  3. Debe contener una clase "Casillero", la cuál debe tener un estado que se llame "Tipo de terreno". ¿Por qué un estado? Me parecería genial que el terreno pueda ir cambiando mientras se está desarrollando el juego, Por ejemplo si tenemos un casillero con una zona "rocosa", y un transformer tira un misil en esa posición, el casillero pase a tener una zona "llana". O que tambien existan determinados bonus, que pudan hacer que obteniendo determinado item, poder elegir un casillero para inundarlo. En fin, eso lo vemos más adelante.
+  3. Debe contener una clase "Casillero", la cuál debe tener un estado que se llame "Tipo de terreno". ¿Por qué un estado? Me parecería genial que el terreno pueda ir cambiando mientras se está desarrollando el juego, Por ejemplo si tenemos un casillero con una zona "rocosa", y un transformer tira un Ataque en esa posición, el casillero pase a tener una zona "llana". O que tambien existan determinados bonus, que pudan hacer que obteniendo determinado item, poder elegir un casillero para inundarlo. En fin, eso lo vemos más adelante.
 
   4. Para los tipos de terrenos debemos usar interfaces, y debe existir una única instancia de cada tipo de terreno, y los distintos casilleros apuntan los mismos tipos de terreno. Como el ejemplo de las piezas del tablero de ajedrez (no se si todos estaban presentes), pero aplicado al terreno.
 
