@@ -2,9 +2,9 @@ package algoFormers.tablero.colocable.robots.modificadores;
 
 public class BuffBurbujaInmaculada extends Modificador {
 
-    int vidaOriginal;
-    int contador=0;
-    int cantidadTurnos=4;
+    private int vidaOriginal;
+    private int contador=0;
+    private int cantidadTurnos=4;
 
 
     @Override

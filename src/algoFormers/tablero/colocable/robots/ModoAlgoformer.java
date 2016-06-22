@@ -7,9 +7,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class ModoAlgoformer {
-    EstadoAlgoFormer estado;
-    List <Modificador> modificadores;
-    int movimientosRealizados;
+    private EstadoAlgoFormer estado;
+    private List <Modificador> modificadores;
+    private int movimientosRealizados;
 
     public ModoAlgoformer(Vida vida,int ataque, int distanciaDeAtaque, int velocidad) {
         estado = new EstadoAlgoFormer(vida,ataque, distanciaDeAtaque, velocidad);

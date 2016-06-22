@@ -1,6 +1,6 @@
 package algoFormers.tablero.colocable.robots;
 
-public  class EstadoAlgoFormer extends AlgoFormer{
+public  class EstadoAlgoFormer {
 	protected int velocidad;
 	protected int distanciaDeAtaque;
 	protected int ataque;
@@ -28,8 +28,8 @@ public  class EstadoAlgoFormer extends AlgoFormer{
 		velocidad=nuevaVelocidad;
 	}
 
-	public void setDistanciaDeAtaque(int nuevoAlcance){
-		distanciaDeAtaque=nuevoAlcance;
+	public void setDistanciaDeAtaque(int nuevoAlcance){//No borrar porque puede que luego haga falta un debuff que
+		distanciaDeAtaque=nuevoAlcance;//haga mas lento al algoformer
 	}
 	public void setAtaque(int nuevoAtaque){
 		ataque=nuevoAtaque;
@@ -38,9 +38,4 @@ public  class EstadoAlgoFormer extends AlgoFormer{
 		vida.setVida(unaVida);
 	}
 
-
-	@Override
-	public void afectarColocable(ContextoModoAlgoformer modo) {
-
-	}
 }

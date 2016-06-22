@@ -5,8 +5,8 @@ import algoFormers.tablero.colocable.robots.EstadoAlgoFormer;
 import java.util.List;
 
 public abstract class Modificador {
-    EstadoAlgoFormer estadoAfectado;
-    List<Modificador> modificadores;
+    protected EstadoAlgoFormer estadoAfectado;
+    protected List<Modificador> modificadores;
     public void setEstado(EstadoAlgoFormer estado,List<Modificador> listaModificadores){
         estadoAfectado=estado;
         modificadores=listaModificadores;
