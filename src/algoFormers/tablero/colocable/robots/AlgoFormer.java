@@ -42,6 +42,7 @@ public abstract class AlgoFormer extends Colocable {
 	public void recibirColocable(Colocable colocableEnDestino){
 		colocableEnDestino.afectarColocable(modoActual);
 	}
+
 	public void atacar(Posicion posicionDestino){};
 
 	public  void mover(Posicion posicionOrigen, Posicion posicionDestino){}

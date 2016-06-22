@@ -20,12 +20,12 @@ public abstract class ModoAlgoformer {
         modificador.setEstado(estado,modificadores);
     }
 
-    public void notificar(){
+    void notificar(){
         for (int i=0; i<modificadores.size();i++)
-            (modificadores.get(i)).actualizar();
+            (modificadores.get(i)).actualizar();//No intentes hacerlo bien, alma incauta.
         movimientosRealizados=0;
     }
-    public EstadoAlgoFormer verEstado(){
+    EstadoAlgoFormer verEstado(){
         return estado;
     }
     public abstract void pasarPor(Superficie superficieTerrestre,Superficie superficieAerea);
@@ -41,11 +41,11 @@ public abstract class ModoAlgoformer {
         return estado.getVelocidad();
     }
 
-    public int getDistancia() {
+    int getDistancia() {
         return estado.getDistanciaDeAtaque();
     }
 
-    public  boolean tieneMovimientosDisponibles(){
+    boolean tieneMovimientosDisponibles(){
         return movimientosRealizados<estado.getVelocidad();
 
     }

@@ -7,6 +7,7 @@ import java.util.List;
 public abstract class Modificador {
     protected EstadoAlgoFormer estadoAfectado;
     protected List<Modificador> modificadores;
+
     public void setEstado(EstadoAlgoFormer estado,List<Modificador> listaModificadores){
         estadoAfectado=estado;
         modificadores=listaModificadores;
@@ -19,7 +20,7 @@ public abstract class Modificador {
 
     public abstract Modificador copia();
 
-    public boolean yaFueAplicado(){
+    boolean yaFueAplicado(){
         for (Modificador modificador : modificadores)
             if ((modificador.getClass()).equals(this.getClass()))//wut?
                 return true;

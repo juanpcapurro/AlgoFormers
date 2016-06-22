@@ -26,13 +26,10 @@ public class Casillero {
         superficieAereaActual= new ContextoSuperficieArea();
         superficieTerrestreActual=new ContextoSuperficieTerrestre();
     }
-    
-
 
     boolean estaOcupado(){
         return colocado.ocupaLugar();
     }
-
 
     void colocar(Colocable aColocar) {
         if (this.estaOcupado())
@@ -45,7 +42,7 @@ public class Casillero {
 		colocado = new EspacioVacio();
 	}
 	
-	Colocable obtenerColocado(){
+	private Colocable obtenerColocado(){
 		return colocado;
 	}
 
@@ -58,11 +55,11 @@ public class Casillero {
         return posicion.compararPosicion(posicionAComparar);
     }
 
-    public void cambiarAEspinas() {
+    void cambiarAEspinas() {
         superficieTerrestreActual.cambiarEspinas();
     }
 
-    public void moverColocable(Casillero casilleroDestino) {
+    void moverColocable(Casillero casilleroDestino) {
         Colocable colocableEndestino=casilleroDestino.obtenerColocado();
         if (colocableEndestino.ocupaLugar())
             throw new CasilleroYaOcupado();
