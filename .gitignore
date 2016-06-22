@@ -6,3 +6,5 @@ start
 /.idea/
 /build/
 /libs/
+/out/**
+/out/
