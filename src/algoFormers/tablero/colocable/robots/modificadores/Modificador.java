@@ -21,7 +21,7 @@ public abstract class Modificador {
 
     public boolean yaFueAplicado(){
         for (Modificador modificador : modificadores)
-            if ((modificador.getClass()).equals(this.getClass()))
+            if ((modificador.getClass()).equals(this.getClass()))//wut?
                 return true;
         return false;
     }

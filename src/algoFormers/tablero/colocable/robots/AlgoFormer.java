@@ -9,7 +9,6 @@ public abstract class AlgoFormer extends Colocable {
 	protected ContextoModoAlgoformer modoActual;
 	protected Vida ptosDeVida;
 
-
 	public boolean ocupaLugar(){
 		return true;
 	}
@@ -47,18 +46,15 @@ public abstract class AlgoFormer extends Colocable {
 
 	public  void mover(Posicion posicionOrigen, Posicion posicionDestino){}
 
-
 	public  void descombinar(){}
 
 	public  boolean estaEnModoHumanoide(){
 		return modoActual.esHumanoide();
 	}
 
-
 	public boolean estaEnModoAlterno(){
 		return  modoActual.estaEnModoAlterno();
 	}
-
 
 	public void notificar(){
 		modoActual.notificar();

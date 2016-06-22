@@ -2,9 +2,9 @@ package algoFormers.tablero;
 
 import algoFormers.tablero.posiciones.Posicion;
 
-public class Movimiento {
-    Posicion posicionActual;
-    Posicion posicionDestino;
+class Movimiento {
+    private Posicion posicionActual;
+    private Posicion posicionDestino;
 
     Movimiento (Posicion actual, Posicion destino){
         posicionActual=actual;
