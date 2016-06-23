@@ -7,23 +7,18 @@ import algoFormers.tablero.posiciones.Posicion;
 
 public class Jugador {
 
-
-
 	private String nombreDeJugador;
 	Equipo equipo=null;
 	Jugada jugadaEnCurso;
-
 
 	public Jugador(String nuevoNombre){
 		this.nombreDeJugador = nuevoNombre;
 		jugadaEnCurso = new Jugada();
 	}
 
-	
 	public String getNombreDeJugador() {
 		return this.nombreDeJugador;
 	}
-
 
 	boolean equipovivo(){
 		return equipo.estaVivo();
@@ -76,8 +71,6 @@ public class Jugador {
 
 	public void asignarEquipo(Equipo equipo) {
 		this.equipo = equipo;
-
-
 	}
 
 	public void notificar() {
@@ -85,10 +78,7 @@ public class Jugador {
 		equipo.notificar();
 	}
 
-
 	public Jugada obtenerJugadaActual() {
 		return jugadaEnCurso;
 	}
-
-
 }

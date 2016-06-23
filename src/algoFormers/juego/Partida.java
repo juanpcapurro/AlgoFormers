@@ -12,9 +12,7 @@ import algoFormers.tablero.colocable.robots.decepticon.Decepticons;
 import algoFormers.tablero.posiciones.ControladorPosiciones;
 import algoFormers.tablero.posiciones.Posicion;
 import algoFormers.tablero.superficie.Superficie;
-
 import java.util.List;
-
 
 public class Partida {
 	
@@ -29,7 +27,6 @@ public class Partida {
 
     public Partida(String nombreJugadorUno, String nombreJugadorDos, int dimension) {
     	iniciarPartidaDosJugadores(nombreJugadorUno,nombreJugadorDos,dimension);
-
     }
 
     private void iniciarPartidaDosJugadores (String nombreJugadorUno,String nombreJugadorDos,int dimension){
@@ -42,36 +39,19 @@ public class Partida {
         this.turno = new Turno(DOSJUGADORES);
         turno.agregarJugador(jugadorUno);
         turno.agregarJugador(jugadorDos);
-
-//        jugar(tablero,turno);
-    }
-
-    private void jugar(Tablero tablero, Turno turno){
-        Jugador jugadorActual=turno.avanzarTurno();
-        while (jugadorActual.equipovivo()){
-            pedirJugada(tablero,jugadorActual);
-        }
-    }
-
-    private void pedirJugada(Tablero tablero, Jugador jugador){
-        //falta implementar esto
     }
 
     private void crearAutobots(Jugador jugador,Tablero tablero){
         Equipo equipo=new Autobots();
         equipo.ubicarUnidades(tablero);
         jugador.asignarEquipo(equipo);
-
     }
 
     private void crearDecepticons(Jugador jugador,Tablero tablero){
         Equipo equipo=new Decepticons();
         equipo.ubicarUnidades(tablero);
        jugador.asignarEquipo(equipo);
-
     }
-
-
 
     public Superficie obtenerSuperficieTerrestre() {
         Casillero casillero =tablero.obtenerCasilleroAsociadoAPosicion(posicionIterador);

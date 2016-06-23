@@ -1,4 +1,4 @@
-package algoFormers.juego;
+package algoFormers.juego;//Horas perdidas en este paquete: 3
 
 import algoFormers.tablero.colocable.robots.AlgoFormer;
 import algoFormers.tablero.colocable.robots.Equipo;
