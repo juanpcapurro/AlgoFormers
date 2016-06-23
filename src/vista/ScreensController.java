@@ -49,7 +49,6 @@ public class ScreensController  extends StackPane {
 
 
     public boolean setScreen(final String name) {
-        System.out.printf("Pasa %d %s %s\n",getChildren().size(), name, screens.get(name));
         if (screens.get(name) != null) {
             final DoubleProperty opacity = opacityProperty();
 

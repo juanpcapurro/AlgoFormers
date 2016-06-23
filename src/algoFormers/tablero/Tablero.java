@@ -60,7 +60,7 @@ public class Tablero{
 	}
 
 
-	void recorrer(Posicion posicionOrigen,Posicion posicionDestino){
+	public void recorrer(Posicion posicionOrigen,Posicion posicionDestino){
 		Movimiento movimiento= new Movimiento(posicionOrigen,posicionDestino);
 		while (movimiento.continuarMovimiento()){
 			mover(movimiento.getActual(),movimiento.obtenerSiguiente());

@@ -117,7 +117,7 @@ public class Partida {
         Posicion posicionInicial=new Posicion(initialCoordinates.get(0),initialCoordinates.get(1));
         Posicion posicionFinal=new Posicion(finalCoordinates.get(0),finalCoordinates.get(1));
         try {
-            tablero.mover(posicionInicial, posicionFinal);
+            tablero.recorrer(posicionInicial, posicionFinal);
         }
         catch (SinMovimientosDisponibles e){
             System.out.print("sinMovimientos\n");

@@ -9,7 +9,10 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane fx:id="panelSuperior" prefHeight="650.0" prefWidth="1000.0" styleClass="background" stylesheets="@fondoScreenSeleccionDeEquipos.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vista.controladores.ScreenTableroController">
+<AnchorPane fx:id="panelSuperior" prefHeight="650.0" prefWidth="1000.0" styleClass="background"  xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vista.controladores.ScreenTableroController">
+<stylesheets>
+  <URL value="@fondoScreenSeleccionDeEquipos.css" />
+</stylesheets>
    <children>
       <BorderPane layoutX="-61.0" layoutY="-2.0" prefHeight="650.0" prefWidth="1000.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <top>
@@ -25,6 +28,7 @@
               </rowConstraints>
                <children>
                   <Button mnemonicParsing="false" onAction="#salir" prefHeight="4.0" prefWidth="117.0" styleClass="background" stylesheets="@botonSalir.css" GridPane.columnIndex="2" />
+
                   <GridPane>
                     <columnConstraints>
                       <ColumnConstraints hgrow="SOMETIMES" maxWidth="297.6059112548828" minWidth="10.0" prefWidth="285.27928161621094" />
