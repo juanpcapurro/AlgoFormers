@@ -23,7 +23,6 @@ public class ImagenObjeto extends ImageView {
         setMouseTransparent(false);
         setHigherEffect();
         setLowerEffect();
-
     }
 
     void setHigherEffect(){

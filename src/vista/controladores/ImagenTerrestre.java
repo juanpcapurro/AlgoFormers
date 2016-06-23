@@ -7,8 +7,8 @@ import javafx.scene.image.ImageView;
 import java.util.Hashtable;
 
 public class ImagenTerrestre extends ImageView {
-    private static final double HEIGTH =73 ;
-    private static final double WIDTH =97;
+    private static final double HEIGTH =75 ;
+    private static final double WIDTH =96;
 
     public ImagenTerrestre(Hashtable<String, String> imagenes, Partida partida) {
         String imagen;

@@ -23,6 +23,7 @@ public class TableroVista extends GridPane {
     GridPane grid=this;
     StackPane inicial;
     StackPane destino;
+    final ImageView mira=new ImageView("file:src/vista/imagenes/mira2.png");
 
     public TableroVista(Partida nuevaPartida) {
         partida=nuevaPartida;
@@ -42,6 +43,8 @@ public class TableroVista extends GridPane {
                 objeto = obtenerimagenObjeto(imagenes, partida);
                 pane.getChildren().addAll(imagenTerrestre, imagenAerea, objeto);
                 setHandlerCasilleroSeleccionado(pane, partida);
+                setCrosshairOn(pane);
+                setCrosshairOff(pane);
                 GridPane.setConstraints(pane, j, i);
                 partida.avanzarIterador();
                 getChildren().add(pane);
@@ -153,5 +156,30 @@ public class TableroVista extends GridPane {
 
 
         return imagenes;
+    }
+
+    void setCrosshairOn(StackPane pane){
+        mira.setFitHeight(70);
+        mira.setFitWidth(70);
+        mira.setScaleX(2);
+        mira.setScaleY(2);
+        pane.setOnMouseMoved(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                if(!pane.getChildren().contains(mira))
+                    pane.getChildren().add(mira);
+                event.consume();
+            }
+        });
+    }
+
+    void setCrosshairOff(StackPane pane) {
+        pane.setOnMouseExited(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                pane.getChildren().remove(pane.getChildren().size()-1);
+                event.consume();
+            }
+        });
     }
 }
