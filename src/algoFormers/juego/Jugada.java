@@ -52,7 +52,6 @@ public class Jugada {
         } else if(movimientosDisponibles <= 0) {
             throw new YaUtilizoPasosDisponibles();
         }
-
     }
 
     public boolean enProcesoDeCombinacion() {

@@ -4,6 +4,7 @@ import algoFormers.juego.Partida;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -27,7 +28,8 @@ public class ScreenTableroController implements Initializable, ControlledScreen 
     @FXML
     public Label nombreJugadorTurno;
     ScreensController myController;
-    final ImageView mira=new ImageView("file:src/vista/imagenes/mira.png");
+    final ImageView mira=new ImageView("file:src/vista/imagenes/mira4.png");
+    final ImageView seleccion=new ImageView("file:src/vista/imagenes/mira3.png");
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -44,6 +46,7 @@ public class ScreenTableroController implements Initializable, ControlledScreen 
         Hashtable<String,String> imagenes=TableroVista.getImagenes();
         tableroGrid.getChildren().clear();
         tableroGrid.setGridLinesVisible(true);
+        tableroGrid.setPadding(new Insets(10,10,10,10));
         for (int j=0;j<8;j++) {
             for (int i = 0; i < 8; i++) {
                 ImageView imagenAerea = new ImagenAerea(imagenes, partida);
@@ -54,7 +57,7 @@ public class ScreenTableroController implements Initializable, ControlledScreen 
                 GridPane.setConstraints(pane,i,j);
                 tableroGrid.getChildren().add(pane);
                 setCrosshairOn(pane);
-                //setCrosshairOff(pane);
+                setCrosshairOff(pane);
                 partida.avanzarIterador();
 
             }
@@ -63,10 +66,14 @@ public class ScreenTableroController implements Initializable, ControlledScreen 
     }
 
     void setCrosshairOn(StackPane pane){
-        mira.setFitHeight(90);
-        mira.setFitWidth(90);
-        mira.setScaleX(1.4);
-        mira.setScaleY(1.2);
+        mira.setFitHeight(70);
+        mira.setFitWidth(70);
+        mira.setScaleX(1.3);
+        mira.setScaleY(1);
+        seleccion.setFitHeight(70);
+        seleccion.setFitWidth(70);
+        seleccion.setScaleX(1.3);
+        seleccion.setScaleY(1);
         pane.setOnMouseMoved(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
@@ -75,13 +82,20 @@ public class ScreenTableroController implements Initializable, ControlledScreen 
                 event.consume();
             }
         });
+        pane.setOnMousePressed(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                if(!pane.getChildren().contains(seleccion))
+                    pane.getChildren().add(seleccion);
+            }
+        });
     }
 
      void setCrosshairOff(StackPane pane) {
          pane.setOnMouseExited(new EventHandler<MouseEvent>() {
              @Override
              public void handle(MouseEvent event) {
-                 pane.getChildren().remove(pane.getChildren().size()-1);
+                 pane.getChildren().remove(mira);
                  event.consume();
              }
          });
