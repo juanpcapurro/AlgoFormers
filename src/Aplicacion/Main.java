@@ -8,7 +8,7 @@ import vista.mainApp;
 public class Main extends Application {
     @Override
     public void start(Stage primaryStage) {
-        primaryStage.setResizable(false);
+        primaryStage.setResizable(true);
         mainApp mainApp = new mainApp();
         mainApp.start(primaryStage);
 
