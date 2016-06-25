@@ -1,10 +1,10 @@
 package bonus;
 
-import algoFormers.juego.Jugador;
-import algoFormers.juego.turno.Turno;
-import algoFormers.tablero.colocable.bonus.Flash;
-import algoFormers.tablero.colocable.robots.autobot.Autobots;
-import algoFormers.tablero.colocable.robots.decepticon.Decepticons;
+import modelo.juego.Jugador;
+import modelo.juego.Turno;
+import modelo.tablero.colocable.bonus.Flash;
+import modelo.tablero.colocable.robots.autobot.Autobots;
+import modelo.tablero.colocable.robots.decepticon.Decepticons;
 
 
 import org.junit.Before;

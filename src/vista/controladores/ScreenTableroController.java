@@ -1,6 +1,6 @@
 package vista.controladores;
 
-import algoFormers.juego.Partida;
+import modelo.juego.Partida;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;

@@ -1,11 +1,11 @@
 package bonus;
 
-import algoFormers.juego.Jugador;
-import algoFormers.juego.turno.Turno;
-import algoFormers.tablero.colocable.bonus.BurbujaInmaculada;
-import algoFormers.tablero.colocable.robots.armas.Ataque;
-import algoFormers.tablero.colocable.robots.autobot.Autobots;
-import algoFormers.tablero.colocable.robots.decepticon.Decepticons;
+import modelo.juego.Jugador;
+import modelo.juego.Turno;
+import modelo.tablero.colocable.bonus.BurbujaInmaculada;
+import modelo.tablero.colocable.robots.armas.Ataque;
+import modelo.tablero.colocable.robots.autobot.Autobots;
+import modelo.tablero.colocable.robots.decepticon.Decepticons;
 import org.junit.Before;
 import org.junit.Test;
 

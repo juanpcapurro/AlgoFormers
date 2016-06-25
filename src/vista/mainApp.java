@@ -1,7 +1,6 @@
 package vista;
 
-import algoFormers.juego.Jugador;
-import algoFormers.juego.Partida;
+import modelo.juego.Partida;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.scene.Group;
@@ -23,14 +22,10 @@ public class mainApp extends Application {
     private static String screenTablerolFile = "screenTablero.fxml";
 
     public static Partida partida;
-
-    public static String getNombreJugador1() {
-        return partida.getNombreJugador1();
-    }
-
-    public static String getNombreJugador2() {
-        return partida.getNombreJugador2();
-    }
+//
+//    public static String getNombreJugador2() {
+//        return partida.getNombreJugador2();
+//    }
 
 
     @Override

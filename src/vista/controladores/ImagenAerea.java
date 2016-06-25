@@ -1,6 +1,6 @@
 package vista.controladores;
 
-import algoFormers.juego.Partida;
+import modelo.juego.Partida;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 

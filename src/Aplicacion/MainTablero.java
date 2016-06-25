@@ -1,6 +1,6 @@
 package Aplicacion;
 
-import algoFormers.juego.Partida;
+import modelo.juego.Partida;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Group;

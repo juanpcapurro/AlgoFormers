@@ -1,25 +1,25 @@
 vim -s <(echo $'
 
-:tabnew ./src/algoFormers/tablero/colocable/robots/AlgoFormer.java \n
-:sp ./src/algoFormers/tablero/colocable/robots/EstadoAlgoFormer.java \n
+:tabnew ./src/modelo/tablero/colocable/robots/AlgoFormer.java \n
+:sp ./src/modelo/tablero/colocable/robots/EstadoAlgoFormer.java \n
 
-:tabnew ./src/algoFormers/tablero/colocable/robots/ModoAlternoTerrestre.java \n
-:sp ./src/algoFormers/tablero/colocable/robots/ModoHumanoide.java \n
+:tabnew ./src/modelo/tablero/colocable/robots/ModoAlternoTerrestre.java \n
+:sp ./src/modelo/tablero/colocable/robots/ModoHumanoide.java \n
 
-:tabnew ./src/algoFormers/tablero/colocable/robots/autobot/Bumblebee.java \n
-:sp ./test/algoFormers/tablero/colocable/robots/autobot/BumblebeeTest.java \n
+:tabnew ./src/modelo/tablero/colocable/robots/autobot/Bumblebee.java \n
+:sp ./test/modelo/tablero/colocable/robots/autobot/BumblebeeTest.java \n
 
-:tabnew ./src/algoFormers/tablero/colocable/robots/decepticon/Megatron.java \n
-:sp ./test/algoFormers/tablero/colocable/robots/decepticon/MegatronTest.java \n
+:tabnew ./src/modelo/tablero/colocable/robots/decepticon/Megatron.java \n
+:sp ./test/modelo/tablero/colocable/robots/decepticon/MegatronTest.java \n
 
-:tabnew ./src/algoFormers/tablero/colocable/robots/decepticon/BoneCrusher.java \n
-:sp ./test/algoFormers/tablero/colocable/robots/decepticon/BoneCrusherTest.java \n
+:tabnew ./src/modelo/tablero/colocable/robots/decepticon/BoneCrusher.java \n
+:sp ./test/modelo/tablero/colocable/robots/decepticon/BoneCrusherTest.java \n
 
-:tabnew ./src/algoFormers/tablero/colocable/robots/decepticon/Frenzy.java \n
-:sp ./test/algoFormers/tablero/colocable/robots/decepticon/FrenzyTest.java \n
+:tabnew ./src/modelo/tablero/colocable/robots/decepticon/Frenzy.java \n
+:sp ./test/modelo/tablero/colocable/robots/decepticon/FrenzyTest.java \n
 
-:tabnew ./src/algoFormers/tablero/colocable/robots/decepticon/Menasor.java \n
-:sp ./test/algoFormers/tablero/colocable/robots/decepticon/MenasorTest.java \n
+:tabnew ./src/modelo/tablero/colocable/robots/decepticon/Menasor.java \n
+:sp ./test/modelo/tablero/colocable/robots/decepticon/MenasorTest.java \n
 
 
 gt \n

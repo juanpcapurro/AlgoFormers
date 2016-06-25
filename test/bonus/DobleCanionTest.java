@@ -5,13 +5,11 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 
-import algoFormers.juego.Jugador;
-import algoFormers.juego.turno.Turno;
-import algoFormers.tablero.colocable.bonus.DobleCanion;
-import algoFormers.tablero.colocable.robots.autobot.Autobots;
-import algoFormers.tablero.colocable.robots.autobot.Superion;
-import algoFormers.tablero.colocable.robots.decepticon.Decepticons;
-import algoFormers.tablero.colocable.robots.decepticon.Menasor;
+import modelo.juego.Jugador;
+import modelo.juego.Turno;
+import modelo.tablero.colocable.bonus.DobleCanion;
+import modelo.tablero.colocable.robots.autobot.Autobots;
+import modelo.tablero.colocable.robots.decepticon.Decepticons;
 
 public class DobleCanionTest {
 	

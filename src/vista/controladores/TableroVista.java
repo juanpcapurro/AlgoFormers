@@ -1,6 +1,6 @@
 package vista.controladores;
 
-import algoFormers.juego.Partida;
+import modelo.juego.Partida;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Node;
@@ -140,19 +140,19 @@ public class TableroVista extends GridPane {
 
     static Hashtable<String, String> getImagenes() {
         Hashtable<String, String> imagenes = new Hashtable<>();
-        imagenes.put("class algoFormers.tablero.superficieTerrestre.Rocoso", "file:src/vista/imagenes/rocoso.png");
-        imagenes.put("class algoFormers.tablero.superficieTerrestre.Pantanoso", "file:src/vista/imagenes/pantanoso.png");
-        imagenes.put("class algoFormers.tablero.superficieTerrestre.Espinas", "file:src/vista/imagenes/espinoso.png");
-        imagenes.put("class algoFormers.tablero.superficieAerea.NebulosaDeAndromeda", "file:src/vista/imagenes/nebulosa.png");
-        imagenes.put("class algoFormers.tablero.superficieAerea.Nube", "file:src/vista/imagenes/nube.png");
-        imagenes.put("class algoFormers.tablero.superficieAerea.TormentaPsionica", "file:src/vista/imagenes/tormentaPsionica.png");
-        imagenes.put("class algoFormers.tablero.colocable.robots.autobot.Bumblebee", "file:src/vista/imagenes/BumblebeeHumanoide.png");
-        imagenes.put("class algoFormers.tablero.colocable.robots.autobot.Optimus", "file:src/vista/imagenes/OptimusHumanoide.png");
-        imagenes.put("class algoFormers.tablero.colocable.robots.autobot.Ratchet", "file:src/vista/imagenes/RatchetHumanoide.png");
-        imagenes.put("class algoFormers.tablero.colocable.robots.decepticon.BoneCrusher", "file:src/vista/imagenes/BonecrusherHumanoide.png");
-        imagenes.put("class algoFormers.tablero.colocable.robots.decepticon.Frenzy", "file:src/vista/imagenes/FrenzyHumanoide.png");
-        imagenes.put("class algoFormers.tablero.colocable.robots.decepticon.Megatron", "file:src/vista/imagenes/MegatronHumanoide.png");
-        imagenes.put("class algoFormers.tablero.colocable.EspacioVacio", "file:src/vista/imagenes/EspacioVacio.png");
+        imagenes.put("class modelo.tablero.superficieTerrestre.Rocoso", "file:src/vista/imagenes/rocoso.png");
+        imagenes.put("class modelo.tablero.superficieTerrestre.Pantanoso", "file:src/vista/imagenes/pantanoso.png");
+        imagenes.put("class modelo.tablero.superficieTerrestre.Espinas", "file:src/vista/imagenes/espinoso.png");
+        imagenes.put("class modelo.tablero.superficieAerea.NebulosaDeAndromeda", "file:src/vista/imagenes/nebulosa.png");
+        imagenes.put("class modelo.tablero.superficieAerea.Nube", "file:src/vista/imagenes/nube.png");
+        imagenes.put("class modelo.tablero.superficieAerea.TormentaPsionica", "file:src/vista/imagenes/tormentaPsionica.png");
+        imagenes.put("class modelo.tablero.colocable.robots.autobot.Bumblebee", "file:src/vista/imagenes/BumblebeeHumanoide.png");
+        imagenes.put("class modelo.tablero.colocable.robots.autobot.Optimus", "file:src/vista/imagenes/OptimusHumanoide.png");
+        imagenes.put("class modelo.tablero.colocable.robots.autobot.Ratchet", "file:src/vista/imagenes/RatchetHumanoide.png");
+        imagenes.put("class modelo.tablero.colocable.robots.decepticon.BoneCrusher", "file:src/vista/imagenes/BonecrusherHumanoide.png");
+        imagenes.put("class modelo.tablero.colocable.robots.decepticon.Frenzy", "file:src/vista/imagenes/FrenzyHumanoide.png");
+        imagenes.put("class modelo.tablero.colocable.robots.decepticon.Megatron", "file:src/vista/imagenes/MegatronHumanoide.png");
+        imagenes.put("class modelo.tablero.colocable.EspacioVacio", "file:src/vista/imagenes/EspacioVacio.png");
 
 
         return imagenes;
