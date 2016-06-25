@@ -8,16 +8,12 @@ import org.junit.Test;
 import modelo.juego.Jugador;
 import modelo.juego.Turno;
 import modelo.tablero.colocable.bonus.DobleCanion;
-import modelo.tablero.colocable.robots.autobot.Autobots;
-import modelo.tablero.colocable.robots.decepticon.Decepticons;
 
 public class DobleCanionTest {
 	
 	
 	private Jugador Joey;
 	private Jugador Chandler;
-	public Autobots autobots;
-	private Decepticons decepticons;
 	private Turno turno;
 	static final int CANTIDADJUGADORES=2;
 	

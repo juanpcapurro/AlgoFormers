@@ -1,14 +1,9 @@
 package modelo.juego;
 
-import modelo.tablero.colocable.robots.decepticon.*;
-import modelo.tablero.colocable.robots.autobot.*;
-import modelo.tablero.colocable.robots.armas.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 public class JugadorTest {
 	Jugador miJugador;
@@ -20,8 +15,5 @@ public class JugadorTest {
 
 	@Before
 	public void setUp()  {
-		miJugador=new Jugador(NOMBREJUGADOR);
 	}
-
-	
 }
