@@ -21,8 +21,8 @@ public class Jugador {
 		robotsJugador.add(tercerAlgoformer);
 	}
 
-	public DatosJugador getDatosJugador() {
-        ArrayList<DatosAlgoformer> listaDatos;
+	DatosJugador getDatosJugador() {
+        ArrayList<DatosAlgoformer> listaDatos = new ArrayList<DatosAlgoformer>();
         for(AlgoFormer actual: robotsJugador)
             listaDatos.add(actual.obtenerDatosAlgoformer());
         return new DatosJugador(nombreDeJugador, listaDatos);
@@ -36,7 +36,7 @@ public class Jugador {
 	}
 
 	public void combinarAlgoformers() {
-		equipo.combinar();
+
 	}
 
 	public void transformar() {
@@ -60,9 +60,6 @@ public class Jugador {
 	}
 
     public boolean puedeJugar(){
-        for(AlgoFormer actual: robotsJugador)
-            if(actual.puedeJugar())
-                return true;
-        return false;
+        return true;
     }
 }

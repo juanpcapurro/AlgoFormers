@@ -43,9 +43,6 @@ public abstract class AlgoFormer extends Colocable {
 		modoActual.pasarPor(superficieTerrestre, superficieAerea);
 	}
 
-	public boolean puedeJugar(){
-
-	}
 	@Override
 	public void recibirColocable(Colocable colocableEnDestino){
 		colocableEnDestino.afectarColocable(modoActual);
