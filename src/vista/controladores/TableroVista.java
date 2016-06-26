@@ -42,7 +42,6 @@ public class TableroVista extends GridPane {
                 imagenAerea = obtenerimagenAerea(imagenes, partida);
                 objeto = obtenerimagenObjeto(imagenes, partida);
                 pane.getChildren().addAll(imagenTerrestre, imagenAerea, objeto);
-                setHandlerCasilleroSeleccionado(pane, partida);
                 setCrosshairOn(pane);
                 setCrosshairOff(pane);
                 GridPane.setConstraints(pane, j, i);
@@ -51,7 +50,7 @@ public class TableroVista extends GridPane {
             }
         }
     }
-
+/*
     void setHandlerCasilleroSeleccionado(Node node, Partida partida) {
         node.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
@@ -73,7 +72,7 @@ public class TableroVista extends GridPane {
                 }
             }
         });
-    }
+    }*/
 
     public Group buscarPane(List<Integer> coordinates){
         for(Node node: grid.getChildren())
