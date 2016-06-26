@@ -7,9 +7,11 @@ import javafx.beans.property.DoubleProperty;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.layout.StackPane;
+import javafx.stage.Screen;
 import javafx.util.Duration;
 
 import java.util.HashMap;
@@ -23,7 +25,6 @@ public class ScreensController  extends StackPane {
 
     public ScreensController(mainApp mainApp) {
         super();
-
     }
 
 
@@ -59,7 +60,8 @@ public class ScreensController  extends StackPane {
                             @Override
                             public void handle(ActionEvent t) {
                                 getChildren().remove(0);
-                                getChildren().add(0, screens.get(name));
+                                Node screen = screens.get(name);
+                                getChildren().add(0, screen);
                                 Timeline fadeIn = new Timeline(
                                         new KeyFrame(Duration.ZERO, new KeyValue(opacity, 0.0)),
                                         new KeyFrame(new Duration(1000), new KeyValue(opacity, 1.0)));  //TIEMPO DE TTRANSICION
@@ -70,7 +72,8 @@ public class ScreensController  extends StackPane {
 
             } else {
                 setOpacity(0.0);
-                getChildren().add(screens.get(name));
+                Node screen = screens.get(name);
+                getChildren().add(screen);
                 Timeline fadeIn = new Timeline(
                         new KeyFrame(Duration.ZERO, new KeyValue(opacity, 0.0)),
                         new KeyFrame(new Duration(10), new KeyValue(opacity, 1.0)));
@@ -78,6 +81,7 @@ public class ScreensController  extends StackPane {
             }
             return true;
         } else {
+
             System.out.println("NO SE PUDO CARGAR LA PANTALLA \n");
             return false;
         }

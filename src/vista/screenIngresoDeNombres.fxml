@@ -9,10 +9,13 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane fx:id="panelSuperior" prefHeight="650.0" prefWidth="1011.0" styleClass="background" stylesheets="@fondoScreenPrincipal.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vista.controladores.ScreenInicialController">
+<AnchorPane fx:id="panelSuperior" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#iniciarJuego" prefHeight="805.0" prefWidth="1291.0" styleClass="background" stylesheets="@fondoScreenPrincipal.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vista.controladores.ScreenInicialController">
    <children>
-      <Button layoutX="823.0" layoutY="14.0" mnemonicParsing="false" onAction="#salir" prefHeight="35.0" prefWidth="160.0" styleClass="background" stylesheets="@botonSalir.css" />
-      <GridPane alignment="CENTER" layoutX="32.0" layoutY="531.0" prefHeight="105.0" prefWidth="961.0">
+      <Button layoutX="938.0" layoutY="18.0" mnemonicParsing="false" onAction="#salir" prefHeight="35.0" prefWidth="160.0" styleClass="background" stylesheets="@botonSalir.css" AnchorPane.rightAnchor="17.0" AnchorPane.topAnchor="18.0">
+         <font>
+            <Font name="Arial" size="13.0" />
+         </font></Button>
+      <GridPane alignment="CENTER" layoutX="8.0" layoutY="531.0" prefHeight="108.0" prefWidth="1099.0" AnchorPane.bottomAnchor="32.0" AnchorPane.rightAnchor="4.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="478.0" minWidth="10.0" prefWidth="362.0" />
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="326.0" minWidth="0.0" prefWidth="18.0" />
@@ -21,29 +24,32 @@
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="408.66668701171875" minWidth="10.0" prefWidth="246.0" />
         </columnConstraints>
         <rowConstraints>
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="117.721923828125" minHeight="10.0" prefHeight="37.69915771484375" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="70.30084228515625" minHeight="10.0" prefHeight="70.30084228515625" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label prefHeight="57.0" prefWidth="415.0" text="NOMBRE JUGADOR 1" textFill="WHITE" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+            <Label contentDisplay="CENTER" prefHeight="57.0" prefWidth="415.0" text="NOMBRE JUGADOR 1" textAlignment="CENTER" textFill="WHITE" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                <font>
-                  <Font name="Transformers Movie" size="32.0" />
+                  <Font name="Arial" size="24.0" />
                </font>
             </Label>
-            <Label prefHeight="50.0" prefWidth="423.0" text="NOMBRE JUGADOR 2" textFill="WHITE" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+            <Label contentDisplay="CENTER" prefHeight="50.0" prefWidth="423.0" text="NOMBRE JUGADOR 2" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                <font>
-                  <Font name="Transformers Movie" size="32.0" />
+                  <Font name="Arial" size="24.0" />
                </font>
             </Label>
-            <Button mnemonicParsing="false" onAction="#iniciarJuego" prefHeight="52.0" prefWidth="240.0" styleClass="background" stylesheets="@botonEmpezarJuego.css" GridPane.columnIndex="4" GridPane.rowIndex="1" />
-            <TextField fx:id="nombreJugador1" alignment="CENTER" prefHeight="72.0" prefWidth="467.0" GridPane.rowIndex="1">
+            <Button mnemonicParsing="false" onAction="#iniciarJuego" prefHeight="52.0" prefWidth="240.0" styleClass="background" stylesheets="@botonEmpezarJuego.css" GridPane.columnIndex="4" GridPane.rowIndex="1">
                <font>
-                  <Font name="Transformers Movie" size="30.0" />
+                  <Font name="Arial" size="13.0" />
+               </font></Button>
+            <TextField fx:id="nombreJugador1" alignment="CENTER" prefHeight="53.0" prefWidth="357.0" GridPane.rowIndex="1">
+               <font>
+                  <Font name="Arial" size="13.0" />
                </font>
             </TextField>
             <TextField fx:id="nombreJugador2" alignment="CENTER" onAction="#iniciarJuego" prefHeight="52.0" prefWidth="428.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
                <font>
-                  <Font name="Transformers Movie" size="30.0" />
+                  <Font name="Arial" size="13.0" />
                </font>
             </TextField>
          </children>

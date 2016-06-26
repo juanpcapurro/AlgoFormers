@@ -1,0 +1,20 @@
+.backgroundCombinar{
+  	-fx-background-image:url("imagenes/botonCombinar.png");
+	-fx-background-color: transparent;
+	-fx-background-size:   cover;                     
+    -fx-background-repeat: no-repeat;
+}
+
+.backgroundTransformar{
+	-fx-background-image:url("imagenes/botonTransformar.png");
+	-fx-background-color: transparent;
+	-fx-background-size:   cover;
+	-fx-background-repeat: no-repeat;
+}
+
+.backgroundFinalizarTurno{
+	-fx-background-image:url("imagenes/botonFinalizarTurno.png");
+	-fx-background-color: transparent;
+	-fx-background-size:   cover;
+	-fx-background-repeat: no-repeat;
+}

@@ -1,0 +1,9 @@
+
+.background {
+    -fx-background-image: url("imagenes/botonMetalico.png");
+    -fx-background-position: center center;
+    -fx-background-repeat: no-repeat;
+
+}
+
+
