@@ -86,7 +86,7 @@ public class TableroTest{
         tablero.colocarAlgoformer(posicion,algoFormerDePrueba);
         assertTrue(tablero.estaOcupadoEnPosicion(posicion));
         assertFalse(tablero.estaOcupadoEnPosicion(posicionDesocupada));
-        tablero.mover(posicion, posicionDesocupada);
+        tablero.recorrer(posicion, posicionDesocupada);
 
         assertTrue(tablero.estaOcupadoEnPosicion(posicionDesocupada));
         assertFalse(tablero.estaOcupadoEnPosicion(posicion));

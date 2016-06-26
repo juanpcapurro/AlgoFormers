@@ -3,21 +3,16 @@ package modelo.juego.turno;
 import modelo.juego.Jugador;
 import modelo.juego.Turno;
 
-import org.junit.Before;
+import modelo.tablero.Tablero;
+import modelo.tablero.colocable.robots.autobot.*;
+import modelo.tablero.colocable.robots.decepticon.*;
 
 public class  TurnoTest {
-	
-	private Jugador miJugador1;
-	private Jugador miJugador2;
-	private Turno turno;
-	static final int CANTIDADJUGADORES=2;
-	
-	@Before
-	public void setUp() throws Exception {
-		this.miJugador1 = new Jugador("Barry");
-		this.miJugador2 = new Jugador("Oliver");
-		turno=new Turno(miJugador1, miJugador2);
-	}
+
+	Tablero tablero = new Tablero(8);
+	private Jugador jugadorAutobots = new Jugador("Bonnie", tablero, new Bumblebee(), new Optimus(), new Ratchet());
+	private Jugador jugadorDecepticons = new Jugador("Clyde", tablero, new BoneCrusher(), new Frenzy(), new Megatron());
+	private Turno turno = new Turno(jugadorAutobots, jugadorDecepticons);
 
 
 }
