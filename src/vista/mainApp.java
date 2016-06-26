@@ -2,6 +2,8 @@ package vista;
 
 import algoFormers.juego.Jugador;
 import algoFormers.juego.Partida;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.scene.Group;
@@ -45,12 +47,15 @@ public class mainApp extends Application {
         mainContainer.setScreen(mainApp.screenInicial);
 
         Group root = new Group();
+        root.resize(primaryStage.getMaxWidth(),primaryStage.getMaxHeight());
         root.getChildren().addAll(mainContainer);
         Scene scene = new Scene(root);
+
 
         primaryStage.setScene(scene);
         primaryStage.setTitle("ALGOFORMERS");
         primaryStage.show();
+
 
 
     }
