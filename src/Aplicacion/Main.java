@@ -9,8 +9,6 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) {
         primaryStage.setResizable(true);
-        primaryStage.setMaximized(true);
-        primaryStage.setFullScreen(true);
         mainApp mainApp = new mainApp();
         mainApp.start(primaryStage);
 

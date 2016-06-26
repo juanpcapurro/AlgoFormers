@@ -1,13 +1,10 @@
 package vista;
 
-import algoFormers.juego.Jugador;
 import algoFormers.juego.Partida;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
+import javafx.application.Application;
+import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import javafx.scene.Group;
-import javafx.application.Application;
 
 public class mainApp extends Application {
 
@@ -53,7 +50,7 @@ public class mainApp extends Application {
 
 
         primaryStage.setScene(scene);
-        primaryStage.setTitle("   ALGOFORMERS   ");
+        primaryStage.setTitle("   CHARLY   ");
         primaryStage.show();
 
 
