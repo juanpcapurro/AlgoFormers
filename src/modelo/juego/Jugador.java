@@ -12,7 +12,7 @@ public class Jugador {
 
 	private String nombreDeJugador;
 	private Tablero tablero;
-	private ArrayList<AlgoFormer> robotsJugador;
+	private ArrayList<AlgoFormer> robotsJugador = new ArrayList<AlgoFormer>();
 	public Jugador(String nuevoNombre, Tablero tablero, AlgoFormer unAlgoformer, AlgoFormer otroAlgoformer, AlgoFormer tercerAlgoformer){
 		this.tablero= tablero;
 		this.nombreDeJugador = nuevoNombre;
