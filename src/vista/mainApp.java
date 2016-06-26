@@ -53,7 +53,7 @@ public class mainApp extends Application {
 
 
         primaryStage.setScene(scene);
-        primaryStage.setTitle("ALGOFORMERS");
+        primaryStage.setTitle("   ALGOFORMERS   ");
         primaryStage.show();
 
 
