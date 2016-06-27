@@ -1,6 +1,6 @@
 package vista.controladores;
 
-import modelo.juego.Partida;
+import modelo.juego.ProxyPartida;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Node;
@@ -19,13 +19,13 @@ public class TableroVista extends GridPane {
     final int WIDTH = 120;
     static List<Integer> initialCoordinates = new ArrayList<>();
     static List<Integer> finalCoordinates = new ArrayList<>();
-    Partida partida;
+    ProxyPartida partida;
     GridPane grid=this;
     StackPane inicial;
     StackPane destino;
     final ImageView mira=new ImageView("file:src/vista/imagenes/mira2.png");
 
-    public TableroVista(Partida nuevaPartida) {
+    public TableroVista(ProxyPartida nuevaPartida) {
         partida=nuevaPartida;
         ImageView imagenTerrestre;
         ImageView imagenAerea;
@@ -52,7 +52,7 @@ public class TableroVista extends GridPane {
         }
     }
 
-    void setHandlerCasilleroSeleccionado(Node node, Partida partida) {
+    void setHandlerCasilleroSeleccionado(Node node, ProxyPartida partida) {
         node.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
@@ -101,7 +101,7 @@ public class TableroVista extends GridPane {
         pane.getChildren().addAll(imagenTerrestre, imagenAerea, objeto);
     }
 
-    public ImageView obtenerimagenTerrestre(Hashtable<String, String> imagenes, Partida partida) {
+    public ImageView obtenerimagenTerrestre(Hashtable<String, String> imagenes, ProxyPartida partida) {
         String imagen;
         ImageView imagenTerrestre;
         imagen = imagenes.get((partida.obtenerSuperficieTerrestre()).getClass().toString());
@@ -113,7 +113,7 @@ public class TableroVista extends GridPane {
         return imagenTerrestre;
     }
 
-    ImageView obtenerimagenAerea(Hashtable<String, String> imagenes, Partida partida) {
+    ImageView obtenerimagenAerea(Hashtable<String, String> imagenes, ProxyPartida partida) {
         String imagen;
         ImageView imagenAerea;
         imagen = imagenes.get((partida.obtenerSuperficieAerea()).getClass().toString());
@@ -126,7 +126,7 @@ public class TableroVista extends GridPane {
         return imagenAerea;
     }
 
-    ImageView obtenerimagenObjeto(Hashtable<String, String> imagenes, Partida partida) {
+    ImageView obtenerimagenObjeto(Hashtable<String, String> imagenes, ProxyPartida partida) {
         String imagen;
         ImageView imagenColocable;
         imagen = imagenes.get((partida.obtenerColocable()).getClass().toString());

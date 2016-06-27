@@ -47,7 +47,7 @@ public class Tablero{
             if (casillero.compararPosicion(posicion))
                 return casillero;
         }
-        return null;
+        return null;//wut?
     }
 
 	private void mover(Posicion posicionOrigen, Posicion posicionDestino){
@@ -73,7 +73,6 @@ public class Tablero{
 		return casillero.estaOcupado();
 	}
 
-
 	public void vaciarPosicion(Posicion posicion){
 		controlador.validarCoordenadas(posicion);
 		obtenerCasilleroAsociadoAPosicion(posicion).vaciar();
@@ -89,14 +88,13 @@ public class Tablero{
 		casillero.cambiarAEspinas();
 	}
 
-
 	public void colocarRandom(Colocable colocable) {
         Posicion posicionRandom=controlador.getRandomPosition();
         try{
             colocar(posicionRandom,colocable);
         }
         catch (CasilleroYaOcupado excepcion){
-            colocarRandom(colocable);
+            colocarRandom(colocable);//esto algun dia termina en stack overflow
         }
 	}
 }

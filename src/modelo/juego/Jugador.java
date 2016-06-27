@@ -12,13 +12,22 @@ public class Jugador {
 
 	private String nombreDeJugador;
 	private Tablero tablero;
+	private int turnosAunOcupados;
 	private ArrayList<AlgoFormer> robotsJugador = new ArrayList<AlgoFormer>();
+	private boolean estaCombinado;//Algun dia hay que hardcodear
+
 	public Jugador(String nuevoNombre, Tablero tablero, AlgoFormer unAlgoformer, AlgoFormer otroAlgoformer, AlgoFormer tercerAlgoformer){
 		this.tablero= tablero;
 		this.nombreDeJugador = nuevoNombre;
+		turnosAunOcupados = 0;
+		estaCombinado = false;
 		robotsJugador.add(unAlgoformer);
 		robotsJugador.add(otroAlgoformer);
 		robotsJugador.add(tercerAlgoformer);
+
+		tablero.colocarRandom(unAlgoformer);
+		tablero.colocarRandom(otroAlgoformer);
+		tablero.colocarRandom(tercerAlgoformer);
 	}
 
 	DatosJugador getDatosJugador() {
@@ -36,18 +45,33 @@ public class Jugador {
 	}
 
 	public void combinarAlgoformers() {
+		if(!estaCombinado) {
+			validarQuePuedeJugar();
+			if (robotsJugador.size() < 3)
+				throw new NoPuedeCombinarPorTenerAlgoFormersMuertos();
+			if(!(robotsJugador.get(0).estaVivo() && robotsJugador.get(1).estaVivo() && robotsJugador.get(2).estaVivo()))
+				throw new NoPuedeCombinarPorTenerAlgoFormersMuertos();
+			//AlgoFormer combinacion = crearAlgoformerCombinado(robotsJugador.get(0),robotsJugador.get(1),robotsJugador.get(2));
+
+			turnosAunOcupados=2;
+			estaCombinado=true;
+		}
 
 	}
 
 	public void transformar() {
-
+		validarQuePuedeJugar();
 	}
 
 	public void mover(Posicion posicionOrigen, Posicion posicionDestino) {
-
+		validarQuePuedeJugar();
+        hayUnAlgoFormerPropioEnPosicion(posicionOrigen);
+		tablero.recorrer(posicionOrigen, posicionDestino);
 	}
 
 	public void notificar() {
+		if(turnosAunOcupados>0)
+			turnosAunOcupados--;
 		for (AlgoFormer actual: robotsJugador)
 			actual.notificar();
 	}
@@ -60,6 +84,18 @@ public class Jugador {
 	}
 
     public boolean puedeJugar(){
-        return true;
+        return (turnosAunOcupados<=0);
     }
+
+	private void validarQuePuedeJugar(){
+		if(!puedeJugar())
+			throw new jugadorOcupado();
+	}
+
+    private void hayUnAlgoFormerPropioEnPosicion(Posicion posicionOrigen){
+        Colocable aMover = tablero.obtenerCasilleroAsociadoAPosicion(posicionOrigen).getColocable();
+        if (!esAlgoformerPropio(aMover))
+            throw new NoEsAlgoFormerPropio();
+    }
+
 }

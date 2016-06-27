@@ -14,15 +14,14 @@ import modelo.tablero.posiciones.Posicion;
 import modelo.tablero.superficie.Superficie;
 import java.util.List;
 
-public class Partida {
+class Partida {
 	
     private Turno turno;
     private Tablero tablero;
-    static final int DOSJUGADORES=2;
     ControladorPosiciones iterador=new ControladorPosiciones(8);
     Posicion posicionIterador=iterador.inicializarPosicion();
 
-    public Partida(String nombreJugadorDecepticons, String nombreJugadorAutobots, int dimension) {
+   public Partida(String nombreJugadorDecepticons, String nombreJugadorAutobots, int dimension) {
     	this.tablero = new Tablero(dimension);
 
         Jugador jugadorDecepticons=new Jugador(nombreJugadorDecepticons, tablero, new BoneCrusher(), new Frenzy(), new Megatron());
@@ -35,9 +34,7 @@ public class Partida {
         turno.avanzarTurno();
    }
 
-   public void mover(List<Integer> initialCoordinates, List<Integer> finalCoordinates) {
-        Posicion posicionInicial=new Posicion(initialCoordinates.get(0),initialCoordinates.get(1));
-        Posicion posicionFinal=new Posicion(finalCoordinates.get(0),finalCoordinates.get(1));
+   public void mover(Posicion posicionInicial, Posicion posicionFinal) {
         turno.jugadorActual().mover(posicionInicial, posicionFinal);
         turno.avanzarTurno();
    }
@@ -63,8 +60,8 @@ public class Partida {
         posicionIterador=iterador.inicializarPosicion();
    }
 
-   public void setIterador(int x,int y){
-        posicionIterador=new Posicion(x,y);
+   public void setIterador(Posicion unaPosicion){
+        posicionIterador=unaPosicion;
    }
 
    public void resetIterador() {

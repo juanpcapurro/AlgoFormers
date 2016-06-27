@@ -1,6 +1,6 @@
 package vista.controladores;
 
-import modelo.juego.Partida;
+import modelo.juego.ProxyPartida;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
@@ -10,7 +10,7 @@ public class ImagenTerrestre extends ImageView {
     private static final double HEIGTH =75 ;
     private static final double WIDTH =96;
 
-    public ImagenTerrestre(Hashtable<String, String> imagenes, Partida partida) {
+    public ImagenTerrestre(Hashtable<String, String> imagenes, ProxyPartida partida) {
         String imagen;
         imagen = imagenes.get((partida.obtenerSuperficieTerrestre()).getClass().toString());
         setImage(new Image(imagen));

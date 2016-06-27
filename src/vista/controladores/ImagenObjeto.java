@@ -1,6 +1,6 @@
 package vista.controladores;
 
-import modelo.juego.Partida;
+import modelo.juego.ProxyPartida;
 import javafx.event.EventHandler;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -12,7 +12,7 @@ public class ImagenObjeto extends ImageView {
     private static final int HEIGTH =80 ;
     private static final int WIDTH = 97;
 
-    public  ImagenObjeto(Hashtable<String, String> imagenes, Partida partida) {
+    public  ImagenObjeto(Hashtable<String, String> imagenes, ProxyPartida partida) {
         String imagen;
         imagen = imagenes.get((partida.obtenerColocable()).getClass().toString());
         setImage(new Image(imagen));

@@ -1,6 +1,6 @@
 package vista;
 
-import modelo.juego.Partida;
+import modelo.juego.ProxyPartida;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.scene.Group;
@@ -21,7 +21,7 @@ public class mainApp extends Application {
     public static String screenTablero = "screenTablero";
     private static String screenTablerolFile = "screenTablero.fxml";
 
-    public static Partida partida;
+    public static ProxyPartida partida;
 //
 //    public static String getNombreJugador2() {
 //        return partida.getNombreJugador2();
@@ -64,7 +64,7 @@ public class mainApp extends Application {
     }
 
     public static void iniciarPartida(String equipoJugador1, String equipoJugador2) {
-        partida = new Partida(nombreJ1,nombreJ2,8);
+        partida = new ProxyPartida(nombreJ1,nombreJ2,8);
 
     }
 

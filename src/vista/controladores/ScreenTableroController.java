@@ -1,6 +1,6 @@
 package vista.controladores;
 
-import modelo.juego.Partida;
+import modelo.juego.ProxyPartida;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -42,7 +42,7 @@ public class ScreenTableroController implements Initializable, ControlledScreen 
     }
 
     public void imprimir(){
-        Partida partida=new Partida(mainApp.nombreJ1,mainApp.nombreJ2,8);
+        ProxyPartida partida=new ProxyPartida(mainApp.nombreJ1,mainApp.nombreJ2,8);
         Hashtable<String,String> imagenes=TableroVista.getImagenes();
         tableroGrid.getChildren().clear();
         tableroGrid.setGridLinesVisible(true);
