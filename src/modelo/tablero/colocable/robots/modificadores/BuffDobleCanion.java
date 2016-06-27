@@ -4,7 +4,7 @@ public class BuffDobleCanion extends Modificador{
     static double PORCENTAJE= 2;
     int ataqueOriginal;
     int contador=0;
-    int cantidadTurnos=6;
+    int cantidadTurnos=3;
 
 
     @Override

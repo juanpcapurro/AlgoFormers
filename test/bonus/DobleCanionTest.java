@@ -26,15 +26,15 @@ public class DobleCanionTest {
 		//turno de obtencion
 		optimus.recibirColocable(new DobleCanion());
 		assertEquals(optimus.getAtaque(),100);
-		optimus.notificar();
+		optimus.notificar();;
 		
 		//primer turno
 		assertEquals(optimus.getAtaque(),100);
-		optimus.notificar();
+		optimus.notificar();;
 		
 		//segundo turno
 		assertEquals(optimus.getAtaque(),100);
-		optimus.notificar();
+		optimus.notificar();;
 		
 		//tercer turno
 		assertEquals(optimus.getAtaque(),100);
@@ -130,27 +130,27 @@ public class DobleCanionTest {
 	public void test05FrenzyTomaDobleCanionYDuplicaAtaquePorTresTurnos(){
 		
 		//Pre bonus
-		assertEquals(boneCrusher.getAtaque(),10);
+		assertEquals(frenzy.getAtaque(),10);
 		
 		//turno de obtencion
-		boneCrusher.recibirColocable(new DobleCanion());
-		assertEquals(boneCrusher.getAtaque(),20);
-		boneCrusher.notificar();
+		frenzy.recibirColocable(new DobleCanion());
+		assertEquals(frenzy.getAtaque(),20);
+		frenzy.notificar();
 		
 		//primer turno
-		assertEquals(boneCrusher.getAtaque(),20);
-		boneCrusher.notificar();
+		assertEquals(frenzy.getAtaque(),20);
+		frenzy.notificar();
 		
 		//segundo turno
-		assertEquals(boneCrusher.getAtaque(),20);
-		boneCrusher.notificar();
+		assertEquals(frenzy.getAtaque(),20);
+		frenzy.notificar();
 
 		//tercer turno
-		assertEquals(boneCrusher.getAtaque(),20);
-		boneCrusher.notificar();
+		assertEquals(frenzy.getAtaque(),20);
+		frenzy.notificar();
 		
 		//Cuarto turno
-		assertEquals(boneCrusher.getAtaque(),10);
+		assertEquals(frenzy.getAtaque(),10);
 	}
 	
 	@Test
@@ -211,29 +211,29 @@ public class DobleCanionTest {
 	@Test
 	public void test08AlternoBumblebeeTomaDobleCanionYDuplicaAtaquePorTresTurnos(){
 		
-		optimus.transformar();		
+		bumblebee.transformar();		
 		// pre bonus
-		assertEquals(optimus.getAtaque(),20);
+		assertEquals(bumblebee.getAtaque(),20);
 		
 		//turno de obtencion
-		optimus.recibirColocable(new DobleCanion());
-		assertEquals(optimus.getAtaque(),40);
+		bumblebee.recibirColocable(new DobleCanion());
+		assertEquals(bumblebee.getAtaque(),40);
 		bumblebee.notificar();
 		
 		//primer turno
-		assertEquals(optimus.getAtaque(),40);
+		assertEquals(bumblebee.getAtaque(),40);
 		bumblebee.notificar();
 		
 		//segundo turno
-		assertEquals(optimus.getAtaque(),40);
+		assertEquals(bumblebee.getAtaque(),40);
 		bumblebee.notificar();
 		
 		//tercer turno
-		assertEquals(optimus.getAtaque(),40);
+		assertEquals(bumblebee.getAtaque(),40);
 		bumblebee.notificar();
 		
 		//Cuarto turno
-		assertEquals(optimus.getAtaque(),20);
+		assertEquals(bumblebee.getAtaque(),20);
 	}
 	
 	@Test

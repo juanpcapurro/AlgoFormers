@@ -287,7 +287,7 @@ public class FlashTest {
 
 		//tercer turno con flash
 		assertEquals(megatron.getVelocidad(),24);
-		frenzy.notificar();
+		megatron.notificar();
 		
 		//Cuarto turno sin flash
 		assertEquals(megatron.getVelocidad(),8);

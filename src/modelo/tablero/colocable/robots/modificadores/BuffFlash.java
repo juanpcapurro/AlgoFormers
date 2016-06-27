@@ -4,7 +4,7 @@ public class BuffFlash extends Modificador{
     static double PORCENTAJE= 3;
     int velocidadOriginal;
     int contador=0;
-    int cantidadTurnos=6;
+    int cantidadTurnos=3;
 
     public BuffFlash(){
         super();

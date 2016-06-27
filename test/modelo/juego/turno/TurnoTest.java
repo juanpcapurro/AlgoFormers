@@ -6,6 +6,7 @@ import modelo.juego.Turno;
 import modelo.tablero.Tablero;
 import modelo.tablero.colocable.robots.autobot.*;
 import modelo.tablero.colocable.robots.decepticon.*;
+import org.junit.Test;
 
 public class  TurnoTest {
 
@@ -14,5 +15,9 @@ public class  TurnoTest {
 	private Jugador jugadorDecepticons = new Jugador("Clyde", tablero, new BoneCrusher(), new Frenzy(), new Megatron());
 	private Turno turno = new Turno(jugadorAutobots, jugadorDecepticons);
 
+	@Test
+	public void dummy(){
+
+	}
 
 }

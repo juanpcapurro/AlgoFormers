@@ -7,8 +7,7 @@ import modelo.tablero.colocable.robots.modificadores.BuffDobleCanion;
 import modelo.tablero.superficie.Superficie;
 
 /*Duplica capacidad de ataque durante tres turnos propios*/
-public
-class DobleCanion extends Colocable {
+public class DobleCanion extends Colocable {
 
     @Override
     public boolean ocupaLugar() {
