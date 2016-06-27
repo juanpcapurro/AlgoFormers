@@ -10,44 +10,37 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 
-import java.util.ArrayList;
 import java.util.Hashtable;
-import java.util.List;
 
-import static vista.controladores.TableroVista.getImagenes;
 import static vista.controladores.ScreenTableroController.partida;
+import static vista.controladores.TableroVista.getImagenes;
 
 public class SelectionController {
-    static final ImageView mira=new ImageView("file:src/vista/imagenes/mira4.png");
-    static final ImageView seleccion=new ImageView("file:src/vista/imagenes/mira3.png");
-    static final List<Integer> initialCoordinates = new ArrayList<>();
-    static final List<Integer> finalCoordinates = new ArrayList<>();
+    static final ImagenMira mira=new ImagenMira();
+    static final ImagenSeleccion seleccion= new ImagenSeleccion();
     static StackPane primeroSeleccionado=null;
     static StackPane ultimoSeleccionado=null;
 
 
     static void setCrosshairOn(StackPane pane){
-        mira.setFitHeight(80);
-        mira.setFitWidth(90);
-        mira.setScaleX(1.3);
-        mira.setScaleY(1);
-        seleccion.setFitHeight(80);
-        seleccion.setFitWidth(90);
-        seleccion.setScaleX(1.3);
-        seleccion.setScaleY(1);
+
         pane.setOnMouseMoved(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
                 if(!pane.getChildren().contains(mira))
                     pane.getChildren().add(mira);
+                for (Node nodo : pane.getChildren())
+                    ((ContenidoCasillero)nodo).notificarEntrada();
                 event.consume();
             }
         });
         pane.setOnMousePressed(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
+
                 if(!pane.getChildren().contains(seleccion))
                     pane.getChildren().add(seleccion);
+                event.consume();
             }
         });
     }
@@ -57,6 +50,8 @@ public class SelectionController {
             @Override
             public void handle(MouseEvent event) {
                 pane.getChildren().remove(mira);
+                for (Node nodo : pane.getChildren())
+                    ((ContenidoCasillero)nodo).notificarSalida();
                 event.consume();
             }
         });
@@ -77,10 +72,8 @@ public class SelectionController {
     static void procesarSelecciónPrimaria(StackPane pane){
         if (primeroSeleccionado==null) {
             primeroSeleccionado=pane;
-            System.out.printf("%d %d ",GridPane.getRowIndex(primeroSeleccionado),GridPane.getColumnIndex(primeroSeleccionado));
         } else {
             ultimoSeleccionado=pane;
-            System.out.printf("%d %d ",GridPane.getRowIndex(ultimoSeleccionado),GridPane.getColumnIndex(ultimoSeleccionado));
             partida.mover(GridPane.getRowIndex(primeroSeleccionado),GridPane.getColumnIndex(primeroSeleccionado)
                     ,GridPane.getRowIndex(ultimoSeleccionado),GridPane.getColumnIndex(ultimoSeleccionado));
             partida.resetIterador();

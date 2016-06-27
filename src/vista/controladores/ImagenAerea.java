@@ -8,7 +8,7 @@ import javafx.scene.paint.Color;
 
 import java.util.Hashtable;
 
-public class ImagenAerea extends ImageView {
+public class ImagenAerea extends ImageView implements ContenidoCasillero{
     private static final double HEIGTH =30;
     private static final double WIDTH =50;
 
@@ -23,5 +23,16 @@ public class ImagenAerea extends ImageView {
         setMouseTransparent(true);
         setEffect(new DropShadow(10,5,5, Color.BLACK));
 
+    }
+    @Override
+    public void notificarEntrada(){
+        setScaleY(1.5);
+        setScaleX(1.3);
+    }
+
+    @Override
+    public void notificarSalida() {
+        setScaleY(1);
+        setScaleX(1);
     }
 }

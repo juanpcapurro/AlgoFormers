@@ -8,7 +8,7 @@ import javafx.scene.paint.Color;
 
 import java.util.Hashtable;
 
-public class ImagenTerrestre extends ImageView {
+public class ImagenTerrestre extends ImageView implements ContenidoCasillero{
     private static final double HEIGTH =88;
     private static final double WIDTH =160;
 
@@ -22,6 +22,16 @@ public class ImagenTerrestre extends ImageView {
         setPickOnBounds(false);
         setMouseTransparent(true);
         setEffect(new DropShadow(10,5,5, Color.BLACK));
+
+    }
+
+    @Override
+    public void notificarEntrada() {
+
+    }
+
+    @Override
+    public void notificarSalida() {
 
     }
 }
