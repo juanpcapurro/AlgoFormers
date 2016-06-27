@@ -1,19 +1,19 @@
 package modelo.juego;
 
+import modelo.tablero.Tablero;
+import modelo.tablero.colocable.robots.decepticon.BoneCrusher;
+import modelo.tablero.colocable.robots.decepticon.Frenzy;
+import modelo.tablero.colocable.robots.decepticon.Megatron;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
 
 public class JugadorTest {
-	Jugador miJugador;
-	static final String NOMBREJUGADOR="Barry";
-	static final int VIDABUMBLEBEE=350;
-	static final int VIDAOPTIMUS=500;
-	static final int VIDARATCHET=150;
-	static final int VIDABONECRUSHER=200;
+	private Tablero tablero=new Tablero(8);
+	private Jugador jugador= new Jugador("Barry", tablero, new BoneCrusher(), new Frenzy(), new Megatron());
 
 	@Test
-	public void dummy(){
-
+	public void elEquipoEstaVivoAlComenzar(){
+		assertTrue(jugador.equipovivo());
 	}
 }
