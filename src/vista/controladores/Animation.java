@@ -10,7 +10,7 @@ import javafx.util.Duration;
 
 public class Animation extends Transition {
 
-    private ImageView imageView;
+    private ImagenContenible imageView;
     private int count;
 
     private int lastIndex;
@@ -25,7 +25,7 @@ public class Animation extends Transition {
     }
 
     void init(Image[] sequence, double durationMs) {
-        this.imageView = new ImageView(sequence[0]);
+        this.imageView = new ImagenContenible(sequence[0]);
         this.sequence = sequence;
         this.count = sequence.length;
 

@@ -2,12 +2,11 @@ package vista.controladores;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 
 import java.io.IOException;
 
-public class Explosion extends AnimatedGif implements ContenidoCasillero{
+public class Explosion extends AnimatedGif{
     StackPane myPane;
 
     Explosion(StackPane pane) throws IOException {
@@ -27,20 +26,5 @@ public class Explosion extends AnimatedGif implements ContenidoCasillero{
         });
     }
 
-    @Override
-    public ImageView getView() {
-        ImageView image =super.getView();
-        image.setMouseTransparent(true);
-        return image;
-    }
 
-    @Override
-    public void notificarEntrada() {
-
-    }
-
-    @Override
-    public void notificarSalida() {
-
-    }
 }
