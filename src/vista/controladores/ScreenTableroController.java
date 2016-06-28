@@ -17,9 +17,7 @@ import java.net.URL;
 import java.util.Hashtable;
 import java.util.ResourceBundle;
 
-import static vista.controladores.SelectionController.setCrosshairOff;
-import static vista.controladores.SelectionController.setCrosshairOn;
-import static vista.controladores.SelectionController.setHandlerCasilleroSeleccionado;
+import static vista.controladores.SelectionController.*;
 import static vista.mainApp.primaryStage;
 import static vista.mainApp.screenTablero;
 

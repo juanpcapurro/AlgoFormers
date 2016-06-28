@@ -47,8 +47,6 @@ public class mainApp extends Application {
         root.resize(primaryStage.getMaxWidth(),primaryStage.getMaxHeight());
         root.getChildren().addAll(mainContainer);
         Scene scene = new Scene(root);
-
-
         primaryStage.setScene(scene);
         primaryStage.setTitle("   CHARLY   ");
         primaryStage.show();

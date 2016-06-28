@@ -10,6 +10,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 
+import java.io.IOException;
 import java.util.Hashtable;
 
 import static vista.controladores.ScreenTableroController.partida;
@@ -28,7 +29,7 @@ public class SelectionController {
             @Override
             public void handle(MouseEvent event) {
                 if(!pane.getChildren().contains(mira))
-                    pane.getChildren().add(mira);
+                    pane.getChildren().add(pane.getChildren().size()-2, mira);
                 for (Node nodo : pane.getChildren())
                     ((ContenidoCasillero)nodo).notificarEntrada();
                 event.consume();
@@ -64,6 +65,14 @@ public class SelectionController {
                 StackPane pane = (StackPane) event.getTarget();
                 if (event.getButton()== MouseButton.PRIMARY)
                     procesarSelecciónPrimaria(pane);
+                else {
+                    try {
+                        ultimoSeleccionado=pane;
+                        procesarSeleccionSecundaria(pane);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
             }
         });
     }
@@ -82,6 +91,19 @@ public class SelectionController {
         }
     }
 
+static void procesarSeleccionSecundaria(StackPane pane) throws IOException {
+    if (primeroSeleccionado==null)
+        return;
+    System.out.println("AUCH! me disparaste");
+   // partida.atacar(Gridpane.getRoxIndex(primeroSeleccionado),Gridpane.getColumnIndex(primeroSeleccionado),
+  ///               Gridpane.getRoxIndex(ultimoSeleccionado),Gridpane.getColumnIndex(ultimoSeleccionado));
+
+  //  if (partida.GetStatus(Gridpane.getRoxIndex(ultimoSeleccionado,Gridpane.getColumnIndex(ultimoSeleccionado)).getVida().toIntenger<1))
+        actualizarCasillero();
+
+    ultimoSeleccionado.getChildren().add(new Explosion(ultimoSeleccionado).getView());
+    primeroSeleccionado=null;
+}
 
     static void actualizarCasillero(){
         partida.setIterador(GridPane.getRowIndex(primeroSeleccionado),GridPane.getColumnIndex(primeroSeleccionado));
