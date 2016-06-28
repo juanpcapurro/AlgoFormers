@@ -2,7 +2,7 @@ package modelo.tablero.colocable.robots.autobot;
 
 import modelo.tablero.colocable.robots.*;
 
-public class Superion extends AlgoFormer {
+public class Superion extends Autobot{
     private final Optimus optimus;
     private final Bumblebee bumblebee;
     private final Ratchet ratchet;

@@ -2,7 +2,7 @@ package modelo.tablero.colocable.robots.decepticon;
 
 import modelo.tablero.colocable.robots.*;
 
-public class Menasor extends AlgoFormer {
+public class Menasor extends Decepticon{
 
     private final Megatron megatron;
     private final BoneCrusher boneCrusher;

@@ -38,7 +38,7 @@ public class Tablero{
 		casillero.colocar(aColocar);
 	}
 
-	public void colocarAlgoformer(Posicion posicion, AlgoFormer algoFormer) {
+	void colocarAlgoformer(Posicion posicion, AlgoFormer algoFormer) {
 		this.colocar(posicion, algoFormer);
 	}
 
@@ -47,8 +47,15 @@ public class Tablero{
             if (casillero.compararPosicion(posicion))
                 return casillero;
         }
-        return null;//wut?
+		throw new NoEncontradoError();
     }
+
+	public Posicion obtenerPosicionAsociadaAColocable(Colocable unColocable){
+		for (Casillero casillero : listaCasilleros)
+			if(casillero.getColocable().equals(unColocable))
+				return casillero.getPosicion();
+		throw new NoEncontradoError();
+	}
 
 	private void mover(Posicion posicionOrigen, Posicion posicionDestino){
         controlador.validarCoordenadas(posicionOrigen);
@@ -78,9 +85,11 @@ public class Tablero{
 		obtenerCasilleroAsociadoAPosicion(posicion).vaciar();
 	}
 
-	public void atacar(Posicion posicion,Ataque ataque){
-        controlador.validarCoordenadas(posicion);
-		(obtenerCasilleroAsociadoAPosicion(posicion)).atacarCasillero(ataque);
+	public void atacar(Posicion hostil, Posicion objetivo){
+        controlador.validarCoordenadas(hostil);
+		controlador.validarCoordenadas(objetivo);
+		AlgoFormer atacante = (AlgoFormer) obtenerCasilleroAsociadoAPosicion(hostil).getColocable();
+		atacante.atacar(obtenerCasilleroAsociadoAPosicion(objetivo).getColocable());
 	}
 
 	public void colocarEspinas(Posicion posicion){

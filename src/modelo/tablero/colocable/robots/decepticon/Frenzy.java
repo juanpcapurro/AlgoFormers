@@ -2,7 +2,7 @@ package modelo.tablero.colocable.robots.decepticon;
 
 import modelo.tablero.colocable.robots.*;
 
-public class Frenzy extends AlgoFormer {
+public class Frenzy extends Decepticon{
     public Frenzy(){
         this.ptosDeVida = new Vida(400);
 		this.modoActual = new ContextoModoAlgoformer();

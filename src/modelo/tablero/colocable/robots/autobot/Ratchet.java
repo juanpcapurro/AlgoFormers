@@ -1,7 +1,7 @@
 package modelo.tablero.colocable.robots.autobot;
 
 import modelo.tablero.colocable.robots.*;
-public class Ratchet extends AlgoFormer {
+public class Ratchet extends Autobot{
 	
     public Ratchet(){
         this.ptosDeVida =new Vida(150);

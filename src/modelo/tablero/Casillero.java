@@ -55,6 +55,9 @@ public class Casillero {
         return posicion.compararPosicion(posicionAComparar);
     }
 
+    public Posicion getPosicion(){
+        return this.posicion;
+    }
     void cambiarAEspinas() {
         superficieTerrestreActual.cambiarEspinas();
     }

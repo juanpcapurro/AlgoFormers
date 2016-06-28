@@ -2,7 +2,7 @@ package modelo.tablero.colocable.robots.decepticon;
 
 import modelo.tablero.colocable.robots.*;
 
-public class Megatron extends AlgoFormer {
+public class Megatron extends Decepticon{
     public Megatron(){
         this.ptosDeVida = new Vida(550);
 		this.modoActual= new ContextoModoAlgoformer();

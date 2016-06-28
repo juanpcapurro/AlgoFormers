@@ -44,7 +44,7 @@ public class Jugador {
 		return false;
 	}
 
-	public void combinarAlgoformers() {
+	public void combinarODescombinar() {
 		if(!estaCombinado) {
 			validarQuePuedeJugar();
 			if (robotsJugador.size() < 3)
@@ -59,8 +59,11 @@ public class Jugador {
 
 	}
 
-	public void transformar() {
+	public void transformar(Posicion posicionAlgoFormer) {
 		validarQuePuedeJugar();
+		hayUnAlgoFormerPropioEnPosicion(posicionAlgoFormer);
+		AlgoFormer aTransformar = (AlgoFormer)tablero.obtenerCasilleroAsociadoAPosicion(posicionAlgoFormer).getColocable();
+		aTransformar.transformar();
 	}
 
 	public void mover(Posicion posicionOrigen, Posicion posicionDestino) {
@@ -68,7 +71,11 @@ public class Jugador {
         hayUnAlgoFormerPropioEnPosicion(posicionOrigen);
 		tablero.recorrer(posicionOrigen, posicionDestino);
 	}
-
+	public void atacar(Posicion hostil, Posicion objetivo){
+		validarQuePuedeJugar();
+		hayUnAlgoFormerPropioEnPosicion(hostil);
+		tablero.atacar(hostil, objetivo);
+	}
 	public void notificar() {
 		if(turnosAunOcupados>0)
 			turnosAunOcupados--;

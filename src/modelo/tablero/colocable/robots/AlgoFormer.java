@@ -3,7 +3,6 @@ package modelo.tablero.colocable.robots;
 import modelo.juego.DatosAlgoformer;
 import modelo.tablero.colocable.Colocable;
 import modelo.tablero.colocable.robots.armas.Ataque;
-import modelo.tablero.posiciones.Posicion;
 import modelo.tablero.superficie.Superficie;
 
 public abstract class AlgoFormer extends Colocable {
@@ -33,8 +32,7 @@ public abstract class AlgoFormer extends Colocable {
 
     public int getPuntosDeVida(){ return ptosDeVida.getVida();}
 
-	@Override
-	public void recibirAtaque(Ataque unAtaque) {
+	protected void recibirAtaqueYaVerificado(Ataque unAtaque) {
 		ptosDeVida.setVida(ptosDeVida.getVida()-unAtaque.getDanio());
 	}
 
@@ -48,9 +46,7 @@ public abstract class AlgoFormer extends Colocable {
 		colocableEnDestino.afectarColocable(modoActual);
 	}
 
-	public void atacar(Posicion posicionDestino){};
-
-	public  void descombinar(){}
+	public abstract void atacar(Colocable unColocable);
 
 	public  boolean estaEnModoHumanoide(){
 		return modoActual.esHumanoide();

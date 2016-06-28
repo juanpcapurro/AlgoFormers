@@ -12,14 +12,13 @@ import modelo.tablero.colocable.robots.decepticon.Megatron;
 import modelo.tablero.posiciones.ControladorPosiciones;
 import modelo.tablero.posiciones.Posicion;
 import modelo.tablero.superficie.Superficie;
-import java.util.List;
 
 class Partida {
 	
     private Turno turno;
     private Tablero tablero;
-    ControladorPosiciones iterador=new ControladorPosiciones(8);
-    Posicion posicionIterador=iterador.inicializarPosicion();
+    private ControladorPosiciones iterador=new ControladorPosiciones(8);
+    private Posicion posicionIterador=iterador.inicializarPosicion();
 
    public Partida(String nombreJugadorDecepticons, String nombreJugadorAutobots, int dimension) {
     	this.tablero = new Tablero(dimension);
@@ -38,6 +37,19 @@ class Partida {
         turno.jugadorActual().mover(posicionInicial, posicionFinal);
         turno.avanzarTurno();
    }
+    public void atacar(Posicion hostil, Posicion objetivo){
+        turno.jugadorActual().atacar(hostil, objetivo);
+        turno.avanzarTurno();
+    }
+    public void transformar(Posicion posicion){
+        turno.jugadorActual().transformar(posicion);
+        turno.avanzarTurno();
+    }
+    public void combinarODescombinar(){
+        turno.jugadorActual().combinarODescombinar();
+        turno.avanzarTurno();
+    }
+
    public Superficie obtenerSuperficieTerrestre() {
         Casillero casillero =tablero.obtenerCasilleroAsociadoAPosicion(posicionIterador);
         return casillero.getSuperficieTerrestre();
@@ -46,6 +58,7 @@ class Partida {
    public DatosJugador getDatosJugadorActual() {
         return turno.jugadorActual().getDatosJugador();
    }
+
    public Superficie obtenerSuperficieAerea() {
         Casillero casillero =tablero.obtenerCasilleroAsociadoAPosicion(posicionIterador);
         return casillero.getSuperficieAerea();

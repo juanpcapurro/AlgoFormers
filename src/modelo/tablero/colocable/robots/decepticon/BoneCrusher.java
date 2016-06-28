@@ -2,7 +2,7 @@ package modelo.tablero.colocable.robots.decepticon;
 
 import modelo.tablero.colocable.robots.*;
 
-public class BoneCrusher extends AlgoFormer {
+public class BoneCrusher extends Decepticon{
     public BoneCrusher(){
         this.ptosDeVida = new Vida(200);
 		this.modoActual = new ContextoModoAlgoformer();

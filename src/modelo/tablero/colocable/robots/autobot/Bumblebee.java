@@ -1,7 +1,7 @@
 package modelo.tablero.colocable.robots.autobot;
 
 import modelo.tablero.colocable.robots.*;
-public class Bumblebee extends AlgoFormer {
+public class Bumblebee extends Autobot{
 	
     public Bumblebee(){
         this.ptosDeVida = new Vida(350);

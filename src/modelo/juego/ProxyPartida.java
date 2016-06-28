@@ -23,6 +23,19 @@ public class ProxyPartida {
         Posicion posicionFinal=new Posicion(finalCoordinates.get(0),finalCoordinates.get(1));
         partida.mover(posicionInicial, posicionFinal);
    }
+    public void atacar( List<Integer>initialCoordinates, List<Integer> target){
+        Posicion inicial = new Posicion(initialCoordinates.get(0), initialCoordinates.get(1));
+        Posicion objetivo = new Posicion(target.get(0), target.get(1));
+        partida.atacar(inicial,objetivo);
+    }
+
+    public void transformar(List<Integer>numerosPosicion){
+        Posicion posicion = new Posicion(numerosPosicion.get(0), numerosPosicion.get(1));
+        partida.transformar(posicion);
+    }
+   public void combinarODescombinar(){
+       partida.combinarODescombinar();
+   }
    public Superficie obtenerSuperficieTerrestre() {
        return partida.obtenerSuperficieTerrestre();
    }
