@@ -1,6 +1,5 @@
 package modelo.tablero;
 
-import modelo.tablero.colocable.robots.armas.Ataque;
 import modelo.tablero.colocable.robots.armas.AtaqueAutobot;
 import modelo.tablero.colocable.robots.armas.AtaqueDecepticon;
 

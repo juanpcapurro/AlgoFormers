@@ -67,7 +67,21 @@ public class JugadorTest {
 	}
 	@Test
 	public void muereElEquipoAlAtacarLasPosicionesDeLosAlgoformers(){
-		assertTrue(jugadorAutobots.equipovivo());//Falta terminar este test
+		assertTrue(jugadorAutobots.equipovivo());
+		for (int i =0; i< 150; i++){
+			jugadorDecepticons.atacar(posicionFrenzy, posicionBumblebee);
+		}
+
+		assertTrue(jugadorAutobots.equipovivo());
+		for (int i =0; i< 150; i++){
+			jugadorDecepticons.atacar(posicionFrenzy, posicionOptimus);
+		}
+		assertTrue(jugadorAutobots.equipovivo());
+
+		for (int i =0; i< 150; i++){
+			jugadorDecepticons.atacar(posicionFrenzy, posicionRatchet);
+		}
+		assertFalse(jugadorAutobots.equipovivo());
 	}
 	@Test
 	public void combinarTomaDosTurnos(){
