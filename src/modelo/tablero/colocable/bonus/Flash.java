@@ -34,8 +34,4 @@ public class Flash extends Colocable {
         return false;
     }
 
-    @Override
-    public void recibirAtaque(Ataque unAtaque) {
-
-    }
 }

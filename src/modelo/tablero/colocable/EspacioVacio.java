@@ -14,11 +14,6 @@ class EspacioVacio extends Colocable{
 	public void recibirColocable(Colocable colocableEndestino) {
 
 	}
-
-	@Override
-	public void recibirAtaque(Ataque unAtaque) {
-
-	}
 	@Override
 	public void pasarPor(Superficie superficieTerrestre, Superficie superficieAerea){}
 

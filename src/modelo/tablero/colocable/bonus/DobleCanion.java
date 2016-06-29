@@ -33,9 +33,4 @@ public class DobleCanion extends Colocable {
     public boolean esMovible() {
         return false;
     }
-
-    @Override
-    public void recibirAtaque(Ataque unAtaque) {
-
-    }
 }

@@ -1,6 +1,8 @@
 package modelo.tablero.superficieTerrestre;
 
 import modelo.tablero.colocable.robots.armas.Ataque;
+import modelo.tablero.colocable.robots.armas.AtaqueAutobot;
+import modelo.tablero.colocable.robots.armas.AtaqueDecepticon;
 import modelo.tablero.superficie.Superficie;
 
 import java.util.Random;
@@ -24,7 +26,10 @@ public class ContextoSuperficieTerrestre {
     public void cambiarRocoso(){
         actual=new Rocoso();
     }
-    public void recibirAtaque(Ataque ataque){
+    public void recibirAtaque(AtaqueAutobot ataque){
+        actual.recibirAtaque(ataque);
+    }
+    public void recibirAtaque(AtaqueDecepticon ataque){
         actual.recibirAtaque(ataque);
     }
     public Superficie getActual(){

@@ -8,10 +8,6 @@ public class Ataque {
         danio = conQueDanio;
     }
 
-	void atacar(Atacable target){
-        target.recibirAtaque(this);
-    }
-
 	public int getDanio(){
         return danio;
     }

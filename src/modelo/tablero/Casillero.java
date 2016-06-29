@@ -46,11 +46,6 @@ public class Casillero {
 		return colocado;
 	}
 
-    void atacarCasillero(Ataque ataque) {
-        superficieTerrestreActual.recibirAtaque(ataque);
-        colocado.recibirAtaque(ataque);
-    }
-
     boolean compararPosicion(Posicion posicionAComparar) {
         return posicion.compararPosicion(posicionAComparar);
     }

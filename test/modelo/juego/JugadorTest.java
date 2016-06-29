@@ -67,12 +67,11 @@ public class JugadorTest {
 	}
 	@Test
 	public void muereElEquipoAlAtacarLasPosicionesDeLosAlgoformers(){
-		assertTrue(jugadorAutobots.equipovivo());
-		jugadorDecepticons.atacar
+		assertTrue(jugadorAutobots.equipovivo());//Falta terminar este test
 	}
 	@Test
 	public void combinarTomaDosTurnos(){
-		jugadorDecepticons.combinarAlgoformers();
+		jugadorDecepticons.combinarODescombinar();
 		assertFalse(jugadorDecepticons.puedeJugar());
 		jugadorDecepticons.notificar();
 		assertFalse(jugadorDecepticons.puedeJugar());

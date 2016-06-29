@@ -41,20 +41,15 @@ public abstract class AlgoFormer extends Colocable {
 		modoActual.pasarPor(superficieTerrestre, superficieAerea);
 	}
 
+	public void recibirAtaque(Ataque unAtaque){
+		recibirAtaqueYaVerificado(unAtaque);
+	}
 	@Override
 	public void recibirColocable(Colocable colocableEnDestino){
 		colocableEnDestino.afectarColocable(modoActual);
 	}
 
 	public abstract void atacar(Colocable unColocable);
-
-	public  boolean estaEnModoHumanoide(){
-		return modoActual.esHumanoide();
-	}
-
-	public boolean estaEnModoAlterno(){
-		return  modoActual.estaEnModoAlterno();
-	}
 
 	public void notificar(){
 		modoActual.notificar();

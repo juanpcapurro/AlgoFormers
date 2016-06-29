@@ -33,10 +33,4 @@ public class BurbujaInmaculada extends Colocable {
     public boolean esMovible() {
         return false;
     }
-
-
-    @Override
-    public void recibirAtaque(Ataque unAtaque) {
-
-    }
 }
