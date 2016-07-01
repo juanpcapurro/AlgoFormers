@@ -4,11 +4,11 @@ import modelo.tablero.colocable.robots.*;
 
 public class Menasor extends Decepticon{
 
-    private final Megatron megatron;
-    private final BoneCrusher boneCrusher;
-    private final Frenzy frenzy;
+    private final Decepticon megatron;
+    private final Decepticon boneCrusher;
+    private final Decepticon frenzy;
 
-    public Menasor(Megatron megatron, BoneCrusher boneCrusher, Frenzy frenzy) {
+    public Menasor(Decepticon megatron, Decepticon boneCrusher, Decepticon frenzy) {
         this.megatron = megatron;
         this.boneCrusher = boneCrusher;
         this.frenzy = frenzy;

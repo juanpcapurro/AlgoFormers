@@ -1,5 +1,8 @@
 package modelo.juego;
 
+import modelo.juego.jugador.Jugador;
+import modelo.juego.jugador.JugadorAutobots;
+import modelo.juego.jugador.JugadorDecepticons;
 import modelo.tablero.Casillero;
 import modelo.tablero.Tablero;
 import modelo.tablero.colocable.Colocable;
@@ -23,8 +26,8 @@ class Partida {
    public Partida(String nombreJugadorDecepticons, String nombreJugadorAutobots, int dimension) {
     	this.tablero = new Tablero(dimension);
 
-        Jugador jugadorDecepticons=new Jugador(nombreJugadorDecepticons, tablero, new BoneCrusher(), new Frenzy(), new Megatron());
-        Jugador jugadorAutobots=new Jugador(nombreJugadorAutobots, tablero, new Bumblebee(), new Optimus(), new Ratchet());
+        Jugador jugadorDecepticons=new JugadorDecepticons(nombreJugadorDecepticons, tablero, new BoneCrusher(), new Frenzy(), new Megatron());
+        Jugador jugadorAutobots=new JugadorAutobots(nombreJugadorAutobots, tablero, new Bumblebee(), new Optimus(), new Ratchet());
 
         this.turno = new Turno(jugadorAutobots, jugadorDecepticons);
     }

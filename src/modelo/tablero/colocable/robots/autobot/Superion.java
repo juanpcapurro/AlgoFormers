@@ -3,11 +3,11 @@ package modelo.tablero.colocable.robots.autobot;
 import modelo.tablero.colocable.robots.*;
 
 public class Superion extends Autobot{
-    private final Optimus optimus;
-    private final Bumblebee bumblebee;
-    private final Ratchet ratchet;
+    private final Autobot optimus;
+    private final Autobot bumblebee;
+    private final Autobot ratchet;
 
-    public Superion(Optimus optimus, Bumblebee bumblebee, Ratchet ratchet){
+    public Superion( Autobot optimus, Autobot bumblebee, Autobot ratchet){
         this.optimus = optimus;
         this.bumblebee = bumblebee;
         this.ratchet = ratchet;

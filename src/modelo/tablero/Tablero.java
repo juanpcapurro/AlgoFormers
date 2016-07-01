@@ -38,7 +38,7 @@ public class Tablero{
 		casillero.colocar(aColocar);
 	}
 
-	void colocarAlgoformer(Posicion posicion, AlgoFormer algoFormer) {
+	public void colocarAlgoformer(Posicion posicion, AlgoFormer algoFormer) {
 		this.colocar(posicion, algoFormer);
 	}
 

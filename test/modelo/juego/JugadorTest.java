@@ -1,5 +1,9 @@
 package modelo.juego;
 
+import modelo.juego.jugador.Jugador;
+import modelo.juego.jugador.JugadorAutobots;
+import modelo.juego.jugador.JugadorDecepticons;
+import modelo.juego.jugador.NoEsAlgoFormerPropio;
 import modelo.tablero.Tablero;
 import modelo.tablero.colocable.robots.armas.Ataque;
 import modelo.tablero.colocable.robots.autobot.Bumblebee;
@@ -11,7 +15,6 @@ import modelo.tablero.colocable.robots.decepticon.Megatron;
 import modelo.tablero.posiciones.Posicion;
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.cglib.beans.BulkBean;
 
 import static org.junit.Assert.*;
 
@@ -40,7 +43,7 @@ public class JugadorTest {
 		boneCrusher = new BoneCrusher();
 		frenzy = new Frenzy();
 		megatron = new Megatron();
-		jugadorDecepticons= new Jugador("Barry", tablero, boneCrusher, frenzy, megatron);
+		jugadorDecepticons= new JugadorDecepticons("Barry", tablero, boneCrusher, frenzy, megatron);
 		posicionBoneCrusher = tablero.obtenerPosicionAsociadaAColocable(boneCrusher);
 		posicionFrenzy = tablero.obtenerPosicionAsociadaAColocable(frenzy);
 		posicionMegatron = tablero.obtenerPosicionAsociadaAColocable(megatron);
@@ -48,7 +51,7 @@ public class JugadorTest {
 		bumblebee = new Bumblebee();
 		ratchet = new Ratchet();
 		optimus = new Optimus();
-		jugadorAutobots = new Jugador("Jorge", tablero, bumblebee, optimus, ratchet);
+		jugadorAutobots = new JugadorAutobots("Jorge", tablero, bumblebee, optimus, ratchet);
 		posicionBumblebee = tablero.obtenerPosicionAsociadaAColocable(bumblebee);
 		posicionOptimus = tablero.obtenerPosicionAsociadaAColocable(optimus);
 		posicionRatchet = tablero.obtenerPosicionAsociadaAColocable(ratchet);
@@ -83,13 +86,39 @@ public class JugadorTest {
 		}
 		assertFalse(jugadorAutobots.equipovivo());
 	}
+	@Test(expected= NoEsAlgoFormerPropio.class)
+	public void unJugadorNoPuedeAtacarConAlgoFormersAjenos() {
+		jugadorDecepticons.atacar(posicionBumblebee, posicionOptimus);
+		jugadorDecepticons.atacar(posicionOptimus, posicionRatchet);
+		jugadorDecepticons.atacar(posicionRatchet, posicionBumblebee);
+	}
+	@Test(expected= NoEsAlgoFormerPropio.class)
+	public void unJugadorNoPuedeMoverAlgoFormersAjenos(){
+		jugadorDecepticons.mover(posicionBumblebee,posicionOptimus);
+		jugadorDecepticons.mover(posicionOptimus,posicionRatchet);
+		jugadorDecepticons.mover(posicionRatchet, posicionBumblebee);
+	}
+	@Test(expected= NoEsAlgoFormerPropio.class)
+	public void unJugadorNoPuedeTransformarAlgoformersAjenos(){
+		jugadorAutobots.transformar(posicionBoneCrusher);
+		jugadorAutobots.transformar(posicionFrenzy);
+		jugadorAutobots.transformar(posicionMegatron);
+	}
+
 	@Test
-	public void combinarTomaDosTurnos(){
-		jugadorDecepticons.combinarODescombinar();
+	public void combinarYDescombinarTomaDosTurnos() {
+		jugadorDecepticons.combinarODescombinar();//Pasar de descombinado a combinado
 		assertFalse(jugadorDecepticons.puedeJugar());
 		jugadorDecepticons.notificar();
 		assertFalse(jugadorDecepticons.puedeJugar());
 		jugadorDecepticons.notificar();
 		assertTrue(jugadorDecepticons.puedeJugar());
+
+//		jugadorDecepticons.combinarODescombinar();//Pasar de combinado a descombinado
+//		assertFalse(jugadorDecepticons.puedeJugar());
+//		jugadorDecepticons.notificar();
+//		assertFalse(jugadorDecepticons.puedeJugar());
+//		jugadorDecepticons.notificar();
+//		assertTrue(jugadorDecepticons.puedeJugar());
 	}
 }

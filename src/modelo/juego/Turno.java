@@ -1,5 +1,7 @@
 package modelo.juego;
 
+import modelo.juego.jugador.Jugador;
+
 import java.util.ArrayList;
 
 public class Turno {
