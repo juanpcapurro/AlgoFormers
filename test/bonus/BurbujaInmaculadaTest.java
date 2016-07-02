@@ -1,728 +1,609 @@
 package bonus;
 
-import algoFormers.juego.Jugador;
-import algoFormers.juego.turno.Turno;
-import algoFormers.tablero.colocable.bonus.BurbujaInmaculada;
-import algoFormers.tablero.colocable.robots.armas.Ataque;
-import algoFormers.tablero.colocable.robots.autobot.Autobots;
-import algoFormers.tablero.colocable.robots.decepticon.Decepticons;
-import org.junit.Before;
-import org.junit.Test;
+import modelo.tablero.colocable.bonus.BurbujaInmaculada;
+import modelo.tablero.colocable.robots.armas.Ataque;
+import modelo.tablero.colocable.robots.autobot.*;
+import modelo.tablero.colocable.robots.decepticon.*;
 
-import static org.junit.Assert.assertEquals;
+import org.junit.Test;
+import static org.junit.Assert.*;
 
 public class BurbujaInmaculadaTest {
 	
-	private Jugador Monica;
-	private Jugador Rachel;
-	public Autobots autobots;
-	private Decepticons decepticons;
-	private Turno turno;
-	static final int CANTIDADJUGADORES=2;
-	
-	@Before
-	public void setUp() throws Exception {
-		this.Monica = new Jugador("Monica");
-		this.Rachel = new Jugador("Rachel");
-		this.decepticons = new Decepticons();
-		this.autobots = new Autobots();
-		
-		this.Monica.asignarEquipo(this.autobots);
-		this.Rachel.asignarEquipo(this.decepticons);
-		
-		this.turno=new Turno(CANTIDADJUGADORES);
-		this.turno.agregarJugador(Monica);
-		this.turno.agregarJugador(Rachel);
-	}
-	
+	private Bumblebee bumblebee = new Bumblebee();
+	private Optimus optimus = new Optimus();
+	private Ratchet ratchet = new Ratchet();
+
+	private BoneCrusher boneCrusher = new BoneCrusher();
+	private Frenzy frenzy = new Frenzy();
+	private Megatron megatron = new Megatron();
+
 	@Test
 	public void test01OptimusConVidaTotalTomaBurbujaYNoPierdeVidaPor2Turnos(){
-
+		
 		//Vida pre bonus
-		assertEquals(this.autobots.getOptimus().getPuntosDeVida(),500);
+		assertEquals(optimus.getPuntosDeVida(),500);
 		
 		//turno de obtencion
-		assertEquals(this.turno.obtenerJugadorQueDebeJugar(),Monica);
-		this.autobots.getOptimus().recibirColocable(new BurbujaInmaculada());
-		assertEquals(this.autobots.getOptimus().getPuntosDeVida(),500);
-		this.autobots.getOptimus().recibirAtaque(new Ataque(100));
-		this.turno.avanzarTurno();
-		this.turno.avanzarTurno();
-		
+		optimus.recibirColocable(new BurbujaInmaculada());
+		assertEquals(optimus.getPuntosDeVida(),500);
+		optimus.recibirAtaque(new Ataque(100));
+		optimus.notificar();
 		//primer turno con burbuja
-		assertEquals(this.autobots.getOptimus().getPuntosDeVida(),500);
-		this.autobots.getOptimus().recibirAtaque(new Ataque(200));
-		this.turno.avanzarTurno();
-		this.turno.avanzarTurno();
+		assertEquals(optimus.getPuntosDeVida(),500);
+		optimus.recibirAtaque(new Ataque(200));
+		optimus.notificar();
 		
 		//segundo turno con burbuja.Recupero vida perdida antes
-		assertEquals(this.autobots.getOptimus().getPuntosDeVida(),500);
-		this.autobots.getOptimus().recibirAtaque(new Ataque(200));
-		this.turno.avanzarTurno();
-		this.turno.avanzarTurno();
-		
+		assertEquals(optimus.getPuntosDeVida(),500);
+		optimus.recibirAtaque(new Ataque(200));
+		optimus.notificar();
+
 		//tercer turno con burbuja.Recupera vida perdida antes
-		assertEquals(this.autobots.getOptimus().getPuntosDeVida(),500);
-		this.autobots.getOptimus().recibirAtaque(new Ataque(200));
-		assertEquals(this.autobots.getOptimus().getPuntosDeVida(),300);
-		this.turno.avanzarTurno();
+		assertEquals(optimus.getPuntosDeVida(),500);
+		optimus.recibirAtaque(new Ataque(200));
+		assertEquals(optimus.getPuntosDeVida(),300);
+		optimus.notificar();
 		
 		//Cuarto turno con burbuja. No recupera vida
-		assertEquals(this.autobots.getOptimus().getPuntosDeVida(),300);
-		this.turno.finalizar();
+		assertEquals(optimus.getPuntosDeVida(),300);
 	}
 
 	@Test
 	public void test02OptimusDaniadoTomaBurbujaYNoPierdeVidaPor2Turnos(){
 
 		//Vida pre bonus
-		this.autobots.getOptimus().recibirAtaque(new Ataque(100));
-		assertEquals(this.autobots.getOptimus().getPuntosDeVida(),400);
+		optimus.recibirAtaque(new Ataque(100));
+		assertEquals(optimus.getPuntosDeVida(),400);
 		
 		//turno de obtencion
-		assertEquals(this.turno.obtenerJugadorQueDebeJugar(),Monica);
-		this.autobots.getOptimus().recibirColocable(new BurbujaInmaculada());
-		assertEquals(this.autobots.getOptimus().getPuntosDeVida(),400);
-		this.autobots.getOptimus().recibirAtaque(new Ataque(100));
-		this.turno.avanzarTurno();
-		this.turno.avanzarTurno();
+		optimus.recibirColocable(new BurbujaInmaculada());
+		assertEquals(optimus.getPuntosDeVida(),400);
+		optimus.recibirAtaque(new Ataque(100));
+		optimus.notificar();
 		
 		//primer turno con burbuja
-		assertEquals(this.autobots.getOptimus().getPuntosDeVida(),400);
-		this.autobots.getOptimus().recibirAtaque(new Ataque(200));
-		this.turno.avanzarTurno();
-		this.turno.avanzarTurno();
+		assertEquals(optimus.getPuntosDeVida(),400);
+		optimus.recibirAtaque(new Ataque(200));
+		optimus.notificar();
 		
 		//segundo turno con burbuja.Recupero vida perdida antes
-		assertEquals(this.autobots.getOptimus().getPuntosDeVida(),400);
-		this.autobots.getOptimus().recibirAtaque(new Ataque(200));
-		this.turno.avanzarTurno();
-		this.turno.avanzarTurno();
+		assertEquals(optimus.getPuntosDeVida(),400);
+		optimus.recibirAtaque(new Ataque(200));
+		optimus.notificar();
 		
 		//tercer turno con burbuja.Recupera vida perdida antes
-		assertEquals(this.autobots.getOptimus().getPuntosDeVida(),400);
-		this.autobots.getOptimus().recibirAtaque(new Ataque(200));
-		assertEquals(this.autobots.getOptimus().getPuntosDeVida(),200);
-		this.turno.avanzarTurno();
+		assertEquals(optimus.getPuntosDeVida(),400);
+		optimus.recibirAtaque(new Ataque(200));
+		assertEquals(optimus.getPuntosDeVida(),200);
+		optimus.notificar();
 		
 		//Cuarto turno con burbuja. No recupera vida
-		assertEquals(this.autobots.getOptimus().getPuntosDeVida(),200);
-		this.turno.finalizar();
+		assertEquals(optimus.getPuntosDeVida(),200);
 	}
 	
 	@Test
 	public void test03OptimusAlternoConVidaTotalTomaBurbujaYNoPierdeVidaPor2Turnos(){
 
 		//Vida pre bonus
-		this.autobots.getOptimus().transformar();
-		assertEquals(this.autobots.getOptimus().getPuntosDeVida(),500);
+		optimus.transformar();
+		assertEquals(optimus.getPuntosDeVida(),500);
 		
 		//turno de obtencion
-		assertEquals(this.turno.obtenerJugadorQueDebeJugar(),Monica);
-		this.autobots.getOptimus().recibirColocable(new BurbujaInmaculada());
-		assertEquals(this.autobots.getOptimus().getPuntosDeVida(),500);
-		this.autobots.getOptimus().recibirAtaque(new Ataque(100));
-		this.turno.avanzarTurno();
-		this.turno.avanzarTurno();
+		optimus.recibirColocable(new BurbujaInmaculada());
+		assertEquals(optimus.getPuntosDeVida(),500);
+		optimus.recibirAtaque(new Ataque(100));
+		optimus.notificar();
 		
 		//primer turno con burbuja
-		assertEquals(this.autobots.getOptimus().getPuntosDeVida(),500);
-		this.autobots.getOptimus().recibirAtaque(new Ataque(200));
-		this.turno.avanzarTurno();
-		this.turno.avanzarTurno();
+		assertEquals(optimus.getPuntosDeVida(),500);
+		optimus.recibirAtaque(new Ataque(200));
+		optimus.notificar();
 		
 		//segundo turno con burbuja.Recupero vida perdida antes
-		assertEquals(this.autobots.getOptimus().getPuntosDeVida(),500);
-		this.autobots.getOptimus().recibirAtaque(new Ataque(200));
-		this.turno.avanzarTurno();
-		this.turno.avanzarTurno();
+		assertEquals(optimus.getPuntosDeVida(),500);
+		optimus.recibirAtaque(new Ataque(200));
+		optimus.notificar();
 		
 		//tercer turno con burbuja.Recupera vida perdida antes
-		assertEquals(this.autobots.getOptimus().getPuntosDeVida(),500);
-		this.autobots.getOptimus().recibirAtaque(new Ataque(200));
-		assertEquals(this.autobots.getOptimus().getPuntosDeVida(),300);
-		this.turno.avanzarTurno();
+		assertEquals(optimus.getPuntosDeVida(),500);
+		optimus.recibirAtaque(new Ataque(200));
+		assertEquals(optimus.getPuntosDeVida(),300);
+		optimus.notificar();
 		
 		//Cuarto turno con burbuja. No recupera vida
-		assertEquals(this.autobots.getOptimus().getPuntosDeVida(),300);
-		this.turno.finalizar();
+		assertEquals(optimus.getPuntosDeVida(),300);
 	}
 
 	@Test
 	public void test04OptimusAlternoDaniadoTomaBurbujaYNoPierdeVidaPor2Turnos(){
-
 		//Vida pre bonus
-		this.autobots.getOptimus().transformar();
-		this.autobots.getOptimus().recibirAtaque(new Ataque(100));
-		assertEquals(this.autobots.getOptimus().getPuntosDeVida(),400);
+		optimus.transformar();
+		optimus.recibirAtaque(new Ataque(100));
+		assertEquals(optimus.getPuntosDeVida(),400);
 		
 		//turno de obtencion
-		assertEquals(this.turno.obtenerJugadorQueDebeJugar(),Monica);
-		this.autobots.getOptimus().recibirColocable(new BurbujaInmaculada());
-		assertEquals(this.autobots.getOptimus().getPuntosDeVida(),400);
-		this.autobots.getOptimus().recibirAtaque(new Ataque(100));
-		this.turno.avanzarTurno();
-		this.turno.avanzarTurno();
+		optimus.recibirColocable(new BurbujaInmaculada());
+		assertEquals(optimus.getPuntosDeVida(),400);
+		optimus.recibirAtaque(new Ataque(100));
+		optimus.notificar();
 		
 		//primer turno con burbuja
-		assertEquals(this.autobots.getOptimus().getPuntosDeVida(),400);
-		this.autobots.getOptimus().recibirAtaque(new Ataque(200));
-		this.turno.avanzarTurno();
-		this.turno.avanzarTurno();
+		assertEquals(optimus.getPuntosDeVida(),400);
+		optimus.recibirAtaque(new Ataque(200));
+		optimus.notificar();
 		
 		//segundo turno con burbuja.Recupero vida perdida antes
-		assertEquals(this.autobots.getOptimus().getPuntosDeVida(),400);
-		this.autobots.getOptimus().recibirAtaque(new Ataque(200));
-		this.turno.avanzarTurno();
-		this.turno.avanzarTurno();
+		assertEquals(optimus.getPuntosDeVida(),400);
+		optimus.recibirAtaque(new Ataque(200));
+		optimus.notificar();
 		
 		//tercer turno con burbuja.Recupera vida perdida antes
-		assertEquals(this.autobots.getOptimus().getPuntosDeVida(),400);
-		this.autobots.getOptimus().recibirAtaque(new Ataque(200));
-		assertEquals(this.autobots.getOptimus().getPuntosDeVida(),200);
-		this.turno.avanzarTurno();
+		assertEquals(optimus.getPuntosDeVida(),400);
+		optimus.recibirAtaque(new Ataque(200));
+		assertEquals(optimus.getPuntosDeVida(),200);
+		optimus.notificar();
 		
 		//Cuarto turno con burbuja. No recupera vida
-		assertEquals(this.autobots.getOptimus().getPuntosDeVida(),200);
-		this.turno.finalizar();
+		assertEquals(optimus.getPuntosDeVida(),200);
 	}
 
 	@Test
 	public void test05BumblebeeConVidaTotalTomaBurbujaYNoPierdeVidaPor2Turnos(){
 
 		//Vida pre bonus
-		assertEquals(this.autobots.getBumblebee().getPuntosDeVida(),350);
+		assertEquals(bumblebee.getPuntosDeVida(),350);
 		
 		//turno de obtencion
-		assertEquals(this.turno.obtenerJugadorQueDebeJugar(),Monica);
-		this.autobots.getBumblebee().recibirColocable(new BurbujaInmaculada());
-		assertEquals(this.autobots.getBumblebee().getPuntosDeVida(),350);
-		this.autobots.getBumblebee().recibirAtaque(new Ataque(100));
-		this.turno.avanzarTurno();
-		this.turno.avanzarTurno();
+		bumblebee.recibirColocable(new BurbujaInmaculada());
+		assertEquals(bumblebee.getPuntosDeVida(),350);
+		bumblebee.recibirAtaque(new Ataque(100));
+		bumblebee.notificar();
 		
 		//primer turno con burbuja
-		assertEquals(this.autobots.getBumblebee().getPuntosDeVida(),350);
-		this.autobots.getBumblebee().recibirAtaque(new Ataque(200));
-		this.turno.avanzarTurno();
-		this.turno.avanzarTurno();
+		assertEquals(bumblebee.getPuntosDeVida(),350);
+		bumblebee.recibirAtaque(new Ataque(200));
+		bumblebee.notificar();
 		
 		//segundo turno con burbuja.Recupero vida perdida antes
-		assertEquals(this.autobots.getBumblebee().getPuntosDeVida(),350);
-		this.autobots.getBumblebee().recibirAtaque(new Ataque(200));
-		this.turno.avanzarTurno();
-		this.turno.avanzarTurno();
+		assertEquals(bumblebee.getPuntosDeVida(),350);
+		bumblebee.recibirAtaque(new Ataque(200));
+		bumblebee.notificar();
 		
 		//tercer turno con burbuja.Recupera vida perdida antes
-		assertEquals(this.autobots.getBumblebee().getPuntosDeVida(),350);
-		this.autobots.getBumblebee().recibirAtaque(new Ataque(200));
-		assertEquals(this.autobots.getBumblebee().getPuntosDeVida(),150);
-		this.turno.avanzarTurno();
+		assertEquals(bumblebee.getPuntosDeVida(),350);
+		bumblebee.recibirAtaque(new Ataque(200));
+		assertEquals(bumblebee.getPuntosDeVida(),150);
+		bumblebee.notificar();
 		
 		//Cuarto turno con burbuja. No recupera vida
-		assertEquals(this.autobots.getBumblebee().getPuntosDeVida(),150);
-		this.turno.finalizar();
+		assertEquals(bumblebee.getPuntosDeVida(),150);
 	}
 
 	@Test
 	public void test06BumblebeeDaniadoTomaBurbujaYNoPierdeVidaPor2Turnos(){
 
 		//Vida pre bonus
-		assertEquals(this.autobots.getBumblebee().getPuntosDeVida(),350);
-		this.autobots.getBumblebee().recibirAtaque(new Ataque(100));
+		assertEquals(bumblebee.getPuntosDeVida(),350);
+		bumblebee.recibirAtaque(new Ataque(100));
 		
 		//turno de obtencion
-		assertEquals(this.turno.obtenerJugadorQueDebeJugar(),Monica);
-		this.autobots.getBumblebee().recibirColocable(new BurbujaInmaculada());
-		assertEquals(this.autobots.getBumblebee().getPuntosDeVida(),250);
-		this.autobots.getBumblebee().recibirAtaque(new Ataque(100));
-		this.turno.avanzarTurno();
-		this.turno.avanzarTurno();
+		bumblebee.recibirColocable(new BurbujaInmaculada());
+		assertEquals(bumblebee.getPuntosDeVida(),250);
+		bumblebee.recibirAtaque(new Ataque(100));
+		bumblebee.notificar();
 		
 		//primer turno con burbuja
-		assertEquals(this.autobots.getBumblebee().getPuntosDeVida(),250);
-		this.autobots.getBumblebee().recibirAtaque(new Ataque(200));
-		this.turno.avanzarTurno();
-		this.turno.avanzarTurno();
+		assertEquals(bumblebee.getPuntosDeVida(),250);
+		bumblebee.recibirAtaque(new Ataque(200));
+		bumblebee.notificar();
 		
 		//segundo turno con burbuja.Recupero vida perdida antes
-		assertEquals(this.autobots.getBumblebee().getPuntosDeVida(),250);
-		this.autobots.getBumblebee().recibirAtaque(new Ataque(200));
-		this.turno.avanzarTurno();
-		this.turno.avanzarTurno();
+		assertEquals(bumblebee.getPuntosDeVida(),250);
+		bumblebee.recibirAtaque(new Ataque(200));
+		bumblebee.notificar();
 		
 		//tercer turno con burbuja.Recupera vida perdida antes
-		assertEquals(this.autobots.getBumblebee().getPuntosDeVida(),250);
-		this.autobots.getBumblebee().recibirAtaque(new Ataque(200));
-		assertEquals(this.autobots.getBumblebee().getPuntosDeVida(),50);
-		this.turno.avanzarTurno();
+		assertEquals(bumblebee.getPuntosDeVida(),250);
+		bumblebee.recibirAtaque(new Ataque(200));
+		assertEquals(bumblebee.getPuntosDeVida(),50);
+		bumblebee.notificar();
 		
 		//Cuarto turno con burbuja. No recupera vida
-		assertEquals(this.autobots.getBumblebee().getPuntosDeVida(),50);
-		this.turno.finalizar();
+		assertEquals(bumblebee.getPuntosDeVida(),50);
 	}
 	
 	@Test
 	public void test07BumblebeeAlternoConVidaTotalTomaBurbujaYNoPierdeVidaPor2Turnos(){
 
-		this.autobots.getOptimus().transformar();
+		optimus.transformar();
 		//Vida pre bonus
-		assertEquals(this.autobots.getBumblebee().getPuntosDeVida(),350);
+		assertEquals(bumblebee.getPuntosDeVida(),350);
 		
 		//turno de obtencion
-		assertEquals(this.turno.obtenerJugadorQueDebeJugar(),Monica);
-		this.autobots.getBumblebee().recibirColocable(new BurbujaInmaculada());
-		assertEquals(this.autobots.getBumblebee().getPuntosDeVida(),350);
-		this.autobots.getBumblebee().recibirAtaque(new Ataque(100));
-		this.turno.avanzarTurno();
-		this.turno.avanzarTurno();
+		bumblebee.recibirColocable(new BurbujaInmaculada());
+		assertEquals(bumblebee.getPuntosDeVida(),350);
+		bumblebee.recibirAtaque(new Ataque(100));
+		bumblebee.notificar();
 		
 		//primer turno con burbuja
-		assertEquals(this.autobots.getBumblebee().getPuntosDeVida(),350);
-		this.autobots.getBumblebee().recibirAtaque(new Ataque(200));
-		this.turno.avanzarTurno();
-		this.turno.avanzarTurno();
+		assertEquals(bumblebee.getPuntosDeVida(),350);
+		bumblebee.recibirAtaque(new Ataque(200));
+		bumblebee.notificar();
 		
 		//segundo turno con burbuja.Recupero vida perdida antes
-		assertEquals(this.autobots.getBumblebee().getPuntosDeVida(),350);
-		this.autobots.getBumblebee().recibirAtaque(new Ataque(200));
-		this.turno.avanzarTurno();
-		this.turno.avanzarTurno();
+		assertEquals(bumblebee.getPuntosDeVida(),350);
+		bumblebee.recibirAtaque(new Ataque(200));
+		bumblebee.notificar();
 		
 		//tercer turno con burbuja.Recupera vida perdida antes
-		assertEquals(this.autobots.getBumblebee().getPuntosDeVida(),350);
-		this.autobots.getBumblebee().recibirAtaque(new Ataque(200));
-		assertEquals(this.autobots.getBumblebee().getPuntosDeVida(),150);
-		this.turno.avanzarTurno();
+		assertEquals(bumblebee.getPuntosDeVida(),350);
+		bumblebee.recibirAtaque(new Ataque(200));
+		assertEquals(bumblebee.getPuntosDeVida(),150);
+		bumblebee.notificar();
 		
 		//Cuarto turno con burbuja. No recupera vida
-		assertEquals(this.autobots.getBumblebee().getPuntosDeVida(),150);
-		this.turno.finalizar();
+		assertEquals(bumblebee.getPuntosDeVida(),150);
 	}
 
 	@Test
 	public void test08BumblebeeAlternoDaniadoTomaBurbujaYNoPierdeVidaPor2Turnos(){
 
-		this.autobots.getBumblebee().transformar();
+		bumblebee.transformar();
 		//Vida pre bonus
-		assertEquals(this.autobots.getBumblebee().getPuntosDeVida(),350);
-		this.autobots.getBumblebee().recibirAtaque(new Ataque(100));
+		assertEquals(bumblebee.getPuntosDeVida(),350);
+		bumblebee.recibirAtaque(new Ataque(100));
 		
 		//turno de obtencion
-		assertEquals(this.turno.obtenerJugadorQueDebeJugar(),Monica);
-		this.autobots.getBumblebee().recibirColocable(new BurbujaInmaculada());
-		assertEquals(this.autobots.getBumblebee().getPuntosDeVida(),250);
-		this.autobots.getBumblebee().recibirAtaque(new Ataque(100));
-		this.turno.avanzarTurno();
-		this.turno.avanzarTurno();
+		bumblebee.recibirColocable(new BurbujaInmaculada());
+		assertEquals(bumblebee.getPuntosDeVida(),250);
+		bumblebee.recibirAtaque(new Ataque(100));
+		bumblebee.notificar();
 		
 		//primer turno con burbuja
-		assertEquals(this.autobots.getBumblebee().getPuntosDeVida(),250);
-		this.autobots.getBumblebee().recibirAtaque(new Ataque(200));
-		this.turno.avanzarTurno();
-		this.turno.avanzarTurno();
+		assertEquals(bumblebee.getPuntosDeVida(),250);
+		bumblebee.recibirAtaque(new Ataque(200));
+		bumblebee.notificar();
 		
 		//segundo turno con burbuja.Recupero vida perdida antes
-		assertEquals(this.autobots.getBumblebee().getPuntosDeVida(),250);
-		this.autobots.getBumblebee().recibirAtaque(new Ataque(200));
-		this.turno.avanzarTurno();
-		this.turno.avanzarTurno();
+		assertEquals(bumblebee.getPuntosDeVida(),250);
+		bumblebee.recibirAtaque(new Ataque(200));
+		bumblebee.notificar();
 		
 		//tercer turno con burbuja.Recupera vida perdida antes
-		assertEquals(this.autobots.getBumblebee().getPuntosDeVida(),250);
-		this.autobots.getBumblebee().recibirAtaque(new Ataque(200));
-		assertEquals(this.autobots.getBumblebee().getPuntosDeVida(),50);
-		this.turno.avanzarTurno();
+		assertEquals(bumblebee.getPuntosDeVida(),250);
+		bumblebee.recibirAtaque(new Ataque(200));
+		assertEquals(bumblebee.getPuntosDeVida(),50);
+		bumblebee.notificar();
 		
 		//Cuarto turno con burbuja. No recupera vida
-		assertEquals(this.autobots.getBumblebee().getPuntosDeVida(),50);
-		this.turno.finalizar();
+		assertEquals(bumblebee.getPuntosDeVida(),50);
 	}
 	
 	@Test
 	public void test09RatchetConVidaTotalTomaBurbujaYNoPierdeVidaPor2Turnos(){
 
 		//Vida pre bonus
-		assertEquals(this.autobots.getRatchet().getPuntosDeVida(),150);
+		assertEquals(ratchet.getPuntosDeVida(),150);
 		
 		//turno de obtencion
-		assertEquals(this.turno.obtenerJugadorQueDebeJugar(),Monica);
-		this.autobots.getRatchet().recibirColocable(new BurbujaInmaculada());
-		assertEquals(this.autobots.getRatchet().getPuntosDeVida(),150);
-		this.autobots.getRatchet().recibirAtaque(new Ataque(100));
-		this.turno.avanzarTurno();
-		this.turno.avanzarTurno();
+		ratchet.recibirColocable(new BurbujaInmaculada());
+		assertEquals(ratchet.getPuntosDeVida(),150);
+		ratchet.recibirAtaque(new Ataque(100));
+		ratchet.notificar();
 		
 		//primer turno con burbuja
-		assertEquals(this.autobots.getRatchet().getPuntosDeVida(),150);
-		this.autobots.getRatchet().recibirAtaque(new Ataque(60));
-		this.turno.avanzarTurno();
-		this.turno.avanzarTurno();
+		assertEquals(ratchet.getPuntosDeVida(),150);
+		ratchet.recibirAtaque(new Ataque(60));
+		ratchet.notificar();
 		
 		//segundo turno con burbuja.Recupero vida perdida antes
-		assertEquals(this.autobots.getRatchet().getPuntosDeVida(),150);
-		this.autobots.getRatchet().recibirAtaque(new Ataque(60));
-		this.turno.avanzarTurno();
-		this.turno.avanzarTurno();
+		assertEquals(ratchet.getPuntosDeVida(),150);
+		ratchet.recibirAtaque(new Ataque(60));
+		ratchet.notificar();
 		
 		//tercer turno con burbuja.Recupera vida perdida antes
-		assertEquals(this.autobots.getRatchet().getPuntosDeVida(),150);
-		this.autobots.getRatchet().recibirAtaque(new Ataque(60));
-		assertEquals(this.autobots.getRatchet().getPuntosDeVida(),90);
-		this.turno.avanzarTurno();
+		assertEquals(ratchet.getPuntosDeVida(),150);
+		ratchet.recibirAtaque(new Ataque(60));
+		assertEquals(ratchet.getPuntosDeVida(),90);
+		ratchet.notificar();
 		
 		//Cuarto turno con burbuja. No recupera vida
-		assertEquals(this.autobots.getRatchet().getPuntosDeVida(),90);
-		this.turno.finalizar();
+		assertEquals(ratchet.getPuntosDeVida(),90);
 	}
 
 	@Test
 	public void test10RatchetDaniadoTomaBurbujaYNoPierdeVidaPor2Turnos(){
 
 		//Vida pre bonus
-		this.autobots.getRatchet().recibirAtaque(new Ataque(10));
-		assertEquals(this.autobots.getRatchet().getPuntosDeVida(),140);
+		ratchet.recibirAtaque(new Ataque(10));
+		assertEquals(ratchet.getPuntosDeVida(),140);
 		
 		//turno de obtencion
-		assertEquals(this.turno.obtenerJugadorQueDebeJugar(),Monica);
-		this.autobots.getRatchet().recibirColocable(new BurbujaInmaculada());
-		assertEquals(this.autobots.getRatchet().getPuntosDeVida(),140);
-		this.autobots.getRatchet().recibirAtaque(new Ataque(100));
-		this.turno.avanzarTurno();
-		this.turno.avanzarTurno();
+		ratchet.recibirColocable(new BurbujaInmaculada());
+		assertEquals(ratchet.getPuntosDeVida(),140);
+		ratchet.recibirAtaque(new Ataque(100));
+		ratchet.notificar();
 		
 		//primer turno con burbuja
-		assertEquals(this.autobots.getRatchet().getPuntosDeVida(),140);
-		this.autobots.getRatchet().recibirAtaque(new Ataque(60));
-		this.turno.avanzarTurno();
-		this.turno.avanzarTurno();
+		assertEquals(ratchet.getPuntosDeVida(),140);
+		ratchet.recibirAtaque(new Ataque(60));
+		ratchet.notificar();
 		
 		//segundo turno con burbuja.Recupero vida perdida antes
-		assertEquals(this.autobots.getRatchet().getPuntosDeVida(),140);
-		this.autobots.getRatchet().recibirAtaque(new Ataque(60));
-		this.turno.avanzarTurno();
-		this.turno.avanzarTurno();
+		assertEquals(ratchet.getPuntosDeVida(),140);
+		ratchet.recibirAtaque(new Ataque(60));
+		ratchet.notificar();
 		
 		//tercer turno con burbuja.Recupera vida perdida antes
-		assertEquals(this.autobots.getRatchet().getPuntosDeVida(),140);
-		this.autobots.getRatchet().recibirAtaque(new Ataque(60));
-		assertEquals(this.autobots.getRatchet().getPuntosDeVida(),80);
-		this.turno.avanzarTurno();
+		assertEquals(ratchet.getPuntosDeVida(),140);
+		ratchet.recibirAtaque(new Ataque(60));
+		assertEquals(ratchet.getPuntosDeVida(),80);
+		ratchet.notificar();
 		
 		//Cuarto turno con burbuja. No recupera vida
-		assertEquals(this.autobots.getRatchet().getPuntosDeVida(),80);
-		this.turno.finalizar();
+		assertEquals(ratchet.getPuntosDeVida(),80);
 	}
 	
 	@Test
 	public void test11RatchetAlternoConVidaTotalTomaBurbujaYNoPierdeVidaPor2Turnos(){
 
 		//Vida pre bonus
-		this.autobots.getRatchet().transformar();
-		assertEquals(this.autobots.getRatchet().getPuntosDeVida(),150);
+		ratchet.transformar();
+		assertEquals(ratchet.getPuntosDeVida(),150);
 		
 		//turno de obtencion
-		assertEquals(this.turno.obtenerJugadorQueDebeJugar(),Monica);
-		this.autobots.getRatchet().recibirColocable(new BurbujaInmaculada());
-		assertEquals(this.autobots.getRatchet().getPuntosDeVida(),150);
-		this.autobots.getRatchet().recibirAtaque(new Ataque(100));
-		this.turno.avanzarTurno();
-		this.turno.avanzarTurno();
+		ratchet.recibirColocable(new BurbujaInmaculada());
+		assertEquals(ratchet.getPuntosDeVida(),150);
+		ratchet.recibirAtaque(new Ataque(100));
+		ratchet.notificar();
 		
 		//primer turno con burbuja
-		assertEquals(this.autobots.getRatchet().getPuntosDeVida(),150);
-		this.autobots.getRatchet().recibirAtaque(new Ataque(60));
-		this.turno.avanzarTurno();
-		this.turno.avanzarTurno();
+		assertEquals(ratchet.getPuntosDeVida(),150);
+		ratchet.recibirAtaque(new Ataque(60));
+		ratchet.notificar();
 		
 		//segundo turno con burbuja.Recupero vida perdida antes
-		assertEquals(this.autobots.getRatchet().getPuntosDeVida(),150);
-		this.autobots.getRatchet().recibirAtaque(new Ataque(60));
-		this.turno.avanzarTurno();
-		this.turno.avanzarTurno();
+		assertEquals(ratchet.getPuntosDeVida(),150);
+		ratchet.recibirAtaque(new Ataque(60));
+		ratchet.notificar();
 		
 		//tercer turno con burbuja.Recupera vida perdida antes
-		assertEquals(this.autobots.getRatchet().getPuntosDeVida(),150);
-		this.autobots.getRatchet().recibirAtaque(new Ataque(60));
-		assertEquals(this.autobots.getRatchet().getPuntosDeVida(),90);
-		this.turno.avanzarTurno();
+		assertEquals(ratchet.getPuntosDeVida(),150);
+		ratchet.recibirAtaque(new Ataque(60));
+		assertEquals(ratchet.getPuntosDeVida(),90);
+		ratchet.notificar();
 		
 		//Cuarto turno con burbuja. No recupera vida
-		assertEquals(this.autobots.getRatchet().getPuntosDeVida(),90);
-		this.turno.finalizar();
+		assertEquals(ratchet.getPuntosDeVida(),90);
 	}
 
 	@Test
 	public void test12RatchetAlternoDaniadoTomaBurbujaYNoPierdeVidaPor2Turnos(){
 		//Vida pre bonus
-		this.autobots.getRatchet().transformar();
-		this.autobots.getRatchet().recibirAtaque(new Ataque(10));
-		assertEquals(this.autobots.getRatchet().getPuntosDeVida(),140);
+		ratchet.transformar();
+		ratchet.recibirAtaque(new Ataque(10));
+		assertEquals(ratchet.getPuntosDeVida(),140);
 		
 		//turno de obtencion
-		assertEquals(this.turno.obtenerJugadorQueDebeJugar(),Monica);
-		this.autobots.getRatchet().recibirColocable(new BurbujaInmaculada());
-		assertEquals(this.autobots.getRatchet().getPuntosDeVida(),140);
-		this.autobots.getRatchet().recibirAtaque(new Ataque(100));
-		this.turno.avanzarTurno();
-		this.turno.avanzarTurno();
+		ratchet.recibirColocable(new BurbujaInmaculada());
+		assertEquals(ratchet.getPuntosDeVida(),140);
+		ratchet.recibirAtaque(new Ataque(100));
+		ratchet.notificar();
 		
 		//primer turno con burbuja
-		assertEquals(this.autobots.getRatchet().getPuntosDeVida(),140);
-		this.autobots.getRatchet().recibirAtaque(new Ataque(60));
-		this.turno.avanzarTurno();
-		this.turno.avanzarTurno();
+		assertEquals(ratchet.getPuntosDeVida(),140);
+		ratchet.recibirAtaque(new Ataque(60));
+		ratchet.notificar();
 		
 		//segundo turno con burbuja.Recupero vida perdida antes
-		assertEquals(this.autobots.getRatchet().getPuntosDeVida(),140);
-		this.autobots.getRatchet().recibirAtaque(new Ataque(60));
-		this.turno.avanzarTurno();
-		this.turno.avanzarTurno();
+		assertEquals(ratchet.getPuntosDeVida(),140);
+		ratchet.recibirAtaque(new Ataque(60));
+		ratchet.notificar();
 		
 		//tercer turno con burbuja.Recupera vida perdida antes
-		assertEquals(this.autobots.getRatchet().getPuntosDeVida(),140);
-		this.autobots.getRatchet().recibirAtaque(new Ataque(60));
-		assertEquals(this.autobots.getRatchet().getPuntosDeVida(),80);
-		this.turno.avanzarTurno();
+		assertEquals(ratchet.getPuntosDeVida(),140);
+		ratchet.recibirAtaque(new Ataque(60));
+		assertEquals(ratchet.getPuntosDeVida(),80);
+		ratchet.notificar();
 		
 		//Cuarto turno con burbuja. No recupera vida
-		assertEquals(this.autobots.getRatchet().getPuntosDeVida(),80);
-		this.turno.finalizar();
+		assertEquals(ratchet.getPuntosDeVida(),80);
 	}
 
 	@Test
 	public void test13MegatronConVidaTotalTomaBurbujaYNoPierdeVidaPor2Turnos(){
 
 		//Vida pre bonus
-		this.turno.avanzarTurno();
-		assertEquals(this.decepticons.getMegatron().getPuntosDeVida(),550);
+		assertEquals(megatron.getPuntosDeVida(),550);
 		
 		//turno de obtencion
-		assertEquals(this.turno.obtenerJugadorQueDebeJugar(),Rachel);
-		this.decepticons.getMegatron().recibirColocable(new BurbujaInmaculada());
-		assertEquals(this.decepticons.getMegatron().getPuntosDeVida(),550);
-		this.decepticons.getMegatron().recibirAtaque(new Ataque(100));
-		this.turno.avanzarTurno();
-		this.turno.avanzarTurno();
+		megatron.recibirColocable(new BurbujaInmaculada());
+		assertEquals(megatron.getPuntosDeVida(),550);
+		megatron.recibirAtaque(new Ataque(100));
+		megatron.notificar();
 		
 		//primer turno con burbuja
-		assertEquals(this.decepticons.getMegatron().getPuntosDeVida(),550);
-		this.decepticons.getMegatron().recibirAtaque(new Ataque(60));
-		this.turno.avanzarTurno();
-		this.turno.avanzarTurno();
+		assertEquals(megatron.getPuntosDeVida(),550);
+		megatron.recibirAtaque(new Ataque(60));
+		megatron.notificar();
 		
 		//segundo turno con burbuja.Recupero vida perdida antes
-		assertEquals(this.decepticons.getMegatron().getPuntosDeVida(),550);
-		this.decepticons.getMegatron().recibirAtaque(new Ataque(60));
-		this.turno.avanzarTurno();
-		this.turno.avanzarTurno();
+		assertEquals(megatron.getPuntosDeVida(),550);
+		megatron.recibirAtaque(new Ataque(60));
+		megatron.notificar();
 		
 		//tercer turno con burbuja.Recupera vida perdida antes
-		assertEquals(this.decepticons.getMegatron().getPuntosDeVida(),550);
-		this.decepticons.getMegatron().recibirAtaque(new Ataque(60));
-		assertEquals(this.decepticons.getMegatron().getPuntosDeVida(),490);
-		this.turno.avanzarTurno();
+		assertEquals(megatron.getPuntosDeVida(),550);
+		megatron.recibirAtaque(new Ataque(60));
+		assertEquals(megatron.getPuntosDeVida(),490);
+		megatron.notificar();
 		
 		//Cuarto turno con burbuja. No recupera vida
-		assertEquals(this.decepticons.getMegatron().getPuntosDeVida(),490);
-		this.turno.finalizar();
+		assertEquals(megatron.getPuntosDeVida(),490);
 	}
 
 	@Test
 	public void test14MegatronDaniadoTomaBurbujaYNoPierdeVidaPor2Turnos(){
 		
 		//Vida pre bonus
-		this.turno.avanzarTurno();
-		this.decepticons.getMegatron().recibirAtaque(new Ataque(50));
-		assertEquals(this.decepticons.getMegatron().getPuntosDeVida(),500);
+		megatron.recibirAtaque(new Ataque(50));
+		assertEquals(megatron.getPuntosDeVida(),500);
 		
 		
 		//turno de obtencion
-		assertEquals(this.turno.obtenerJugadorQueDebeJugar(),Rachel);
-		this.decepticons.getMegatron().recibirColocable(new BurbujaInmaculada());
-		assertEquals(this.decepticons.getMegatron().getPuntosDeVida(),500);
-		this.decepticons.getMegatron().recibirAtaque(new Ataque(100));
-		this.turno.avanzarTurno();
-		this.turno.avanzarTurno();
+		megatron.recibirColocable(new BurbujaInmaculada());
+		assertEquals(megatron.getPuntosDeVida(),500);
+		megatron.recibirAtaque(new Ataque(100));
+		megatron.notificar();
 		
 		//primer turno con burbuja
-		assertEquals(this.decepticons.getMegatron().getPuntosDeVida(),500);
-		this.decepticons.getMegatron().recibirAtaque(new Ataque(60));
-		this.turno.avanzarTurno();
-		this.turno.avanzarTurno();
+		assertEquals(megatron.getPuntosDeVida(),500);
+		megatron.recibirAtaque(new Ataque(60));
+		megatron.notificar();
 		
 		//segundo turno con burbuja.Recupero vida perdida antes
-		assertEquals(this.decepticons.getMegatron().getPuntosDeVida(),500);
-		this.decepticons.getMegatron().recibirAtaque(new Ataque(60));
-		this.turno.avanzarTurno();
-		this.turno.avanzarTurno();
+		assertEquals(megatron.getPuntosDeVida(),500);
+		megatron.recibirAtaque(new Ataque(60));
+		megatron.notificar();
 		
 		//tercer turno con burbuja.Recupera vida perdida antes
-		assertEquals(this.decepticons.getMegatron().getPuntosDeVida(),500);
-		this.decepticons.getMegatron().recibirAtaque(new Ataque(60));
-		assertEquals(this.decepticons.getMegatron().getPuntosDeVida(),440);
-		this.turno.avanzarTurno();
+		assertEquals(megatron.getPuntosDeVida(),500);
+		megatron.recibirAtaque(new Ataque(60));
+		assertEquals(megatron.getPuntosDeVida(),440);
+		megatron.notificar();
 		
 		//Cuarto turno con burbuja. No recupera vida
-		assertEquals(this.decepticons.getMegatron().getPuntosDeVida(),440);
-		this.turno.finalizar();
+		assertEquals(megatron.getPuntosDeVida(),440);
 	}
 	
 	@Test
 	public void test15MegatronAlternoConVidaTotalTomaBurbujaYNoPierdeVidaPor2Turnos(){
 		//Vida pre bonus
-		this.turno.avanzarTurno();
-		this.decepticons.getMegatron().transformar();
-		assertEquals(this.decepticons.getMegatron().getPuntosDeVida(),550);
+		megatron.transformar();
+		assertEquals(megatron.getPuntosDeVida(),550);
 		
 		//turno de obtencion
-		assertEquals(this.turno.obtenerJugadorQueDebeJugar(),Rachel);
-		this.decepticons.getMegatron().recibirColocable(new BurbujaInmaculada());
-		assertEquals(this.decepticons.getMegatron().getPuntosDeVida(),550);
-		this.decepticons.getMegatron().recibirAtaque(new Ataque(100));
-		this.turno.avanzarTurno();
-		this.turno.avanzarTurno();
+		megatron.recibirColocable(new BurbujaInmaculada());
+		assertEquals(megatron.getPuntosDeVida(),550);
+		megatron.recibirAtaque(new Ataque(100));
+		megatron.notificar();
 		
 		//primer turno con burbuja
-		assertEquals(this.decepticons.getMegatron().getPuntosDeVida(),550);
-		this.decepticons.getMegatron().recibirAtaque(new Ataque(60));
-		this.turno.avanzarTurno();
-		this.turno.avanzarTurno();
+		assertEquals(megatron.getPuntosDeVida(),550);
+		megatron.recibirAtaque(new Ataque(60));
+		megatron.notificar();
 		
 		//segundo turno con burbuja.Recupero vida perdida antes
-		assertEquals(this.decepticons.getMegatron().getPuntosDeVida(),550);
-		this.decepticons.getMegatron().recibirAtaque(new Ataque(60));
-		this.turno.avanzarTurno();
-		this.turno.avanzarTurno();
+		assertEquals(megatron.getPuntosDeVida(),550);
+		megatron.recibirAtaque(new Ataque(60));
+		megatron.notificar();
 		
 		//tercer turno con burbuja.Recupera vida perdida antes
-		assertEquals(this.decepticons.getMegatron().getPuntosDeVida(),550);
-		this.decepticons.getMegatron().recibirAtaque(new Ataque(60));
-		assertEquals(this.decepticons.getMegatron().getPuntosDeVida(),490);
-		this.turno.avanzarTurno();
+		assertEquals(megatron.getPuntosDeVida(),550);
+		megatron.recibirAtaque(new Ataque(60));
+		assertEquals(megatron.getPuntosDeVida(),490);
+		megatron.notificar();
 		
 		//Cuarto turno con burbuja. No recupera vida
-		assertEquals(this.decepticons.getMegatron().getPuntosDeVida(),490);
-		this.turno.finalizar();
+		assertEquals(megatron.getPuntosDeVida(),490);
 	}
 
 	@Test
 	public void test16MegatronAlternoDaniadoTomaBurbujaYNoPierdeVidaPor2Turnos(){
 		//Vida pre bonus
-		this.turno.avanzarTurno();
-		this.decepticons.getMegatron().transformar();
-		this.decepticons.getMegatron().recibirAtaque(new Ataque(50));
-		assertEquals(this.decepticons.getMegatron().getPuntosDeVida(),500);
-		
+		megatron.transformar();
+		megatron.recibirAtaque(new Ataque(50));
+		assertEquals(megatron.getPuntosDeVida(),500);
 		
 		//turno de obtencion
-		assertEquals(this.turno.obtenerJugadorQueDebeJugar(),Rachel);
-		this.decepticons.getMegatron().recibirColocable(new BurbujaInmaculada());
-		assertEquals(this.decepticons.getMegatron().getPuntosDeVida(),500);
-		this.decepticons.getMegatron().recibirAtaque(new Ataque(100));
-		this.turno.avanzarTurno();
-		this.turno.avanzarTurno();
+		megatron.recibirColocable(new BurbujaInmaculada());
+		assertEquals(megatron.getPuntosDeVida(),500);
+		megatron.recibirAtaque(new Ataque(100));
+		megatron.notificar();
 		
 		//primer turno con burbuja
-		assertEquals(this.decepticons.getMegatron().getPuntosDeVida(),500);
-		this.decepticons.getMegatron().recibirAtaque(new Ataque(60));
-		this.turno.avanzarTurno();
-		this.turno.avanzarTurno();
+		assertEquals(megatron.getPuntosDeVida(),500);
+		megatron.recibirAtaque(new Ataque(60));
+		megatron.notificar();
 		
 		//segundo turno con burbuja.Recupero vida perdida antes
-		assertEquals(this.decepticons.getMegatron().getPuntosDeVida(),500);
-		this.decepticons.getMegatron().recibirAtaque(new Ataque(60));
-		this.turno.avanzarTurno();
-		this.turno.avanzarTurno();
+		assertEquals(megatron.getPuntosDeVida(),500);
+		megatron.recibirAtaque(new Ataque(60));
+		megatron.notificar();
 		
 		//tercer turno con burbuja.Recupera vida perdida antes
-		assertEquals(this.decepticons.getMegatron().getPuntosDeVida(),500);
-		this.decepticons.getMegatron().recibirAtaque(new Ataque(60));
-		assertEquals(this.decepticons.getMegatron().getPuntosDeVida(),440);
-		this.turno.avanzarTurno();
+		assertEquals(megatron.getPuntosDeVida(),500);
+		megatron.recibirAtaque(new Ataque(60));
+		assertEquals(megatron.getPuntosDeVida(),440);
+		megatron.notificar();
 		
 		//Cuarto turno con burbuja. No recupera vida
-		assertEquals(this.decepticons.getMegatron().getPuntosDeVida(),440);
-		this.turno.finalizar();
-		
-		
-		
+		assertEquals(megatron.getPuntosDeVida(),440);
 	}
 
 	@Test
 	public void test17BonecrusherConVidaTotalTomaBurbujaYNoPierdeVidaPor2Turnos(){
 
 		//Vida pre bonus
-		this.turno.avanzarTurno();
-		assertEquals(this.decepticons.getBoneCrusher().getPuntosDeVida(),200);
+		assertEquals(boneCrusher.getPuntosDeVida(),200);
 		
 		//turno de obtencion
-		assertEquals(this.turno.obtenerJugadorQueDebeJugar(),Rachel);
-		this.decepticons.getBoneCrusher().recibirColocable(new BurbujaInmaculada());
-		assertEquals(this.decepticons.getBoneCrusher().getPuntosDeVida(),200);
-		this.decepticons.getBoneCrusher().recibirAtaque(new Ataque(100));
-		this.turno.avanzarTurno();
-		this.turno.avanzarTurno();
+		boneCrusher.recibirColocable(new BurbujaInmaculada());
+		assertEquals(boneCrusher.getPuntosDeVida(),200);
+		boneCrusher.recibirAtaque(new Ataque(100));
+		boneCrusher.notificar();
 		
 		//primer turno con burbuja
-		assertEquals(this.decepticons.getBoneCrusher().getPuntosDeVida(),200);
-		this.decepticons.getBoneCrusher().recibirAtaque(new Ataque(60));
-		this.turno.avanzarTurno();
-		this.turno.avanzarTurno();
+		assertEquals(boneCrusher.getPuntosDeVida(),200);
+		boneCrusher.recibirAtaque(new Ataque(60));
+		boneCrusher.notificar();
 		
 		//segundo turno con burbuja.Recupero vida perdida antes
-		assertEquals(this.decepticons.getBoneCrusher().getPuntosDeVida(),200);
-		this.decepticons.getBoneCrusher().recibirAtaque(new Ataque(60));
-		this.turno.avanzarTurno();
-		this.turno.avanzarTurno();
+		assertEquals(boneCrusher.getPuntosDeVida(),200);
+		boneCrusher.recibirAtaque(new Ataque(60));
+		boneCrusher.notificar();
 		
 		//tercer turno con burbuja.Recupera vida perdida antes
-		assertEquals(this.decepticons.getBoneCrusher().getPuntosDeVida(),200);
-		this.decepticons.getBoneCrusher().recibirAtaque(new Ataque(60));
-		assertEquals(this.decepticons.getBoneCrusher().getPuntosDeVida(),140);
-		this.turno.avanzarTurno();
+		assertEquals(boneCrusher.getPuntosDeVida(),200);
+		boneCrusher.recibirAtaque(new Ataque(60));
+		assertEquals(boneCrusher.getPuntosDeVida(),140);
+		boneCrusher.notificar();
 		
 		//Cuarto turno con burbuja. No recupera vida
-		assertEquals(this.decepticons.getBoneCrusher().getPuntosDeVida(),140);
-		this.turno.finalizar();
+		assertEquals(boneCrusher.getPuntosDeVida(),140);
 	}
 
 	@Test
 	public void test18BonecrusherDaniadoTomaBurbujaYNoPierdeVidaPor2Turnos(){
 		//Vida pre bonus
-		this.turno.avanzarTurno();
-		this.decepticons.getBoneCrusher().recibirAtaque(new Ataque(100));
-		assertEquals(this.decepticons.getBoneCrusher().getPuntosDeVida(),100);
+		boneCrusher.recibirAtaque(new Ataque(100));
+		assertEquals(boneCrusher.getPuntosDeVida(),100);
 		
 		//turno de obtencion
-		assertEquals(this.turno.obtenerJugadorQueDebeJugar(),Rachel);
-		this.decepticons.getBoneCrusher().recibirColocable(new BurbujaInmaculada());
-		assertEquals(this.decepticons.getBoneCrusher().getPuntosDeVida(),100);
-		this.decepticons.getBoneCrusher().recibirAtaque(new Ataque(20));
-		this.turno.avanzarTurno();
-		this.turno.avanzarTurno();
+		boneCrusher.recibirColocable(new BurbujaInmaculada());
+		assertEquals(boneCrusher.getPuntosDeVida(),100);
+		boneCrusher.recibirAtaque(new Ataque(20));
+		boneCrusher.notificar();
 				
 		//primer turno con burbuja
-		assertEquals(this.decepticons.getBoneCrusher().getPuntosDeVida(),100);
-		this.decepticons.getBoneCrusher().recibirAtaque(new Ataque(20));
-		this.turno.avanzarTurno();
-		this.turno.avanzarTurno();
+		assertEquals(boneCrusher.getPuntosDeVida(),100);
+		boneCrusher.recibirAtaque(new Ataque(20));
+		boneCrusher.notificar();
 				
 		//segundo turno con burbuja.Recupero vida perdida antes
-		assertEquals(this.decepticons.getBoneCrusher().getPuntosDeVida(),100);
-		this.decepticons.getBoneCrusher().recibirAtaque(new Ataque(20));
-		this.turno.avanzarTurno();
-		this.turno.avanzarTurno();
+		assertEquals(boneCrusher.getPuntosDeVida(),100);
+		boneCrusher.recibirAtaque(new Ataque(20));
+		boneCrusher.notificar();
 				
 		//tercer turno con burbuja.Recupera vida perdida antes
-		assertEquals(this.decepticons.getBoneCrusher().getPuntosDeVida(),100);
-		this.decepticons.getBoneCrusher().recibirAtaque(new Ataque(20));
-		assertEquals(this.decepticons.getBoneCrusher().getPuntosDeVida(),80);
-		this.turno.avanzarTurno();
+		assertEquals(boneCrusher.getPuntosDeVida(),100);
+		boneCrusher.recibirAtaque(new Ataque(20));
+		assertEquals(boneCrusher.getPuntosDeVida(),80);
+		boneCrusher.notificar();
 				
 		//Cuarto turno con burbuja. No recupera vida
-		assertEquals(this.decepticons.getBoneCrusher().getPuntosDeVida(),80);
-		this.turno.finalizar();
+		assertEquals(boneCrusher.getPuntosDeVida(),80);
 
 	}
 	
@@ -730,155 +611,131 @@ public class BurbujaInmaculadaTest {
 	public void test19BonecrusherAlternoConVidaTotalTomaBurbujaYNoPierdeVidaPor2Turnos(){
 
 		//Vida pre bonus
-		this.turno.avanzarTurno();
-		this.decepticons.getBoneCrusher().transformar();
-		assertEquals(this.decepticons.getBoneCrusher().getPuntosDeVida(),200);
+		boneCrusher.transformar();
+		assertEquals(boneCrusher.getPuntosDeVida(),200);
 		
 		//turno de obtencion
-		assertEquals(this.turno.obtenerJugadorQueDebeJugar(),Rachel);
-		this.decepticons.getBoneCrusher().recibirColocable(new BurbujaInmaculada());
-		assertEquals(this.decepticons.getBoneCrusher().getPuntosDeVida(),200);
-		this.decepticons.getBoneCrusher().recibirAtaque(new Ataque(100));
-		this.turno.avanzarTurno();
-		this.turno.avanzarTurno();
+		boneCrusher.recibirColocable(new BurbujaInmaculada());
+		assertEquals(boneCrusher.getPuntosDeVida(),200);
+		boneCrusher.recibirAtaque(new Ataque(100));
+		boneCrusher.notificar();
 		
 		//primer turno con burbuja
-		assertEquals(this.decepticons.getBoneCrusher().getPuntosDeVida(),200);
-		this.decepticons.getBoneCrusher().recibirAtaque(new Ataque(60));
-		this.turno.avanzarTurno();
-		this.turno.avanzarTurno();
+		assertEquals(boneCrusher.getPuntosDeVida(),200);
+		boneCrusher.recibirAtaque(new Ataque(60));
+		boneCrusher.notificar();
 		
 		//segundo turno con burbuja.Recupero vida perdida antes
-		assertEquals(this.decepticons.getBoneCrusher().getPuntosDeVida(),200);
-		this.decepticons.getBoneCrusher().recibirAtaque(new Ataque(60));
-		this.turno.avanzarTurno();
-		this.turno.avanzarTurno();
+		assertEquals(boneCrusher.getPuntosDeVida(),200);
+		boneCrusher.recibirAtaque(new Ataque(60));
+		boneCrusher.notificar();
 		
 		//tercer turno con burbuja.Recupera vida perdida antes
-		assertEquals(this.decepticons.getBoneCrusher().getPuntosDeVida(),200);
-		this.decepticons.getBoneCrusher().recibirAtaque(new Ataque(60));
-		assertEquals(this.decepticons.getBoneCrusher().getPuntosDeVida(),140);
-		this.turno.avanzarTurno();
+		assertEquals(boneCrusher.getPuntosDeVida(),200);
+		boneCrusher.recibirAtaque(new Ataque(60));
+		assertEquals(boneCrusher.getPuntosDeVida(),140);
+		boneCrusher.notificar();
 		
 		//Cuarto turno con burbuja. No recupera vida
-		assertEquals(this.decepticons.getBoneCrusher().getPuntosDeVida(),140);
-		this.turno.finalizar();
+		assertEquals(boneCrusher.getPuntosDeVida(),140);
 	}
 
 	@Test
 	public void test20BonecrusherAlternoDaniadoTomaBurbujaYNoPierdeVidaPor2Turnos(){
 		
 		//Vida pre bonus
-		this.decepticons.getBoneCrusher().transformar();
-		this.turno.avanzarTurno();
-		this.decepticons.getBoneCrusher().recibirAtaque(new Ataque(100));
-		assertEquals(this.decepticons.getBoneCrusher().getPuntosDeVida(),100);
+		boneCrusher.transformar();
+		boneCrusher.recibirAtaque(new Ataque(100));
+		assertEquals(boneCrusher.getPuntosDeVida(),100);
 		
 		//turno de obtencion
-		assertEquals(this.turno.obtenerJugadorQueDebeJugar(),Rachel);
-		this.decepticons.getBoneCrusher().recibirColocable(new BurbujaInmaculada());
-		assertEquals(this.decepticons.getBoneCrusher().getPuntosDeVida(),100);
-		this.decepticons.getBoneCrusher().recibirAtaque(new Ataque(20));
-		this.turno.avanzarTurno();
-		this.turno.avanzarTurno();
+		boneCrusher.recibirColocable(new BurbujaInmaculada());
+		assertEquals(boneCrusher.getPuntosDeVida(),100);
+		boneCrusher.recibirAtaque(new Ataque(20));
+		boneCrusher.notificar();
 				
 		//primer turno con burbuja
-		assertEquals(this.decepticons.getBoneCrusher().getPuntosDeVida(),100);
-		this.decepticons.getBoneCrusher().recibirAtaque(new Ataque(20));
-		this.turno.avanzarTurno();
-		this.turno.avanzarTurno();
+		assertEquals(boneCrusher.getPuntosDeVida(),100);
+		boneCrusher.recibirAtaque(new Ataque(20));
+		boneCrusher.notificar();
 				
 		//segundo turno con burbuja.Recupero vida perdida antes
-		assertEquals(this.decepticons.getBoneCrusher().getPuntosDeVida(),100);
-		this.decepticons.getBoneCrusher().recibirAtaque(new Ataque(20));
-		this.turno.avanzarTurno();
-		this.turno.avanzarTurno();
+		assertEquals(boneCrusher.getPuntosDeVida(),100);
+		boneCrusher.recibirAtaque(new Ataque(20));
+		boneCrusher.notificar();
 				
 		//tercer turno con burbuja.Recupera vida perdida antes
-		assertEquals(this.decepticons.getBoneCrusher().getPuntosDeVida(),100);
-		this.decepticons.getBoneCrusher().recibirAtaque(new Ataque(20));
-		assertEquals(this.decepticons.getBoneCrusher().getPuntosDeVida(),80);
-		this.turno.avanzarTurno();
+		assertEquals(boneCrusher.getPuntosDeVida(),100);
+		boneCrusher.recibirAtaque(new Ataque(20));
+		assertEquals(boneCrusher.getPuntosDeVida(),80);
+		boneCrusher.notificar();
 				
 		//Cuarto turno con burbuja. No recupera vida
-		assertEquals(this.decepticons.getBoneCrusher().getPuntosDeVida(),80);
-		this.turno.finalizar();
+		assertEquals(boneCrusher.getPuntosDeVida(),80);
 	}
 
 	@Test
 	public void test21FrenzyConVidaTotalTomaBurbujaYNoPierdeVidaPor2Turnos(){
 
 		//Vida pre bonus
-		this.turno.avanzarTurno();
-		assertEquals(this.decepticons.getFrenzy().getPuntosDeVida(),400);
+		assertEquals(frenzy.getPuntosDeVida(),400);
 		
 		//turno de obtencion
-		assertEquals(this.turno.obtenerJugadorQueDebeJugar(),Rachel);
-		this.decepticons.getFrenzy().recibirColocable(new BurbujaInmaculada());
-		assertEquals(this.decepticons.getFrenzy().getPuntosDeVida(),400);
-		this.decepticons.getFrenzy().recibirAtaque(new Ataque(100));
-		this.turno.avanzarTurno();
-		this.turno.avanzarTurno();
+		frenzy.recibirColocable(new BurbujaInmaculada());
+		assertEquals(frenzy.getPuntosDeVida(),400);
+		frenzy.recibirAtaque(new Ataque(100));
+		frenzy.notificar();
 		
 		//primer turno con burbuja
-		assertEquals(this.decepticons.getFrenzy().getPuntosDeVida(),400);
-		this.decepticons.getFrenzy().recibirAtaque(new Ataque(60));
-		this.turno.avanzarTurno();
-		this.turno.avanzarTurno();
+		assertEquals(frenzy.getPuntosDeVida(),400);
+		frenzy.recibirAtaque(new Ataque(60));
+		frenzy.notificar();
 		
 		//segundo turno con burbuja.Recupero vida perdida antes
-		assertEquals(this.decepticons.getFrenzy().getPuntosDeVida(),400);
-		this.decepticons.getFrenzy().recibirAtaque(new Ataque(60));
-		this.turno.avanzarTurno();
-		this.turno.avanzarTurno();
+		assertEquals(frenzy.getPuntosDeVida(),400);
+		frenzy.recibirAtaque(new Ataque(60));
+		frenzy.notificar();
 		
 		//tercer turno con burbuja.Recupera vida perdida antes
-		assertEquals(this.decepticons.getFrenzy().getPuntosDeVida(),400);
-		this.decepticons.getFrenzy().recibirAtaque(new Ataque(60));
-		assertEquals(this.decepticons.getFrenzy().getPuntosDeVida(),340);
-		this.turno.avanzarTurno();
+		assertEquals(frenzy.getPuntosDeVida(),400);
+		frenzy.recibirAtaque(new Ataque(60));
+		assertEquals(frenzy.getPuntosDeVida(),340);
+		frenzy.notificar();
 		
 		//Cuarto turno con burbuja. No recupera vida
-		assertEquals(this.decepticons.getFrenzy().getPuntosDeVida(),340);
-		this.turno.finalizar();
+		assertEquals(frenzy.getPuntosDeVida(),340);
 	}
 
 	@Test
 	public void test22FrenzyDaniadoTomaBurbujaYNoPierdeVidaPor2Turnos(){
 		//Vida pre bonus
-		this.turno.avanzarTurno();
-		this.decepticons.getFrenzy().recibirAtaque(new Ataque(100));
-		assertEquals(this.decepticons.getFrenzy().getPuntosDeVida(),300);
+		frenzy.recibirAtaque(new Ataque(100));
+		assertEquals(frenzy.getPuntosDeVida(),300);
 		
 		//turno de obtencion
-		assertEquals(this.turno.obtenerJugadorQueDebeJugar(),Rachel);
-		this.decepticons.getFrenzy().recibirColocable(new BurbujaInmaculada());
-		assertEquals(this.decepticons.getFrenzy().getPuntosDeVida(),300);
-		this.decepticons.getFrenzy().recibirAtaque(new Ataque(100));
-		this.turno.avanzarTurno();
-		this.turno.avanzarTurno();
+		frenzy.recibirColocable(new BurbujaInmaculada());
+		assertEquals(frenzy.getPuntosDeVida(),300);
+		frenzy.recibirAtaque(new Ataque(100));
+		frenzy.notificar();
 		
 		//primer turno con burbuja
-		assertEquals(this.decepticons.getFrenzy().getPuntosDeVida(),300);
-		this.decepticons.getFrenzy().recibirAtaque(new Ataque(60));
-		this.turno.avanzarTurno();
-		this.turno.avanzarTurno();
+		assertEquals(frenzy.getPuntosDeVida(),300);
+		frenzy.recibirAtaque(new Ataque(60));
+		frenzy.notificar();
 		
 		//segundo turno con burbuja.Recupero vida perdida antes
-		assertEquals(this.decepticons.getFrenzy().getPuntosDeVida(),300);
-		this.decepticons.getFrenzy().recibirAtaque(new Ataque(60));
-		this.turno.avanzarTurno();
-		this.turno.avanzarTurno();
+		assertEquals(frenzy.getPuntosDeVida(),300);
+		frenzy.recibirAtaque(new Ataque(60));
+		frenzy.notificar();
 		
 		//tercer turno con burbuja.Recupera vida perdida antes
-		assertEquals(this.decepticons.getFrenzy().getPuntosDeVida(),300);
-		this.decepticons.getFrenzy().recibirAtaque(new Ataque(60));
-		assertEquals(this.decepticons.getFrenzy().getPuntosDeVida(),240);
-		this.turno.avanzarTurno();
+		assertEquals(frenzy.getPuntosDeVida(),300);
+		frenzy.recibirAtaque(new Ataque(60));
+		assertEquals(frenzy.getPuntosDeVida(),240);
+		frenzy.notificar();
 		
 		//Cuarto turno con burbuja. No recupera vida
-		assertEquals(this.decepticons.getFrenzy().getPuntosDeVida(),240);
-		this.turno.finalizar();
+		assertEquals(frenzy.getPuntosDeVida(),240);
 
 	}
 	
@@ -886,79 +743,68 @@ public class BurbujaInmaculadaTest {
 	public void test23FrenzyAlternoConVidaTotalTomaBurbujaYNoPierdeVidaPor2Turnos(){
 
 		//Vida pre bonus
-		this.turno.avanzarTurno();
-		this.decepticons.getBoneCrusher().transformar();
-		assertEquals(this.decepticons.getFrenzy().getPuntosDeVida(),400);
+		boneCrusher.transformar();
+		assertEquals(frenzy.getPuntosDeVida(),400);
 		
 		//turno de obtencion
-		assertEquals(this.turno.obtenerJugadorQueDebeJugar(),Rachel);
-		this.decepticons.getFrenzy().recibirColocable(new BurbujaInmaculada());
-		assertEquals(this.decepticons.getFrenzy().getPuntosDeVida(),400);
-		this.decepticons.getFrenzy().recibirAtaque(new Ataque(100));
-		this.turno.avanzarTurno();
-		this.turno.avanzarTurno();
+		frenzy.recibirColocable(new BurbujaInmaculada());
+		assertEquals(frenzy.getPuntosDeVida(),400);
+		frenzy.recibirAtaque(new Ataque(100));
+		frenzy.notificar();
 		
 		//primer turno con burbuja
-		assertEquals(this.decepticons.getFrenzy().getPuntosDeVida(),400);
-		this.decepticons.getFrenzy().recibirAtaque(new Ataque(60));
-		this.turno.avanzarTurno();
-		this.turno.avanzarTurno();
+		assertEquals(frenzy.getPuntosDeVida(),400);
+		frenzy.recibirAtaque(new Ataque(60));
+		frenzy.notificar();
 		
 		//segundo turno con burbuja.Recupero vida perdida antes
-		assertEquals(this.decepticons.getFrenzy().getPuntosDeVida(),400);
-		this.decepticons.getFrenzy().recibirAtaque(new Ataque(60));
-		this.turno.avanzarTurno();
-		this.turno.avanzarTurno();
+		assertEquals(frenzy.getPuntosDeVida(),400);
+		frenzy.recibirAtaque(new Ataque(60));
+		frenzy.notificar();
 		
 		//tercer turno con burbuja.Recupera vida perdida antes
-		assertEquals(this.decepticons.getFrenzy().getPuntosDeVida(),400);
-		this.decepticons.getFrenzy().recibirAtaque(new Ataque(60));
-		assertEquals(this.decepticons.getFrenzy().getPuntosDeVida(),340);
-		this.turno.avanzarTurno();
+		assertEquals(frenzy.getPuntosDeVida(),400);
+		frenzy.recibirAtaque(new Ataque(60));
+		assertEquals(frenzy.getPuntosDeVida(),340);
+		frenzy.notificar();
 		
 		//Cuarto turno con burbuja. No recupera vida
-		assertEquals(this.decepticons.getFrenzy().getPuntosDeVida(),340);
-		this.turno.finalizar();
+		assertEquals(frenzy.getPuntosDeVida(),340);
 	}
 
 	@Test
 	public void test24FrenzyAlternoDaniadoTomaBurbujaYNoPierdeVidaPor2Turnos(){
 	
 		//Vida pre bonus
-		this.turno.avanzarTurno();
-		this.decepticons.getFrenzy().transformar();
-		this.decepticons.getFrenzy().recibirAtaque(new Ataque(100));
-		assertEquals(this.decepticons.getFrenzy().getPuntosDeVida(),300);
+		frenzy.notificar();
+		frenzy.transformar();
+		frenzy.recibirAtaque(new Ataque(100));
+		assertEquals(frenzy.getPuntosDeVida(),300);
 		
 		//turno de obtencion
-		assertEquals(this.turno.obtenerJugadorQueDebeJugar(),Rachel);
-		this.decepticons.getFrenzy().recibirColocable(new BurbujaInmaculada());
-		assertEquals(this.decepticons.getFrenzy().getPuntosDeVida(),300);
-		this.decepticons.getFrenzy().recibirAtaque(new Ataque(100));
-		this.turno.avanzarTurno();
-		this.turno.avanzarTurno();
+		frenzy.recibirColocable(new BurbujaInmaculada());
+		assertEquals(frenzy.getPuntosDeVida(),300);
+		frenzy.recibirAtaque(new Ataque(100));
+		frenzy.notificar();
 		
 		//primer turno con burbuja
-		assertEquals(this.decepticons.getFrenzy().getPuntosDeVida(),300);
-		this.decepticons.getFrenzy().recibirAtaque(new Ataque(60));
-		this.turno.avanzarTurno();
-		this.turno.avanzarTurno();
+		assertEquals(frenzy.getPuntosDeVida(),300);
+		frenzy.recibirAtaque(new Ataque(60));
+		frenzy.notificar();
 		
 		//segundo turno con burbuja.Recupero vida perdida antes
-		assertEquals(this.decepticons.getFrenzy().getPuntosDeVida(),300);
-		this.decepticons.getFrenzy().recibirAtaque(new Ataque(60));
-		this.turno.avanzarTurno();
-		this.turno.avanzarTurno();
+		assertEquals(frenzy.getPuntosDeVida(),300);
+		frenzy.recibirAtaque(new Ataque(60));
+		frenzy.notificar();
 		
 		//tercer turno con burbuja.Recupera vida perdida antes
-		assertEquals(this.decepticons.getFrenzy().getPuntosDeVida(),300);
-		this.decepticons.getFrenzy().recibirAtaque(new Ataque(60));
-		assertEquals(this.decepticons.getFrenzy().getPuntosDeVida(),240);
-		this.turno.avanzarTurno();
+		assertEquals(frenzy.getPuntosDeVida(),300);
+		frenzy.recibirAtaque(new Ataque(60));
+		assertEquals(frenzy.getPuntosDeVida(),240);
+		frenzy.notificar();
 		
 		//Cuarto turno con burbuja. No recupera vida
-		assertEquals(this.decepticons.getFrenzy().getPuntosDeVida(),240);
-		this.turno.finalizar();
+		assertEquals(frenzy.getPuntosDeVida(),240);
 	}
 
 }

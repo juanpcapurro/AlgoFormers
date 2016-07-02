@@ -1,6 +1,6 @@
 package Aplicacion;
 
-import algoFormers.juego.Partida;
+import modelo.juego.ProxyPartida;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Group;
@@ -27,7 +27,7 @@ public class MainTablero extends  Application {
         verticalBox.getChildren().add(boton);
         stage.setTitle("Algoformer");
         borderPane.setPrefSize(500, 500);
-        GridPane central=new TableroVista(new Partida("Charly","Barnie",8));
+        GridPane central=new TableroVista(new ProxyPartida("Charly","Barnie",8));
         borderPane.setCenter(central);
         borderPane.setLeft(verticalBox);
         root.getChildren().add(borderPane);

@@ -42,6 +42,7 @@ public class TableroVista extends GridPane {
                 imagenAerea = obtenerimagenAerea(imagenes, partida);
                 objeto = obtenerimagenObjeto(imagenes, partida);
                 pane.getChildren().addAll(imagenTerrestre, imagenAerea, objeto);
+                setHandlerCasilleroSeleccionado(pane, partida);
                 setCrosshairOn(pane);
                 setCrosshairOff(pane);
                 GridPane.setConstraints(pane, j, i);
@@ -50,7 +51,7 @@ public class TableroVista extends GridPane {
             }
         }
     }
-/*
+
     void setHandlerCasilleroSeleccionado(Node node, Partida partida) {
         node.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
@@ -72,7 +73,7 @@ public class TableroVista extends GridPane {
                 }
             }
         });
-    }*/
+    }
 
     public Group buscarPane(List<Integer> coordinates){
         for(Node node: grid.getChildren())
@@ -139,12 +140,12 @@ public class TableroVista extends GridPane {
 
     static Hashtable<String, String> getImagenes() {
         Hashtable<String, String> imagenes = new Hashtable<>();
-        imagenes.put("class algoFormers.tablero.superficieTerrestre.Rocoso", "file:src/vista/imagenes/rocoso2.jpg");
-        imagenes.put("class algoFormers.tablero.superficieTerrestre.Pantanoso", "file:src/vista/imagenes/pantano.jpg");
-        imagenes.put("class algoFormers.tablero.superficieTerrestre.Espinas", "file:src/vista/imagenes/volcanMejorado3.gif");
-        imagenes.put("class algoFormers.tablero.superficieAerea.NebulosaDeAndromeda", "file:src/vista/imagenes/nebulosa.gif");
+        imagenes.put("class algoFormers.tablero.superficieTerrestre.Rocoso", "file:src/vista/imagenes/rocoso.png");
+        imagenes.put("class algoFormers.tablero.superficieTerrestre.Pantanoso", "file:src/vista/imagenes/pantanoso.png");
+        imagenes.put("class algoFormers.tablero.superficieTerrestre.Espinas", "file:src/vista/imagenes/espinoso.png");
+        imagenes.put("class algoFormers.tablero.superficieAerea.NebulosaDeAndromeda", "file:src/vista/imagenes/nebulosa.png");
         imagenes.put("class algoFormers.tablero.superficieAerea.Nube", "file:src/vista/imagenes/nube.png");
-        imagenes.put("class algoFormers.tablero.superficieAerea.TormentaPsionica", "file:src/vista/imagenes/tormentaPsionica.gif");
+        imagenes.put("class algoFormers.tablero.superficieAerea.TormentaPsionica", "file:src/vista/imagenes/tormentaPsionica.png");
         imagenes.put("class algoFormers.tablero.colocable.robots.autobot.Bumblebee", "file:src/vista/imagenes/BumblebeeHumanoide.png");
         imagenes.put("class algoFormers.tablero.colocable.robots.autobot.Optimus", "file:src/vista/imagenes/OptimusHumanoide.png");
         imagenes.put("class algoFormers.tablero.colocable.robots.autobot.Ratchet", "file:src/vista/imagenes/RatchetHumanoide.png");
@@ -152,6 +153,7 @@ public class TableroVista extends GridPane {
         imagenes.put("class algoFormers.tablero.colocable.robots.decepticon.Frenzy", "file:src/vista/imagenes/FrenzyHumanoide.png");
         imagenes.put("class algoFormers.tablero.colocable.robots.decepticon.Megatron", "file:src/vista/imagenes/MegatronHumanoide.png");
         imagenes.put("class algoFormers.tablero.colocable.EspacioVacio", "file:src/vista/imagenes/EspacioVacio.png");
+
 
         return imagenes;
     }

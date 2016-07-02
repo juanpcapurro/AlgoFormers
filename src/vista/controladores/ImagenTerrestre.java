@@ -1,18 +1,16 @@
 package vista.controladores;
 
-import algoFormers.juego.Partida;
-import javafx.scene.effect.DropShadow;
+import modelo.juego.ProxyPartida;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.paint.Color;
 
 import java.util.Hashtable;
 
-public class ImagenTerrestre extends ImageView implements ContenidoCasillero{
-    private static final double HEIGTH =88;
-    private static final double WIDTH =160;
+public class ImagenTerrestre extends ImageView {
+    private static final double HEIGTH =75 ;
+    private static final double WIDTH =96;
 
-    public ImagenTerrestre(Hashtable<String, String> imagenes, Partida partida) {
+    public ImagenTerrestre(Hashtable<String, String> imagenes, ProxyPartida partida) {
         String imagen;
         imagen = imagenes.get((partida.obtenerSuperficieTerrestre()).getClass().toString());
         setImage(new Image(imagen));
@@ -21,17 +19,5 @@ public class ImagenTerrestre extends ImageView implements ContenidoCasillero{
         setOpacity(1);
         setPickOnBounds(false);
         setMouseTransparent(true);
-        setEffect(new DropShadow(10,5,5, Color.BLACK));
-
-    }
-
-    @Override
-    public void notificarEntrada() {
-
-    }
-
-    @Override
-    public void notificarSalida() {
-
     }
 }

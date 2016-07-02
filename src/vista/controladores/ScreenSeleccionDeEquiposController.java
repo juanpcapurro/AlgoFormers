@@ -3,13 +3,11 @@ package vista.controladores;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import javafx.scene.control.MenuItem;
 import javafx.scene.layout.AnchorPane;
 import vista.ControlledScreen;
 import vista.ScreensController;
 import vista.mainApp;
 
-import javax.swing.plaf.PanelUI;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -157,18 +155,18 @@ public class ScreenSeleccionDeEquiposController implements Initializable, Contro
         jugador2Decepticon.setText(mainApp.nombreJ2);
     }
 
-    @FXML
-    public void jugar(){
-        mainApp.iniciarPartida(equipoJugador1,equipoJugador2);
-        if((equipoJugador1 == "autobots") && (equipoJugador2 == "decepticons")){
-            mainApp.partida.asignarAutobotsAJugador(1);
-            mainApp.partida.asignarDecepticonsAJugador(2);
-        }
-        else if((equipoJugador2 == "autobots") && (equipoJugador1 == "decepticons")){
-            mainApp.partida.asignarAutobotsAJugador(2);
-            mainApp.partida.asignarDecepticonsAJugador(1);
-        }
-        myController.setScreen(screenTablero);
-    }
+//    @FXML
+//    public void jugar(){
+//        mainApp.iniciarPartida(equipoJugador1,equipoJugador2);
+//        if((equipoJugador1 == "autobots") && (equipoJugador2 == "decepticons")){
+//            mainApp.partida.asignarAutobotsAJugador(1);
+//            mainApp.partida.asignarDecepticonsAJugador(2);
+//        }
+//        else if((equipoJugador2 == "autobots") && (equipoJugador1 == "decepticons")){
+//            mainApp.partida.asignarAutobotsAJugador(2);
+//            mainApp.partida.asignarDecepticonsAJugador(1);
+//        }
+//        myController.setScreen(screenTablero);
+//    }
 
 }
