@@ -2,7 +2,7 @@ package vista.controladores;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.*;
+import javafx.scene.control.MenuButton;
 import javafx.scene.layout.AnchorPane;
 import vista.ControlledScreen;
 import vista.ScreensController;
@@ -11,8 +11,7 @@ import vista.mainApp;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-
-import static vista.mainApp.*;
+import static vista.mainApp.screenTablero;
 
 
 public class ScreenSeleccionDeEquiposController implements Initializable, ControlledScreen {
@@ -155,8 +154,8 @@ public class ScreenSeleccionDeEquiposController implements Initializable, Contro
         jugador2Decepticon.setText(mainApp.nombreJ2);
     }
 
-//    @FXML
-//    public void jugar(){
+    @FXML
+    public void jugar(){
 //        mainApp.iniciarPartida(equipoJugador1,equipoJugador2);
 //        if((equipoJugador1 == "autobots") && (equipoJugador2 == "decepticons")){
 //            mainApp.partida.asignarAutobotsAJugador(1);
@@ -166,7 +165,7 @@ public class ScreenSeleccionDeEquiposController implements Initializable, Contro
 //            mainApp.partida.asignarAutobotsAJugador(2);
 //            mainApp.partida.asignarDecepticonsAJugador(1);
 //        }
-//        myController.setScreen(screenTablero);
-//    }
+        myController.setScreen(screenTablero);
+    }
 
 }

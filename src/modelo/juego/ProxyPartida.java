@@ -1,11 +1,8 @@
 package modelo.juego;
 
-import modelo.tablero.Casillero;
 import modelo.tablero.colocable.Colocable;
 import modelo.tablero.posiciones.Posicion;
 import modelo.tablero.superficie.Superficie;
-
-import java.util.List;
 
 public class ProxyPartida {
     Partida partida;
@@ -18,19 +15,19 @@ public class ProxyPartida {
        partida.saltearTurno();
    }
 
-   public void mover(List<Integer> initialCoordinates, List<Integer> finalCoordinates) {
-        Posicion posicionInicial=new Posicion(initialCoordinates.get(0),initialCoordinates.get(1));
-        Posicion posicionFinal=new Posicion(finalCoordinates.get(0),finalCoordinates.get(1));
+   public void mover(Integer coordInicialX,Integer coordInicialY ,Integer coordFinalX, Integer coordFinaLY) {
+        Posicion posicionInicial=new Posicion(coordInicialX,coordInicialY);
+        Posicion posicionFinal=new Posicion(coordFinalX,coordFinaLY);
         partida.mover(posicionInicial, posicionFinal);
    }
-    public void atacar( List<Integer>initialCoordinates, List<Integer> target){
-        Posicion inicial = new Posicion(initialCoordinates.get(0), initialCoordinates.get(1));
-        Posicion objetivo = new Posicion(target.get(0), target.get(1));
+    public void atacar(Integer coordInicialX,Integer coordInicialY ,Integer coordFinalX, Integer coordFinaLY){
+        Posicion inicial = new Posicion(coordInicialX,coordInicialY);
+        Posicion objetivo = new Posicion(coordFinalX,coordFinaLY);
         partida.atacar(inicial,objetivo);
     }
 
-    public void transformar(List<Integer>numerosPosicion){
-        Posicion posicion = new Posicion(numerosPosicion.get(0), numerosPosicion.get(1));
+    public void transformar(Integer coordInicialX,Integer coordInicialY ){
+        Posicion posicion = new Posicion(coordInicialX,coordInicialY);
         partida.transformar(posicion);
     }
    public void combinarODescombinar(){

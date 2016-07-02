@@ -1,14 +1,15 @@
 package vista.controladores;
 
-import algoFormers.juego.Partida;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
+import modelo.juego.ProxyPartida;
 
 import java.io.IOException;
 import java.util.Hashtable;
@@ -58,7 +59,7 @@ public class SelectionController {
         });
     }
 
-    static void setHandlerCasilleroSeleccionado(Node node, Partida partida) {
+    static void setHandlerCasilleroSeleccionado(Node node, ProxyPartida partida) {
         node.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
@@ -118,10 +119,24 @@ static void procesarSeleccionSecundaria(StackPane pane) throws IOException {
         ImageView objeto;
         Hashtable<String, String> imagenes = getImagenes();
         ImageView imagenTerrestre;
+        partida.setIterador(GridPane.getRowIndex(pane),GridPane.getColumnIndex(pane));
         imagenTerrestre = new ImagenTerrestre(imagenes, partida);
         imagenAerea = new ImagenAerea(imagenes, partida);
         pane.setAlignment(imagenAerea, Pos.TOP_LEFT);
         objeto = new ImagenObjeto(imagenes, partida);
         pane.getChildren().addAll(imagenTerrestre, imagenAerea, objeto);
+    }
+
+    static public void setTransformation(Button boton){
+        boton.setOnMousePressed(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                partida.transformar(GridPane.getRowIndex(primeroSeleccionado),GridPane.getColumnIndex(primeroSeleccionado));
+                restartPane(primeroSeleccionado);
+                primeroSeleccionado=null;
+                System.out.println("pasa");
+            }
+        });
+
     }
 }

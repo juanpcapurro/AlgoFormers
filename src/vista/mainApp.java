@@ -1,16 +1,16 @@
 package vista;
 
-import modelo.juego.ProxyPartida;
+import javafx.application.Application;
+import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import javafx.scene.Group;
-import javafx.application.Application;
+import modelo.juego.ProxyPartida;
 
 public class mainApp extends Application {
 
     public static Stage primaryStage;
-    public static String nombreJ1;
-    public static String nombreJ2;
+    public static String nombreJ1="jugador1";
+    public static String nombreJ2="jugador2";
     private ScreensController mainContainer;
     private static String screenInicial = "screenInicial";
     private static String screenInicialFile = "screenInicial.fxml";

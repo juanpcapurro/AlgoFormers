@@ -142,7 +142,7 @@
                               <Font name="Arial" size="10.0" />
                            </font>
                         </Button>
-                        <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="132.0" styleClass="backgroundTransformar" stylesheets="@botones.css">
+                        <Button fx:id="botonTransformar" mnemonicParsing="false" prefHeight="30.0" prefWidth="132.0" styleClass="backgroundTransformar" stylesheets="@botones.css">
                            <font>
                               <Font name="Arial" size="10.0" />
                            </font>

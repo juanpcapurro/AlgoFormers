@@ -1,51 +1,56 @@
 package vista.controladores;
 
-import modelo.juego.ProxyPartida;
-import javafx.event.EventHandler;
+import javafx.scene.Cursor;
+import javafx.scene.ImageCursor;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Color;
+import modelo.juego.ProxyPartida;
 
 import java.util.Hashtable;
 
-public class ImagenObjeto extends ImageView {
-    private static final int HEIGTH =80 ;
-    private static final int WIDTH = 97;
 
-    public  ImagenObjeto(Hashtable<String, String> imagenes, ProxyPartida partida) {
+public class ImagenObjeto extends ImageView implements ContenidoCasillero {
+    private static final int HEIGTH = 70;
+    private static final int WIDTH = 90;
+    ImageCursor cursor = new ImageCursor(new Image("file:src/vista/imagenes/cursorMira.png"));
+
+    public ImagenObjeto(Hashtable<String, String> imagenes, ProxyPartida partida) {
         String imagen;
         imagen = imagenes.get((partida.obtenerColocable()).getClass().toString());
         setImage(new Image(imagen));
-        setFitHeight(HEIGTH-20);
-        setFitWidth(WIDTH-20);
+        setFitHeight(HEIGTH - 20);
+        setFitWidth(WIDTH - 20);
         setOpacity(1);
         setPickOnBounds(false);
-        setMouseTransparent(false);
+        setMouseTransparent(true);
         setHigherEffect();
         setLowerEffect();
+        setEffect(new DropShadow(10, 5, 5, Color.BLACK));
+
     }
 
-    void setHigherEffect(){
-        ImageView imagen=this;
-        this.setOnMouseMoved(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                imagen.setScaleY(1.5);
-                imagen.setScaleX(1.5);
-                event.consume();
-            }
-        });
+    void setHigherEffect() {
+        setScaleY(1.2);
+        setScaleX(1.2);
+        setCursor(cursor);
     }
 
     void setLowerEffect() {
-        ImageView imagen = this;
-        this.setOnMouseExited(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                imagen.setScaleY(1);
-                imagen.setScaleX(1);
-                event.consume();
-            }
-        });
+        setScaleY(1);
+        setScaleX(1);
+        setCursor(Cursor.DEFAULT);
+    }
+
+    @Override
+    public void notificarEntrada() {
+        setHigherEffect();
+    }
+
+    @Override
+    public void notificarSalida() {
+        setLowerEffect();
     }
 }
+
