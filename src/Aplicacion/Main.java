@@ -1,16 +1,24 @@
 package Aplicacion;
 
 import javafx.application.Application;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 import vista.mainApp;
 
+import java.io.File;
 import java.io.IOException;
 
 
 public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
-        primaryStage.setResizable(true);
+        String musicFile = "src/vista/imagenes/ganadores.mp3";
+    	Media sonido = new Media(new File(musicFile).toURI().toString());
+    	MediaPlayer mediaPlayer = new MediaPlayer(sonido);
+    	mediaPlayer.play();
+    	
+    	primaryStage.setResizable(true);
         mainApp mainApp = new mainApp();
         mainApp.start(primaryStage);
 

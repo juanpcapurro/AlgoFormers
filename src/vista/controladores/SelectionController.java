@@ -65,7 +65,7 @@ public class SelectionController {
             public void handle(MouseEvent event) {
                 StackPane pane = (StackPane) event.getTarget();
                 if (event.getButton()== MouseButton.PRIMARY)
-                    procesarSelecciónPrimaria(pane);
+                    procesarSeleccionPrimaria(pane);
                 else {
                     try {
                         ultimoSeleccionado=pane;
@@ -79,7 +79,7 @@ public class SelectionController {
     }
 
 
-    static void procesarSelecciónPrimaria(StackPane pane){
+    static void procesarSeleccionPrimaria(StackPane pane){
         if (primeroSeleccionado==null) {
             primeroSeleccionado=pane;
         } else {
