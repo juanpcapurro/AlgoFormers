@@ -13,7 +13,7 @@ import java.io.IOException;
 public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
-        String musicFile = "src/vista/imagenes/ganadores.mp3";
+        String musicFile = "src/vista/imagenes/algoformersMusic.mp3";
     	Media sonido = new Media(new File(musicFile).toURI().toString());
     	MediaPlayer mediaPlayer = new MediaPlayer(sonido);
     	mediaPlayer.play();
