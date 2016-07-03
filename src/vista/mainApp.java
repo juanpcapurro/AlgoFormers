@@ -16,7 +16,7 @@ public class mainApp extends Application {
     private static String screenInicialFile = "screenInicial.fxml";
     public static String screenIngresoDeNombres = "screenIngresoDeNombres";
     public static String screenIngresoDeNombresFile = "screenIngresoDeNombres.fxml";
-    public static String screenSeleccionDeEquipos;
+    public static String screenSeleccionDeEquipos = "screenSeleccionDeEquipos";
     private static String screenSeleccionDeEquiposFile = "screenSeleccionDeEquipos.fxml";
     public static String screenTablero = "screenTablero";
     private static String screenTablerolFile = "screenTablero.fxml";

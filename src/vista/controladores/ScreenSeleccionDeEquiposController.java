@@ -158,7 +158,7 @@ public class ScreenSeleccionDeEquiposController implements Initializable, Contro
     public void jugar(){
 //        mainApp.iniciarPartida(equipoJugador1,equipoJugador2);
 //        if((equipoJugador1 == "autobots") && (equipoJugador2 == "decepticons")){
-//            mainApp.partida.asignarAutobotsAJugador(1);
+//            mainApp..asignarAutobotsAJugador(1);
 //            mainApp.partida.asignarDecepticonsAJugador(2);
 //        }
 //        else if((equipoJugador2 == "autobots") && (equipoJugador1 == "decepticons")){

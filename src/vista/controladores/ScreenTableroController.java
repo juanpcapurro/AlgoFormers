@@ -26,17 +26,25 @@ public class ScreenTableroController implements Initializable, ControlledScreen 
     @FXML
     public GridPane tableroGrid;
     @FXML
-    public Label nombreJugadorTurno;
-    @FXML
     Button botonTransformar;
     @FXML
     ImageView imagenAlgoformerJugando;
+    @FXML
+    Label nombreJugadorTurno;
+    @FXML
+    Label alcance;
+    @FXML
+    Label velocidad;
     @FXML
     Label vidaDisponible;
     @FXML
     Label potenciaDeAtaque;
     @FXML
     Button finalizarTurno;
+    @FXML
+    Button transformar;
+    @FXML
+    Button combinar;
 
 
     ScreensController myController;
