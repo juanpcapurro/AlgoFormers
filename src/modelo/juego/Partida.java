@@ -49,6 +49,8 @@ class Partida {
     public void atacar(Posicion hostil, Posicion objetivo){
         turno.jugadorActual().atacar(hostil, objetivo);
         turno.avanzarTurno();
+        if (!turno.jugadorActual().equipovivo())
+            throw new JuegoFinalizado();
     }
     public void transformar(Posicion posicion){
         try{

@@ -38,4 +38,9 @@ public class DobleCanion extends Colocable {
         return null;
     }
 
+    @Override
+    public boolean retirar() {
+        return false;
+    }
+
 }

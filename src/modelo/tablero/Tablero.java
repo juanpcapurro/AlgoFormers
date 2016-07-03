@@ -2,7 +2,6 @@ package modelo.tablero;
 
 import modelo.tablero.colocable.Colocable;
 import modelo.tablero.colocable.robots.AlgoFormer;
-import modelo.tablero.colocable.robots.armas.Ataque;
 import modelo.tablero.posiciones.ControladorPosiciones;
 import modelo.tablero.posiciones.Posicion;
 
@@ -89,7 +88,9 @@ public class Tablero{
         controlador.validarCoordenadas(hostil);
 		controlador.validarCoordenadas(objetivo);
 		AlgoFormer atacante = (AlgoFormer) obtenerCasilleroAsociadoAPosicion(hostil).getColocable();
-		atacante.atacar(obtenerCasilleroAsociadoAPosicion(objetivo).getColocable());
+		Casillero destino=obtenerCasilleroAsociadoAPosicion(objetivo);
+		atacante.atacar(destino.getColocable());
+		destino.actualizarContenido();
 	}
 
 	public void colocarEspinas(Posicion posicion){
@@ -103,7 +104,7 @@ public class Tablero{
             colocar(posicionRandom,colocable);
         }
         catch (CasilleroYaOcupado excepcion){
-            colocarRandom(colocable);//esto algun dia termina en stack overflow
-        }
+            colocarRandom(colocable);//esto algun dia termina en stack overflow, Hay más chances de que termine en Stack
+        }                            //Overflow por alguna de las otras 20k de atrocidades que hay en este codigo.
 	}
 }

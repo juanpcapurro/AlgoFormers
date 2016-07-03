@@ -76,4 +76,9 @@ public abstract class AlgoFormer extends Colocable {
 		return modoActual.modoActual;
 	}
 
+	@Override
+	public boolean retirar(){
+		return ptosDeVida.getVidaActual()<=0;
+	}
+
 }

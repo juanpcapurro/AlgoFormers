@@ -31,7 +31,10 @@ class EspacioVacio extends Colocable{
 		return "";
 	}
 
-
+	@Override
+	public boolean retirar() {
+		return false;
+	}
 
 
 }

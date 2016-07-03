@@ -80,4 +80,8 @@ public class Casillero {
     }
 
 
+    public void actualizarContenido() {
+        if (colocado.retirar())
+            vaciar();
+    }
 }

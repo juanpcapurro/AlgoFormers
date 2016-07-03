@@ -21,4 +21,5 @@ public abstract class Colocable implements Atacable{
 
 	public abstract Object getEstado();
 
+	public abstract boolean retirar();
 }
