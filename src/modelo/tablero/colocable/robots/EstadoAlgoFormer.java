@@ -13,7 +13,7 @@ public  class EstadoAlgoFormer {
 		vida=unaVida;
 	}
 	public int getVida(){
-		return vida.getVida();
+		return vida.getVidaActual();
 	}
 	public int getVelocidad(){
 		return velocidad;
@@ -35,7 +35,7 @@ public  class EstadoAlgoFormer {
 		ataque=nuevoAtaque;
 	}
 	public void setVida(int unaVida){
-		vida.setVida(unaVida);
+		vida.setVidaActual(unaVida);
 	}
 
 }

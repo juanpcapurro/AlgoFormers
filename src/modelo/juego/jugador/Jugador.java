@@ -124,11 +124,11 @@ public abstract class Jugador {
 	public DatosAlgoformer obtenerDatos(Colocable colocable){
 			if (robotsJugador.contains(colocable)){
 				AlgoFormer robot=(AlgoFormer) colocable;
-				return new DatosAlgoformer(robot.getPuntosDeVida(),robot.getAtaque(),robot.getVelocidad(),
+				return new DatosAlgoformer(robot.getPuntosDeVidaOriginal(),robot.getPuntosDeVida(),robot.getAtaque(),robot.getVelocidad(),
 						robot.getDistanciaDeAtaque(),robot.getClass().getSimpleName());
 			}
 
-		return new DatosAlgoformer(0,0,0,0,"");
+		return new DatosAlgoformer(1,0,0,0,0,"");
 	}
 }
 

@@ -34,18 +34,18 @@ public class BurbujaInmaculadaTest {
 		optimus.recibirAtaque(new Ataque(200));
 		optimus.notificar();
 		
-		//segundo turno con burbuja.Recupero vida perdida antes
+		//segundo turno con burbuja.Recupero vidaActual perdida antes
 		assertEquals(optimus.getPuntosDeVida(),500);
 		optimus.recibirAtaque(new Ataque(200));
 		optimus.notificar();
 
-		//tercer turno con burbuja.Recupera vida perdida antes
+		//tercer turno con burbuja.Recupera vidaActual perdida antes
 		assertEquals(optimus.getPuntosDeVida(),500);
 		optimus.recibirAtaque(new Ataque(200));
 		assertEquals(optimus.getPuntosDeVida(),300);
 		optimus.notificar();
 		
-		//Cuarto turno con burbuja. No recupera vida
+		//Cuarto turno con burbuja. No recupera vidaActual
 		assertEquals(optimus.getPuntosDeVida(),300);
 	}
 
@@ -67,18 +67,18 @@ public class BurbujaInmaculadaTest {
 		optimus.recibirAtaque(new Ataque(200));
 		optimus.notificar();
 		
-		//segundo turno con burbuja.Recupero vida perdida antes
+		//segundo turno con burbuja.Recupero vidaActual perdida antes
 		assertEquals(optimus.getPuntosDeVida(),400);
 		optimus.recibirAtaque(new Ataque(200));
 		optimus.notificar();
 		
-		//tercer turno con burbuja.Recupera vida perdida antes
+		//tercer turno con burbuja.Recupera vidaActual perdida antes
 		assertEquals(optimus.getPuntosDeVida(),400);
 		optimus.recibirAtaque(new Ataque(200));
 		assertEquals(optimus.getPuntosDeVida(),200);
 		optimus.notificar();
 		
-		//Cuarto turno con burbuja. No recupera vida
+		//Cuarto turno con burbuja. No recupera vidaActual
 		assertEquals(optimus.getPuntosDeVida(),200);
 	}
 	
@@ -100,18 +100,18 @@ public class BurbujaInmaculadaTest {
 		optimus.recibirAtaque(new Ataque(200));
 		optimus.notificar();
 		
-		//segundo turno con burbuja.Recupero vida perdida antes
+		//segundo turno con burbuja.Recupero vidaActual perdida antes
 		assertEquals(optimus.getPuntosDeVida(),500);
 		optimus.recibirAtaque(new Ataque(200));
 		optimus.notificar();
 		
-		//tercer turno con burbuja.Recupera vida perdida antes
+		//tercer turno con burbuja.Recupera vidaActual perdida antes
 		assertEquals(optimus.getPuntosDeVida(),500);
 		optimus.recibirAtaque(new Ataque(200));
 		assertEquals(optimus.getPuntosDeVida(),300);
 		optimus.notificar();
 		
-		//Cuarto turno con burbuja. No recupera vida
+		//Cuarto turno con burbuja. No recupera vidaActual
 		assertEquals(optimus.getPuntosDeVida(),300);
 	}
 
@@ -133,18 +133,18 @@ public class BurbujaInmaculadaTest {
 		optimus.recibirAtaque(new Ataque(200));
 		optimus.notificar();
 		
-		//segundo turno con burbuja.Recupero vida perdida antes
+		//segundo turno con burbuja.Recupero vidaActual perdida antes
 		assertEquals(optimus.getPuntosDeVida(),400);
 		optimus.recibirAtaque(new Ataque(200));
 		optimus.notificar();
 		
-		//tercer turno con burbuja.Recupera vida perdida antes
+		//tercer turno con burbuja.Recupera vidaActual perdida antes
 		assertEquals(optimus.getPuntosDeVida(),400);
 		optimus.recibirAtaque(new Ataque(200));
 		assertEquals(optimus.getPuntosDeVida(),200);
 		optimus.notificar();
 		
-		//Cuarto turno con burbuja. No recupera vida
+		//Cuarto turno con burbuja. No recupera vidaActual
 		assertEquals(optimus.getPuntosDeVida(),200);
 	}
 
@@ -165,18 +165,18 @@ public class BurbujaInmaculadaTest {
 		bumblebee.recibirAtaque(new Ataque(200));
 		bumblebee.notificar();
 		
-		//segundo turno con burbuja.Recupero vida perdida antes
+		//segundo turno con burbuja.Recupero vidaActual perdida antes
 		assertEquals(bumblebee.getPuntosDeVida(),350);
 		bumblebee.recibirAtaque(new Ataque(200));
 		bumblebee.notificar();
 		
-		//tercer turno con burbuja.Recupera vida perdida antes
+		//tercer turno con burbuja.Recupera vidaActual perdida antes
 		assertEquals(bumblebee.getPuntosDeVida(),350);
 		bumblebee.recibirAtaque(new Ataque(200));
 		assertEquals(bumblebee.getPuntosDeVida(),150);
 		bumblebee.notificar();
 		
-		//Cuarto turno con burbuja. No recupera vida
+		//Cuarto turno con burbuja. No recupera vidaActual
 		assertEquals(bumblebee.getPuntosDeVida(),150);
 	}
 
@@ -198,18 +198,18 @@ public class BurbujaInmaculadaTest {
 		bumblebee.recibirAtaque(new Ataque(200));
 		bumblebee.notificar();
 		
-		//segundo turno con burbuja.Recupero vida perdida antes
+		//segundo turno con burbuja.Recupero vidaActual perdida antes
 		assertEquals(bumblebee.getPuntosDeVida(),250);
 		bumblebee.recibirAtaque(new Ataque(200));
 		bumblebee.notificar();
 		
-		//tercer turno con burbuja.Recupera vida perdida antes
+		//tercer turno con burbuja.Recupera vidaActual perdida antes
 		assertEquals(bumblebee.getPuntosDeVida(),250);
 		bumblebee.recibirAtaque(new Ataque(200));
 		assertEquals(bumblebee.getPuntosDeVida(),50);
 		bumblebee.notificar();
 		
-		//Cuarto turno con burbuja. No recupera vida
+		//Cuarto turno con burbuja. No recupera vidaActual
 		assertEquals(bumblebee.getPuntosDeVida(),50);
 	}
 	
@@ -231,18 +231,18 @@ public class BurbujaInmaculadaTest {
 		bumblebee.recibirAtaque(new Ataque(200));
 		bumblebee.notificar();
 		
-		//segundo turno con burbuja.Recupero vida perdida antes
+		//segundo turno con burbuja.Recupero vidaActual perdida antes
 		assertEquals(bumblebee.getPuntosDeVida(),350);
 		bumblebee.recibirAtaque(new Ataque(200));
 		bumblebee.notificar();
 		
-		//tercer turno con burbuja.Recupera vida perdida antes
+		//tercer turno con burbuja.Recupera vidaActual perdida antes
 		assertEquals(bumblebee.getPuntosDeVida(),350);
 		bumblebee.recibirAtaque(new Ataque(200));
 		assertEquals(bumblebee.getPuntosDeVida(),150);
 		bumblebee.notificar();
 		
-		//Cuarto turno con burbuja. No recupera vida
+		//Cuarto turno con burbuja. No recupera vidaActual
 		assertEquals(bumblebee.getPuntosDeVida(),150);
 	}
 
@@ -265,18 +265,18 @@ public class BurbujaInmaculadaTest {
 		bumblebee.recibirAtaque(new Ataque(200));
 		bumblebee.notificar();
 		
-		//segundo turno con burbuja.Recupero vida perdida antes
+		//segundo turno con burbuja.Recupero vidaActual perdida antes
 		assertEquals(bumblebee.getPuntosDeVida(),250);
 		bumblebee.recibirAtaque(new Ataque(200));
 		bumblebee.notificar();
 		
-		//tercer turno con burbuja.Recupera vida perdida antes
+		//tercer turno con burbuja.Recupera vidaActual perdida antes
 		assertEquals(bumblebee.getPuntosDeVida(),250);
 		bumblebee.recibirAtaque(new Ataque(200));
 		assertEquals(bumblebee.getPuntosDeVida(),50);
 		bumblebee.notificar();
 		
-		//Cuarto turno con burbuja. No recupera vida
+		//Cuarto turno con burbuja. No recupera vidaActual
 		assertEquals(bumblebee.getPuntosDeVida(),50);
 	}
 	
@@ -297,18 +297,18 @@ public class BurbujaInmaculadaTest {
 		ratchet.recibirAtaque(new Ataque(60));
 		ratchet.notificar();
 		
-		//segundo turno con burbuja.Recupero vida perdida antes
+		//segundo turno con burbuja.Recupero vidaActual perdida antes
 		assertEquals(ratchet.getPuntosDeVida(),150);
 		ratchet.recibirAtaque(new Ataque(60));
 		ratchet.notificar();
 		
-		//tercer turno con burbuja.Recupera vida perdida antes
+		//tercer turno con burbuja.Recupera vidaActual perdida antes
 		assertEquals(ratchet.getPuntosDeVida(),150);
 		ratchet.recibirAtaque(new Ataque(60));
 		assertEquals(ratchet.getPuntosDeVida(),90);
 		ratchet.notificar();
 		
-		//Cuarto turno con burbuja. No recupera vida
+		//Cuarto turno con burbuja. No recupera vidaActual
 		assertEquals(ratchet.getPuntosDeVida(),90);
 	}
 
@@ -330,18 +330,18 @@ public class BurbujaInmaculadaTest {
 		ratchet.recibirAtaque(new Ataque(60));
 		ratchet.notificar();
 		
-		//segundo turno con burbuja.Recupero vida perdida antes
+		//segundo turno con burbuja.Recupero vidaActual perdida antes
 		assertEquals(ratchet.getPuntosDeVida(),140);
 		ratchet.recibirAtaque(new Ataque(60));
 		ratchet.notificar();
 		
-		//tercer turno con burbuja.Recupera vida perdida antes
+		//tercer turno con burbuja.Recupera vidaActual perdida antes
 		assertEquals(ratchet.getPuntosDeVida(),140);
 		ratchet.recibirAtaque(new Ataque(60));
 		assertEquals(ratchet.getPuntosDeVida(),80);
 		ratchet.notificar();
 		
-		//Cuarto turno con burbuja. No recupera vida
+		//Cuarto turno con burbuja. No recupera vidaActual
 		assertEquals(ratchet.getPuntosDeVida(),80);
 	}
 	
@@ -363,18 +363,18 @@ public class BurbujaInmaculadaTest {
 		ratchet.recibirAtaque(new Ataque(60));
 		ratchet.notificar();
 		
-		//segundo turno con burbuja.Recupero vida perdida antes
+		//segundo turno con burbuja.Recupero vidaActual perdida antes
 		assertEquals(ratchet.getPuntosDeVida(),150);
 		ratchet.recibirAtaque(new Ataque(60));
 		ratchet.notificar();
 		
-		//tercer turno con burbuja.Recupera vida perdida antes
+		//tercer turno con burbuja.Recupera vidaActual perdida antes
 		assertEquals(ratchet.getPuntosDeVida(),150);
 		ratchet.recibirAtaque(new Ataque(60));
 		assertEquals(ratchet.getPuntosDeVida(),90);
 		ratchet.notificar();
 		
-		//Cuarto turno con burbuja. No recupera vida
+		//Cuarto turno con burbuja. No recupera vidaActual
 		assertEquals(ratchet.getPuntosDeVida(),90);
 	}
 
@@ -396,18 +396,18 @@ public class BurbujaInmaculadaTest {
 		ratchet.recibirAtaque(new Ataque(60));
 		ratchet.notificar();
 		
-		//segundo turno con burbuja.Recupero vida perdida antes
+		//segundo turno con burbuja.Recupero vidaActual perdida antes
 		assertEquals(ratchet.getPuntosDeVida(),140);
 		ratchet.recibirAtaque(new Ataque(60));
 		ratchet.notificar();
 		
-		//tercer turno con burbuja.Recupera vida perdida antes
+		//tercer turno con burbuja.Recupera vidaActual perdida antes
 		assertEquals(ratchet.getPuntosDeVida(),140);
 		ratchet.recibirAtaque(new Ataque(60));
 		assertEquals(ratchet.getPuntosDeVida(),80);
 		ratchet.notificar();
 		
-		//Cuarto turno con burbuja. No recupera vida
+		//Cuarto turno con burbuja. No recupera vidaActual
 		assertEquals(ratchet.getPuntosDeVida(),80);
 	}
 
@@ -428,18 +428,18 @@ public class BurbujaInmaculadaTest {
 		megatron.recibirAtaque(new Ataque(60));
 		megatron.notificar();
 		
-		//segundo turno con burbuja.Recupero vida perdida antes
+		//segundo turno con burbuja.Recupero vidaActual perdida antes
 		assertEquals(megatron.getPuntosDeVida(),550);
 		megatron.recibirAtaque(new Ataque(60));
 		megatron.notificar();
 		
-		//tercer turno con burbuja.Recupera vida perdida antes
+		//tercer turno con burbuja.Recupera vidaActual perdida antes
 		assertEquals(megatron.getPuntosDeVida(),550);
 		megatron.recibirAtaque(new Ataque(60));
 		assertEquals(megatron.getPuntosDeVida(),490);
 		megatron.notificar();
 		
-		//Cuarto turno con burbuja. No recupera vida
+		//Cuarto turno con burbuja. No recupera vidaActual
 		assertEquals(megatron.getPuntosDeVida(),490);
 	}
 
@@ -462,18 +462,18 @@ public class BurbujaInmaculadaTest {
 		megatron.recibirAtaque(new Ataque(60));
 		megatron.notificar();
 		
-		//segundo turno con burbuja.Recupero vida perdida antes
+		//segundo turno con burbuja.Recupero vidaActual perdida antes
 		assertEquals(megatron.getPuntosDeVida(),500);
 		megatron.recibirAtaque(new Ataque(60));
 		megatron.notificar();
 		
-		//tercer turno con burbuja.Recupera vida perdida antes
+		//tercer turno con burbuja.Recupera vidaActual perdida antes
 		assertEquals(megatron.getPuntosDeVida(),500);
 		megatron.recibirAtaque(new Ataque(60));
 		assertEquals(megatron.getPuntosDeVida(),440);
 		megatron.notificar();
 		
-		//Cuarto turno con burbuja. No recupera vida
+		//Cuarto turno con burbuja. No recupera vidaActual
 		assertEquals(megatron.getPuntosDeVida(),440);
 	}
 	
@@ -494,18 +494,18 @@ public class BurbujaInmaculadaTest {
 		megatron.recibirAtaque(new Ataque(60));
 		megatron.notificar();
 		
-		//segundo turno con burbuja.Recupero vida perdida antes
+		//segundo turno con burbuja.Recupero vidaActual perdida antes
 		assertEquals(megatron.getPuntosDeVida(),550);
 		megatron.recibirAtaque(new Ataque(60));
 		megatron.notificar();
 		
-		//tercer turno con burbuja.Recupera vida perdida antes
+		//tercer turno con burbuja.Recupera vidaActual perdida antes
 		assertEquals(megatron.getPuntosDeVida(),550);
 		megatron.recibirAtaque(new Ataque(60));
 		assertEquals(megatron.getPuntosDeVida(),490);
 		megatron.notificar();
 		
-		//Cuarto turno con burbuja. No recupera vida
+		//Cuarto turno con burbuja. No recupera vidaActual
 		assertEquals(megatron.getPuntosDeVida(),490);
 	}
 
@@ -527,18 +527,18 @@ public class BurbujaInmaculadaTest {
 		megatron.recibirAtaque(new Ataque(60));
 		megatron.notificar();
 		
-		//segundo turno con burbuja.Recupero vida perdida antes
+		//segundo turno con burbuja.Recupero vidaActual perdida antes
 		assertEquals(megatron.getPuntosDeVida(),500);
 		megatron.recibirAtaque(new Ataque(60));
 		megatron.notificar();
 		
-		//tercer turno con burbuja.Recupera vida perdida antes
+		//tercer turno con burbuja.Recupera vidaActual perdida antes
 		assertEquals(megatron.getPuntosDeVida(),500);
 		megatron.recibirAtaque(new Ataque(60));
 		assertEquals(megatron.getPuntosDeVida(),440);
 		megatron.notificar();
 		
-		//Cuarto turno con burbuja. No recupera vida
+		//Cuarto turno con burbuja. No recupera vidaActual
 		assertEquals(megatron.getPuntosDeVida(),440);
 	}
 
@@ -559,18 +559,18 @@ public class BurbujaInmaculadaTest {
 		boneCrusher.recibirAtaque(new Ataque(60));
 		boneCrusher.notificar();
 		
-		//segundo turno con burbuja.Recupero vida perdida antes
+		//segundo turno con burbuja.Recupero vidaActual perdida antes
 		assertEquals(boneCrusher.getPuntosDeVida(),200);
 		boneCrusher.recibirAtaque(new Ataque(60));
 		boneCrusher.notificar();
 		
-		//tercer turno con burbuja.Recupera vida perdida antes
+		//tercer turno con burbuja.Recupera vidaActual perdida antes
 		assertEquals(boneCrusher.getPuntosDeVida(),200);
 		boneCrusher.recibirAtaque(new Ataque(60));
 		assertEquals(boneCrusher.getPuntosDeVida(),140);
 		boneCrusher.notificar();
 		
-		//Cuarto turno con burbuja. No recupera vida
+		//Cuarto turno con burbuja. No recupera vidaActual
 		assertEquals(boneCrusher.getPuntosDeVida(),140);
 	}
 
@@ -591,18 +591,18 @@ public class BurbujaInmaculadaTest {
 		boneCrusher.recibirAtaque(new Ataque(20));
 		boneCrusher.notificar();
 				
-		//segundo turno con burbuja.Recupero vida perdida antes
+		//segundo turno con burbuja.Recupero vidaActual perdida antes
 		assertEquals(boneCrusher.getPuntosDeVida(),100);
 		boneCrusher.recibirAtaque(new Ataque(20));
 		boneCrusher.notificar();
 				
-		//tercer turno con burbuja.Recupera vida perdida antes
+		//tercer turno con burbuja.Recupera vidaActual perdida antes
 		assertEquals(boneCrusher.getPuntosDeVida(),100);
 		boneCrusher.recibirAtaque(new Ataque(20));
 		assertEquals(boneCrusher.getPuntosDeVida(),80);
 		boneCrusher.notificar();
 				
-		//Cuarto turno con burbuja. No recupera vida
+		//Cuarto turno con burbuja. No recupera vidaActual
 		assertEquals(boneCrusher.getPuntosDeVida(),80);
 
 	}
@@ -625,18 +625,18 @@ public class BurbujaInmaculadaTest {
 		boneCrusher.recibirAtaque(new Ataque(60));
 		boneCrusher.notificar();
 		
-		//segundo turno con burbuja.Recupero vida perdida antes
+		//segundo turno con burbuja.Recupero vidaActual perdida antes
 		assertEquals(boneCrusher.getPuntosDeVida(),200);
 		boneCrusher.recibirAtaque(new Ataque(60));
 		boneCrusher.notificar();
 		
-		//tercer turno con burbuja.Recupera vida perdida antes
+		//tercer turno con burbuja.Recupera vidaActual perdida antes
 		assertEquals(boneCrusher.getPuntosDeVida(),200);
 		boneCrusher.recibirAtaque(new Ataque(60));
 		assertEquals(boneCrusher.getPuntosDeVida(),140);
 		boneCrusher.notificar();
 		
-		//Cuarto turno con burbuja. No recupera vida
+		//Cuarto turno con burbuja. No recupera vidaActual
 		assertEquals(boneCrusher.getPuntosDeVida(),140);
 	}
 
@@ -659,18 +659,18 @@ public class BurbujaInmaculadaTest {
 		boneCrusher.recibirAtaque(new Ataque(20));
 		boneCrusher.notificar();
 				
-		//segundo turno con burbuja.Recupero vida perdida antes
+		//segundo turno con burbuja.Recupero vidaActual perdida antes
 		assertEquals(boneCrusher.getPuntosDeVida(),100);
 		boneCrusher.recibirAtaque(new Ataque(20));
 		boneCrusher.notificar();
 				
-		//tercer turno con burbuja.Recupera vida perdida antes
+		//tercer turno con burbuja.Recupera vidaActual perdida antes
 		assertEquals(boneCrusher.getPuntosDeVida(),100);
 		boneCrusher.recibirAtaque(new Ataque(20));
 		assertEquals(boneCrusher.getPuntosDeVida(),80);
 		boneCrusher.notificar();
 				
-		//Cuarto turno con burbuja. No recupera vida
+		//Cuarto turno con burbuja. No recupera vidaActual
 		assertEquals(boneCrusher.getPuntosDeVida(),80);
 	}
 
@@ -691,18 +691,18 @@ public class BurbujaInmaculadaTest {
 		frenzy.recibirAtaque(new Ataque(60));
 		frenzy.notificar();
 		
-		//segundo turno con burbuja.Recupero vida perdida antes
+		//segundo turno con burbuja.Recupero vidaActual perdida antes
 		assertEquals(frenzy.getPuntosDeVida(),400);
 		frenzy.recibirAtaque(new Ataque(60));
 		frenzy.notificar();
 		
-		//tercer turno con burbuja.Recupera vida perdida antes
+		//tercer turno con burbuja.Recupera vidaActual perdida antes
 		assertEquals(frenzy.getPuntosDeVida(),400);
 		frenzy.recibirAtaque(new Ataque(60));
 		assertEquals(frenzy.getPuntosDeVida(),340);
 		frenzy.notificar();
 		
-		//Cuarto turno con burbuja. No recupera vida
+		//Cuarto turno con burbuja. No recupera vidaActual
 		assertEquals(frenzy.getPuntosDeVida(),340);
 	}
 
@@ -723,18 +723,18 @@ public class BurbujaInmaculadaTest {
 		frenzy.recibirAtaque(new Ataque(60));
 		frenzy.notificar();
 		
-		//segundo turno con burbuja.Recupero vida perdida antes
+		//segundo turno con burbuja.Recupero vidaActual perdida antes
 		assertEquals(frenzy.getPuntosDeVida(),300);
 		frenzy.recibirAtaque(new Ataque(60));
 		frenzy.notificar();
 		
-		//tercer turno con burbuja.Recupera vida perdida antes
+		//tercer turno con burbuja.Recupera vidaActual perdida antes
 		assertEquals(frenzy.getPuntosDeVida(),300);
 		frenzy.recibirAtaque(new Ataque(60));
 		assertEquals(frenzy.getPuntosDeVida(),240);
 		frenzy.notificar();
 		
-		//Cuarto turno con burbuja. No recupera vida
+		//Cuarto turno con burbuja. No recupera vidaActual
 		assertEquals(frenzy.getPuntosDeVida(),240);
 
 	}
@@ -757,18 +757,18 @@ public class BurbujaInmaculadaTest {
 		frenzy.recibirAtaque(new Ataque(60));
 		frenzy.notificar();
 		
-		//segundo turno con burbuja.Recupero vida perdida antes
+		//segundo turno con burbuja.Recupero vidaActual perdida antes
 		assertEquals(frenzy.getPuntosDeVida(),400);
 		frenzy.recibirAtaque(new Ataque(60));
 		frenzy.notificar();
 		
-		//tercer turno con burbuja.Recupera vida perdida antes
+		//tercer turno con burbuja.Recupera vidaActual perdida antes
 		assertEquals(frenzy.getPuntosDeVida(),400);
 		frenzy.recibirAtaque(new Ataque(60));
 		assertEquals(frenzy.getPuntosDeVida(),340);
 		frenzy.notificar();
 		
-		//Cuarto turno con burbuja. No recupera vida
+		//Cuarto turno con burbuja. No recupera vidaActual
 		assertEquals(frenzy.getPuntosDeVida(),340);
 	}
 
@@ -792,18 +792,18 @@ public class BurbujaInmaculadaTest {
 		frenzy.recibirAtaque(new Ataque(60));
 		frenzy.notificar();
 		
-		//segundo turno con burbuja.Recupero vida perdida antes
+		//segundo turno con burbuja.Recupero vidaActual perdida antes
 		assertEquals(frenzy.getPuntosDeVida(),300);
 		frenzy.recibirAtaque(new Ataque(60));
 		frenzy.notificar();
 		
-		//tercer turno con burbuja.Recupera vida perdida antes
+		//tercer turno con burbuja.Recupera vidaActual perdida antes
 		assertEquals(frenzy.getPuntosDeVida(),300);
 		frenzy.recibirAtaque(new Ataque(60));
 		assertEquals(frenzy.getPuntosDeVida(),240);
 		frenzy.notificar();
 		
-		//Cuarto turno con burbuja. No recupera vida
+		//Cuarto turno con burbuja. No recupera vidaActual
 		assertEquals(frenzy.getPuntosDeVida(),240);
 	}
 

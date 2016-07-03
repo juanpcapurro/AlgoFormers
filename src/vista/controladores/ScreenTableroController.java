@@ -60,7 +60,8 @@ public class ScreenTableroController implements Initializable, ControlledScreen 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 //        nombreJugadorTurno.setText(mainApp.partida.getNombreJugadorQueDebeJugar());
-        controladorDeSeleccion=new SelectionController(imagenAlgoformerJugando,vidaDisponible,potenciaDeAtaque,alcance,velocidad,nombreJugadorTurno);
+        controladorDeSeleccion=new SelectionController(imagenAlgoformerJugando,vidaDisponible,potenciaDeAtaque,
+                                                        alcance,velocidad,nombreJugadorTurno,vidaBar);
         imprimir();
         setButtonsEvent();
     }

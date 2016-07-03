@@ -24,16 +24,19 @@ public abstract class AlgoFormer extends Colocable {
 		return modoActual.getDistanciaDeAtaque();
 	}
 
-	public  boolean estaVivo(){return ptosDeVida.getVida()>0;}
+	public  boolean estaVivo(){return ptosDeVida.getVidaActual()>0;}
 
 	public void transformar(){
 		modoActual.cambiarModo();
 	}
 
-    public int getPuntosDeVida(){ return ptosDeVida.getVida();}
+    public int getPuntosDeVida(){ return ptosDeVida.getVidaActual();}
 
+	public int getPuntosDeVidaOriginal(){
+		return ptosDeVida.getVidaOriginal();
+	}
 	protected void recibirAtaqueYaVerificado(Ataque unAtaque) {
-		ptosDeVida.setVida(ptosDeVida.getVida()-unAtaque.getDanio());
+		ptosDeVida.setVidaActual(ptosDeVida.getVidaActual()-unAtaque.getDanio());
 	}
 
 	@Override

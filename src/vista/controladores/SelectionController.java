@@ -6,6 +6,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
@@ -31,13 +32,16 @@ public class SelectionController {
     Label inferiorCentro;
     Label inferiorUltimo;
     Label nombreActual;
-    SelectionController(ImageView imagenSuperior, Label supLabel, Label infLabelFirst,Label infLabelSecond,Label infLabelThird,Label nombre){
+    ProgressBar barraDeVida;
+    SelectionController(ImageView imagenSuperior, Label supLabel, Label infLabelFirst,
+                        Label infLabelSecond, Label infLabelThird, Label nombre, ProgressBar barraVida){
         imagenBarraSuperior=imagenSuperior;
         superior=supLabel;
         inferiorPrimero =infLabelFirst;
         nombreActual=nombre;
         inferiorCentro=infLabelSecond;
         inferiorUltimo=infLabelThird;
+        barraDeVida=barraVida;
     }
     void setUp(StackPane pane){
         setCrosshairOn(pane);
@@ -127,12 +131,12 @@ public class SelectionController {
 
     void actualizarBarra(){
         imagenBarraSuperior.setImage(new ImagenObjeto(getImagenes(),partida).getImage());
-        superior.setText(partida.getDatos().getVida());
+        superior.setText(partida.getDatos().getVidaActual());
         inferiorPrimero.setText(partida.getDatos().getAtaque());
         inferiorCentro.setText(partida.getDatos().getAlcance());
         inferiorUltimo.setText(partida.getDatos().getVelocidad());
         nombreActual.setText(partida.getDatosJugadorActual().nombreJugador);
-
+        barraDeVida.setProgress(Float.valueOf(partida.getDatos().getVidaActual())/Float.valueOf(partida.getDatos().getVidaOriginal()));
     }
 
     void actualizarCasillero(){

@@ -1,14 +1,20 @@
 package modelo.tablero.colocable.robots;
 
 public class Vida {
-    int vida;
+    int vidaActual;
+    int vidaOriginal;
         public Vida(int unaVida){
-            vida=unaVida;
+            vidaActual =unaVida;
+            vidaOriginal=unaVida;
         }
-    public int getVida(){
-        return vida;
+    public int getVidaActual(){
+        return vidaActual;
     }
-    public void setVida(int unaVida){
-        vida=unaVida;
+    public void setVidaActual(int unaVida){
+        vidaActual =unaVida;
+    }
+
+    public int getVidaOriginal(){
+        return vidaOriginal;
     }
 }
