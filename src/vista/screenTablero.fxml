@@ -65,24 +65,14 @@
                                           <RowConstraints maxHeight="34.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                       </rowConstraints>
                                        <children>
-                                          <ProgressBar fx:id="vidaBar" prefHeight="20.0" prefWidth="277.0" progress="1.0" GridPane.columnIndex="1">
-                                             <effect>
-                                                <Lighting>
-                                                   <bumpInput>
-                                                      <Shadow />
-                                                   </bumpInput>
-                                                   <light>
-                                                      <Light.Distant azimuth="293.57" color="#2bff00" elevation="49.29" />
-                                                   </light>
-                                                </Lighting>
-                                             </effect>
+                                          <ProgressBar fx:id="vidaBar" prefHeight="28.0" prefWidth="277.0" progress="1.0" style="-fx-control-inner-background: palegreen;" GridPane.columnIndex="1">
                                           </ProgressBar>
-                                          <Label fx:id="vidaDisponible" alignment="CENTER" contentDisplay="CENTER" prefHeight="10.0" prefWidth="278.0" text="100" textFill="#ede534" GridPane.columnIndex="1">
+                                          <Label fx:id="vidaDisponible" alignment="CENTER" contentDisplay="CENTER" prefHeight="34.0" prefWidth="278.0" text="100" textFill="#ede534" GridPane.columnIndex="1">
                                              <font>
                                                 <Font size="17.0" />
                                              </font>
                                           </Label>
-                                          <ImageView fx:id="corazonImagen" fitHeight="30.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
+                                          <ImageView fitHeight="30.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
                                                 <Image url="@imagenes/corazon.png" />
                                              </image></ImageView>
@@ -98,7 +88,7 @@
                                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                             </rowConstraints>
                                              <children>
-                                                <ImageView fx:id="espadaImagen" fitHeight="31.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
+                                                <ImageView fitHeight="31.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
                                                    <image>
                                                       <Image url="@imagenes/espada.png" />
                                                    </image>
@@ -108,7 +98,7 @@
                                                       <Font size="17.0" />
                                                    </font>
                                                 </Label>
-                                                <ImageView fx:id="velocidadImagen" fitHeight="27.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3">
+                                                <ImageView fitHeight="27.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3">
                                                    <image>
                                                       <Image url="@imagenes/velocidad.png" />
                                                    </image>
@@ -125,7 +115,7 @@
                                                 </Label>
                                              </children>
                                           </GridPane>
-                                          <ImageView fx:id="alcanceImagen" fitHeight="30.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1">
+                                          <ImageView fitHeight="30.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1">
                                              <image>
                                                 <Image url="@imagenes/alcance.png" />
                                              </image>

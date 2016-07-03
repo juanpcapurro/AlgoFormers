@@ -6,7 +6,9 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import modelo.juego.ProxyPartida;
@@ -24,9 +26,11 @@ import static vista.mainApp.screenTablero;
 public class ScreenTableroController implements Initializable, ControlledScreen {
 
     @FXML
-    public GridPane tableroGrid;
+    GridPane tableroGrid;
     @FXML
-    Button botonTransformar;
+    AnchorPane panelSuperior;
+    @FXML
+    ProgressBar vidaBar;
     @FXML
     ImageView imagenAlgoformerJugando;
     @FXML
@@ -85,7 +89,7 @@ public class ScreenTableroController implements Initializable, ControlledScreen 
     }
 
     public void setButtonsEvent(){
-        controladorDeSeleccion.setTransformation(botonTransformar);
+        controladorDeSeleccion.setTransformation(transformar);
         controladorDeSeleccion.setFinalizarTurno(finalizarTurno);
     }
 
