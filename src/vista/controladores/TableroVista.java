@@ -7,35 +7,9 @@ import java.util.Hashtable;
 
 public class TableroVista extends GridPane {
 
-    final int HEIGTH = 85;
-    final int WIDTH = 120;
-    ProxyPartida partida;
 
     public TableroVista(ProxyPartida nuevaPartida) {
-        //partida=nuevaPartida;
-/*        ImageView imagenTerrestre;
-        ImageView imagenAerea;
-        ImageView objeto;
-        Hashtable<String, String> imagenes = getImagenes();
-        StackPane pane;
-        setHgap(1);
-        setVgap(1);
-        setGridLinesVisible(true);*/
-/*        for (int j = 0; j < 8; j++) {
-            for (int i = 0; i < 8; i++) {
-                pane = new StackPane();
-                imagenTerrestre = obtenerimagenTerrestre(imagenes, partida);
-                imagenAerea = obtenerimagenAerea(imagenes, partida);
-                objeto = obtenerimagenObjeto(imagenes, partida);
-                pane.getChildren().addAll(imagenTerrestre, imagenAerea, objeto);
-                setHandlerCasilleroSeleccionado(pane, partida);
-                setCrosshairOn(pane);
-                setCrosshairOff(pane);
-                GridPane.setConstraints(pane, j, i);
-                partida.avanzarIterador();
-                getChildren().add(pane);
-            }
-        }*/
+
     }
 
 

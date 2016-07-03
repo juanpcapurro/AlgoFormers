@@ -64,7 +64,7 @@ public class ProxyPartida {
         return partida.getEstado();
     }
 
-    public DatosImprimibles getDatos(){
+    public DatosAlgoformer getDatos(){
         return partida.getDatos();
     }
 }

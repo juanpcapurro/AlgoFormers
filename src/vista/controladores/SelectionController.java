@@ -1,15 +1,18 @@
 package vista.controladores;
 
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
 
 import java.io.IOException;
 import java.util.Hashtable;
@@ -24,13 +27,17 @@ public class SelectionController {
     StackPane ultimoSeleccionado=null;
     ImageView imagenBarraSuperior;
     Label superior;
-    Label inferior;
+    Label inferiorPrimero;
+    Label inferiorCentro;
+    Label inferiorUltimo;
     Label nombreActual;
-    SelectionController(ImageView imagenSuperior, Label supLabel, Label infLabel,Label nombre){
+    SelectionController(ImageView imagenSuperior, Label supLabel, Label infLabelFirst,Label infLabelSecond,Label infLabelThird,Label nombre){
         imagenBarraSuperior=imagenSuperior;
         superior=supLabel;
-        inferior=infLabel;
+        inferiorPrimero =infLabelFirst;
         nombreActual=nombre;
+        inferiorCentro=infLabelSecond;
+        inferiorUltimo=infLabelThird;
     }
     void setUp(StackPane pane){
         setCrosshairOn(pane);
@@ -120,8 +127,10 @@ public class SelectionController {
 
     void actualizarBarra(){
         imagenBarraSuperior.setImage(new ImagenObjeto(getImagenes(),partida).getImage());
-        superior.setText(partida.getDatos().getUpperValue());
-        inferior.setText(partida.getDatos().getLowerValue());
+        superior.setText(partida.getDatos().getVida());
+        inferiorPrimero.setText(partida.getDatos().getAtaque());
+        inferiorCentro.setText(partida.getDatos().getAlcance());
+        inferiorUltimo.setText(partida.getDatos().getVelocidad());
         nombreActual.setText(partida.getDatosJugadorActual().nombreJugador);
 
     }
@@ -148,11 +157,13 @@ public class SelectionController {
     }
 
      public void setTransformation(Button boton){
-        boton.setOnMousePressed(new EventHandler<MouseEvent>() {
+        boton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
-            public void handle(MouseEvent event) {
-                partida.transformar(GridPane.getRowIndex(primeroSeleccionado),GridPane.getColumnIndex(primeroSeleccionado));
-                restartPane(primeroSeleccionado);
+            public void handle(ActionEvent event) {
+                if (primeroSeleccionado!=null) {
+                    partida.transformar(GridPane.getRowIndex(primeroSeleccionado), GridPane.getColumnIndex(primeroSeleccionado));
+                    restartPane(primeroSeleccionado);
+                }
                 primeroSeleccionado=null;
                 actualizarBarra();
             }
@@ -160,11 +171,30 @@ public class SelectionController {
 
     }
     public void setFinalizarTurno(Button finalizarTurno){
-        finalizarTurno.setOnMousePressed(new EventHandler<MouseEvent>() {
+        finalizarTurno.setOnAction(new EventHandler<ActionEvent>() {
             @Override
-            public void handle(MouseEvent event) {
+            public void handle(ActionEvent event) {
                 partida.saltearTurno();
                 actualizarBarra();
+            }
+        });
+    }
+
+    static void setResizeEffectOnButton(Button boton){
+        boton.setOnMousePressed(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                boton.setScaleX(1.3);
+                boton.setScaleY(1.3);
+                boton.setEffect(new DropShadow(50, Color.BLACK));
+            }
+        });
+        boton.setOnMouseReleased(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                boton.setScaleX(1);
+                boton.setScaleY(1);
+                boton.setEffect(new DropShadow(0,Color.BLACK));
             }
         });
     }

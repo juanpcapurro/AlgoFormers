@@ -100,7 +100,7 @@ class Partida {
         iterador=new ControladorPosiciones(8);
    }
 
-    public DatosImprimibles getDatos(){
+    public DatosAlgoformer getDatos(){
         Casillero casillero=tablero.obtenerCasilleroAsociadoAPosicion(posicionIterador);
         return turno.jugadorActual().obtenerDatos(casillero.getColocable());
     }

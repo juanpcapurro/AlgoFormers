@@ -84,7 +84,7 @@
                                           </Label>
                                           <ImageView fitHeight="30.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
-                                                <Image url="@imagenes/corazon.png" />
+                                                <Image url="@imagenes/corazon.gif" />
                                              </image></ImageView>
                                           <GridPane alignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                             <columnConstraints>
@@ -100,10 +100,10 @@
                                              <children>
                                                 <ImageView fitHeight="31.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
                                                    <image>
-                                                      <Image url="@imagenes/espada.png" />
+                                                      <Image url="@imagenes/alcance.png" />
                                                    </image>
                                                 </ImageView>
-                                                <Label fx:id="potenciaDeAtaque" alignment="CENTER" contentDisplay="CENTER" prefHeight="26.0" prefWidth="277.0" text="200" textAlignment="CENTER" textFill="#fffc46" textOverrun="CENTER_ELLIPSIS" GridPane.columnIndex="2">
+                                                <Label fx:id="alcance" alignment="CENTER" contentDisplay="CENTER" prefHeight="26.0" prefWidth="277.0" text="200" textAlignment="CENTER" textFill="#fffc46" textOverrun="CENTER_ELLIPSIS" GridPane.columnIndex="2">
                                                    <font>
                                                       <Font size="17.0" />
                                                    </font>
@@ -118,7 +118,7 @@
                                                       <Font size="17.0" />
                                                    </font>
                                                 </Label>
-                                                <Label fx:id="alcance" alignment="CENTER" contentDisplay="CENTER" prefHeight="26.0" prefWidth="56.0" text="100" textAlignment="CENTER" textFill="#fffc46" textOverrun="CENTER_ELLIPSIS">
+                                                <Label fx:id="potenciaDeAtaque" alignment="CENTER" contentDisplay="CENTER" prefHeight="26.0" prefWidth="56.0" text="100" textAlignment="CENTER" textFill="#fffc46" textOverrun="CENTER_ELLIPSIS">
                                                    <font>
                                                       <Font size="17.0" />
                                                    </font>
@@ -127,7 +127,7 @@
                                           </GridPane>
                                           <ImageView fitHeight="30.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1">
                                              <image>
-                                                <Image url="@imagenes/alcance.png" />
+                                                <Image url="@imagenes/espada.png" />
                                              </image>
                                           </ImageView>
                                        </children>

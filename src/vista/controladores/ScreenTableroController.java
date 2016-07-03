@@ -20,6 +20,7 @@ import java.net.URL;
 import java.util.Hashtable;
 import java.util.ResourceBundle;
 
+import static vista.controladores.SelectionController.setResizeEffectOnButton;
 import static vista.mainApp.primaryStage;
 import static vista.mainApp.screenTablero;
 
@@ -59,7 +60,7 @@ public class ScreenTableroController implements Initializable, ControlledScreen 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 //        nombreJugadorTurno.setText(mainApp.partida.getNombreJugadorQueDebeJugar());
-        controladorDeSeleccion=new SelectionController(imagenAlgoformerJugando,vidaDisponible,potenciaDeAtaque,nombreJugadorTurno);
+        controladorDeSeleccion=new SelectionController(imagenAlgoformerJugando,vidaDisponible,potenciaDeAtaque,alcance,velocidad,nombreJugadorTurno);
         imprimir();
         setButtonsEvent();
     }
@@ -91,6 +92,9 @@ public class ScreenTableroController implements Initializable, ControlledScreen 
     public void setButtonsEvent(){
         controladorDeSeleccion.setTransformation(transformar);
         controladorDeSeleccion.setFinalizarTurno(finalizarTurno);
+        setResizeEffectOnButton(finalizarTurno);
+        setResizeEffectOnButton(transformar);
+        setResizeEffectOnButton(combinar);
     }
 
     @FXML

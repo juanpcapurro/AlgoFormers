@@ -1,6 +1,6 @@
 package modelo.tablero.colocable.robots;
 
-import modelo.juego.DatosImprimibles;
+import modelo.juego.DatosAlgoformer;
 import modelo.tablero.colocable.Colocable;
 import modelo.tablero.colocable.robots.armas.Ataque;
 import modelo.tablero.superficie.Superficie;
@@ -55,8 +55,8 @@ public abstract class AlgoFormer extends Colocable {
 		modoActual.notificar();
 	}
 
-	public DatosImprimibles obtenerDatosAlgoformer(){
-		return new DatosImprimibles(getPuntosDeVida(), this.getClass().getSimpleName());//paja hacerlo polimorfico con un literal
+	public DatosAlgoformer obtenerDatosAlgoformer(){
+		return new DatosAlgoformer(getPuntosDeVida(), this.getClass().getSimpleName());//paja hacerlo polimorfico con un literal
 	}
 	@Override
 	public void afectarColocable(ContextoModoAlgoformer modo){
