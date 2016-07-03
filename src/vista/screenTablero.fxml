@@ -65,7 +65,17 @@
                                           <RowConstraints maxHeight="34.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                       </rowConstraints>
                                        <children>
-                                          <ProgressBar fx:id="vidaBar" prefHeight="28.0" prefWidth="277.0" progress="1.0" style="-fx-control-inner-background: palegreen;" GridPane.columnIndex="1">
+                                          <ProgressBar fx:id="vidaBar" prefHeight="20.0" prefWidth="277.0" progress="1.0" GridPane.columnIndex="1">
+                                             <effect>
+                                                <Lighting>
+                                                   <bumpInput>
+                                                      <Shadow />
+                                                   </bumpInput>
+                                                   <light>
+                                                      <Light.Distant azimuth="293.57" color="#2bff00" elevation="49.29" />
+                                                   </light>
+                                                </Lighting>
+                                             </effect>
                                           </ProgressBar>
                                           <Label fx:id="vidaDisponible" alignment="CENTER" contentDisplay="CENTER" prefHeight="34.0" prefWidth="278.0" text="100" textFill="#ede534" GridPane.columnIndex="1">
                                              <font>

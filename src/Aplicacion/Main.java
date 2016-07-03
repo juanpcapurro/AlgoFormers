@@ -13,10 +13,10 @@ import java.io.IOException;
 public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
-//        String musicFile = "src/vista/imagenes/algoformersMusic.mp3";
-//    	Media sonido = new Media(new File(musicFile).toURI().toString());
-//    	MediaPlayer mediaPlayer = new MediaPlayer(sonido);
-//    	mediaPlayer.play();
+        String musicFile = "src/vista/imagenes/algoformersMusic.mp3";
+    	Media sonido = new Media(new File(musicFile).toURI().toString());
+    	MediaPlayer mediaPlayer = new MediaPlayer(sonido);
+    	mediaPlayer.play();
     	
     	primaryStage.setResizable(true);
         mainApp mainApp = new mainApp();
