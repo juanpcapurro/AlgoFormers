@@ -25,10 +25,12 @@ public class SelectionController {
     ImageView imagenBarraSuperior;
     Label superior;
     Label inferior;
-    SelectionController(ImageView imagenSuperior, Label supLabel, Label infLabel){
+    Label nombreActual;
+    SelectionController(ImageView imagenSuperior, Label supLabel, Label infLabel,Label nombre){
         imagenBarraSuperior=imagenSuperior;
         superior=supLabel;
         inferior=infLabel;
+        nombreActual=nombre;
     }
     void setUp(StackPane pane){
         setCrosshairOn(pane);
@@ -120,6 +122,7 @@ public class SelectionController {
         imagenBarraSuperior.setImage(new ImagenObjeto(getImagenes(),partida).getImage());
         superior.setText(partida.getDatos().getUpperValue());
         inferior.setText(partida.getDatos().getLowerValue());
+        nombreActual.setText(partida.getDatosJugadorActual().nombreJugador);
 
     }
 
@@ -151,10 +154,19 @@ public class SelectionController {
                 partida.transformar(GridPane.getRowIndex(primeroSeleccionado),GridPane.getColumnIndex(primeroSeleccionado));
                 restartPane(primeroSeleccionado);
                 primeroSeleccionado=null;
-                System.out.println("pasa");
+                actualizarBarra();
             }
         });
 
+    }
+    public void setFinalizarTurno(Button finalizarTurno){
+        finalizarTurno.setOnMousePressed(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                partida.saltearTurno();
+                actualizarBarra();
+            }
+        });
     }
 
 

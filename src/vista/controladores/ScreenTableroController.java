@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
@@ -27,13 +28,15 @@ public class ScreenTableroController implements Initializable, ControlledScreen 
     @FXML
     public Label nombreJugadorTurno;
     @FXML
-    javafx.scene.control.Button botonTransformar;
+    Button botonTransformar;
     @FXML
     ImageView imagenAlgoformerJugando;
     @FXML
     Label vidaDisponible;
     @FXML
     Label potenciaDeAtaque;
+    @FXML
+    Button finalizarTurno;
 
 
     ScreensController myController;
@@ -44,7 +47,7 @@ public class ScreenTableroController implements Initializable, ControlledScreen 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 //        nombreJugadorTurno.setText(mainApp.partida.getNombreJugadorQueDebeJugar());
-        controladorDeSeleccion=new SelectionController(imagenAlgoformerJugando,vidaDisponible,potenciaDeAtaque);
+        controladorDeSeleccion=new SelectionController(imagenAlgoformerJugando,vidaDisponible,potenciaDeAtaque,nombreJugadorTurno);
         imprimir();
         setButtonsEvent();
     }
@@ -75,6 +78,7 @@ public class ScreenTableroController implements Initializable, ControlledScreen 
 
     public void setButtonsEvent(){
         controladorDeSeleccion.setTransformation(botonTransformar);
+        controladorDeSeleccion.setFinalizarTurno(finalizarTurno);
     }
 
     @FXML
