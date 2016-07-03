@@ -3,7 +3,9 @@ package modelo.juego;
 import modelo.juego.jugador.Jugador;
 import modelo.juego.jugador.JugadorAutobots;
 import modelo.juego.jugador.JugadorDecepticons;
+import modelo.juego.jugador.NoEsAlgoFormerPropio;
 import modelo.tablero.Casillero;
+import modelo.tablero.CasilleroYaOcupado;
 import modelo.tablero.Tablero;
 import modelo.tablero.colocable.Colocable;
 import modelo.tablero.colocable.robots.autobot.Bumblebee;
@@ -37,17 +39,26 @@ class Partida {
    }
 
    public void mover(Posicion posicionInicial, Posicion posicionFinal) {
-        turno.jugadorActual().mover(posicionInicial, posicionFinal);
-        turno.avanzarTurno();
+       try {
+           turno.jugadorActual().mover(posicionInicial, posicionFinal);
+       }catch (CasilleroYaOcupado|NoEsAlgoFormerPropio e){
+        return;
+       }
+       turno.avanzarTurno();
    }
     public void atacar(Posicion hostil, Posicion objetivo){
         turno.jugadorActual().atacar(hostil, objetivo);
         turno.avanzarTurno();
     }
     public void transformar(Posicion posicion){
+        try{
         turno.jugadorActual().transformar(posicion);
+    }catch (NoEsAlgoFormerPropio e){
+        return;
+    }
         turno.avanzarTurno();
     }
+
     public void combinarODescombinar(){
         turno.jugadorActual().combinarODescombinar();
         turno.avanzarTurno();
@@ -72,6 +83,11 @@ class Partida {
         return casillero.getColocable();
    }
 
+    public Object getEstado(){
+        Casillero casillero=tablero.obtenerCasilleroAsociadoAPosicion(posicionIterador);
+        return casillero.getColocable().getEstado();
+    }
+
    public void avanzarIterador(){
         posicionIterador=iterador.inicializarPosicion();
    }
@@ -83,4 +99,9 @@ class Partida {
    public void resetIterador() {
         iterador=new ControladorPosiciones(8);
    }
+
+    public DatosImprimibles getDatos(){
+        Casillero casillero=tablero.obtenerCasilleroAsociadoAPosicion(posicionIterador);
+        return turno.jugadorActual().obtenerDatos(casillero.getColocable());
+    }
 }

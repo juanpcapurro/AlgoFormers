@@ -18,7 +18,7 @@ public class ImagenObjeto extends ImageView implements ContenidoCasillero {
 
     public ImagenObjeto(Hashtable<String, String> imagenes, ProxyPartida partida) {
         String imagen;
-        imagen = imagenes.get((partida.obtenerColocable()).getClass().toString());
+        imagen = imagenes.get((partida.obtenerColocable()).getClass().getSimpleName()+" "+partida.getEstado().getClass().getSimpleName());
         setImage(new Image(imagen));
         setFitHeight(HEIGTH - 20);
         setFitWidth(WIDTH - 20);

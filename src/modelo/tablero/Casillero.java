@@ -2,7 +2,6 @@ package modelo.tablero;
 
 import modelo.tablero.colocable.Colocable;
 import modelo.tablero.colocable.EspacioVacio;
-import modelo.tablero.colocable.robots.armas.Ataque;
 import modelo.tablero.posiciones.Posicion;
 import modelo.tablero.superficie.Superficie;
 import modelo.tablero.superficieAerea.ContextoSuperficieArea;
@@ -79,4 +78,6 @@ public class Casillero {
     public Colocable getColocable() {
         return colocado;
     }
+
+
 }

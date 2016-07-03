@@ -17,7 +17,6 @@ import java.net.URL;
 import java.util.Hashtable;
 import java.util.ResourceBundle;
 
-import static vista.controladores.SelectionController.*;
 import static vista.mainApp.primaryStage;
 import static vista.mainApp.screenTablero;
 
@@ -29,15 +28,23 @@ public class ScreenTableroController implements Initializable, ControlledScreen 
     public Label nombreJugadorTurno;
     @FXML
     javafx.scene.control.Button botonTransformar;
+    @FXML
+    ImageView imagenAlgoformerJugando;
+    @FXML
+    Label vidaDisponible;
+    @FXML
+    Label potenciaDeAtaque;
+
 
     ScreensController myController;
-    final ImageView mira=new ImageView("file:src/vista/imagenes/mira4.png");
-    final ImageView seleccion=new ImageView("file:src/vista/imagenes/mira3.png");
     static ProxyPartida partida;
+    SelectionController controladorDeSeleccion;
+
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 //        nombreJugadorTurno.setText(mainApp.partida.getNombreJugadorQueDebeJugar());
+        controladorDeSeleccion=new SelectionController(imagenAlgoformerJugando,vidaDisponible,potenciaDeAtaque);
         imprimir();
         setButtonsEvent();
     }
@@ -54,24 +61,20 @@ public class ScreenTableroController implements Initializable, ControlledScreen 
         tableroGrid.setPadding(new Insets(10,10,10,10));
         for (int j=0;j<8;j++) {
             for (int i = 0; i < 8; i++) {
-                ImageView imagenAerea = new ImagenAerea(imagenes, partida);
-                ImageView imagenTerrestre = new ImagenTerrestre(imagenes, partida);
-                ImageView imageObjeto = new ImagenObjeto(imagenes, partida);
                 StackPane pane = new StackPane();
+                ImageView imagenAerea=new ImagenAerea(imagenes,partida);
                 pane.setAlignment(imagenAerea, Pos.TOP_LEFT);
-                pane.getChildren().addAll(imagenTerrestre, imagenAerea, imageObjeto);
+                pane.getChildren().addAll( new ImagenTerrestre(imagenes, partida),imagenAerea , new ImagenObjeto(imagenes, partida));
                 GridPane.setConstraints(pane,j,i);
                 tableroGrid.getChildren().add(pane);
-                setCrosshairOn(pane);
-                setCrosshairOff(pane);
-                setHandlerCasilleroSeleccionado(pane,partida);
+                controladorDeSeleccion.setUp(pane);
                 partida.avanzarIterador();
             }
         }
     }
 
     public void setButtonsEvent(){
-        setTransformation(botonTransformar);
+        controladorDeSeleccion.setTransformation(botonTransformar);
     }
 
     @FXML

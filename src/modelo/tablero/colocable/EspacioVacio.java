@@ -1,7 +1,6 @@
 package modelo.tablero.colocable;
 
 import modelo.tablero.colocable.robots.ContextoModoAlgoformer;
-import modelo.tablero.colocable.robots.armas.Ataque;
 import modelo.tablero.superficie.Superficie;
 
 public
@@ -26,6 +25,13 @@ class EspacioVacio extends Colocable{
 	public boolean esMovible() {
 		return false;
 	}
+
+	@Override
+	public Object getEstado() {
+		return "";
+	}
+
+
 
 
 }

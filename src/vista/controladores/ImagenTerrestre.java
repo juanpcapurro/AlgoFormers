@@ -14,7 +14,7 @@ public class ImagenTerrestre extends ImageView implements ContenidoCasillero{
 
     public ImagenTerrestre(Hashtable<String, String> imagenes, ProxyPartida partida) {
         String imagen;
-        imagen = imagenes.get((partida.obtenerSuperficieTerrestre()).getClass().toString());
+        imagen = imagenes.get((partida.obtenerSuperficieTerrestre()).getClass().getSimpleName());
         setImage(new Image(imagen));
         setFitHeight(HEIGTH);
         setFitWidth(WIDTH);

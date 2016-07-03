@@ -1,7 +1,7 @@
 
 package modelo.juego.jugador;
 
-import modelo.juego.DatosAlgoformer;
+import modelo.juego.DatosImprimibles;
 import modelo.juego.DatosJugador;
 import modelo.tablero.Tablero;
 import modelo.tablero.colocable.Colocable;
@@ -17,7 +17,7 @@ public abstract class Jugador {
 	private Tablero tablero;
 	private int turnosAunOcupados;
 	private ArrayList<AlgoFormer> robotsJugador = new ArrayList<AlgoFormer>();
-	private boolean estaCombinado;//Algun dia hay que hardcodear
+	private boolean estaCombinado;//Algun dia hay que hardcodear //Ya esta todo hardcodeado que flasha
 
 	public Jugador(String nuevoNombre, Tablero tablero, AlgoFormer unAlgoformer, AlgoFormer otroAlgoformer, AlgoFormer tercerAlgoformer){
 		this.tablero= tablero;
@@ -34,7 +34,7 @@ public abstract class Jugador {
 	}
 
 	public DatosJugador getDatosJugador() {
-        ArrayList<DatosAlgoformer> listaDatos = new ArrayList<DatosAlgoformer>();
+        ArrayList<DatosImprimibles> listaDatos = new ArrayList<DatosImprimibles>();
         for(AlgoFormer actual: robotsJugador)
             listaDatos.add(actual.obtenerDatosAlgoformer());
         return new DatosJugador(nombreDeJugador, listaDatos);
@@ -120,5 +120,14 @@ public abstract class Jugador {
     }
 
 	protected abstract AlgoFormer crearAlgoFormerCombinado(AlgoFormer unAlgoformer, AlgoFormer otroAlgoformer, AlgoFormer tercerAlgoFormer);
+
+	public DatosImprimibles obtenerDatos(Colocable colocable){
+			if (robotsJugador.contains(colocable)){
+				AlgoFormer robot=(AlgoFormer) colocable;
+				return new DatosImprimibles(robot.getPuntosDeVida(),robot.getAtaque(),robot.getClass().getSimpleName());
+			}
+
+		return new DatosImprimibles(0,0,"");
+	}
 }
 

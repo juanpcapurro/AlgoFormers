@@ -59,4 +59,12 @@ public class ProxyPartida {
    public void resetIterador() {
        partida.resetIterador();
    }
+
+    public Object getEstado (){
+        return partida.getEstado();
+    }
+
+    public DatosImprimibles getDatos(){
+        return partida.getDatos();
+    }
 }

@@ -2,7 +2,6 @@ package modelo.tablero.colocable.bonus;
 
 import modelo.tablero.colocable.Colocable;
 import modelo.tablero.colocable.robots.ContextoModoAlgoformer;
-import modelo.tablero.colocable.robots.armas.Ataque;
 import modelo.tablero.colocable.robots.modificadores.BuffFlash;
 import modelo.tablero.superficie.Superficie;
 
@@ -33,5 +32,11 @@ public class Flash extends Colocable {
     public boolean esMovible() {
         return false;
     }
+
+    @Override
+    public Object getEstado() {
+        return null;
+    }
+
 
 }

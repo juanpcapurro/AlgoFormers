@@ -4,12 +4,12 @@ import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
-import modelo.juego.ProxyPartida;
 
 import java.io.IOException;
 import java.util.Hashtable;
@@ -18,13 +18,24 @@ import static vista.controladores.ScreenTableroController.partida;
 import static vista.controladores.TableroVista.getImagenes;
 
 public class SelectionController {
-    static final ImagenMira mira=new ImagenMira();
-    static final ImagenSeleccion seleccion= new ImagenSeleccion();
-    static StackPane primeroSeleccionado=null;
-    static StackPane ultimoSeleccionado=null;
-
-
-    static void setCrosshairOn(StackPane pane){
+    final ImagenMira mira=new ImagenMira();
+    final ImagenSeleccion seleccion= new ImagenSeleccion();
+    StackPane primeroSeleccionado=null;
+    StackPane ultimoSeleccionado=null;
+    ImageView imagenBarraSuperior;
+    Label superior;
+    Label inferior;
+    SelectionController(ImageView imagenSuperior, Label supLabel, Label infLabel){
+        imagenBarraSuperior=imagenSuperior;
+        superior=supLabel;
+        inferior=infLabel;
+    }
+    void setUp(StackPane pane){
+        setCrosshairOn(pane);
+        setCrosshairOff(pane);
+        setHandlerCasilleroSeleccionado(pane);
+    }
+    void setCrosshairOn(StackPane pane){
 
         pane.setOnMouseMoved(new EventHandler<MouseEvent>() {
             @Override
@@ -47,7 +58,7 @@ public class SelectionController {
         });
     }
 
-    static void setCrosshairOff(StackPane pane) {
+    void setCrosshairOff(StackPane pane) {
         pane.setOnMouseExited(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
@@ -59,7 +70,7 @@ public class SelectionController {
         });
     }
 
-    static void setHandlerCasilleroSeleccionado(Node node, ProxyPartida partida) {
+    void setHandlerCasilleroSeleccionado(Node node) {
         node.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
@@ -79,34 +90,40 @@ public class SelectionController {
     }
 
 
-    static void procesarSeleccionPrimaria(StackPane pane){
-        if (primeroSeleccionado==null) {
+    void procesarSeleccionPrimaria(StackPane pane){
+        if (primeroSeleccionado==null)
             primeroSeleccionado=pane;
-        } else {
+        else {
             ultimoSeleccionado=pane;
             partida.mover(GridPane.getRowIndex(primeroSeleccionado),GridPane.getColumnIndex(primeroSeleccionado)
                     ,GridPane.getRowIndex(ultimoSeleccionado),GridPane.getColumnIndex(ultimoSeleccionado));
-            partida.resetIterador();
             actualizarCasillero();
             primeroSeleccionado=null;
         }
+        partida.setIterador(GridPane.getRowIndex(pane),GridPane.getColumnIndex(pane));
+        actualizarBarra();
     }
 
-static void procesarSeleccionSecundaria(StackPane pane) throws IOException {
-    if (primeroSeleccionado==null)
-        return;
-    System.out.println("AUCH! me disparaste");
-   // partida.atacar(Gridpane.getRoxIndex(primeroSeleccionado),Gridpane.getColumnIndex(primeroSeleccionado),
-  ///               Gridpane.getRoxIndex(ultimoSeleccionado),Gridpane.getColumnIndex(ultimoSeleccionado));
-
-  //  if (partida.GetStatus(Gridpane.getRoxIndex(ultimoSeleccionado,Gridpane.getColumnIndex(ultimoSeleccionado)).getVida().toIntenger<1))
+    void procesarSeleccionSecundaria(StackPane pane) throws IOException {
+        if (primeroSeleccionado==null)
+            return;
+        partida.atacar(GridPane.getRowIndex(primeroSeleccionado),GridPane.getColumnIndex(primeroSeleccionado),
+                 GridPane.getRowIndex(ultimoSeleccionado),GridPane.getColumnIndex(ultimoSeleccionado));
         actualizarCasillero();
-
-    ultimoSeleccionado.getChildren().add(new Explosion(ultimoSeleccionado).getView());
-    primeroSeleccionado=null;
+        partida.setIterador(GridPane.getRowIndex(ultimoSeleccionado),GridPane.getColumnIndex(ultimoSeleccionado));
+        actualizarBarra();
+        ultimoSeleccionado.getChildren().add(new Explosion(ultimoSeleccionado).getView());
+        primeroSeleccionado=null;
 }
 
-    static void actualizarCasillero(){
+    void actualizarBarra(){
+        imagenBarraSuperior.setImage(new ImagenObjeto(getImagenes(),partida).getImage());
+        superior.setText(partida.getDatos().getUpperValue());
+        inferior.setText(partida.getDatos().getLowerValue());
+
+    }
+
+    void actualizarCasillero(){
         partida.setIterador(GridPane.getRowIndex(primeroSeleccionado),GridPane.getColumnIndex(primeroSeleccionado));
         restartPane(primeroSeleccionado);
         partida.setIterador(GridPane.getRowIndex(ultimoSeleccionado),GridPane.getColumnIndex(ultimoSeleccionado));
@@ -127,7 +144,7 @@ static void procesarSeleccionSecundaria(StackPane pane) throws IOException {
         pane.getChildren().addAll(imagenTerrestre, imagenAerea, objeto);
     }
 
-    static public void setTransformation(Button boton){
+     public void setTransformation(Button boton){
         boton.setOnMousePressed(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
@@ -139,4 +156,6 @@ static void procesarSeleccionSecundaria(StackPane pane) throws IOException {
         });
 
     }
+
+
 }

@@ -14,7 +14,7 @@ public class ImagenAerea extends ImageView implements ContenidoCasillero{
 
     ImagenAerea(Hashtable<String, String> imagenes, ProxyPartida partida) {
         String imagen;
-        imagen = imagenes.get((partida.obtenerSuperficieAerea()).getClass().toString());
+        imagen = imagenes.get((partida.obtenerSuperficieAerea()).getClass().getSimpleName());
         setImage(new Image(imagen));
         setFitHeight(HEIGTH);
         setFitWidth(WIDTH);

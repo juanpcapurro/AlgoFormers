@@ -18,4 +18,7 @@ public abstract class Colocable implements Atacable{
 	public void recibirAtaque(AtaqueDecepticon ataque){
 
 	}
+
+	public abstract Object getEstado();
+
 }
