@@ -61,7 +61,7 @@ public class ScreenTableroController implements Initializable, ControlledScreen 
     public void initialize(URL url, ResourceBundle rb) {
 //        nombreJugadorTurno.setText(mainApp.partida.getNombreJugadorQueDebeJugar());
         controladorDeSeleccion=new SelectionController(imagenAlgoformerJugando,vidaDisponible,potenciaDeAtaque,
-                                                        alcance,velocidad,nombreJugadorTurno,vidaBar);
+                                                        alcance,velocidad,nombreJugadorTurno,vidaBar,tableroGrid);
         imprimir();
         setButtonsEvent();
     }
@@ -72,6 +72,7 @@ public class ScreenTableroController implements Initializable, ControlledScreen 
 
     public void imprimir(){
         partida=new ProxyPartida(mainApp.nombreJ1,mainApp.nombreJ2,8);
+        partida.notificarVista();
         Hashtable<String,String> imagenes=TableroVista.getImagenes();
         tableroGrid.getChildren().clear();
         tableroGrid.setGridLinesVisible(true);

@@ -4,8 +4,11 @@ import modelo.tablero.colocable.Colocable;
 import modelo.tablero.posiciones.Posicion;
 import modelo.tablero.superficie.Superficie;
 
+import static vista.controladores.SelectionController.actualizarCasillero;
+
 public class ProxyPartida {
     Partida partida;
+    static boolean notificarVista=false;
 
     public ProxyPartida(String nombreJugadorDecepticons, String nombreJugadorAutobots, int dimension) {
         partida = new Partida(nombreJugadorDecepticons, nombreJugadorAutobots, dimension);
@@ -67,4 +70,21 @@ public class ProxyPartida {
     public DatosAlgoformer getDatos(){
         return partida.getDatos();
     }
+
+    public static void notificarVista(){
+        notificarVista=true;
+    }
+
+    public static void notificarMovimiento(Posicion posicionOrigen,Posicion posicionDestino) {
+        int x = posicionOrigen.verCoordenadaX();
+        int y = posicionOrigen.verCoordenadaY();
+        if(notificarVista)
+            actualizarCasillero(x,y);
+        x = posicionDestino.verCoordenadaX();
+        y = posicionDestino.verCoordenadaY();
+        if(notificarVista)
+            actualizarCasillero(x, y);
+
+    }
+
 }
