@@ -10,7 +10,6 @@ import modelo.tablero.colocable.robots.AlgoFormer;
 import modelo.tablero.colocable.robots.AlgoformerCombinado;
 import modelo.tablero.posiciones.ControladorPosiciones;
 import modelo.tablero.posiciones.Posicion;
-import org.apache.bcel.generic.TABLESWITCH;
 
 import java.util.ArrayList;
 
