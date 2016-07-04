@@ -39,4 +39,19 @@ public class ControladorPosiciones {
         Posicion posicion=new Posicion((new Random()).nextInt(Integer.MAX_VALUE)%dimension,new Random().nextInt(Integer.MAX_VALUE)%dimension);
         return posicion;
     }
+    public void inicializarIteradorDesdePosicion(Posicion unaPosicion){
+        ultimaPosicionX=unaPosicion.verCoordenadaX();
+        ultimaPosicionY=unaPosicion.verCoordenadaY();
+    }
+    public int calcularDistancia(Posicion unaPosicion, Posicion otraPosicion){
+        int distanciaX = valorAbsoluto(unaPosicion.verCoordenadaX() - otraPosicion.verCoordenadaX());
+        int distanciaY = valorAbsoluto(unaPosicion.verCoordenadaY() - otraPosicion.verCoordenadaY());
+        return distanciaX + distanciaY;
+    }
+    private int valorAbsoluto(int entrada){
+        if(entrada<=0)
+            return (-1)*entrada;
+        else
+            return entrada;
+    }
 }

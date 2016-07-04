@@ -3,10 +3,14 @@ package modelo.juego.jugador;
 
 import modelo.juego.DatosAlgoformer;
 import modelo.juego.DatosJugador;
+import modelo.tablero.NoEncontradoError;
 import modelo.tablero.Tablero;
 import modelo.tablero.colocable.Colocable;
 import modelo.tablero.colocable.robots.AlgoFormer;
+import modelo.tablero.colocable.robots.AlgoformerCombinado;
+import modelo.tablero.posiciones.ControladorPosiciones;
 import modelo.tablero.posiciones.Posicion;
+import org.apache.bcel.generic.TABLESWITCH;
 
 import java.util.ArrayList;
 
@@ -27,9 +31,7 @@ public abstract class Jugador {
 		robotsJugador.add(otroAlgoformer);
 		robotsJugador.add(tercerAlgoformer);
 
-		tablero.colocarRandom(unAlgoformer);
-		tablero.colocarRandom(otroAlgoformer);
-		tablero.colocarRandom(tercerAlgoformer);
+		colocarAlgoFormers(tablero, unAlgoformer, otroAlgoformer, tercerAlgoformer);
 	}
 
 	public DatosJugador getDatosJugador() {
@@ -48,30 +50,11 @@ public abstract class Jugador {
 
 	public void combinarODescombinar() {
 		validarQuePuedeJugar();
-		if(!estaCombinado) {
-			if (robotsJugador.size() < 3)
-				throw new NoPuedeCombinarPorTenerAlgoFormersMuertos();
-			if(!(robotsJugador.get(0).estaVivo() && robotsJugador.get(1).estaVivo() && robotsJugador.get(2).estaVivo()))
-				throw new NoPuedeCombinarPorTenerAlgoFormersMuertos();
+		if(!estaCombinado)
+			combinar();
+		else
+			descombinar();
 
-			AlgoFormer combinacion = crearAlgoFormerCombinado(robotsJugador.get(0),robotsJugador.get(1),robotsJugador.get(2));
-			AlgoFormer algoformerDeReunion=  robotsJugador.get(0);
-			Posicion posicionCombinado = tablero.obtenerPosicionAsociadaAColocable(algoformerDeReunion);
-
-			for(AlgoFormer actual : robotsJugador){
-				Posicion posicionActual= tablero.obtenerPosicionAsociadaAColocable(actual);
-				tablero.vaciarPosicion(posicionActual);
-			}
-			robotsJugador.clear();
-
-			robotsJugador.add(combinacion);
-			tablero.colocarAlgoformer(posicionCombinado, combinacion);
-		}
-		else{
-			if(robotsJugador.size()!=1 || !robotsJugador.get(0).estaVivo())
-				throw new NoPuedeCombinarPorTenerAlgoFormersMuertos();
-			//useful stuff here
-		}
 		estaCombinado = !estaCombinado;
 		turnosAunOcupados = 2;
 	}
@@ -124,14 +107,50 @@ public abstract class Jugador {
 
 	protected abstract AlgoFormer crearAlgoFormerCombinado(AlgoFormer unAlgoformer, AlgoFormer otroAlgoformer, AlgoFormer tercerAlgoFormer);
 
+	protected abstract void colocarAlgoFormers(Tablero tablero, AlgoFormer unRobot, AlgoFormer otroRobot, AlgoFormer tercerRobot);
 	public DatosAlgoformer obtenerDatos(Colocable colocable){
-			if (robotsJugador.contains(colocable)){
-				AlgoFormer robot=(AlgoFormer) colocable;
-				return new DatosAlgoformer(robot.getPuntosDeVidaOriginal(),robot.getPuntosDeVida(),robot.getAtaque(),robot.getVelocidad(),
-						robot.getDistanciaDeAtaque(),robot.getClass().getSimpleName());
-			}
+		if (robotsJugador.contains(colocable)){
+			AlgoFormer robot=(AlgoFormer) colocable;
+			return new DatosAlgoformer(robot.getPuntosDeVidaOriginal(),robot.getPuntosDeVida(),robot.getAtaque(),robot.getVelocidad(),
+					robot.getDistanciaDeAtaque(),robot.getClass().getSimpleName());
+		}
+		else
+			throw new NoEncontradoError();
+	}
+	private void combinar(){
+		if (robotsJugador.size() < 3)
+			throw new NoPuedeCombinarPorTenerAlgoFormersMuertos();
+		if(!(robotsJugador.get(0).estaVivo() && robotsJugador.get(1).estaVivo() && robotsJugador.get(2).estaVivo()))
+			throw new NoPuedeCombinarPorTenerAlgoFormersMuertos();
 
-		return null;
+		AlgoFormer combinacion = crearAlgoFormerCombinado(robotsJugador.get(0),robotsJugador.get(1),robotsJugador.get(2));
+		AlgoFormer algoformerDeReunion=  robotsJugador.get(0);
+		Posicion posicionCombinado = tablero.obtenerPosicionAsociadaAColocable(algoformerDeReunion);
+
+		for(AlgoFormer actual : robotsJugador){
+			Posicion posicionActual= tablero.obtenerPosicionAsociadaAColocable(actual);
+			tablero.vaciarPosicion(posicionActual);
+		}
+		robotsJugador.clear();
+
+		robotsJugador.add(combinacion);
+		tablero.colocarAlgoformer(posicionCombinado, combinacion);
+	}
+	private void descombinar(){
+		if(robotsJugador.size()!=1 || !robotsJugador.get(0).estaVivo())
+				throw new NoPuedeCombinarPorTenerAlgoFormersMuertos();
+		ControladorPosiciones unControlador = new ControladorPosiciones(tablero.getDimension());
+		Posicion posicionRobot = tablero.obtenerPosicionAsociadaAColocable(robotsJugador.get(0));
+		tablero.vaciarPosicion(posicionRobot);
+		unControlador.inicializarIteradorDesdePosicion(posicionRobot);
+		AlgoformerCombinado combiancion = (AlgoformerCombinado) robotsJugador.get(0);
+		robotsJugador = combiancion.descomponer();
+
+		for (AlgoFormer actual : robotsJugador){
+			while(tablero.estaOcupadoEnPosicion(posicionRobot))
+				posicionRobot=unControlador.inicializarPosicion();
+			tablero.colocarAlgoformer(posicionRobot, actual);
+		}
 	}
 }
 

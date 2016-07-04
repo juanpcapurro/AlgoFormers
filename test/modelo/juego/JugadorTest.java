@@ -114,11 +114,16 @@ public class JugadorTest {
 		jugadorDecepticons.notificar();
 		assertTrue(jugadorDecepticons.puedeJugar());
 
-//		jugadorDecepticons.combinarODescombinar();//Pasar de combinado a descombinado
-//		assertFalse(jugadorDecepticons.puedeJugar());
-//		jugadorDecepticons.notificar();
-//		assertFalse(jugadorDecepticons.puedeJugar());
-//		jugadorDecepticons.notificar();
-//		assertTrue(jugadorDecepticons.puedeJugar());
+		Posicion posicionMenasor=posicionBoneCrusher;//Queda en la posicion del algoformer que se le paso primero
+		assertTrue(tablero.estaOcupadoEnPosicion(posicionMenasor));
+		assertFalse(tablero.estaOcupadoEnPosicion(posicionFrenzy));
+		assertFalse(tablero.estaOcupadoEnPosicion(posicionMegatron));
+
+		jugadorDecepticons.combinarODescombinar();//Pasar de combinado a descombinado
+		assertFalse(jugadorDecepticons.puedeJugar());
+		jugadorDecepticons.notificar();
+		assertFalse(jugadorDecepticons.puedeJugar());
+		jugadorDecepticons.notificar();
+		assertTrue(jugadorDecepticons.puedeJugar());
 	}
 }

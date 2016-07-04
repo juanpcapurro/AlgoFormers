@@ -107,4 +107,7 @@ public class Tablero{
             colocarRandom(colocable);//esto algun dia termina en stack overflow, Hay más chances de que termine en Stack
         }                            //Overflow por alguna de las otras 20k de atrocidades que hay en este codigo.
 	}
+	public int getDimension(){
+		return this.DIMENSION;
+	}
 }
