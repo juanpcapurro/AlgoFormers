@@ -11,7 +11,8 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane fx:id="panelSuperior" minWidth="-Infinity" prefHeight="728.0" prefWidth="1214.0" styleClass="background" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vista.controladores.ScreenTableroController">
+
+<AnchorPane fx:id="panelSuperior" styleClass="background" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vista.controladores.ScreenTableroController">
    <children>
       <BorderPane layoutX="-61.0" layoutY="-2.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <center>
@@ -85,7 +86,8 @@
                                           <ImageView fitHeight="30.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
                                                 <Image url="@imagenes/corazon.gif" />
-                                             </image></ImageView>
+                                             </image>
+                                          </ImageView>
                                           <GridPane alignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                             <columnConstraints>
                                                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="91.76512145996094" minWidth="10.0" prefWidth="59.359527587890625" />

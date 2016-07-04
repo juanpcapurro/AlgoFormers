@@ -16,8 +16,7 @@ public class Main extends Application {
     	Media sonido = new Media(new File(musicFile).toURI().toString());
 //    	MediaPlayer mediaPlayer = new MediaPlayer(sonido);
   //  	mediaPlayer.play();
-    	
-    	primaryStage.setResizable(true);
+
         mainApp mainApp = new mainApp();
         mainApp.start(primaryStage);
 

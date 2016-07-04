@@ -21,6 +21,7 @@ public class ScreensController  extends StackPane {
 
     private HashMap<String, Node> screens = new HashMap<>();
 
+
     public ScreensController(mainApp mainApp) {
         super();
     }
@@ -59,6 +60,8 @@ public class ScreensController  extends StackPane {
                             public void handle(ActionEvent t) {
                                 getChildren().remove(0);
                                 Node screen = screens.get(name);
+                                screen.sceneProperty();
+                                screen.autosize();
                                 getChildren().add(0, screen);
                                 Timeline fadeIn = new Timeline(
                                         new KeyFrame(Duration.ZERO, new KeyValue(opacity, 0.0)),
@@ -85,5 +88,7 @@ public class ScreensController  extends StackPane {
         }
 
     }
+
+
 }
 

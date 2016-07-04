@@ -13,11 +13,11 @@ public class Posicion {
         return (this.x==posicionAComparar.x & this.y==posicionAComparar.y);
     }
 
-    int verCoordenadaX(){
+    public int verCoordenadaX(){
         return x;
     }
 
-    int verCoordenadaY() {
+    public int verCoordenadaY() {
         return y;
     }
 

@@ -131,7 +131,7 @@ public abstract class Jugador {
 						robot.getDistanciaDeAtaque(),robot.getClass().getSimpleName());
 			}
 
-		return new DatosAlgoformer(1,0,0,0,0,"");
+		return null;
 	}
 }
 

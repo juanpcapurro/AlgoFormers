@@ -7,6 +7,8 @@ import modelo.tablero.superficie.Superficie;
 import modelo.tablero.superficieAerea.ContextoSuperficieArea;
 import modelo.tablero.superficieTerrestre.ContextoSuperficieTerrestre;
 
+import static modelo.juego.ProxyPartida.notificarMovimiento;
+
 public class Casillero {
     private Colocable colocado;
     private ContextoSuperficieTerrestre superficieTerrestreActual;
@@ -65,6 +67,7 @@ public class Casillero {
         colocado.recibirColocable(colocableEndestino);
         casilleroDestino.colocar(colocado);
         colocado=new EspacioVacio();
+        notificarMovimiento(posicion,casilleroDestino.posicion);
     }
 
     public Superficie getSuperficieTerrestre() {

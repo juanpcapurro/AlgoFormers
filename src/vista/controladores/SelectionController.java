@@ -1,5 +1,7 @@
 package vista.controladores;
 
+import javafx.application.Platform;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
@@ -24,17 +26,19 @@ import static vista.controladores.TableroVista.getImagenes;
 public class SelectionController {
     final ImagenMira mira=new ImagenMira();
     final ImagenSeleccion seleccion= new ImagenSeleccion();
-    StackPane primeroSeleccionado=null;
-    StackPane ultimoSeleccionado=null;
-    ImageView imagenBarraSuperior;
-    Label superior;
-    Label inferiorPrimero;
-    Label inferiorCentro;
-    Label inferiorUltimo;
-    Label nombreActual;
-    ProgressBar barraDeVida;
+    static StackPane primeroSeleccionado=null;
+    static StackPane ultimoSeleccionado=null;
+    static ImageView imagenBarraSuperior;
+    static Label superior;
+    static Label inferiorPrimero;
+    static Label inferiorCentro;
+    static Label inferiorUltimo;
+    static Label nombreActual;
+    static ProgressBar barraDeVida;
+    static GridPane tablero;
+
     SelectionController(ImageView imagenSuperior, Label supLabel, Label infLabelFirst,
-                        Label infLabelSecond, Label infLabelThird, Label nombre, ProgressBar barraVida){
+                        Label infLabelSecond, Label infLabelThird, Label nombre, ProgressBar barraVida,GridPane grid){
         imagenBarraSuperior=imagenSuperior;
         superior=supLabel;
         inferiorPrimero =infLabelFirst;
@@ -42,6 +46,7 @@ public class SelectionController {
         inferiorCentro=infLabelSecond;
         inferiorUltimo=infLabelThird;
         barraDeVida=barraVida;
+        tablero=grid;
     }
     void setUp(StackPane pane){
         setCrosshairOn(pane);
@@ -107,16 +112,22 @@ public class SelectionController {
         if (primeroSeleccionado==null) {
             primeroSeleccionado = pane;
             partida.setIterador(GridPane.getRowIndex(primeroSeleccionado), GridPane.getColumnIndex(primeroSeleccionado));
+            actualizarBarra();
         }
-            else {
+        else {
             ultimoSeleccionado=pane;
-            partida.mover(GridPane.getRowIndex(primeroSeleccionado),GridPane.getColumnIndex(primeroSeleccionado)
-                    ,GridPane.getRowIndex(ultimoSeleccionado),GridPane.getColumnIndex(ultimoSeleccionado));
-            actualizarCasillero();
-            primeroSeleccionado=null;
-            partida.setIterador(GridPane.getRowIndex(ultimoSeleccionado),GridPane.getColumnIndex(ultimoSeleccionado));
+            Task task=new Task() {
+                @Override
+                protected Object call() throws Exception {
+                    partida.mover(GridPane.getRowIndex(primeroSeleccionado),GridPane.getColumnIndex(primeroSeleccionado)
+                            ,GridPane.getRowIndex(ultimoSeleccionado),GridPane.getColumnIndex(ultimoSeleccionado));
+                    primeroSeleccionado=null;
+                    return null;
+                }
+            };
+            Thread thread=new Thread(task);
+            thread.start();
         }
-        actualizarBarra();
     }
 
     void procesarSeleccionSecundaria(StackPane pane) throws IOException {
@@ -134,22 +145,47 @@ public class SelectionController {
         primeroSeleccionado=null;
 }
 
-    void actualizarBarra(){
-        imagenBarraSuperior.setImage(new ImagenObjeto(getImagenes(),partida).getImage());
-        superior.setText(partida.getDatos().getVidaActual());
-        inferiorPrimero.setText(partida.getDatos().getAtaque());
-        inferiorCentro.setText(partida.getDatos().getAlcance());
-        inferiorUltimo.setText(partida.getDatos().getVelocidad());
-        nombreActual.setText(partida.getDatosJugadorActual().nombreJugador);
-        barraDeVida.setProgress(Float.valueOf(partida.getDatos().getVidaActual())/Float.valueOf(partida.getDatos().getVidaOriginal()));
+    static void actualizarBarra() {
+        if (Integer.valueOf(partida.getDatos().getVidaOriginal()) != 0) {
+            imagenBarraSuperior.setImage(new ImagenObjeto(getImagenes(), partida).getImage());
+            superior.setText(partida.getDatos().getVidaActual());
+            inferiorPrimero.setText(partida.getDatos().getAtaque());
+            inferiorCentro.setText(partida.getDatos().getAlcance());
+            inferiorUltimo.setText(partida.getDatos().getVelocidad());
+            nombreActual.setText(partida.getDatosJugadorActual().nombreJugador);
+            barraDeVida.setProgress(Float.valueOf(partida.getDatos().getVidaActual()) / Float.valueOf(partida.getDatos().getVidaOriginal()));
+        }
     }
-
     void actualizarCasillero(){
         partida.setIterador(GridPane.getRowIndex(primeroSeleccionado),GridPane.getColumnIndex(primeroSeleccionado));
         restartPane(primeroSeleccionado);
         partida.setIterador(GridPane.getRowIndex(ultimoSeleccionado),GridPane.getColumnIndex(ultimoSeleccionado));
         restartPane(ultimoSeleccionado);
     }
+
+    public static void actualizarCasillero(int x, int y){
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                StackPane paneAux = null;
+                for (Node nodo : tablero.getChildren()) {
+                    if (GridPane.getColumnIndex(nodo) ==y && GridPane.getRowIndex(nodo) ==x) {
+                        paneAux = (StackPane) nodo;
+                        break;
+                    }
+                }
+                restartPane(paneAux);
+                partida.setIterador(x,y);
+                actualizarBarra();
+            }
+        });
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
 
     static void restartPane(StackPane pane){
         pane.getChildren().clear();
@@ -162,6 +198,7 @@ public class SelectionController {
         imagenAerea = new ImagenAerea(imagenes, partida);
         pane.setAlignment(imagenAerea, Pos.TOP_LEFT);
         objeto = new ImagenObjeto(imagenes, partida);
+
         pane.getChildren().addAll(imagenTerrestre, imagenAerea, objeto);
     }
 

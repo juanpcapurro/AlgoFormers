@@ -2,8 +2,10 @@ package vista.controladores;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.control.MenuButton;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Screen;
 import vista.ControlledScreen;
 import vista.ScreensController;
 import vista.mainApp;
@@ -17,7 +19,7 @@ import static vista.mainApp.screenTablero;
 public class ScreenSeleccionDeEquiposController implements Initializable, ControlledScreen {
 
 
-
+    public AnchorPane panelSuperior;
     ScreensController myController;
     @FXML
     AnchorPane autobots;
@@ -54,6 +56,9 @@ public class ScreenSeleccionDeEquiposController implements Initializable, Contro
     public void initialize(URL url, ResourceBundle rb) {
         this.autobot = "optimus";
         this.decepticon = "megatron";
+
+        Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
+        panelSuperior.setPrefSize(screenBounds.getWidth(), screenBounds.getHeight());
     }
 
     public void setScreenParent(ScreensController screenParent) {

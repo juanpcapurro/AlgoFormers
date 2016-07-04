@@ -27,16 +27,18 @@ class Partida {
     private Tablero tablero;
     private ControladorPosiciones iterador=new ControladorPosiciones(8);
     private Posicion posicionIterador=iterador.inicializarPosicion();
+    Jugador jugadorUno;
+    Jugador jugadorDos;
 
    public Partida(String nombreJugadorDecepticons, String nombreJugadorAutobots, int dimension) {
     	this.tablero = new Tablero(dimension);
 
-        Jugador jugadorDecepticons=new JugadorDecepticons(nombreJugadorDecepticons, tablero, new BoneCrusher(), new Frenzy(), new Megatron());
-        Jugador jugadorAutobots=new JugadorAutobots(nombreJugadorAutobots, tablero, new Bumblebee(), new Optimus(), new Ratchet());
+        jugadorUno=new JugadorDecepticons(nombreJugadorDecepticons, tablero, new BoneCrusher(), new Frenzy(), new Megatron());
+        jugadorDos=new JugadorAutobots(nombreJugadorAutobots, tablero, new Bumblebee(), new Optimus(), new Ratchet());
         tablero.colocarRandom(new Flash());
         tablero.colocarRandom(new BurbujaInmaculada());
         tablero.colocarRandom(new DobleCanion());
-        this.turno = new Turno(jugadorAutobots, jugadorDecepticons);
+        this.turno = new Turno(jugadorDos,jugadorUno);
     }
 
    public void saltearTurno(){
@@ -109,6 +111,11 @@ class Partida {
 
     public DatosAlgoformer getDatos(){
         Casillero casillero=tablero.obtenerCasilleroAsociadoAPosicion(posicionIterador);
-        return turno.jugadorActual().obtenerDatos(casillero.getColocable());
+        DatosAlgoformer datos=jugadorUno.obtenerDatos(casillero.getColocable());
+        if (datos==null)
+            datos=jugadorDos.obtenerDatos(casillero.getColocable());
+        if (datos==null)
+            return new DatosAlgoformer(0,0,0,0,0,"");
+        return datos;
     }
 }

@@ -1,16 +1,22 @@
 package vista.controladores;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.geometry.Rectangle2D;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Region;
 import javafx.scene.layout.StackPane;
+import javafx.stage.Screen;
 import modelo.juego.ProxyPartida;
 import vista.ControlledScreen;
 import vista.ScreensController;
@@ -61,9 +67,13 @@ public class ScreenTableroController implements Initializable, ControlledScreen 
     public void initialize(URL url, ResourceBundle rb) {
 //        nombreJugadorTurno.setText(mainApp.partida.getNombreJugadorQueDebeJugar());
         controladorDeSeleccion=new SelectionController(imagenAlgoformerJugando,vidaDisponible,potenciaDeAtaque,
-                                                        alcance,velocidad,nombreJugadorTurno,vidaBar);
+                                                        alcance,velocidad,nombreJugadorTurno,vidaBar,tableroGrid);
         imprimir();
         setButtonsEvent();
+
+        Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
+        panelSuperior.setPrefSize(screenBounds.getWidth(), screenBounds.getHeight());
+
     }
 
     public void setScreenParent(ScreensController screenParent) {
@@ -72,6 +82,7 @@ public class ScreenTableroController implements Initializable, ControlledScreen 
 
     public void imprimir(){
         partida=new ProxyPartida(mainApp.nombreJ1,mainApp.nombreJ2,8);
+        partida.notificarVista();
         Hashtable<String,String> imagenes=TableroVista.getImagenes();
         tableroGrid.getChildren().clear();
         tableroGrid.setGridLinesVisible(true);
