@@ -18,7 +18,7 @@ public class mainApp extends Application {
     public static String nombreJ1="jugador1";
     public static String nombreJ2="jugador2";
     private ScreensController mainContainer;
-    private static String screenInicial = "screenInicial";
+    public static String screenInicial = "screenInicial";
     private static String screenInicialFile = "screenInicial.fxml";
     public static String screenIngresoDeNombres = "screenIngresoDeNombres";
     public static String screenIngresoDeNombresFile = "screenIngresoDeNombres.fxml";
