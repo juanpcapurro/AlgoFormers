@@ -1,38 +1,35 @@
 package vista.controladores;
 
-import java.awt.*;
-import java.awt.TextField;
-import java.net.URL;
-import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Rectangle2D;
-import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Screen;
 import vista.ControlledScreen;
 import vista.ScreensController;
 import vista.mainApp;
 
+import java.net.URL;
+import java.util.ResourceBundle;
+
 import static vista.mainApp.*;
 
 
-public class ScreenInicialController implements Initializable, ControlledScreen {
-    public javafx.scene.control.TextField nombreJugador1;
-    public javafx.scene.control.TextField nombreJugador2;
+public class ScreenFinalController implements Initializable, ControlledScreen {
+    public javafx.scene.control.TextField nombreJugadorGanador;
+
     public AnchorPane panelSuperior;
 
 
     ScreensController myController;
 
-
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
-
         Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
         panelSuperior.setPrefSize(screenBounds.getWidth(), screenBounds.getHeight());
+
+        nombreJugadorGanador.setText("HA GANADO EL JUGADOR: ");
     }
 
     public void setScreenParent(ScreensController screenParent) {
@@ -40,17 +37,11 @@ public class ScreenInicialController implements Initializable, ControlledScreen 
     }
 
     @FXML
-    public void iniciarJuego(){
-        mainApp.nombreJ1 = nombreJugador1.getText();
-        mainApp.nombreJ2 = nombreJugador2.getText();
-        myController.setScreen(screenSeleccionDeEquipos);
+    public void reiniciarJuego(){
+        myController.setScreen(screenInicial);
+    }
 
 
-    }
-    @FXML
-    public void pasarAIngresoDeNombres(){
-        myController.setScreen(screenIngresoDeNombres);
-    }
     @FXML
     public void salir(){
         primaryStage.close();

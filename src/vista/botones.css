@@ -18,3 +18,18 @@
 	-fx-background-size:   cover;
 	-fx-background-repeat: no-repeat;
 }
+
+.backgroundVolverAJugar{
+	-fx-background-image:url("imagenes/botonVolverAJugar.png");
+	-fx-background-color: transparent;
+	-fx-background-size:   cover;
+	-fx-background-repeat: no-repeat;
+}
+
+
+.backgroundFinalizarJuego{
+	-fx-background-image:url("imagenes/botonFinalizarJuego.png");
+	-fx-background-color: transparent;
+	-fx-background-size:   cover;
+	-fx-background-repeat: no-repeat;
+}

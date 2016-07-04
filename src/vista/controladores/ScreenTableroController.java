@@ -39,17 +39,9 @@ public class ScreenTableroController implements Initializable, ControlledScreen 
     @FXML
     ProgressBar vidaBar;
     @FXML
-    ImageView imagenAlgoformerJugando;
+    ImageView imagenAlgoformerJugando,robot1Imagen,robot2Imagen,robot3Imagen;;
     @FXML
-    Label nombreJugadorTurno;
-    @FXML
-    Label alcance;
-    @FXML
-    Label velocidad;
-    @FXML
-    Label vidaDisponible;
-    @FXML
-    Label potenciaDeAtaque;
+    Label nombreJugadorTurno, alcance,velocidad,vidaDisponible,potenciaDeAtaque;
     @FXML
     Button finalizarTurno;
     @FXML
