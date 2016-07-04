@@ -39,6 +39,9 @@ public class TableroVista extends GridPane {
         imagenes.put("Megatron ModoAlternoAereo", "file:src/vista/imagenes/MegatronAlterno.png");
         imagenes.put("EspacioVacio String", "file:src/vista/imagenes/EspacioVacio.png");
 
+        imagenes.put("BurbujaInmaculada String","file:src/vista/imagenes/burbujas.gif");
+        imagenes.put("DobleCanion String","file:src/vista/imagenes/canion.png");
+        imagenes.put("Flash String","file:src/vista/imagenes/flash.png");
         return imagenes;
     }
 

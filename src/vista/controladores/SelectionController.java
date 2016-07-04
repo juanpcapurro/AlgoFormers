@@ -104,16 +104,18 @@ public class SelectionController {
 
 
     void procesarSeleccionPrimaria(StackPane pane){
-        if (primeroSeleccionado==null)
-            primeroSeleccionado=pane;
-        else {
+        if (primeroSeleccionado==null) {
+            primeroSeleccionado = pane;
+            partida.setIterador(GridPane.getRowIndex(primeroSeleccionado), GridPane.getColumnIndex(primeroSeleccionado));
+        }
+            else {
             ultimoSeleccionado=pane;
             partida.mover(GridPane.getRowIndex(primeroSeleccionado),GridPane.getColumnIndex(primeroSeleccionado)
                     ,GridPane.getRowIndex(ultimoSeleccionado),GridPane.getColumnIndex(ultimoSeleccionado));
             actualizarCasillero();
             primeroSeleccionado=null;
+            partida.setIterador(GridPane.getRowIndex(ultimoSeleccionado),GridPane.getColumnIndex(ultimoSeleccionado));
         }
-        partida.setIterador(GridPane.getRowIndex(pane),GridPane.getColumnIndex(pane));
         actualizarBarra();
     }
 
