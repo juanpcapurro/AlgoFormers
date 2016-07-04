@@ -1,8 +1,14 @@
 package vista;
 
 import javafx.application.Application;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.layout.Pane;
+import javafx.scene.transform.Scale;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 import modelo.juego.ProxyPartida;
 
@@ -22,6 +28,7 @@ public class mainApp extends Application {
     private static String screenTablerolFile = "screenTablero.fxml";
 
     public static ProxyPartida partida;
+    private static double width, height;
 //
 //    public static String getNombreJugador2() {
 //        return partida.getNombreJugador2();
@@ -41,12 +48,18 @@ public class mainApp extends Application {
 
         Group root = new Group();
         root.getChildren().addAll(mainContainer);
-        Scene scene = new Scene(root);
 
+
+        Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
+        Scene scene = new Scene(root, screenBounds.getWidth(), screenBounds.getHeight());
+
+        primaryStage.setResizable(false);
+        primaryStage.setFullScreen(true);
         primaryStage.setScene(scene);
         primaryStage.setTitle("ALGOFORMERS");
         primaryStage.show();
 
+//        letterbox(scene, mainContainer.getChildren());
 
     }
 
@@ -66,6 +79,14 @@ public class mainApp extends Application {
     public static void iniciarPartida(String equipoJugador1, String equipoJugador2) {
         partida = new ProxyPartida(nombreJ1,nombreJ2,8);
 
+    }
+
+    public static double getWidth() {
+        return width;
+    }
+
+    public static double getHeight() {
+        return height;
     }
 
 }

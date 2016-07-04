@@ -1,16 +1,22 @@
 package vista.controladores;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.geometry.Rectangle2D;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Region;
 import javafx.scene.layout.StackPane;
+import javafx.stage.Screen;
 import modelo.juego.ProxyPartida;
 import vista.ControlledScreen;
 import vista.ScreensController;
@@ -64,6 +70,10 @@ public class ScreenTableroController implements Initializable, ControlledScreen 
                                                         alcance,velocidad,nombreJugadorTurno,vidaBar,tableroGrid);
         imprimir();
         setButtonsEvent();
+
+        Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
+        panelSuperior.setPrefSize(screenBounds.getWidth(), screenBounds.getHeight());
+
     }
 
     public void setScreenParent(ScreensController screenParent) {
