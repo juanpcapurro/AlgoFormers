@@ -19,8 +19,7 @@ import static vista.mainApp.*;
 
 
 public class ScreenInicialController implements Initializable, ControlledScreen {
-    public javafx.scene.control.TextField nombreJugador1;
-    public javafx.scene.control.TextField nombreJugador2;
+    public javafx.scene.control.TextField nombreJugador1,nombreJugador2;
     public AnchorPane panelSuperior;
 
 

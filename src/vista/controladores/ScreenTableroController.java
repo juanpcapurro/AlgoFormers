@@ -43,11 +43,7 @@ public class ScreenTableroController implements Initializable, ControlledScreen 
     @FXML
     Label nombreJugadorTurno, alcance,velocidad,vidaDisponible,potenciaDeAtaque;
     @FXML
-    Button finalizarTurno;
-    @FXML
-    Button transformar;
-    @FXML
-    Button combinar;
+    Button finalizarTurno, transformar,combinar;
 
 
     ScreensController myController;
