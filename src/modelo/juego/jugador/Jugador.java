@@ -9,7 +9,6 @@ import modelo.tablero.colocable.robots.AlgoFormer;
 import modelo.tablero.posiciones.Posicion;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 public abstract class Jugador {
 
@@ -56,12 +55,16 @@ public abstract class Jugador {
 				throw new NoPuedeCombinarPorTenerAlgoFormersMuertos();
 
 			AlgoFormer combinacion = crearAlgoFormerCombinado(robotsJugador.get(0),robotsJugador.get(1),robotsJugador.get(2));
-			Random randomizer = new Random();
-			AlgoFormer algoformerAlAzar =  robotsJugador.get(randomizer.nextInt(robotsJugador.size()));
-			Posicion posicionCombinado = tablero.obtenerPosicionAsociadaAColocable(algoformerAlAzar);
+			AlgoFormer algoformerDeReunion=  robotsJugador.get(0);
+			Posicion posicionCombinado = tablero.obtenerPosicionAsociadaAColocable(algoformerDeReunion);
+
+			for(AlgoFormer actual : robotsJugador){
+				Posicion posicionActual= tablero.obtenerPosicionAsociadaAColocable(actual);
+				tablero.vaciarPosicion(posicionActual);
+			}
 			robotsJugador.clear();
+
 			robotsJugador.add(combinacion);
-			tablero.vaciarPosicion(posicionCombinado);
 			tablero.colocarAlgoformer(posicionCombinado, combinacion);
 		}
 		else{
