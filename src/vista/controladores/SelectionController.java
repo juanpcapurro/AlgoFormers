@@ -125,7 +125,10 @@ public class SelectionController {
         actualizarCasillero();
         partida.setIterador(GridPane.getRowIndex(ultimoSeleccionado),GridPane.getColumnIndex(ultimoSeleccionado));
         actualizarBarra();
-        ultimoSeleccionado.getChildren().add(new Explosion(ultimoSeleccionado).getView());
+        if (Integer.valueOf(partida.getDatos().getVidaActual())<=0)
+            ultimoSeleccionado.getChildren().add(new ExplosionDestruccion(ultimoSeleccionado).getView());
+        else
+            ultimoSeleccionado.getChildren().add(new Explosion(ultimoSeleccionado).getView());
         primeroSeleccionado=null;
 }
 

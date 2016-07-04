@@ -35,7 +35,7 @@ public class Flash extends Colocable {
 
     @Override
     public Object getEstado() {
-        return null;
+        return "";
     }
 
     @Override
