@@ -8,6 +8,9 @@ import modelo.tablero.Casillero;
 import modelo.tablero.CasilleroYaOcupado;
 import modelo.tablero.Tablero;
 import modelo.tablero.colocable.Colocable;
+import modelo.tablero.colocable.bonus.BurbujaInmaculada;
+import modelo.tablero.colocable.bonus.DobleCanion;
+import modelo.tablero.colocable.bonus.Flash;
 import modelo.tablero.colocable.robots.autobot.Bumblebee;
 import modelo.tablero.colocable.robots.autobot.Optimus;
 import modelo.tablero.colocable.robots.autobot.Ratchet;
@@ -30,7 +33,9 @@ class Partida {
 
         Jugador jugadorDecepticons=new JugadorDecepticons(nombreJugadorDecepticons, tablero, new BoneCrusher(), new Frenzy(), new Megatron());
         Jugador jugadorAutobots=new JugadorAutobots(nombreJugadorAutobots, tablero, new Bumblebee(), new Optimus(), new Ratchet());
-
+        tablero.colocarRandom(new Flash());
+        tablero.colocarRandom(new BurbujaInmaculada());
+        tablero.colocarRandom(new DobleCanion());
         this.turno = new Turno(jugadorAutobots, jugadorDecepticons);
     }
 
