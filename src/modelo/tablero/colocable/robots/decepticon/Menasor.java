@@ -2,7 +2,9 @@ package modelo.tablero.colocable.robots.decepticon;
 
 import modelo.tablero.colocable.robots.*;
 
-public class Menasor extends Decepticon{
+import java.util.ArrayList;
+
+public class Menasor extends Decepticon implements AlgoformerCombinado{
 
     private final Decepticon megatron;
     private final Decepticon boneCrusher;
@@ -16,6 +18,13 @@ public class Menasor extends Decepticon{
         modoActual=new ContextoModoAlgoformer();
 		modoActual.setActual(new ModoHumanoide(ptosDeVida,115,2,2));
         modoActual.setAlternativo(new ModoHumanoide(ptosDeVida,115,2,2));
+    }
+    public ArrayList<AlgoFormer> descomponer(){
+        ArrayList<AlgoFormer> unaLista = new ArrayList<>();
+        unaLista.add(megatron);
+        unaLista.add(boneCrusher);
+        unaLista.add(frenzy);
+        return unaLista;
     }
 
 }

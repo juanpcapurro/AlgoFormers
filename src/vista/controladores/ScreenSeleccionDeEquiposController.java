@@ -22,35 +22,18 @@ public class ScreenSeleccionDeEquiposController implements Initializable, Contro
     public AnchorPane panelSuperior;
     ScreensController myController;
     @FXML
-    AnchorPane autobots;
+    AnchorPane autobots,decepticons;
     @FXML
-    AnchorPane decepticons;
+    javafx.scene.control.Button  autobotsNext, autobotsPrevious,  decepticonsNext,  decepticonsPrevious;
     @FXML
-    javafx.scene.control.Button  autobotsNext;
-    @FXML
-    javafx.scene.control.Button  autobotsPrevious;
-    @FXML
-    javafx.scene.control.Button  decepticonsNext;
-    @FXML
-    javafx.scene.control.Button  decepticonsPrevious;
-    @FXML
-    MenuButton autobotJugador;
-    @FXML
-    MenuButton decepticonJugador;
+    MenuButton autobotJugador, decepticonJugador;
 
     @FXML
-    public  javafx.scene.control.MenuItem jugador1Autobot;
+    public  javafx.scene.control.MenuItem jugador1Autobot, jugador2Autobot;
     @FXML
-    public  javafx.scene.control.MenuItem jugador2Autobot;
-    @FXML
-    public  javafx.scene.control.MenuItem jugador1Decepticon;
-    @FXML
-    public  javafx.scene.control.MenuItem jugador2Decepticon;
+    public  javafx.scene.control.MenuItem jugador1Decepticon,jugador2Decepticon;
 
-    private String autobot;
-    private String decepticon;
-    private String equipoJugador1;
-    private String equipoJugador2;
+    private String autobot, decepticon,equipoJugador1, equipoJugador2;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
