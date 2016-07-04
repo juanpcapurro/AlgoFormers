@@ -82,8 +82,7 @@ public abstract class Jugador {
 			actual.notificar();
 	}
 
-	private boolean esAlgoformerPropio(Colocable unColocable){
-		for(AlgoFormer actual: robotsJugador)
+	 public boolean esAlgoformerPropio(Colocable unColocable){for(AlgoFormer actual: robotsJugador)
 			if(actual.equals(unColocable))
 				return true;
 		return false;

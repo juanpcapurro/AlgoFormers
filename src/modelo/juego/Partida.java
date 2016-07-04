@@ -111,11 +111,10 @@ class Partida {
 
     public DatosAlgoformer getDatos(){
         Casillero casillero=tablero.obtenerCasilleroAsociadoAPosicion(posicionIterador);
-        DatosAlgoformer datos=jugadorUno.obtenerDatos(casillero.getColocable());
-        if (datos==null)
-            datos=jugadorDos.obtenerDatos(casillero.getColocable());
-        if (datos==null)
-            return new DatosAlgoformer(0,0,0,0,0,"");
-        return datos;
+        if (jugadorUno.esAlgoformerPropio(casillero.getColocable()))
+            return jugadorUno.obtenerDatos(casillero.getColocable());
+        if (jugadorDos.esAlgoformerPropio(casillero.getColocable()))
+            return jugadorDos.obtenerDatos(casillero.getColocable());
+        return new DatosAlgoformer(0,0,0,0,0,"");
     }
 }
