@@ -68,8 +68,6 @@ public class JugadorTest {
 		megatron.recibirAtaque(new Ataque(1000));
 		assertFalse(jugadorDecepticons.equipovivo());
 	}
-
-
 	@Test(expected= NoEsAlgoFormerPropio.class)
 	public void unJugadorNoPuedeAtacarConAlgoFormersAjenos() {
 		jugadorDecepticons.atacar(posicionBumblebee, posicionOptimus);
