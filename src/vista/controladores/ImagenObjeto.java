@@ -6,13 +6,14 @@ import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
+import modelo.juego.DatosAlgoformer;
 import modelo.juego.ProxyPartida;
 
 import java.util.Hashtable;
 
 
 public class ImagenObjeto extends ImageView implements ContenidoCasillero {
-    private static final int HEIGTH = 70;
+    private static final int HEIGHT = 70;
     private static final int WIDTH = 90;
     ImageCursor cursor = new ImageCursor(new Image("file:src/vista/imagenes/cursorMira.png"));
 
@@ -20,7 +21,18 @@ public class ImagenObjeto extends ImageView implements ContenidoCasillero {
         String imagen;
         imagen = imagenes.get((partida.obtenerColocable()).getClass().getSimpleName()+" "+partida.getEstado().getClass().getSimpleName());
         setImage(new Image(imagen));
-        setFitHeight(HEIGTH - 20);
+        setProperties();
+    }
+
+    public ImagenObjeto(Hashtable<String,String> imagenes, Object aBuscar){
+        String imagen;
+        imagen = imagenes.get(((DatosAlgoformer)aBuscar).getNombre()+" "+((DatosAlgoformer)aBuscar).getModo());
+        setImage(new Image(imagen));
+        setProperties();
+    }
+
+    void setProperties(){
+        setFitHeight(HEIGHT - 20);
         setFitWidth(WIDTH - 20);
         setOpacity(1);
         setPickOnBounds(false);
@@ -28,7 +40,6 @@ public class ImagenObjeto extends ImageView implements ContenidoCasillero {
         setHigherEffect();
         setLowerEffect();
         setEffect(new DropShadow(10, 5, 5, Color.BLACK));
-
     }
 
     void setHigherEffect() {

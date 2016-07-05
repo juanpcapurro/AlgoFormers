@@ -16,8 +16,10 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
+import modelo.juego.DatosAlgoformer;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Hashtable;
 
 import static vista.controladores.ScreenTableroController.partida;
@@ -36,9 +38,13 @@ public class SelectionController {
     static Label nombreActual;
     static ProgressBar barraDeVida;
     static GridPane tablero;
+    static ImageView jugableUno;
+    static ImageView jugableDos;
+    static ImageView jugableTres;
 
     SelectionController(ImageView imagenSuperior, Label supLabel, Label infLabelFirst,
-                        Label infLabelSecond, Label infLabelThird, Label nombre, ProgressBar barraVida,GridPane grid){
+                        Label infLabelSecond, Label infLabelThird, Label nombre, ProgressBar barraVida,GridPane grid,
+                        ImageView robot1Imagen, ImageView robot2Imagen,ImageView robort3Imagen){
         imagenBarraSuperior=imagenSuperior;
         superior=supLabel;
         inferiorPrimero =infLabelFirst;
@@ -47,6 +53,9 @@ public class SelectionController {
         inferiorUltimo=infLabelThird;
         barraDeVida=barraVida;
         tablero=grid;
+        jugableUno=robot1Imagen;
+        jugableDos=robot2Imagen;
+        jugableTres=robort3Imagen;
     }
     void setUp(StackPane pane){
         setCrosshairOn(pane);
@@ -112,7 +121,6 @@ public class SelectionController {
         if (primeroSeleccionado==null) {
             primeroSeleccionado = pane;
             partida.setIterador(GridPane.getRowIndex(primeroSeleccionado), GridPane.getColumnIndex(primeroSeleccionado));
-            actualizarBarra();
         }
         else {
             ultimoSeleccionado=pane;
@@ -121,6 +129,7 @@ public class SelectionController {
                 protected Object call() throws Exception {
                     partida.mover(GridPane.getRowIndex(primeroSeleccionado),GridPane.getColumnIndex(primeroSeleccionado)
                             ,GridPane.getRowIndex(ultimoSeleccionado),GridPane.getColumnIndex(ultimoSeleccionado));
+                    actualizarBarra();
                     primeroSeleccionado=null;
                     return null;
                 }
@@ -128,6 +137,7 @@ public class SelectionController {
             Thread thread=new Thread(task);
             thread.start();
         }
+        actualizarBarra();
     }
 
     void procesarSeleccionSecundaria(StackPane pane) throws IOException {
@@ -146,6 +156,8 @@ public class SelectionController {
 }
 
     static void actualizarBarra() {
+        actualizarUnidadesJugables();
+
         if (Integer.valueOf(partida.getDatos().getVidaOriginal()) != 0) {
             imagenBarraSuperior.setImage(new ImagenObjeto(getImagenes(), partida).getImage());
             superior.setText(partida.getDatos().getVidaActual());
@@ -156,6 +168,14 @@ public class SelectionController {
             barraDeVida.setProgress(Float.valueOf(partida.getDatos().getVidaActual()) / Float.valueOf(partida.getDatos().getVidaOriginal()));
         }
     }
+
+    static void actualizarUnidadesJugables(){
+        ArrayList<DatosAlgoformer> listaDatos=partida.getDatosJugadorActual().algoformers;
+        jugableUno.setImage((new ImagenObjeto(getImagenes(),listaDatos.get(0)).getImage()));
+        jugableDos.setImage((new ImagenObjeto(getImagenes(),listaDatos.get(1)).getImage()));
+        jugableTres.setImage((new ImagenObjeto(getImagenes(),listaDatos.get(2)).getImage()));
+    }
+
     void actualizarCasillero(){
         partida.setIterador(GridPane.getRowIndex(primeroSeleccionado),GridPane.getColumnIndex(primeroSeleccionado));
         restartPane(primeroSeleccionado);
@@ -171,7 +191,7 @@ public class SelectionController {
                 for (Node nodo : tablero.getChildren()) {
                     if (GridPane.getColumnIndex(nodo) ==y && GridPane.getRowIndex(nodo) ==x) {
                         paneAux = (StackPane) nodo;
-                        break;
+                        break; //unico lugar donde realmente esta justificado un break.
                     }
                 }
                 restartPane(paneAux);
@@ -210,8 +230,8 @@ public class SelectionController {
                     partida.transformar(GridPane.getRowIndex(primeroSeleccionado), GridPane.getColumnIndex(primeroSeleccionado));
                     restartPane(primeroSeleccionado);
                 }
-                primeroSeleccionado=null;
                 actualizarBarra();
+                primeroSeleccionado=null;
             }
         });
 

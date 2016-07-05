@@ -47,7 +47,8 @@ public class ScreenTableroController implements Initializable, ControlledScreen 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         controladorDeSeleccion=new SelectionController(imagenAlgoformerJugando,vidaDisponible,potenciaDeAtaque,
-                                                        alcance,velocidad,nombreJugadorTurno,vidaBar,tableroGrid);
+                                                        alcance,velocidad,nombreJugadorTurno,vidaBar,tableroGrid,
+                                                        robot1Imagen,robot2Imagen,robot3Imagen);
         System.out.printf("%f %f \n",tableroGrid.getHeight(),tableroGrid.getHgap());
         imprimir();
         setButtonsEvent();

@@ -4,13 +4,15 @@ public class DatosAlgoformer {
     public int vidaActual;
     public int vidaOriginal;
     public String nombre;
+    public String modo;
     public int ataque;
     public int velocidad;
     public int alcance;
 
-    public DatosAlgoformer(int vida, String nombre) {
+    public DatosAlgoformer(int vida, String nombre,String modo) {
         this.vidaActual = vida;
         this.nombre = nombre;
+        this.modo=modo;
     }
 
     public DatosAlgoformer(int vidaOriginal,int vidaActual, int ataque,int velocidad, int alcance, String nombre) {
@@ -38,6 +40,12 @@ public class DatosAlgoformer {
 
     public String getVidaOriginal(){
         return String.valueOf(vidaOriginal);
+    }
+    public String getModo(){
+        return modo;
+    }
+    public String getNombre(){
+        return nombre;
     }
 
 }

@@ -59,7 +59,7 @@ public abstract class AlgoFormer extends Colocable {
 	}
 
 	public DatosAlgoformer obtenerDatosAlgoformer(){
-		return new DatosAlgoformer(getPuntosDeVida(), this.getClass().getSimpleName());//paja hacerlo polimorfico con un literal
+		return new DatosAlgoformer(getPuntosDeVida(), this.getClass().getSimpleName(),this.getEstado().getClass().getSimpleName());//paja hacerlo polimorfico con un literal
 	}
 	@Override
 	public void afectarColocable(ContextoModoAlgoformer modo){
