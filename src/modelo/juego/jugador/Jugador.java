@@ -75,6 +75,11 @@ public abstract class Jugador {
 	public void atacar(Posicion hostil, Posicion objetivo){
 		validarQuePuedeJugar();
 		hayUnAlgoFormerPropioEnPosicion(hostil);
+		AlgoFormer robot = (AlgoFormer)tablero.obtenerCasilleroAsociadoAPosicion(hostil).getColocable();
+		ControladorPosiciones controlador = new ControladorPosiciones(tablero.getDimension());
+		if(robot.getDistanciaDeAtaque()< controlador.calcularDistancia(hostil, objetivo))
+			throw new ObjetivoFueraDeRango();
+
 		tablero.atacar(hostil, objetivo);
 	}
 	public void notificar() {
