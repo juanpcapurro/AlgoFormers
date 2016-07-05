@@ -49,7 +49,6 @@ public class ScreenTableroController implements Initializable, ControlledScreen 
         controladorDeSeleccion=new SelectionController(imagenAlgoformerJugando,vidaDisponible,potenciaDeAtaque,
                                                         alcance,velocidad,nombreJugadorTurno,vidaBar,tableroGrid,
                                                         robot1Imagen,robot2Imagen,robot3Imagen);
-        System.out.printf("%f %f \n",tableroGrid.getHeight(),tableroGrid.getHgap());
         imprimir();
         setButtonsEvent();
         tableroGrid.setGridLinesVisible(true);
@@ -68,7 +67,6 @@ public class ScreenTableroController implements Initializable, ControlledScreen 
         Hashtable<String,String> imagenes=TableroVista.getImagenes();
         tableroGrid.getChildren().clear();
         tableroGrid.setGridLinesVisible(true);
-        //tableroGrid.setPadding(new Insets(10,10,10,10));
         for (int j=0;j<8;j++) {
             for (int i = 0; i < 8; i++) {
                 StackPane pane = new StackPane();

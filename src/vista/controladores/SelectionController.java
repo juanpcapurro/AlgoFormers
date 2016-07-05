@@ -121,6 +121,7 @@ public class SelectionController {
         if (primeroSeleccionado==null) {
             primeroSeleccionado = pane;
             partida.setIterador(GridPane.getRowIndex(primeroSeleccionado), GridPane.getColumnIndex(primeroSeleccionado));
+            actualizarBarra();
         }
         else {
             ultimoSeleccionado=pane;
@@ -129,7 +130,12 @@ public class SelectionController {
                 protected Object call() throws Exception {
                     partida.mover(GridPane.getRowIndex(primeroSeleccionado),GridPane.getColumnIndex(primeroSeleccionado)
                             ,GridPane.getRowIndex(ultimoSeleccionado),GridPane.getColumnIndex(ultimoSeleccionado));
-                    actualizarBarra();
+                    Platform.runLater(new Runnable() {
+                        @Override
+                        public void run() {
+                            actualizarBarra();
+                        }
+                    });
                     primeroSeleccionado=null;
                     return null;
                 }
@@ -137,7 +143,7 @@ public class SelectionController {
             Thread thread=new Thread(task);
             thread.start();
         }
-        actualizarBarra();
+
     }
 
     void procesarSeleccionSecundaria(StackPane pane) throws IOException {
