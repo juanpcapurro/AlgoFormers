@@ -120,6 +120,4 @@ public class TableroTest{
         assertTrue(bumblebee.getAtaque()>ataqueAntesDeBonus);
     }
 
-
-
 }
