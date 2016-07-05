@@ -71,6 +71,13 @@ public class JugadorTest {
 	@Test
 	public void muereElEquipoAlAtacarLasPosicionesDeLosAlgoformers(){
 		assertTrue(jugadorAutobots.equipovivo());
+		jugadorDecepticons.mover(posicionFrenzy, new Posicion(1,6));//Para que pueda atacar a todos los enemigos
+		jugadorDecepticons.mover(new Posicion(1,6), new Posicion(1,5));
+		jugadorDecepticons.mover(new Posicion(1,5), new Posicion(1,4));
+		jugadorDecepticons.mover(new Posicion(1,4), new Posicion(0,4));
+		posicionFrenzy = tablero.obtenerPosicionAsociadaAColocable(frenzy);
+		assertTrue(posicionFrenzy.compararPosicion(new Posicion(0,4)));
+
 		for (int i =0; i< 150; i++){
 			jugadorDecepticons.atacar(posicionFrenzy, posicionBumblebee);
 		}
@@ -104,7 +111,6 @@ public class JugadorTest {
 		jugadorAutobots.transformar(posicionFrenzy);
 		jugadorAutobots.transformar(posicionMegatron);
 	}
-
 	@Test
 	public void combinarYDescombinarTomaDosTurnos() {
 		jugadorDecepticons.combinarODescombinar();//Pasar de descombinado a combinado
