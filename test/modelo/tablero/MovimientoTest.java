@@ -22,7 +22,7 @@ public class MovimientoTest {
     @Test
     public void moverPosicion01(){
         Posicion posicionOrigen= new Posicion(3,4);
-        Posicion posicionDestino= new Posicion(3,6);
+        Posicion posicionDestino= new Posicion(3,5);
         tablero.colocarAlgoformer(posicionOrigen,algoFormerDePrueba);
         tablero.recorrer(posicionOrigen,posicionDestino);
 
@@ -32,8 +32,8 @@ public class MovimientoTest {
 
     @Test
     public void moverPosicion02(){
-        Posicion posicionOrigen= new Posicion(3,4);
-        Posicion posicionDestino= new Posicion(2,6);
+        Posicion posicionOrigen= new Posicion(3,5);
+        Posicion posicionDestino= new Posicion(3,4);
         tablero.colocarAlgoformer(posicionOrigen,algoFormerDePrueba);
         tablero.recorrer(posicionOrigen,posicionDestino);
 
@@ -44,7 +44,7 @@ public class MovimientoTest {
     @Test
     public void moverPosicion03(){
         Posicion posicionOrigen= new Posicion(1,7);
-        Posicion posicionDestino= new Posicion(4,5);
+        Posicion posicionDestino= new Posicion(1,6);
         tablero.colocarAlgoformer(posicionOrigen,algoFormerDePrueba);
         tablero.recorrer(posicionOrigen,posicionDestino);
 

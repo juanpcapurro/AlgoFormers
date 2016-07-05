@@ -95,9 +95,9 @@ public class TableroTest{
 
     @Test
     public void test10MoverAlgoformerPasaPorEspinasYEsDaniado(){
-        Posicion posicionEspinas= new Posicion(3,4);
+        Posicion posicionEspinas= new Posicion(2,4);
         Posicion posicionBumble=new Posicion(1,4);
-        Posicion posicionDestino=new Posicion(4,4);
+        Posicion posicionDestino=new Posicion(2,4);
         Bumblebee bumblebee=new Bumblebee();
         int vidaAntesDeEspinas=bumblebee.getPuntosDeVida();
         tablero.colocarEspinas(posicionEspinas);
@@ -108,10 +108,10 @@ public class TableroTest{
 
     @Test
     public void test11MoverAlgoformerPasaPorBonusYEsAumentaAtaque(){
-        Posicion posicionBonus= new Posicion(2,4);
+        Posicion posicionBonus= new Posicion(2,3);
         Posicion posicionBumble=new Posicion(2,2);
         DobleCanion dobleCanion=new DobleCanion();
-        Posicion posicionDestino=new Posicion(2,6);
+        Posicion posicionDestino=new Posicion(2,4);
         Bumblebee bumblebee=new Bumblebee();
         int ataqueAntesDeBonus=bumblebee.getAtaque();
         tablero.colocar(posicionBonus,dobleCanion);
