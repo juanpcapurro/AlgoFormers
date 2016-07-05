@@ -63,7 +63,7 @@ public class ScreenTableroController implements Initializable, ControlledScreen 
 
     public void imprimir(){
         partida=new ProxyPartida(mainApp.nombreJ1,mainApp.nombreJ2,8);
-        partida.notificarVista();
+        partida.setNotificarVista();
         Hashtable<String,String> imagenes=TableroVista.getImagenes();
         tableroGrid.getChildren().clear();
         tableroGrid.setGridLinesVisible(true);
@@ -84,6 +84,7 @@ public class ScreenTableroController implements Initializable, ControlledScreen 
     public void setButtonsEvent(){
         controladorDeSeleccion.setTransformation(transformar);
         controladorDeSeleccion.setFinalizarTurno(finalizarTurno);
+        controladorDeSeleccion.setCombinar(combinar);
         setResizeEffectOnButton(finalizarTurno);
         setResizeEffectOnButton(transformar);
         setResizeEffectOnButton(combinar);

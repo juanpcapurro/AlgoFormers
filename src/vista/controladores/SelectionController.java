@@ -134,6 +134,7 @@ public class SelectionController {
                         @Override
                         public void run() {
                             actualizarBarra();
+                            restartPane(ultimoSeleccionado);
                         }
                     });
                     primeroSeleccionado=null;
@@ -164,7 +165,7 @@ public class SelectionController {
     static void actualizarBarra() {
         actualizarUnidadesJugables();
 
-        if (Integer.valueOf(partida.getDatos().getVidaOriginal()) != 0) {
+        if (Integer.valueOf(partida.getDatos().getVidaOriginal()) != 1) {
             imagenBarraSuperior.setImage(new ImagenObjeto(getImagenes(), partida).getImage());
             superior.setText(partida.getDatos().getVidaActual());
             inferiorPrimero.setText(partida.getDatos().getAtaque());
@@ -177,9 +178,16 @@ public class SelectionController {
 
     static void actualizarUnidadesJugables(){
         ArrayList<DatosAlgoformer> listaDatos=partida.getDatosJugadorActual().algoformers;
-        jugableUno.setImage((new ImagenObjeto(getImagenes(),listaDatos.get(0)).getImage()));
-        jugableDos.setImage((new ImagenObjeto(getImagenes(),listaDatos.get(1)).getImage()));
-        jugableTres.setImage((new ImagenObjeto(getImagenes(),listaDatos.get(2)).getImage()));
+        if(listaDatos.size()==3) {
+            jugableUno.setImage((new ImagenObjeto(getImagenes(), listaDatos.get(0)).getImage()));
+            jugableDos.setImage((new ImagenObjeto(getImagenes(), listaDatos.get(1)).getImage()));
+            jugableTres.setImage((new ImagenObjeto(getImagenes(), listaDatos.get(2)).getImage()));
+        } else{
+            jugableUno.setImage(null);
+            jugableDos.setImage(null);
+            jugableTres.setImage((new ImagenObjeto(getImagenes(), listaDatos.get(0)).getImage()));
+        }
+
     }
 
     void actualizarCasillero(){
@@ -271,5 +279,20 @@ public class SelectionController {
         });
     }
 
+    void setCombinar(Button combinar){
+        combinar.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                Task task=new Task() {
+                    @Override
+                    protected Object call() throws Exception {
+                        partida.combinarODescombinar();
+                        return null;
+                    }
+                };
+                (new Thread(task)).start();
+            }
+        });
+    }
 
 }

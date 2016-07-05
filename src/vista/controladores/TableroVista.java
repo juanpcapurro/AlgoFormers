@@ -30,6 +30,7 @@ public class TableroVista extends GridPane {
         imagenes.put("Optimus ModoAlternoTerrestre", "file:src/vista/imagenes/OptimusAlterno.png");
         imagenes.put("Ratchet ModoHumanoide", "file:src/vista/imagenes/RatchetHumanoide.png");
         imagenes.put("Ratchet ModoAlternoAereo", "file:src/vista/imagenes/RatchetAlterno.png");
+        imagenes.put("Menasor ModoHumanoide","file:src/vista/imagenes/Menasor.png");
 
         imagenes.put("BoneCrusher ModoHumanoide", "file:src/vista/imagenes/BonecrusherHumanoide.png");
         imagenes.put("BoneCrusher ModoAlternoTerrestre", "file:src/vista/imagenes/BonecrusherAlterno.png");
@@ -38,6 +39,7 @@ public class TableroVista extends GridPane {
         imagenes.put("Megatron ModoHumanoide", "file:src/vista/imagenes/MegatronHumanoide.png");
         imagenes.put("Megatron ModoAlternoAereo", "file:src/vista/imagenes/MegatronAlterno.png");
         imagenes.put("EspacioVacio String", "file:src/vista/imagenes/EspacioVacio.png");
+        imagenes.put("Superion ModoHumanoide","file:src/vista/imagenes/superion.png");
 
         imagenes.put("BurbujaInmaculada String","file:src/vista/imagenes/burbujas.gif");
         imagenes.put("DobleCanion String","file:src/vista/imagenes/canion.png");

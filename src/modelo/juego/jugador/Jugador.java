@@ -13,6 +13,8 @@ import modelo.tablero.posiciones.Posicion;
 
 import java.util.ArrayList;
 
+import static modelo.juego.ProxyPartida.notificarCambio;
+
 public abstract class Jugador {
 
 	private String nombreDeJugador;
@@ -128,11 +130,13 @@ public abstract class Jugador {
 		for(AlgoFormer actual : robotsJugador){
 			Posicion posicionActual= tablero.obtenerPosicionAsociadaAColocable(actual);
 			tablero.vaciarPosicion(posicionActual);
+			notificarCambio(posicionActual);
 		}
 		robotsJugador.clear();
 
 		robotsJugador.add(combinacion);
 		tablero.colocarAlgoformer(posicionCombinado, combinacion);
+		notificarCambio(posicionCombinado);
 	}
 	private void descombinar(){
 		if(robotsJugador.size()!=1 || !robotsJugador.get(0).estaVivo())
@@ -140,6 +144,7 @@ public abstract class Jugador {
 		ControladorPosiciones unControlador = new ControladorPosiciones(tablero.getDimension());
 		Posicion posicionRobot = tablero.obtenerPosicionAsociadaAColocable(robotsJugador.get(0));
 		tablero.vaciarPosicion(posicionRobot);
+		notificarCambio(posicionRobot);
 		unControlador.inicializarIteradorDesdePosicion(posicionRobot);
 		AlgoformerCombinado combiancion = (AlgoformerCombinado) robotsJugador.get(0);
 		robotsJugador = combiancion.descomponer();
@@ -148,6 +153,7 @@ public abstract class Jugador {
 			while(tablero.estaOcupadoEnPosicion(posicionRobot))
 				posicionRobot=unControlador.inicializarPosicion();
 			tablero.colocarAlgoformer(posicionRobot, actual);
+			notificarCambio(posicionRobot);
 		}
 	}
 }

@@ -6,6 +6,7 @@ import modelo.juego.jugador.JugadorDecepticons;
 import modelo.juego.jugador.NoEsAlgoFormerPropio;
 import modelo.tablero.Casillero;
 import modelo.tablero.CasilleroYaOcupado;
+import modelo.tablero.SinMovimientosDisponibles;
 import modelo.tablero.Tablero;
 import modelo.tablero.colocable.Colocable;
 import modelo.tablero.colocable.bonus.BurbujaInmaculada;
@@ -50,8 +51,10 @@ class Partida {
            turno.jugadorActual().mover(posicionInicial, posicionFinal);
        }catch (CasilleroYaOcupado|NoEsAlgoFormerPropio e){
         return;
+       }catch (SinMovimientosDisponibles e){
+           turno.avanzarTurno();
+           return;
        }
-       turno.avanzarTurno();
    }
     public void atacar(Posicion hostil, Posicion objetivo){
         turno.jugadorActual().atacar(hostil, objetivo);
@@ -115,6 +118,6 @@ class Partida {
             return jugadorUno.obtenerDatos(casillero.getColocable());
         if (jugadorDos.esAlgoformerPropio(casillero.getColocable()))
             return jugadorDos.obtenerDatos(casillero.getColocable());
-        return new DatosAlgoformer(0,0,0,0,0,"");
+        return new DatosAlgoformer(1,0,0,0,0,"");
     }
 }

@@ -71,20 +71,21 @@ public class ProxyPartida {
         return partida.getDatos();
     }
 
-    public static void notificarVista(){
+    public static void setNotificarVista(){
         notificarVista=true;
     }
 
     public static void notificarMovimiento(Posicion posicionOrigen,Posicion posicionDestino) {
-        int x = posicionOrigen.verCoordenadaX();
-        int y = posicionOrigen.verCoordenadaY();
+        notificarCambio(posicionOrigen);
+        notificarCambio(posicionDestino);
+
+    }
+
+    static public void notificarCambio(Posicion posicion){
+        int x = posicion.verCoordenadaX();
+        int y = posicion.verCoordenadaY();
         if(notificarVista)
             actualizarCasillero(x,y);
-        x = posicionDestino.verCoordenadaX();
-        y = posicionDestino.verCoordenadaY();
-        if(notificarVista)
-            actualizarCasillero(x, y);
-
     }
 
 }

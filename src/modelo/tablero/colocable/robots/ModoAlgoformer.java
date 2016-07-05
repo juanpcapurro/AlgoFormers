@@ -21,9 +21,9 @@ public abstract class ModoAlgoformer {
     }
 
     void notificar(){
+        movimientosRealizados=0;
         for (int i=0; i<modificadores.size();i++)
             (modificadores.get(i)).actualizar();//No intentes hacerlo bien, alma incauta.
-        movimientosRealizados=0;
     }
     EstadoAlgoFormer verEstado(){
         return estado;
@@ -46,7 +46,8 @@ public abstract class ModoAlgoformer {
     }
 
     boolean tieneMovimientosDisponibles(){
-        return movimientosRealizados<estado.getVelocidad();
+        movimientosRealizados++;
+        return movimientosRealizados<=estado.getVelocidad();
 
     }
 }
