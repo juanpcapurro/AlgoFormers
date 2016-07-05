@@ -15,8 +15,8 @@ public class TableroTest{
     AlgoFormer algoFormerDePrueba;
 
     @Before
-    public void initialize(){
-        tablero = new Tablero(8);
+    public void setUp(){
+        tablero = new Tablero(8,true);
         algoFormerDePrueba = new Bumblebee();
     }
 

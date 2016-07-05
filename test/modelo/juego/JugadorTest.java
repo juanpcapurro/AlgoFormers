@@ -39,7 +39,7 @@ public class JugadorTest {
 
 	@Before
 	public void setUp(){
-		tablero=new Tablero(8);
+		tablero=new Tablero(8, true);
 		boneCrusher = new BoneCrusher();
 		frenzy = new Frenzy();
 		megatron = new Megatron();
@@ -71,12 +71,15 @@ public class JugadorTest {
 	@Test
 	public void muereElEquipoAlAtacarLasPosicionesDeLosAlgoformers(){
 		assertTrue(jugadorAutobots.equipovivo());
+		assertTrue(posicionFrenzy.compararPosicion(new Posicion(0,6)));
+		jugadorDecepticons.transformar(posicionFrenzy);
 		jugadorDecepticons.mover(posicionFrenzy, new Posicion(1,6));//Para que pueda atacar a todos los enemigos
 		jugadorDecepticons.mover(new Posicion(1,6), new Posicion(1,5));
 		jugadorDecepticons.mover(new Posicion(1,5), new Posicion(1,4));
 		jugadorDecepticons.mover(new Posicion(1,4), new Posicion(0,4));
 		posicionFrenzy = tablero.obtenerPosicionAsociadaAColocable(frenzy);
 		assertTrue(posicionFrenzy.compararPosicion(new Posicion(0,4)));
+		jugadorDecepticons.transformar(posicionFrenzy);
 		for (int i =0; i< 150; i++){
 			jugadorDecepticons.atacar(posicionFrenzy, posicionBumblebee);
 		}

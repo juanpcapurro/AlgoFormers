@@ -13,6 +13,9 @@ public class ContextoSuperficieArea {
         StateSuperficieAerea[] vectorRandom= {new Nube(), new NebulosaDeAndromeda(), new TormentaPsionica()};
         actual=vectorRandom[i];
     }
+    public ContextoSuperficieArea(boolean debug){
+            actual=new Nube();
+    }
 
     void cambiarANebulosa(){
         actual=new NebulosaDeAndromeda();

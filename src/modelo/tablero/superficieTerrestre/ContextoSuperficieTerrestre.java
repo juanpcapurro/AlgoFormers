@@ -4,6 +4,7 @@ import modelo.tablero.colocable.robots.armas.Ataque;
 import modelo.tablero.colocable.robots.armas.AtaqueAutobot;
 import modelo.tablero.colocable.robots.armas.AtaqueDecepticon;
 import modelo.tablero.superficie.Superficie;
+import modelo.tablero.superficieAerea.ContextoSuperficieArea;
 
 import java.util.Random;
 
@@ -15,7 +16,9 @@ public class ContextoSuperficieTerrestre {
         StateSuperficieTerrestre[] vectorRandom= {new Rocoso(), new Espinas(), new Pantanoso()};
         actual=vectorRandom[i];
     }
-
+    public ContextoSuperficieTerrestre(boolean debug){
+        actual=new Rocoso();
+    }
 
     public void cambiarEspinas(){
         actual=new Espinas();

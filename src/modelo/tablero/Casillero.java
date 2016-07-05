@@ -21,8 +21,13 @@ public class Casillero {
         superficieTerrestreActual=new ContextoSuperficieTerrestre();
         posicion=nuevaPosicion;
     }
-
-    Casillero(){
+    Casillero(Posicion nuevaPosicion, boolean debug){
+        colocado= new EspacioVacio();
+        superficieAereaActual= new ContextoSuperficieArea(debug);
+        superficieTerrestreActual=new ContextoSuperficieTerrestre(debug);
+        posicion=nuevaPosicion;
+    }
+    Casillero(){//creo que ESTO NUNCA DEBERIA SER USADO
         colocado=new EspacioVacio();
         superficieAereaActual= new ContextoSuperficieArea();
         superficieTerrestreActual=new ContextoSuperficieTerrestre();

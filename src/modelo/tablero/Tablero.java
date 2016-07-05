@@ -13,17 +13,24 @@ public class Tablero{
 	private List<Casillero> listaCasilleros;
     ControladorPosiciones controlador;
 
-	public Tablero(int dimension_pedida){
-        controlador= new ControladorPosiciones(dimension_pedida);
+	public Tablero(int dimension_pedida, boolean debug){
+	    controlador= new ControladorPosiciones(dimension_pedida);
 		listaCasilleros = new ArrayList<>();
 		DIMENSION = dimension_pedida;
 		for(int i=0;i<DIMENSION*DIMENSION;i++){
+			Casillero casillero;
             Posicion posicion=controlador.inicializarPosicion();
-			Casillero casillero=new Casillero(posicion);
+			if(debug)
+				casillero=new Casillero(posicion, true);
+			else
+				casillero = new Casillero(posicion);
 			listaCasilleros.add(casillero);
 		}
 	}
 
+	public Tablero(int dimension_pedida){
+		this(dimension_pedida, false);
+	}
     boolean estaTodoVacio(){
         for (Casillero casillero : listaCasilleros)
             if (casillero.estaOcupado())
