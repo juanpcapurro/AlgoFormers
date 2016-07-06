@@ -352,97 +352,59 @@ public class DobleCanionTest {
 		assertEquals(boneCrusher.getAtaque(),30);
 	}
 
-/*
 	@Test
 	public void test13SuperionTomaDobleCanionYDuplicaAtaquePorTresTurnos(){
-		
-		assertEquals(this.turno.obtenerJugadorQueDebeJugar(),Joey);
-		this.turno.combinarAlgoformers();
-		
-		assertEquals(this.turno.obtenerJugadorQueDebeJugar(),Chandler);
-		this.turno.finalizar();
-		assertEquals(this.turno.obtenerJugadorQueDebeJugar(),Chandler);
-		this.turno.finalizar();
-		assertEquals(this.turno.obtenerJugadorQueDebeJugar(),Chandler);
-		this.turno.finalizar();
-		assertEquals(this.turno.obtenerJugadorQueDebeJugar(),Joey);
-
+		Superion superion = new Superion(optimus, bumblebee, ratchet);
 		//pre bonus
-		assertEquals(this.Joey.obtenerJugadaActual().getAlgoformerDeJugada().getAtaque(),100);
+		assertEquals(superion.getAtaque(),100);
 		
 		//turno de obtencion
-		assertEquals(this.turno.obtenerJugadorQueDebeJugar(),Joey);
-		this.Joey.obtenerJugadaActual().getAlgoformerDeJugada().recibirColocable(new DobleCanion());
-		assertEquals(this.Joey.obtenerJugadaActual().getAlgoformerDeJugada().getAtaque(),200);
-		this.turno.avanzarTurno();
-		this.turno.avanzarTurno();
+		superion.recibirColocable(new DobleCanion());
+		assertEquals(superion.getAtaque(),200);
+		superion.notificar();
 		
 		//primer turno
-		assertEquals(this.Joey.obtenerJugadaActual().getAlgoformerDeJugada().getAtaque(),200);
-		this.turno.avanzarTurno();
-		this.turno.avanzarTurno();
+		assertEquals(superion.getAtaque(),200);
+		superion.notificar();
 		
 		//segundo turno
-		assertEquals(this.Joey.obtenerJugadaActual().getAlgoformerDeJugada().getAtaque(),200);
-		this.turno.avanzarTurno();
-		this.turno.avanzarTurno();
+		assertEquals(superion.getAtaque(),200);
+		superion.notificar();
 		
 		//tercer turno
-		assertEquals(this.Joey.obtenerJugadaActual().getAlgoformerDeJugada().getAtaque(),200);
-		this.turno.avanzarTurno();
+		assertEquals(superion.getAtaque(),200);
+		superion.notificar();
 		
 		//Cuarto turno
-		assertEquals(this.Joey.obtenerJugadaActual().getAlgoformerDeJugada().getAtaque(),200);
-		this.turno.finalizar();
-		
-		assertEquals(this.Joey.obtenerJugadaActual().getAlgoformerDeJugada().getAtaque(),100);
-		this.turno.finalizar();
-		
+		assertEquals(superion.getAtaque(),100);
 	}
 
 	
 	
 	@Test
 	public void test14MenasorTomaDobleCanionYDuplicaAtaquePorTresTurnos(){
-
-		this.turno.avanzarTurno();
-		assertEquals(this.turno.obtenerJugadorQueDebeJugar(),Chandler);
-		this.turno.combinarAlgoformers();
-		
-		assertEquals(this.turno.obtenerJugadorQueDebeJugar(),Joey);
-		this.turno.finalizar();
-		assertEquals(this.turno.obtenerJugadorQueDebeJugar(),Joey);
-		this.turno.finalizar();
-		assertEquals(this.turno.obtenerJugadorQueDebeJugar(),Joey);
-		this.turno.finalizar();
-		assertEquals(this.turno.obtenerJugadorQueDebeJugar(),Chandler);
-
+		Menasor menasor = new Menasor(megatron, boneCrusher, frenzy);
 		//pre bonus
-		assertEquals(this.Chandler.obtenerJugadaActual().getAlgoformerDeJugada().getAtaque(),115);
+		assertEquals(menasor.getAtaque(),115);
 		
 		//turno de obtencion
-		this.Chandler.obtenerJugadaActual().getAlgoformerDeJugada().recibirColocable(new DobleCanion());
-		assertEquals(this.Chandler.obtenerJugadaActual().getAlgoformerDeJugada().getAtaque(),230);
-		this.turno.avanzarTurno();
-		this.turno.avanzarTurno();
+		menasor.recibirColocable(new DobleCanion());
+		assertEquals(menasor.getAtaque(),230);
+		menasor.notificar();
 		
 		//primer turno
-		assertEquals(this.Chandler.obtenerJugadaActual().getAlgoformerDeJugada().getAtaque(),230);
-		this.turno.avanzarTurno();
-		this.turno.avanzarTurno();
+		assertEquals(menasor.getAtaque(),230);
+		menasor.notificar();
 		
 		//segundo turno
-		assertEquals(this.Chandler.obtenerJugadaActual().getAlgoformerDeJugada().getAtaque(),230);
-		this.turno.avanzarTurno();
-		this.turno.avanzarTurno();
+		assertEquals(menasor.getAtaque(),230);
+		menasor.notificar();
 		
 		//tercer turno
-		assertEquals(this.Chandler.obtenerJugadaActual().getAlgoformerDeJugada().getAtaque(),230);
-		this.turno.avanzarTurno();
+		assertEquals(menasor.getAtaque(),230);
+		menasor.notificar();
 		
 		//Cuarto turno
-		assertEquals(this.Chandler.obtenerJugadaActual().getAlgoformerDeJugada().getAtaque(),115);
-		this.turno.finalizar();
+		assertEquals(menasor.getAtaque(),115);
 	}
-*/
 }
