@@ -19,4 +19,9 @@ public class NebulosaDeAndromeda extends StateSuperficieAerea {
 	public void afectarUnidadAerea(ModoAlgoformer modoAlgoformer) {
 		modoAlgoformer.afectarEstado(new DebuffNebulosa());
 	}
+
+	@Override
+	public void afectarUnidadHumanoide(ModoAlgoformer modoAlgoformer) {
+
+	}
 }

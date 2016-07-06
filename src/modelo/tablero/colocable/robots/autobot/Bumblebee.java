@@ -5,9 +5,9 @@ public class Bumblebee extends Autobot{
 	
     public Bumblebee(){
         this.ptosDeVida = new Vida(350);
-		modoActual= new ContextoModoAlgoformer();
-		modoActual.setActual(new ModoHumanoide(ptosDeVida,40, 1, 2));
-		modoActual.setAlternativo(new ModoAlternoTerrestre(ptosDeVida,20,3,5));
+		contextoModoActual = new ContextoModoAlgoformer();
+		contextoModoActual.setActual(new ModoHumanoide(ptosDeVida,40, 1, 2));
+		contextoModoActual.setAlternativo(new ModoAlternoTerrestre(ptosDeVida,20,3,5));
     }
 
     @Override

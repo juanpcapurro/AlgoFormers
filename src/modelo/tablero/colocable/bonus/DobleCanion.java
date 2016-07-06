@@ -34,7 +34,7 @@ public class DobleCanion extends Colocable {
     }
 
     @Override
-    public Object getEstado() {
+    public Object getModo() {
         return "";
     }
 

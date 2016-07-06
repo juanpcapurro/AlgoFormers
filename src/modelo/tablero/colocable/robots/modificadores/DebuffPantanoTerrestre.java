@@ -1,6 +1,6 @@
 package modelo.tablero.colocable.robots.modificadores;
 
-public class DebuffPantano extends Modificador {
+public class DebuffPantanoTerrestre extends Modificador {
     int velocidadOriginal;
     static double PORCENTAJE=0.5;
 
@@ -19,6 +19,6 @@ public class DebuffPantano extends Modificador {
 
     @Override
     public Modificador copia() {
-        return new DebuffPantano();
+        return new DebuffPantanoTerrestre();
     }
 }

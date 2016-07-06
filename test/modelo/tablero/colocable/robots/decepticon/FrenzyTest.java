@@ -1,6 +1,7 @@
 package modelo.tablero.colocable.robots.decepticon;
 
 import modelo.tablero.colocable.robots.NoPuedeTransformarsePorSerCombinado;
+import modelo.tablero.colocable.robots.ObjetoInmovible;
 import modelo.tablero.colocable.robots.armas.Ataque;
 import modelo.tablero.superficie.Superficie;
 import modelo.tablero.superficieAerea.Nube;
@@ -84,13 +85,13 @@ public class FrenzyTest {
 		assertEquals(mauricio.getAtaque(),ataque);
 	}
 	
-	@Test
+	@Test(expected = ObjetoInmovible.class)
 	public void test09FrenzyAfectadoAlPasarPorPantanoso(){
 		Superficie superficieTerrestre =new Pantanoso();
 		Superficie superficieAerea=new Nube();
 		int velocidad=mauricio.getVelocidad();
 		mauricio.pasarPor(superficieTerrestre,superficieAerea);
-		assertTrue(mauricio.getVelocidad()<velocidad);
+		mauricio.esMovible();
 	}
 	
 	@Test

@@ -20,4 +20,9 @@ public class TormentaPsionica extends StateSuperficieAerea {
 	public void afectarUnidadAerea(ModoAlgoformer modoAlgoformer) {
 		modoAlgoformer.afectarEstado(new DebuffTormenta());
 	}
+
+	@Override
+	public void afectarUnidadHumanoide(ModoAlgoformer modoAlgoformer) {
+
+	}
 }

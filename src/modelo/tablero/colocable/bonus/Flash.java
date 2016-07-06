@@ -34,7 +34,7 @@ public class Flash extends Colocable {
     }
 
     @Override
-    public Object getEstado() {
+    public Object getModo() {
         return "";
     }
 

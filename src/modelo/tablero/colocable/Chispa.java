@@ -32,7 +32,7 @@ public class Chispa extends Colocable{
     }
 
     @Override
-    public Object getEstado() {
+    public Object getModo() {
         return "";
     }
 

@@ -6,7 +6,7 @@ import modelo.tablero.colocable.robots.armas.Ataque;
 import modelo.tablero.superficie.Superficie;
 
 public abstract class AlgoFormer extends Colocable {
-	protected ContextoModoAlgoformer modoActual;
+	protected ContextoModoAlgoformer contextoModoActual;
 	protected Vida ptosDeVida;
 
 	public boolean ocupaLugar(){
@@ -14,20 +14,20 @@ public abstract class AlgoFormer extends Colocable {
 	}
 
 	public int getVelocidad(){
-		return modoActual.getVelocidad();
+		return contextoModoActual.getVelocidad();
 	}
 	public int getAtaque(){
-		return modoActual.getAtaque();
+		return contextoModoActual.getAtaque();
 	}
 
 	public int getDistanciaDeAtaque(){
-		return modoActual.getDistanciaDeAtaque();
+		return contextoModoActual.getDistanciaDeAtaque();
 	}
 
 	public  boolean estaVivo(){return ptosDeVida.getVidaActual()>0;}
 
 	public void transformar() throws NoPuedeTransformarsePorSerCombinado {
-		modoActual.cambiarModo();
+		contextoModoActual.cambiarModo();
 	}
 
     public int getPuntosDeVida(){ return ptosDeVida.getVidaActual();}
@@ -41,7 +41,7 @@ public abstract class AlgoFormer extends Colocable {
 
 	@Override
 	public void pasarPor(Superficie superficieTerrestre,Superficie superficieAerea) {
-		modoActual.pasarPor(superficieTerrestre, superficieAerea);
+		contextoModoActual.pasarPor(superficieTerrestre, superficieAerea);
 	}
 
 	public void recibirAtaque(Ataque unAtaque){
@@ -49,17 +49,19 @@ public abstract class AlgoFormer extends Colocable {
 	}
 	@Override
 	public void recibirColocable(Colocable colocableEnDestino){
-		colocableEnDestino.afectarColocable(modoActual);
+		colocableEnDestino.afectarColocable(contextoModoActual);
 	}
 
 	public abstract void atacar(Colocable unColocable);
-
+	public boolean consultarMovimientosDisponibles(){
+		return contextoModoActual.consultarMovimientoDisponibles();
+	}
 	public void notificar(){
-		modoActual.notificar();
+		contextoModoActual.notificar();
 	}
 
 	public DatosAlgoformer obtenerDatosAlgoformer(){
-		return new DatosAlgoformer(getPuntosDeVida(), this.getClass().getSimpleName(),this.getEstado().getClass().getSimpleName());//paja hacerlo polimorfico con un literal
+		return new DatosAlgoformer(getPuntosDeVida(), this.getClass().getSimpleName(),this.getModo().getClass().getSimpleName());//paja hacerlo polimorfico con un literal
 	}
 	@Override
 	public void afectarColocable(ContextoModoAlgoformer modo){
@@ -68,17 +70,26 @@ public abstract class AlgoFormer extends Colocable {
 
 	@Override
 	public boolean esMovible() {
-		return modoActual.tieneMovimientosDisponibles();
+		return contextoModoActual.tieneMovimientosDisponibles();
 	}
 
 	@Override
-	public  ModoAlgoformer getEstado(){
-		return modoActual.modoActual;
+	public  ModoAlgoformer getModo(){
+		return contextoModoActual.actual;
 	}
 
+	private void setModoDefeated(){
+		if(contextoModoActual.esHumanoide())
+			contextoModoActual.setActual(new DefeatedMode());
+		else contextoModoActual.setActual(new ModoAlternoDefeatedMode());
+	}
 	@Override
 	public boolean retirar(){
-		return ptosDeVida.getVidaActual()<=0;
+		if(ptosDeVida.getVidaActual()<=0) {
+			setModoDefeated();
+			return true;
+		}
+		return false;
 	}
 
 }

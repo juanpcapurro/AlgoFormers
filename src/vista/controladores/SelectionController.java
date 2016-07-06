@@ -18,7 +18,6 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import modelo.juego.DatosAlgoformer;
 import modelo.juego.jugador.NoEsAlgoFormerPropio;
-import modelo.juego.jugador.ObjetivoFueraDeRango;
 import modelo.tablero.colocable.robots.NoPuedeTransformarsePorSerCombinado;
 
 import java.io.IOException;
@@ -122,6 +121,8 @@ public class SelectionController {
 
     void procesarSeleccionPrimaria(StackPane pane){
         if (primeroSeleccionado==null) {
+            if (!partida.esJugable(GridPane.getRowIndex(pane),GridPane.getColumnIndex(pane)))
+                return;
             primeroSeleccionado = pane;
             partida.setIterador(GridPane.getRowIndex(primeroSeleccionado), GridPane.getColumnIndex(primeroSeleccionado));
             actualizarBarra();
@@ -153,18 +154,13 @@ public class SelectionController {
     void procesarSeleccionSecundaria(StackPane pane) throws IOException {
         if (primeroSeleccionado==null)
             return;
-        try {
-            partida.atacar(GridPane.getRowIndex(primeroSeleccionado), GridPane.getColumnIndex(primeroSeleccionado),
+        partida.atacar(GridPane.getRowIndex(primeroSeleccionado), GridPane.getColumnIndex(primeroSeleccionado),
                     GridPane.getRowIndex(ultimoSeleccionado), GridPane.getColumnIndex(ultimoSeleccionado));
-        }catch (ObjetivoFueraDeRango e){
-            System.out.println("Objetivo fuera de rango");
-        }catch (NoEsAlgoFormerPropio e){
-            System.out.println("No es AlgoFormer propio");
-        }
+
         actualizarCasillero();
         partida.setIterador(GridPane.getRowIndex(ultimoSeleccionado),GridPane.getColumnIndex(ultimoSeleccionado));
         actualizarBarra();
-        if (Integer.valueOf(partida.getDatos().getVidaActual())<=0)
+        if (Integer.valueOf(partida.getDatos().getVidaActual())<=0 && Integer.valueOf(partida.getDatos().getVidaOriginal())!=1)
             ultimoSeleccionado.getChildren().add(new ExplosionDestruccion(ultimoSeleccionado).getView());
         else
             ultimoSeleccionado.getChildren().add(new Explosion(ultimoSeleccionado).getView());
@@ -173,7 +169,6 @@ public class SelectionController {
 
     static void actualizarBarra() {
         actualizarUnidadesJugables();
-
         if (Integer.valueOf(partida.getDatos().getVidaOriginal()) != 1) {
             imagenBarraSuperior.setImage(new ImagenObjeto(getImagenes(), partida).getImage());
             superior.setText(partida.getDatos().getVidaActual());

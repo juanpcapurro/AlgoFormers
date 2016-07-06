@@ -2,6 +2,7 @@ package modelo.tablero.colocable.robots.autobot;
 
 import modelo.tablero.colocable.bonus.DobleCanion;
 import modelo.tablero.colocable.robots.NoPuedeTransformarsePorSerCombinado;
+import modelo.tablero.colocable.robots.ObjetoInmovible;
 import modelo.tablero.colocable.robots.armas.Ataque;
 import modelo.tablero.superficie.Superficie;
 import modelo.tablero.superficieAerea.Nube;
@@ -9,7 +10,6 @@ import modelo.tablero.superficieAerea.TormentaPsionica;
 import modelo.tablero.superficieTerrestre.Espinas;
 import modelo.tablero.superficieTerrestre.Pantanoso;
 import modelo.tablero.superficieTerrestre.Rocoso;
-
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -85,23 +85,21 @@ public class BumblebeeTest {
 		assertEquals(mauricio.getAtaque(),ataque);
 	}
 	
-	@Test
+	@Test(expected =ObjetoInmovible.class)
 	public void test09BumblebeeAfectadoAlPasarPorPantanoso(){
 		Superficie superficieTerrestre =new Pantanoso();
 		Superficie superficieAerea=new Nube();
-		int velocidad=mauricio.getVelocidad();
 		mauricio.pasarPor(superficieTerrestre,superficieAerea);
-		assertTrue(mauricio.getVelocidad()<velocidad);
+		mauricio.esMovible();
 	}
-	
+
 	@Test
 	public void test10BumblebeeAlternoAfectadoAlPasarPorPantanoso()throws NoPuedeTransformarsePorSerCombinado{
 		Superficie superficieTerrestre =new Pantanoso();
 		Superficie superficieAerea=new Nube();
 		mauricio.transformar(); 
-		int velocidad=mauricio.getVelocidad();
 		mauricio.pasarPor(superficieTerrestre,superficieAerea);
-		assertTrue(mauricio.getVelocidad()<velocidad);
+		assertTrue(mauricio.esMovible());
 	}
 	
 	

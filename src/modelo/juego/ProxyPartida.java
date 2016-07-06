@@ -2,7 +2,6 @@ package modelo.juego;
 
 import modelo.juego.jugador.NoEsAlgoFormerPropio;
 import modelo.juego.jugador.NoPuedeCombinarPorTenerAlgoFormersMuertos;
-import modelo.juego.jugador.ObjetivoFueraDeRango;
 import modelo.tablero.colocable.Colocable;
 import modelo.tablero.colocable.robots.NoPuedeTransformarsePorSerCombinado;
 import modelo.tablero.posiciones.Posicion;
@@ -27,7 +26,7 @@ public class ProxyPartida {
         Posicion posicionFinal=new Posicion(coordFinalX,coordFinaLY);
         partida.mover(posicionInicial, posicionFinal);
    }
-    public void atacar(Integer coordInicialX,Integer coordInicialY ,Integer coordFinalX, Integer coordFinaLY) throws ObjetivoFueraDeRango, NoEsAlgoFormerPropio{
+    public void atacar(Integer coordInicialX,Integer coordInicialY ,Integer coordFinalX, Integer coordFinaLY) {
         Posicion inicial = new Posicion(coordInicialX,coordInicialY);
         Posicion objetivo = new Posicion(coordFinalX,coordFinaLY);
         partida.atacar(inicial,objetivo);
@@ -92,4 +91,8 @@ public class ProxyPartida {
             actualizarCasillero(x,y);
     }
 
+    public boolean esJugable(int x, int y) {
+        Posicion posicion=new Posicion(x,y);
+        return partida.esJugable(posicion);
+    }
 }

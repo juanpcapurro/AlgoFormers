@@ -1,6 +1,7 @@
 package modelo.tablero.colocable.robots.autobot;
 
 import modelo.tablero.colocable.robots.NoPuedeTransformarsePorSerCombinado;
+import modelo.tablero.colocable.robots.ObjetoInmovible;
 import modelo.tablero.colocable.robots.armas.Ataque;
 import modelo.tablero.superficie.Superficie;
 import modelo.tablero.superficieAerea.Nube;
@@ -89,13 +90,13 @@ public class OptimusTest {
 		assertEquals(mauricio.getAtaque(),ataque);
 	}
 	
-	@Test
+	@Test(expected = ObjetoInmovible.class)
 	public void test09OptimusAfectadoAlPasarPorPantanoso(){
 		Superficie superficieTerrestre =new Pantanoso();
 		Superficie superficieAerea=new Nube();
 		int velocidad=mauricio.getVelocidad();
 		mauricio.pasarPor(superficieTerrestre,superficieAerea);
-		assertTrue(mauricio.getVelocidad()<velocidad);
+		mauricio.esMovible();
 	}
 	
 	@Test
@@ -103,8 +104,7 @@ public class OptimusTest {
 		Superficie superficieTerrestre =new Pantanoso();
 		Superficie superficieAerea=new Nube();
 		mauricio.transformar(); 
-		int velocidad=mauricio.getVelocidad();
 		mauricio.pasarPor(superficieTerrestre,superficieAerea);
-		assertTrue(mauricio.getVelocidad()<velocidad);
+		assertTrue(mauricio.esMovible());
 	}
 }

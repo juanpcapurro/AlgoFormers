@@ -19,4 +19,9 @@ public class Rocoso extends StateSuperficieTerrestre {
 	 public void afectarUnidadAerea(ModoAlgoformer modoAlgoformer) {
 
 	 }
- }
+
+	@Override
+	public void afectarUnidadHumanoide(ModoAlgoformer modoAlgoformer) {
+		
+	}
+}

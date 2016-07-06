@@ -14,9 +14,9 @@ public class Superion extends Autobot implements AlgoformerCombinado{
         this.bumblebee = bumblebee;
         this.ratchet = ratchet;
         this.ptosDeVida =new Vida(optimus.getPuntosDeVida() + bumblebee.getPuntosDeVida() + ratchet.getPuntosDeVida());
-		modoActual=new ContextoModoAlgoformer();
-        modoActual.setActual(new ModoHumanoide(ptosDeVida,100,2,3));
-        modoActual.setAlternativo(new ModoHumanoide(ptosDeVida,100,2,3));
+		contextoModoActual =new ContextoModoAlgoformer();
+        contextoModoActual.setActual(new ModoHumanoide(ptosDeVida,100,2,3));
+        contextoModoActual.setAlternativo(new ModoHumanoide(ptosDeVida,100,2,3));
     }
     public ArrayList<AlgoFormer> descomponer(){
         ArrayList<AlgoFormer> unaLista = new ArrayList<>();

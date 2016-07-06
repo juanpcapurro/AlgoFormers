@@ -1,14 +1,13 @@
 package vista.controladores;
 
 import javafx.scene.layout.GridPane;
-import modelo.juego.ProxyPartida;
 
 import java.util.Hashtable;
 
 public class TableroVista extends GridPane {
 
 
-    public TableroVista(ProxyPartida nuevaPartida) {
+    public TableroVista() {
 
     }
 
@@ -31,6 +30,13 @@ public class TableroVista extends GridPane {
         imagenes.put("Ratchet ModoHumanoide", "file:src/vista/imagenes/RatchetHumanoide.png");
         imagenes.put("Ratchet ModoAlternoAereo", "file:src/vista/imagenes/RatchetAlterno.png");
         imagenes.put("Menasor ModoHumanoide","file:src/vista/imagenes/Menasor.png");
+        imagenes.put("Bumblebee DefeatedMode", "file:src/vista/imagenes/tachados/BumblebeeHumanoideTachado.png");
+        imagenes.put("Bumblebee ModoAlternoDefeatedMode", "file:src/vista/imagenes/tachados/BumblebeeAlternoTachado.png");
+        imagenes.put("Optimus DefeatedMode", "file:src/vista/imagenes/tachados/OptimusHumanoideTachado.png");
+        imagenes.put("Optimus ModoAlternoDefeatedMode", "file:src/vista/imagenes/tachados/OptimusAlternoTachado.png");
+        imagenes.put("Ratchet DefeatedMode", "file:src/vista/imagenes/tachados/RatchetHumanoideTachado.png");
+        imagenes.put("Ratchet ModoAlternoDefeatedMode", "file:src/vista/imagenes/tachados/RatchetAlternoTachado.png");
+        imagenes.put("Menasor DefeatedMode","file:src/vista/imagenes/tachados/MenasorTachado.png");
 
         imagenes.put("BoneCrusher ModoHumanoide", "file:src/vista/imagenes/BonecrusherHumanoide.png");
         imagenes.put("BoneCrusher ModoAlternoTerrestre", "file:src/vista/imagenes/BonecrusherAlterno.png");
@@ -38,12 +44,21 @@ public class TableroVista extends GridPane {
         imagenes.put("Frenzy ModoAlternoTerrestre", "file:src/vista/imagenes/FrenzyAlterno.png");
         imagenes.put("Megatron ModoHumanoide", "file:src/vista/imagenes/MegatronHumanoide.png");
         imagenes.put("Megatron ModoAlternoAereo", "file:src/vista/imagenes/MegatronAlterno.png");
-        imagenes.put("EspacioVacio String", "file:src/vista/imagenes/EspacioVacio.png");
         imagenes.put("Superion ModoHumanoide","file:src/vista/imagenes/superion.png");
+        imagenes.put("BoneCrusher DefeatedMode", "file:src/vista/imagenes/tachados/BonecrusherHumanoideTachado.png");
+        imagenes.put("BoneCrusher ModoAlternoDefeatedMode", "file:src/vista/imagenes/tachados/BonecrusherAlternoTachado.png");
+        imagenes.put("Frenzy DefeatedMode", "file:src/vista/imagenes/tachados/FrenzyHumanoideTachado.png");
+        imagenes.put("Frenzy ModoAlternoDefeatedMode", "file:src/vista/imagenes/tachados/FrenzyAlternoTachado.png");
+        imagenes.put("Megatron DefeatedMode", "file:src/vista/imagenes/tachados/MegatronHumanoideTachado.png");
+        imagenes.put("Megatron ModoAlternoDefeatedMode", "file:src/vista/imagenes/tachados/MegatronAlternoTachado.png");
+        imagenes.put("Superion DefeatedMode","file:src/vista/imagenes/tachados/superionTachado.png");
 
+        imagenes.put("EspacioVacio String", "file:src/vista/imagenes/EspacioVacio.png");
         imagenes.put("BurbujaInmaculada String","file:src/vista/imagenes/burbujas.gif");
         imagenes.put("DobleCanion String","file:src/vista/imagenes/canion.png");
         imagenes.put("Flash String","file:src/vista/imagenes/flash.png");
+        imagenes.put("Chispa String","file:src/vista/imagenes/chispa.gif");
+
         return imagenes;
     }
 

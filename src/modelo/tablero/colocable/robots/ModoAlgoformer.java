@@ -10,6 +10,7 @@ public abstract class ModoAlgoformer {
     private EstadoAlgoFormer estado;
     private List <Modificador> modificadores;
     private int movimientosRealizados;
+    boolean activado=false;
 
     public ModoAlgoformer(Vida vida,int ataque, int distanciaDeAtaque, int velocidad) {
         estado = new EstadoAlgoFormer(vida,ataque, distanciaDeAtaque, velocidad);
@@ -30,9 +31,17 @@ public abstract class ModoAlgoformer {
     }
     public abstract void pasarPor(Superficie superficieTerrestre,Superficie superficieAerea);
     public abstract boolean esHumanoide();
+    public void activar(){
+        activado=true;
+    }
+    public void desactivar(){
+        activado=false;
+    }
 
     public abstract boolean estaEnModoAlterno();
-
+    public boolean estaActivado(){
+        return activado;
+    }
     public int getAtaque() {
         return estado.getAtaque();
     }
@@ -46,8 +55,14 @@ public abstract class ModoAlgoformer {
     }
 
     boolean tieneMovimientosDisponibles(){
+        if (estado.inmovilizado) {
+            throw new ObjetoInmovible();
+        }
         movimientosRealizados++;
         return movimientosRealizados<=estado.getVelocidad();
+    }
 
+    boolean consultarMovimientosDisponibles(){
+        return movimientosRealizados<estado.getVelocidad();
     }
 }

@@ -2,9 +2,9 @@ package modelo.juego;
 
 import modelo.juego.jugador.*;
 import modelo.tablero.Casillero;
-import modelo.tablero.CasilleroYaOcupado;
 import modelo.tablero.SinMovimientosDisponibles;
 import modelo.tablero.Tablero;
+import modelo.tablero.colocable.Chispa;
 import modelo.tablero.colocable.Colocable;
 import modelo.tablero.colocable.bonus.BurbujaInmaculada;
 import modelo.tablero.colocable.bonus.DobleCanion;
@@ -37,6 +37,7 @@ class Partida {
         tablero.colocarRandom(new Flash());
         tablero.colocarRandom(new BurbujaInmaculada());
         tablero.colocarRandom(new DobleCanion());
+        tablero.colocarRandom(new Chispa());
         this.turno = new Turno(jugadorDos,jugadorUno);
     }
 
@@ -48,13 +49,17 @@ class Partida {
        try {
            turno.jugadorActual().mover(posicionInicial, posicionFinal);
        }catch (SinMovimientosDisponibles error){
-           //No hace nada, que se curta
+           turno.avanzarTurno();
+       }catch (NoEsAlgoFormerPropio e){
+           return;
        }
-       turno.avanzarTurno();
-
    }
-   public void atacar(Posicion hostil, Posicion objetivo)throws ObjetivoFueraDeRango, NoEsAlgoFormerPropio{
-        turno.jugadorActual().atacar(hostil, objetivo);
+   public void atacar(Posicion hostil, Posicion objetivo) {
+       try {
+           turno.jugadorActual().atacar(hostil, objetivo);
+       }catch (NoEsAlgoFormerPropio | ObjetivoFueraDeRango error){
+           return;
+       }
         turno.avanzarTurno();
         if (!turno.jugadorActual().equipovivo())
             throw new JuegoFinalizado();
@@ -90,7 +95,7 @@ class Partida {
 
    public Object getEstado(){
         Casillero casillero=tablero.obtenerCasilleroAsociadoAPosicion(posicionIterador);
-        return casillero.getColocable().getEstado();
+        return casillero.getColocable().getModo();
     }
 
    public void avanzarIterador(){
@@ -112,5 +117,13 @@ class Partida {
         if (jugadorDos.esAlgoformerPropio(casillero.getColocable()))
             return jugadorDos.obtenerDatos(casillero.getColocable());
         return new DatosAlgoformer(1,0,0,0,0,"");
+    }
+
+    public boolean esJugable(Posicion posicion) {
+        Colocable colocable=tablero.obtenerCasilleroAsociadoAPosicion(posicion).getColocable();
+        if (jugadorUno.esAlgoformerPropio(colocable) || jugadorDos.esAlgoformerPropio(colocable))
+            return true;
+        return false;
+
     }
 }

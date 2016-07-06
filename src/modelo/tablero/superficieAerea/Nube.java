@@ -19,4 +19,9 @@ public class Nube extends StateSuperficieAerea {
 	public void afectarUnidadAerea(ModoAlgoformer modoAlgoformer) {
 
 	}
+
+	@Override
+	public void afectarUnidadHumanoide(ModoAlgoformer modoAlgoformer) {
+
+	}
 }

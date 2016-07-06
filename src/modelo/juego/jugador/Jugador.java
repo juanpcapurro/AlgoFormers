@@ -4,11 +4,13 @@ package modelo.juego.jugador;
 import modelo.juego.DatosAlgoformer;
 import modelo.juego.DatosJugador;
 import modelo.tablero.NoEncontradoError;
+import modelo.tablero.SinMovimientosDisponibles;
 import modelo.tablero.Tablero;
 import modelo.tablero.colocable.Colocable;
 import modelo.tablero.colocable.robots.AlgoFormer;
 import modelo.tablero.colocable.robots.AlgoformerCombinado;
 import modelo.tablero.colocable.robots.NoPuedeTransformarsePorSerCombinado;
+import modelo.tablero.colocable.robots.ObjetoInmovible;
 import modelo.tablero.posiciones.ControladorPosiciones;
 import modelo.tablero.posiciones.Posicion;
 
@@ -71,7 +73,14 @@ public abstract class Jugador {
 	public void mover(Posicion posicionOrigen, Posicion posicionDestino) throws NoEsAlgoFormerPropio{
 		validarQuePuedeJugar();
         hayUnAlgoFormerPropioEnPosicion(posicionOrigen);
-		tablero.recorrer(posicionOrigen, posicionDestino);
+		try {
+			tablero.recorrer(posicionOrigen, posicionDestino);
+		}catch (ObjetoInmovible e){
+			return;
+		}
+		if (algoformerSinMovimientos(posicionDestino)){
+			throw new SinMovimientosDisponibles();
+		}
 	}
 	public void atacar(Posicion hostil, Posicion objetivo)throws ObjetivoFueraDeRango, NoEsAlgoFormerPropio{
 		validarQuePuedeJugar();
@@ -88,6 +97,11 @@ public abstract class Jugador {
 			turnosAunOcupados--;
 		for (AlgoFormer actual: robotsJugador)
 			actual.notificar();
+	}
+
+	private boolean algoformerSinMovimientos(Posicion posicion){
+		AlgoFormer algoFormer=(AlgoFormer)tablero.obtenerCasilleroAsociadoAPosicion(posicion).getColocable();
+		return !algoFormer.consultarMovimientosDisponibles();
 	}
 
 	 public boolean esAlgoformerPropio(Colocable unColocable){for(AlgoFormer actual: robotsJugador)

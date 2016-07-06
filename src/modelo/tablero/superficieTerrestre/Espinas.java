@@ -19,4 +19,9 @@ public class Espinas extends StateSuperficieTerrestre {
 	public void afectarUnidadAerea(ModoAlgoformer modoAlgoformer) {
 		modoAlgoformer.afectarEstado(new DebuffEspinas());
 	}
+
+	@Override
+	public void afectarUnidadHumanoide(ModoAlgoformer modoAlgoformer) {
+		modoAlgoformer.afectarEstado(new DebuffEspinas());
+	}
 }

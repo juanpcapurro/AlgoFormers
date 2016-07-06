@@ -4,61 +4,65 @@ import modelo.tablero.colocable.robots.modificadores.Modificador;
 import modelo.tablero.superficie.Superficie;
 
 public class ContextoModoAlgoformer {
-    ModoAlgoformer modoActual;
-    ModoAlgoformer modoAlternativo;
-
+    ModoAlgoformer actual;
+    ModoAlgoformer alternativo;
     public void setActual(ModoAlgoformer actual){
-        modoActual=actual;
+        this.actual =actual;
+        actual.activar();
     }
     public void setAlternativo(ModoAlgoformer alternativo){
-        modoAlternativo=alternativo;
+        this.alternativo =alternativo;
     }
 
     public void cambiarModo(){
-        ModoAlgoformer aux=modoActual;
-        modoActual=modoAlternativo;
-        modoAlternativo=aux;
+        ModoAlgoformer aux= actual;
+        actual = alternativo;
+        alternativo =aux;
+        actual.activar();
+        alternativo.desactivar();
     }
 
     ModoAlgoformer verModoActual(){
-        return modoActual;
+        return actual;
     }
 
     public EstadoAlgoFormer verEstadoActual(){
-        return modoActual.verEstado();
+        return actual.verEstado();
     }
 
 
     public boolean esHumanoide() {
-        return modoActual.esHumanoide();
+        return actual.esHumanoide();
     }
 
     public boolean estaEnModoAlterno() {
-        return (modoActual.estaEnModoAlterno());
+        return (actual.estaEnModoAlterno());
     }
 
     public void pasarPor(Superficie superficieTerrestre, Superficie superficieAerea) {
-        modoActual.pasarPor(superficieTerrestre,superficieAerea);
+        actual.pasarPor(superficieTerrestre,superficieAerea);
     }
     public int getAtaque(){
-        return modoActual.getAtaque();
+        return actual.getAtaque();
     }
     public int getVelocidad(){
-        return modoActual.getVelocidad();
+        return actual.getVelocidad();
     }
     public int getDistanciaDeAtaque(){
-        return modoActual.getDistancia();
+        return actual.getDistancia();
     }
     public void afectarEstado(Modificador modificador){
-        modoActual.afectarEstado(modificador);
-        modoAlternativo.afectarEstado(modificador.copia());
+        actual.afectarEstado(modificador);
+        alternativo.afectarEstado(modificador.copia());
     }
     public void notificar(){
-        modoActual.notificar();
-        modoAlternativo.notificar();
+        actual.notificar();
+        alternativo.notificar();
     }
-
+    public boolean consultarMovimientoDisponibles(){
+        return actual.consultarMovimientosDisponibles();
+    }
     public boolean tieneMovimientosDisponibles() {
-        return modoActual.tieneMovimientosDisponibles();
+        return actual.tieneMovimientosDisponibles();
     }
 }

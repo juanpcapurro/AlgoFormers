@@ -11,7 +11,7 @@ public class ModoHumanoide extends ModoAlgoformer{
 
 	@Override
 	public void pasarPor(Superficie superficieTerrestre, Superficie superficieAerea) {
-		superficieTerrestre.afectarUnidadTerrestre(this);
+		superficieTerrestre.afectarUnidadHumanoide(this);
 	}
 
 	@Override

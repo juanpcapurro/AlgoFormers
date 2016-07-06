@@ -2,6 +2,7 @@ package modelo.tablero.colocable.robots.autobot;
 
 import modelo.tablero.colocable.bonus.DobleCanion;
 import modelo.tablero.colocable.robots.NoPuedeTransformarsePorSerCombinado;
+import modelo.tablero.colocable.robots.ObjetoInmovible;
 import modelo.tablero.colocable.robots.armas.Ataque;
 import modelo.tablero.superficie.Superficie;
 import modelo.tablero.superficieAerea.Nube;
@@ -131,13 +132,13 @@ public class SuperionTest {
 	}
 	
 	
-	@Test
+	@Test(expected = ObjetoInmovible.class)
 	public void test12SuperionAfectadoAlPasarPorPantanoso(){
 		Superficie superficieTerrestre =new Pantanoso();
 		Superficie superficieAerea=new Nube();
 		int velocidad=superion.getVelocidad();
 		superion.pasarPor(superficieTerrestre,superficieAerea);
-		assertTrue(superion.getVelocidad()<velocidad);
+		superion.esMovible();
 	}
 	
 	

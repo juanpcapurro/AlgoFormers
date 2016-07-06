@@ -34,7 +34,7 @@ public class BurbujaInmaculada extends Colocable {
     }
 
     @Override
-    public Object getEstado() {
+    public Object getModo() {
         return "";
     }
 

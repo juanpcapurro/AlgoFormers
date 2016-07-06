@@ -2,6 +2,7 @@ package modelo.tablero.colocable.robots.decepticon;
 
 import modelo.tablero.colocable.bonus.DobleCanion;
 import modelo.tablero.colocable.robots.NoPuedeTransformarsePorSerCombinado;
+import modelo.tablero.colocable.robots.ObjetoInmovible;
 import modelo.tablero.colocable.robots.armas.Ataque;
 import modelo.tablero.superficie.Superficie;
 import modelo.tablero.superficieAerea.Nube;
@@ -135,13 +136,13 @@ public class MenasorTest {
 	}
 	
 	
-	@Test
+	@Test(expected = ObjetoInmovible.class)
 	public void test12MenasorAfectadoAlPasarPorPantanoso(){
 		Superficie superficieTerrestre =new Pantanoso();
 		Superficie superficieAerea=new Nube();
 		int velocidad=menasor.getVelocidad();
 		menasor.pasarPor(superficieTerrestre,superficieAerea);
-		assertTrue(menasor.getVelocidad()<velocidad);
+        menasor.esMovible();
 	}
 	
 	

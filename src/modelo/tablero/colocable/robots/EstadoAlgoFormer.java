@@ -5,6 +5,7 @@ public  class EstadoAlgoFormer {
 	protected int distanciaDeAtaque;
 	protected int ataque;
 	Vida vida;
+	boolean inmovilizado=false;
 
 	EstadoAlgoFormer(Vida unaVida,int unAtaque, int unaDistancia, int unaVelocidad){
 		ataque=unAtaque;
@@ -36,6 +37,16 @@ public  class EstadoAlgoFormer {
 	}
 	public void setVida(int unaVida){
 		vida.setVidaActual(unaVida);
+	}
+
+	public void inmovilizar(){
+		inmovilizado=true;
+	}
+	public void movilizar(){
+		inmovilizado=false;
+	}
+	public boolean estaInmovilisado(){
+		return inmovilizado;
 	}
 
 }
