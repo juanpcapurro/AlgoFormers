@@ -33,6 +33,7 @@ public class BurbujaInmaculadaTest {
 		//primer turno con burbuja
 		assertEquals(optimus.getPuntosDeVida(),500);
 		optimus.recibirAtaque(new Ataque(200));
+		assertEquals(optimus.getPuntosDeVida(),500);
 		optimus.notificar();
 		
 		//segundo turno con burbuja.Recupero vidaActual perdida antes

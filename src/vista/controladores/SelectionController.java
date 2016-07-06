@@ -18,6 +18,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import modelo.juego.DatosAlgoformer;
 import modelo.juego.jugador.NoEsAlgoFormerPropio;
+import modelo.juego.jugador.ObjetivoFueraDeRango;
 import modelo.tablero.colocable.robots.NoPuedeTransformarsePorSerCombinado;
 
 import java.io.IOException;
@@ -152,18 +153,24 @@ public class SelectionController {
     void procesarSeleccionSecundaria(StackPane pane) throws IOException {
         if (primeroSeleccionado==null)
             return;
-        partida.atacar(GridPane.getRowIndex(primeroSeleccionado), GridPane.getColumnIndex(primeroSeleccionado),
+        try {
+            partida.atacar(GridPane.getRowIndex(primeroSeleccionado), GridPane.getColumnIndex(primeroSeleccionado),
                     GridPane.getRowIndex(ultimoSeleccionado), GridPane.getColumnIndex(ultimoSeleccionado));
 
-        actualizarCasillero();
-        partida.setIterador(GridPane.getRowIndex(ultimoSeleccionado),GridPane.getColumnIndex(ultimoSeleccionado));
-        actualizarBarra();
-        if (Integer.valueOf(partida.getDatos().getVidaActual())<=0 && Integer.valueOf(partida.getDatos().getVidaOriginal())!=1)
-            ultimoSeleccionado.getChildren().add(new ExplosionDestruccion(ultimoSeleccionado).getView());
-        else
-            ultimoSeleccionado.getChildren().add(new Explosion(ultimoSeleccionado).getView());
-        primeroSeleccionado=null;
-}
+            actualizarCasillero();
+            partida.setIterador(GridPane.getRowIndex(ultimoSeleccionado), GridPane.getColumnIndex(ultimoSeleccionado));
+            actualizarBarra();
+            if (Integer.valueOf(partida.getDatos().getVidaActual()) <= 0 && Integer.valueOf(partida.getDatos().getVidaOriginal()) != 1)
+                ultimoSeleccionado.getChildren().add(new ExplosionDestruccion(ultimoSeleccionado).getView());
+            else
+                ultimoSeleccionado.getChildren().add(new Explosion(ultimoSeleccionado).getView());
+            primeroSeleccionado = null;
+        }catch(NoEsAlgoFormerPropio e){
+            System.out.println("No es AlgoFormer Propio");
+        }catch(ObjetivoFueraDeRango e){
+            System.out.println("Objetivo fuera de rango");
+        }
+    }
 
     static void actualizarBarra() {
         actualizarUnidadesJugables();

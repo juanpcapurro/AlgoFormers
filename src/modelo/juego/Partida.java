@@ -45,21 +45,15 @@ class Partida {
         turno.avanzarTurno();
    }
 
-   public void mover(Posicion posicionInicial, Posicion posicionFinal) throws NoEsAlgoFormerPropio{
+   public void mover(Posicion posicionInicial, Posicion posicionFinal) throws NoEsAlgoFormerPropio, JuegoFinalizado{//Esto hay que debatirlo con sharles
        try {
            turno.jugadorActual().mover(posicionInicial, posicionFinal);
-       }catch (SinMovimientosDisponibles error){
+       }catch (SinMovimientosDisponibles error) {
            turno.avanzarTurno();
-       }catch (NoEsAlgoFormerPropio e){
-           return;
        }
    }
-   public void atacar(Posicion hostil, Posicion objetivo) {
-       try {
-           turno.jugadorActual().atacar(hostil, objetivo);
-       }catch (NoEsAlgoFormerPropio | ObjetivoFueraDeRango error){
-           return;
-       }
+   public void atacar(Posicion hostil, Posicion objetivo) throws NoEsAlgoFormerPropio, ObjetivoFueraDeRango, JuegoFinalizado{
+        turno.jugadorActual().atacar(hostil, objetivo);
         turno.avanzarTurno();
         if (!turno.jugadorActual().equipovivo())
             throw new JuegoFinalizado();

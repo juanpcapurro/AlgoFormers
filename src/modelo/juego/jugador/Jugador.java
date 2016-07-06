@@ -104,8 +104,9 @@ public abstract class Jugador {
 		return !algoFormer.consultarMovimientosDisponibles();
 	}
 
-	 public boolean esAlgoformerPropio(Colocable unColocable){for(AlgoFormer actual: robotsJugador)
-		if(actual.equals(unColocable))
+	 public boolean esAlgoformerPropio(Colocable unColocable){
+		for(AlgoFormer actual: robotsJugador)
+			if(actual.equals(unColocable))
 				return true;
 		return false;
 	}
