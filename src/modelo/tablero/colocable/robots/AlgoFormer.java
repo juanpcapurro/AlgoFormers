@@ -26,7 +26,7 @@ public abstract class AlgoFormer extends Colocable {
 
 	public  boolean estaVivo(){return ptosDeVida.getVidaActual()>0;}
 
-	public void transformar(){
+	public void transformar() throws NoPuedeTransformarsePorSerCombinado {
 		modoActual.cambiarModo();
 	}
 

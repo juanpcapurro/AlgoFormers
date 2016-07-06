@@ -1,6 +1,10 @@
 package modelo.juego;
 
+import modelo.juego.jugador.NoEsAlgoFormerPropio;
+import modelo.juego.jugador.NoPuedeCombinarPorTenerAlgoFormersMuertos;
+import modelo.juego.jugador.ObjetivoFueraDeRango;
 import modelo.tablero.colocable.Colocable;
+import modelo.tablero.colocable.robots.NoPuedeTransformarsePorSerCombinado;
 import modelo.tablero.posiciones.Posicion;
 import modelo.tablero.superficie.Superficie;
 
@@ -18,22 +22,22 @@ public class ProxyPartida {
        partida.saltearTurno();
    }
 
-   public void mover(Integer coordInicialX,Integer coordInicialY ,Integer coordFinalX, Integer coordFinaLY) {
+   public void mover(Integer coordInicialX,Integer coordInicialY ,Integer coordFinalX, Integer coordFinaLY) throws NoEsAlgoFormerPropio{
         Posicion posicionInicial=new Posicion(coordInicialX,coordInicialY);
         Posicion posicionFinal=new Posicion(coordFinalX,coordFinaLY);
         partida.mover(posicionInicial, posicionFinal);
    }
-    public void atacar(Integer coordInicialX,Integer coordInicialY ,Integer coordFinalX, Integer coordFinaLY){
+    public void atacar(Integer coordInicialX,Integer coordInicialY ,Integer coordFinalX, Integer coordFinaLY) throws ObjetivoFueraDeRango, NoEsAlgoFormerPropio{
         Posicion inicial = new Posicion(coordInicialX,coordInicialY);
         Posicion objetivo = new Posicion(coordFinalX,coordFinaLY);
         partida.atacar(inicial,objetivo);
     }
 
-    public void transformar(Integer coordInicialX,Integer coordInicialY ){
+    public void transformar(Integer coordInicialX,Integer coordInicialY )throws NoEsAlgoFormerPropio, NoPuedeTransformarsePorSerCombinado{
         Posicion posicion = new Posicion(coordInicialX,coordInicialY);
         partida.transformar(posicion);
     }
-   public void combinarODescombinar(){
+   public void combinarODescombinar()throws NoPuedeCombinarPorTenerAlgoFormersMuertos{
        partida.combinarODescombinar();
    }
    public Superficie obtenerSuperficieTerrestre() {

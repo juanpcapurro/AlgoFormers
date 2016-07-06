@@ -1,6 +1,8 @@
 package bonus;
 
 import static org.junit.Assert.*;
+
+import modelo.tablero.colocable.robots.NoPuedeTransformarsePorSerCombinado;
 import org.junit.Test;
 
 import modelo.tablero.colocable.bonus.DobleCanion;
@@ -181,7 +183,7 @@ public class DobleCanionTest {
 	}
 	
 	@Test
-	public void test07AlternoOptimusTomaDobleCanionYDuplicaAtaquePorTresTurnos(){
+	public void test07AlternoOptimusTomaDobleCanionYDuplicaAtaquePorTresTurnos()throws NoPuedeTransformarsePorSerCombinado {
 		
 		optimus.transformar();		
 		//pre bonus
@@ -209,7 +211,7 @@ public class DobleCanionTest {
 	}
 	
 	@Test
-	public void test08AlternoBumblebeeTomaDobleCanionYDuplicaAtaquePorTresTurnos(){
+	public void test08AlternoBumblebeeTomaDobleCanionYDuplicaAtaquePorTresTurnos()throws NoPuedeTransformarsePorSerCombinado{
 		
 		bumblebee.transformar();		
 		// pre bonus
@@ -237,7 +239,7 @@ public class DobleCanionTest {
 	}
 	
 	@Test
-	public void test09AlternoRatchetTomaDobleCanionYDuplicaAtaquePorTresTurnos(){
+	public void test09AlternoRatchetTomaDobleCanionYDuplicaAtaquePorTresTurnos()throws NoPuedeTransformarsePorSerCombinado{
 		
 		ratchet.transformar();		
 		// pre bonus
@@ -265,7 +267,7 @@ public class DobleCanionTest {
 	}
 	
 	@Test
-	public void test10AlternoMegatronTomaDobleCanionYDuplicaAtaquePorTresTurnos(){
+	public void test10AlternoMegatronTomaDobleCanionYDuplicaAtaquePorTresTurnos()throws NoPuedeTransformarsePorSerCombinado{
 		
 		megatron.transformar();
 		//pre bonus
@@ -294,7 +296,7 @@ public class DobleCanionTest {
 	}
 	
 	@Test
-	public void test11AlternoFrenzyTomaDobleCanionYDuplicaAtaquePorTresTurnos(){
+	public void test11AlternoFrenzyTomaDobleCanionYDuplicaAtaquePorTresTurnos()throws NoPuedeTransformarsePorSerCombinado{
 		
 		frenzy.transformar();
 		//pre bonus
@@ -322,7 +324,7 @@ public class DobleCanionTest {
 	}
 	
 	@Test
-	public void test12AlternoBoneCrusherTomaDobleCanionYDuplicaAtaquePorTresTurnos(){
+	public void test12AlternoBoneCrusherTomaDobleCanionYDuplicaAtaquePorTresTurnos()throws NoPuedeTransformarsePorSerCombinado{
 		
 		boneCrusher.transformar();		
 		//pre bonus

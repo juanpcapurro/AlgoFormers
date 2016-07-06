@@ -1,6 +1,7 @@
 package modelo.tablero.colocable.robots.autobot;
 
 import modelo.tablero.colocable.bonus.DobleCanion;
+import modelo.tablero.colocable.robots.NoPuedeTransformarsePorSerCombinado;
 import modelo.tablero.colocable.robots.armas.Ataque;
 import modelo.tablero.superficie.Superficie;
 import modelo.tablero.superficieAerea.Nube;
@@ -111,14 +112,6 @@ public class SuperionTest {
 	}
 	
 	@Test
-	public void test09CambiarDeModoNoAfectaLosStats(){
-		superion.transformar();
-		assertEquals(superion.getAtaque(), 100);
-		assertEquals(superion.getDistanciaDeAtaque(), 2);
-		assertEquals(superion.getVelocidad(),3);
-	}
-
-	@Test
 	public void test10SuperionAfectadoAlPasarPorEspinas(){
 		Superficie superficieTerrestre =new Espinas();
 		Superficie superficieAerea=new Nube();
@@ -155,12 +148,8 @@ public class SuperionTest {
 		assertTrue(ataque<superion.getAtaque());
 	}
 
-	@Test
-	public void test14ataqueBonusSeDuplicaEnModoAlterno(){
+	@Test(expected = NoPuedeTransformarsePorSerCombinado.class)
+	public void superionNoPuedeTransformarse()throws NoPuedeTransformarsePorSerCombinado {
 		superion.transformar();
-		int ataque=superion.getAtaque();
-		superion.recibirColocable(new DobleCanion());
-		assertTrue(ataque<superion.getAtaque());
 	}
-	
 }

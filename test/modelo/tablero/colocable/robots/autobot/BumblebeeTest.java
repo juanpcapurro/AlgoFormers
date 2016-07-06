@@ -1,6 +1,7 @@
 package modelo.tablero.colocable.robots.autobot;
 
 import modelo.tablero.colocable.bonus.DobleCanion;
+import modelo.tablero.colocable.robots.NoPuedeTransformarsePorSerCombinado;
 import modelo.tablero.colocable.robots.armas.Ataque;
 import modelo.tablero.superficie.Superficie;
 import modelo.tablero.superficieAerea.Nube;
@@ -39,7 +40,7 @@ public class BumblebeeTest {
 	}
 	
 	@Test
-	public void test04StatsModoAlterno(){
+	public void test04StatsModoAlterno()throws NoPuedeTransformarsePorSerCombinado{
 		mauricio.transformar();
 		assertEquals(mauricio.getAtaque(), 20);
 		assertEquals(mauricio.getDistanciaDeAtaque(), 3);
@@ -56,7 +57,7 @@ public class BumblebeeTest {
 	}
 	
 	@Test
-	public void test06BumblebeeAlternoAfectadoAlPasarPorEspinas(){
+	public void test06BumblebeeAlternoAfectadoAlPasarPorEspinas()throws NoPuedeTransformarsePorSerCombinado{
 		Superficie superficieTerrestre =new Espinas();
 		Superficie superficieAerea=new Nube();
 		int vida=mauricio.getPuntosDeVida();
@@ -75,7 +76,7 @@ public class BumblebeeTest {
 	}
 	
 	@Test
-	public void test08BumblebeeAlternoNoafectadoAlPasarPorTormentaPsionica(){
+	public void test08BumblebeeAlternoNoafectadoAlPasarPorTormentaPsionica()throws NoPuedeTransformarsePorSerCombinado{
 		Superficie superficieTerrestre =new Rocoso();
 		Superficie superficieAerea=new TormentaPsionica();
 		mauricio.transformar();
@@ -94,7 +95,7 @@ public class BumblebeeTest {
 	}
 	
 	@Test
-	public void test10BumblebeeAlternoAfectadoAlPasarPorPantanoso(){
+	public void test10BumblebeeAlternoAfectadoAlPasarPorPantanoso()throws NoPuedeTransformarsePorSerCombinado{
 		Superficie superficieTerrestre =new Pantanoso();
 		Superficie superficieAerea=new Nube();
 		mauricio.transformar(); 
@@ -112,12 +113,10 @@ public class BumblebeeTest {
 	}
 
 	@Test
-	public void test12ataqueBonusSeDuplicaEnModoAlterno(){
+	public void test12ataqueBonusSeDuplicaEnModoAlterno()throws NoPuedeTransformarsePorSerCombinado{
 		mauricio.transformar();
 		int ataque=mauricio.getAtaque();
 		mauricio.recibirColocable(new DobleCanion());
 		assertTrue(ataque<mauricio.getAtaque());
 	}
-
-
 }

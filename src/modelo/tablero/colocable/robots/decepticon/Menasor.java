@@ -26,5 +26,8 @@ public class Menasor extends Decepticon implements AlgoformerCombinado{
         unaLista.add(frenzy);
         return unaLista;
     }
-
+    @Override
+    public void transformar()throws NoPuedeTransformarsePorSerCombinado{
+        throw new NoPuedeTransformarsePorSerCombinado();
+    }
 }

@@ -8,6 +8,7 @@ import modelo.tablero.Tablero;
 import modelo.tablero.colocable.Colocable;
 import modelo.tablero.colocable.robots.AlgoFormer;
 import modelo.tablero.colocable.robots.AlgoformerCombinado;
+import modelo.tablero.colocable.robots.NoPuedeTransformarsePorSerCombinado;
 import modelo.tablero.posiciones.ControladorPosiciones;
 import modelo.tablero.posiciones.Posicion;
 
@@ -49,7 +50,7 @@ public abstract class Jugador {
 		return false;
 	}
 
-	public void combinarODescombinar() {
+	public void combinarODescombinar()throws NoPuedeCombinarPorTenerAlgoFormersMuertos {
 		validarQuePuedeJugar();
 		if(!estaCombinado)
 			combinar();
@@ -60,19 +61,19 @@ public abstract class Jugador {
 		turnosAunOcupados = 2;
 	}
 
-	public void transformar(Posicion posicionAlgoFormer) {
+	public void transformar(Posicion posicionAlgoFormer) throws NoEsAlgoFormerPropio, NoPuedeTransformarsePorSerCombinado{
 		validarQuePuedeJugar();
 		hayUnAlgoFormerPropioEnPosicion(posicionAlgoFormer);
 		AlgoFormer aTransformar = (AlgoFormer)tablero.obtenerCasilleroAsociadoAPosicion(posicionAlgoFormer).getColocable();
 		aTransformar.transformar();
 	}
 
-	public void mover(Posicion posicionOrigen, Posicion posicionDestino) {
+	public void mover(Posicion posicionOrigen, Posicion posicionDestino) throws NoEsAlgoFormerPropio{
 		validarQuePuedeJugar();
         hayUnAlgoFormerPropioEnPosicion(posicionOrigen);
 		tablero.recorrer(posicionOrigen, posicionDestino);
 	}
-	public void atacar(Posicion hostil, Posicion objetivo){
+	public void atacar(Posicion hostil, Posicion objetivo)throws ObjetivoFueraDeRango, NoEsAlgoFormerPropio{
 		validarQuePuedeJugar();
 		hayUnAlgoFormerPropioEnPosicion(hostil);
 		AlgoFormer robot = (AlgoFormer)tablero.obtenerCasilleroAsociadoAPosicion(hostil).getColocable();
@@ -90,7 +91,7 @@ public abstract class Jugador {
 	}
 
 	 public boolean esAlgoformerPropio(Colocable unColocable){for(AlgoFormer actual: robotsJugador)
-			if(actual.equals(unColocable))
+		if(actual.equals(unColocable))
 				return true;
 		return false;
 	}
@@ -101,10 +102,10 @@ public abstract class Jugador {
 
 	private void validarQuePuedeJugar(){
 		if(!puedeJugar())
-			throw new jugadorOcupado();
+			throw new JugadorOcupado();
 	}
 
-    private void hayUnAlgoFormerPropioEnPosicion(Posicion posicionOrigen){
+    private void hayUnAlgoFormerPropioEnPosicion(Posicion posicionOrigen) throws NoEsAlgoFormerPropio{
         Colocable aMover = tablero.obtenerCasilleroAsociadoAPosicion(posicionOrigen).getColocable();
         if (!esAlgoformerPropio(aMover))
             throw new NoEsAlgoFormerPropio();
@@ -122,7 +123,7 @@ public abstract class Jugador {
 		else
 			throw new NoEncontradoError();
 	}
-	private void combinar(){
+	private void combinar()throws NoPuedeCombinarPorTenerAlgoFormersMuertos{
 		if (robotsJugador.size() < 3)
 			throw new NoPuedeCombinarPorTenerAlgoFormersMuertos();
 		if(!(robotsJugador.get(0).estaVivo() && robotsJugador.get(1).estaVivo() && robotsJugador.get(2).estaVivo()))
@@ -143,7 +144,7 @@ public abstract class Jugador {
 		tablero.colocarAlgoformer(posicionCombinado, combinacion);
 		notificarCambio(posicionCombinado);
 	}
-	private void descombinar(){
+	private void descombinar() throws NoPuedeCombinarPorTenerAlgoFormersMuertos{
 		if(robotsJugador.size()!=1 || !robotsJugador.get(0).estaVivo())
 				throw new NoPuedeCombinarPorTenerAlgoFormersMuertos();
 		ControladorPosiciones unControlador = new ControladorPosiciones(tablero.getDimension());

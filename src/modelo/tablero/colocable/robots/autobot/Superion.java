@@ -25,4 +25,8 @@ public class Superion extends Autobot implements AlgoformerCombinado{
         unaLista.add(ratchet);
         return unaLista;
     }
+    @Override
+    public void transformar()throws NoPuedeTransformarsePorSerCombinado{
+        throw new NoPuedeTransformarsePorSerCombinado();
+    }
 }

@@ -1,5 +1,6 @@
 package modelo.tablero.colocable.robots.autobot;
 
+import modelo.tablero.colocable.robots.NoPuedeTransformarsePorSerCombinado;
 import modelo.tablero.colocable.robots.armas.Ataque;
 import modelo.tablero.superficie.Superficie;
 import modelo.tablero.superficieAerea.Nube;
@@ -43,7 +44,7 @@ public class OptimusTest {
 	}
 	
 	@Test
-	public void test04StatsModoAlterno(){
+	public void test04StatsModoAlterno()throws NoPuedeTransformarsePorSerCombinado {
 		mauricio.transformar();
 		assertEquals(mauricio.getAtaque(), 15);
 		assertEquals(mauricio.getDistanciaDeAtaque(), 4);
@@ -60,7 +61,7 @@ public class OptimusTest {
 	}
 	
 	@Test
-	public void test06OptimusAlternoAfectadoAlPasarPorEspinas(){
+	public void test06OptimusAlternoAfectadoAlPasarPorEspinas()throws NoPuedeTransformarsePorSerCombinado{
 		Superficie superficieTerrestre =new Espinas();
 		Superficie superficieAerea=new Nube();
 		int vida=mauricio.getPuntosDeVida();
@@ -79,7 +80,7 @@ public class OptimusTest {
 	}
 	
 	@Test
-	public void test08OptimusAlternoNoafectadoAlPasarPorTormentaPsionica(){
+	public void test08OptimusAlternoNoafectadoAlPasarPorTormentaPsionica()throws NoPuedeTransformarsePorSerCombinado{
 		Superficie superficieTerrestre =new Rocoso();
 		Superficie superficieAerea=new TormentaPsionica();
 		mauricio.transformar();
@@ -98,7 +99,7 @@ public class OptimusTest {
 	}
 	
 	@Test
-	public void test10OptimusAlternoAfectadoAlPasarPorPantanoso(){
+	public void test10OptimusAlternoAfectadoAlPasarPorPantanoso()throws NoPuedeTransformarsePorSerCombinado{
 		Superficie superficieTerrestre =new Pantanoso();
 		Superficie superficieAerea=new Nube();
 		mauricio.transformar(); 

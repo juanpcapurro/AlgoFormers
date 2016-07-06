@@ -1,10 +1,8 @@
 package modelo.juego;
 
-import modelo.juego.jugador.Jugador;
-import modelo.juego.jugador.JugadorAutobots;
-import modelo.juego.jugador.JugadorDecepticons;
-import modelo.juego.jugador.NoEsAlgoFormerPropio;
+import modelo.juego.jugador.*;
 import modelo.tablero.Tablero;
+import modelo.tablero.colocable.robots.NoPuedeTransformarsePorSerCombinado;
 import modelo.tablero.colocable.robots.armas.Ataque;
 import modelo.tablero.colocable.robots.autobot.Bumblebee;
 import modelo.tablero.colocable.robots.autobot.Optimus;
@@ -14,7 +12,9 @@ import modelo.tablero.colocable.robots.decepticon.Frenzy;
 import modelo.tablero.colocable.robots.decepticon.Megatron;
 import modelo.tablero.posiciones.Posicion;
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 import static org.junit.Assert.*;
 
@@ -69,52 +69,52 @@ public class JugadorTest {
 		assertFalse(jugadorDecepticons.equipovivo());
 	}
 	@Test
-	public void muereElEquipoAlAtacarLasPosicionesDeLosAlgoformers(){
+	public void muereElEquipoAlAtacarLasPosicionesDeLosAlgoformers()throws NoEsAlgoFormerPropio, ObjetivoFueraDeRango, NoPuedeTransformarsePorSerCombinado{
 		assertTrue(jugadorAutobots.equipovivo());
-		assertTrue(posicionFrenzy.compararPosicion(new Posicion(0,6)));
+		assertTrue(posicionFrenzy.compararPosicion(new Posicion(0, 6)));
 		jugadorDecepticons.transformar(posicionFrenzy);
-		jugadorDecepticons.mover(posicionFrenzy, new Posicion(1,6));//Para que pueda atacar a todos los enemigos
-		jugadorDecepticons.mover(new Posicion(1,6), new Posicion(1,5));
-		jugadorDecepticons.mover(new Posicion(1,5), new Posicion(1,4));
-		jugadorDecepticons.mover(new Posicion(1,4), new Posicion(0,4));
+		jugadorDecepticons.mover(posicionFrenzy, new Posicion(1, 6));//Para que pueda atacar a todos los enemigos
+		jugadorDecepticons.mover(new Posicion(1, 6), new Posicion(1, 5));
+		jugadorDecepticons.mover(new Posicion(1, 5), new Posicion(1, 4));
+		jugadorDecepticons.mover(new Posicion(1, 4), new Posicion(0, 4));
 		posicionFrenzy = tablero.obtenerPosicionAsociadaAColocable(frenzy);
-		assertTrue(posicionFrenzy.compararPosicion(new Posicion(0,4)));
+		assertTrue(posicionFrenzy.compararPosicion(new Posicion(0, 4)));
 		jugadorDecepticons.transformar(posicionFrenzy);
-		for (int i =0; i< 150; i++){
+		for (int i = 0; i < 150; i++) {
 			jugadorDecepticons.atacar(posicionFrenzy, posicionBumblebee);
 		}
 
 		assertTrue(jugadorAutobots.equipovivo());
-		for (int i =0; i< 150; i++){
+		for (int i = 0; i < 150; i++) {
 			jugadorDecepticons.atacar(posicionFrenzy, posicionOptimus);
 		}
 		assertTrue(jugadorAutobots.equipovivo());
 
-		for (int i =0; i< 150; i++){
+		for (int i = 0; i < 150; i++) {
 			jugadorDecepticons.atacar(posicionFrenzy, posicionRatchet);
 		}
 		assertFalse(jugadorAutobots.equipovivo());
 	}
 	@Test(expected= NoEsAlgoFormerPropio.class)
-	public void unJugadorNoPuedeAtacarConAlgoFormersAjenos() {
+	public void unJugadorNoPuedeAtacarConAlgoFormersAjenos() throws NoEsAlgoFormerPropio, ObjetivoFueraDeRango{
 		jugadorDecepticons.atacar(posicionBumblebee, posicionOptimus);
 		jugadorDecepticons.atacar(posicionOptimus, posicionRatchet);
 		jugadorDecepticons.atacar(posicionRatchet, posicionBumblebee);
 	}
 	@Test(expected= NoEsAlgoFormerPropio.class)
-	public void unJugadorNoPuedeMoverAlgoFormersAjenos(){
+	public void unJugadorNoPuedeMoverAlgoFormersAjenos()throws NoEsAlgoFormerPropio{
 		jugadorDecepticons.mover(posicionBumblebee,posicionOptimus);
 		jugadorDecepticons.mover(posicionOptimus,posicionRatchet);
 		jugadorDecepticons.mover(posicionRatchet, posicionBumblebee);
 	}
 	@Test(expected= NoEsAlgoFormerPropio.class)
-	public void unJugadorNoPuedeTransformarAlgoformersAjenos(){
+	public void unJugadorNoPuedeTransformarAlgoformersAjenos()throws  NoEsAlgoFormerPropio, NoPuedeTransformarsePorSerCombinado{
 		jugadorAutobots.transformar(posicionBoneCrusher);
 		jugadorAutobots.transformar(posicionFrenzy);
 		jugadorAutobots.transformar(posicionMegatron);
 	}
 	@Test
-	public void combinarYDescombinarTomaDosTurnos() {
+	public void combinarYDescombinarTomaDosTurnos() throws NoPuedeCombinarPorTenerAlgoFormersMuertos{
 		jugadorDecepticons.combinarODescombinar();//Pasar de descombinado a combinado
 		assertFalse(jugadorDecepticons.puedeJugar());
 		jugadorDecepticons.notificar();

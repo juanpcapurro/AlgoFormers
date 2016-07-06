@@ -1,5 +1,6 @@
 package modelo.tablero.colocable.robots.decepticon;
 
+import modelo.tablero.colocable.robots.NoPuedeTransformarsePorSerCombinado;
 import modelo.tablero.colocable.robots.armas.Ataque;
 import modelo.tablero.superficie.Superficie;
 import modelo.tablero.superficieAerea.Nube;
@@ -38,7 +39,7 @@ public class BoneCrusherTest {
 		assertEquals(mauricio.getVelocidad(),1 );
 	}
 	@Test
-	public void test04StatsModoAlterno(){
+	public void test04StatsModoAlterno() throws NoPuedeTransformarsePorSerCombinado{
 		mauricio.transformar();
 		assertEquals(mauricio.getAtaque(), 30);
 		assertEquals(mauricio.getDistanciaDeAtaque(), 3);
@@ -55,7 +56,7 @@ public class BoneCrusherTest {
 	}
 	
 	@Test
-	public void test06BonecrusherAlternoAfectadoAlPasarPorEspinas(){
+	public void test06BonecrusherAlternoAfectadoAlPasarPorEspinas()throws NoPuedeTransformarsePorSerCombinado{
 		Superficie superficieTerrestre =new Espinas();
 		Superficie superficieAerea=new Nube();
 		int vida=mauricio.getPuntosDeVida();
@@ -74,7 +75,7 @@ public class BoneCrusherTest {
 	}
 	
 	@Test
-	public void test08BonecrusherAlternoNoafectadoAlPasarPorTormentaPsionica(){
+	public void test08BonecrusherAlternoNoafectadoAlPasarPorTormentaPsionica()throws NoPuedeTransformarsePorSerCombinado{
 		Superficie superficieTerrestre =new Rocoso();
 		Superficie superficieAerea=new TormentaPsionica();
 		mauricio.transformar();
@@ -84,7 +85,7 @@ public class BoneCrusherTest {
 	}
 	
 	@Test
-	public void test09BonecrusherAlternoAfectadoAlPasarPorPantanoso(){
+	public void test09BonecrusherAlternoAfectadoAlPasarPorPantanoso()throws NoPuedeTransformarsePorSerCombinado{
 		Superficie superficieTerrestre =new Pantanoso();
 		Superficie superficieAerea=new Nube();
 		mauricio.transformar(); 

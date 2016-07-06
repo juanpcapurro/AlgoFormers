@@ -1,4 +1,4 @@
 package modelo.juego.jugador;
 
-public class NoEsAlgoFormerPropio extends RuntimeException{
+public class NoEsAlgoFormerPropio extends Exception{
 }

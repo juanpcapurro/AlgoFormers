@@ -1,5 +1,6 @@
 package modelo.tablero.colocable.robots.decepticon;
 
+import modelo.tablero.colocable.robots.NoPuedeTransformarsePorSerCombinado;
 import modelo.tablero.colocable.robots.armas.Ataque;
 import modelo.tablero.superficie.Superficie;
 import modelo.tablero.superficieAerea.Nube;
@@ -38,7 +39,7 @@ public class MegatronTest {
 		assertEquals(mauricio.getVelocidad(),1 );
 	}
 	@Test
-	public void test04StatsModoAlterno(){
+	public void test04StatsModoAlterno()throws NoPuedeTransformarsePorSerCombinado{
 		mauricio.transformar();
 		assertEquals(mauricio.getAtaque(), 55);
 		assertEquals(mauricio.getDistanciaDeAtaque(), 2);
@@ -56,7 +57,7 @@ public class MegatronTest {
 	}
 	
 	@Test
-	public void test06MegatronAlternoAfectadoAlPasarPorEspinas(){
+	public void test06MegatronAlternoAfectadoAlPasarPorEspinas()throws NoPuedeTransformarsePorSerCombinado{
 		Superficie superficieTerrestre =new Espinas();
 		Superficie superficieAerea=new Nube();
 		int vida=mauricio.getPuntosDeVida();
@@ -75,7 +76,7 @@ public class MegatronTest {
 	}
 	
 	@Test
-	public void test08MegatronAlternoAfectadoAlPasarPorTormentaPsionica(){
+	public void test08MegatronAlternoAfectadoAlPasarPorTormentaPsionica()throws NoPuedeTransformarsePorSerCombinado {
 		Superficie superficieTerrestre =new Rocoso();
 		Superficie superficieAerea=new TormentaPsionica();
 		mauricio.transformar();
@@ -86,7 +87,7 @@ public class MegatronTest {
 	
 
 	@Test
-	public void test09MegatronAlternoNoAfectadoAlPasarPorPantanoso(){
+	public void test09MegatronAlternoNoAfectadoAlPasarPorPantanoso()throws NoPuedeTransformarsePorSerCombinado{
 		Superficie superficieTerrestre =new Pantanoso();
 		Superficie superficieAerea=new Nube();
 		mauricio.transformar(); 

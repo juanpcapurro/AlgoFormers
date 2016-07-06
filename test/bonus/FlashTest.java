@@ -2,6 +2,7 @@ package bonus;
 
 import modelo.tablero.colocable.bonus.Flash;
 
+import modelo.tablero.colocable.robots.NoPuedeTransformarsePorSerCombinado;
 import modelo.tablero.colocable.robots.autobot.*;
 import modelo.tablero.colocable.robots.decepticon.*;
 
@@ -182,7 +183,7 @@ public class FlashTest {
 	}
 	
 	@Test
-	public void test07AlternoOptimusTomaFlashYTriplicaVelocidadPorTresTurnos(){
+	public void test07AlternoOptimusTomaFlashYTriplicaVelocidadPorTresTurnos()throws NoPuedeTransformarsePorSerCombinado {
 		optimus.transformar();
 		//Velocidad pre bonus
 		assertEquals(optimus.getVelocidad(),5);
@@ -209,7 +210,7 @@ public class FlashTest {
 	}
 	
 	@Test
-	public void test08AlternoBumblebeeTomaFlashYTriplicaVelocidadPorTresTurnos(){
+	public void test08AlternoBumblebeeTomaFlashYTriplicaVelocidadPorTresTurnos()throws NoPuedeTransformarsePorSerCombinado{
 		
 		bumblebee.transformar();		
 		//Velocidad pre bonus
@@ -237,7 +238,7 @@ public class FlashTest {
 	}
 	
 	@Test
-	public void test09AlternoRatchetTomaFlashYTriplicaVelocidadPorTresTurnos(){
+	public void test09AlternoRatchetTomaFlashYTriplicaVelocidadPorTresTurnos()throws NoPuedeTransformarsePorSerCombinado{
 		
 		ratchet.transformar();		
 		//Velocidad pre bonus
@@ -265,7 +266,7 @@ public class FlashTest {
 	}
 	
 	@Test
-	public void test10AlternoMegatronTomaFlashYTriplicaVelocidadPorTresTurnos(){
+	public void test10AlternoMegatronTomaFlashYTriplicaVelocidadPorTresTurnos()throws NoPuedeTransformarsePorSerCombinado{
 		
 		megatron.transformar();
 		//Velocidad pre bonus
@@ -294,7 +295,7 @@ public class FlashTest {
 	}
 	
 	@Test
-	public void test11AlternoFrenzyTomaFlashYTriplicaVelocidadPorTresTurnos(){
+	public void test11AlternoFrenzyTomaFlashYTriplicaVelocidadPorTresTurnos()throws NoPuedeTransformarsePorSerCombinado{
 		
 		frenzy.transformar();
 		//Velocidad pre bonus
@@ -323,7 +324,7 @@ public class FlashTest {
 	}
 	
 	@Test
-	public void test12AlternoBoneCrusherTomaFlashYTriplicaVelocidadPorTresTurnos(){
+	public void test12AlternoBoneCrusherTomaFlashYTriplicaVelocidadPorTresTurnos()throws NoPuedeTransformarsePorSerCombinado{
 		
 		boneCrusher.transformar();		
 		// pre bonus

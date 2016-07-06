@@ -1,6 +1,7 @@
 package modelo.tablero.colocable.robots.decepticon;
 
 import modelo.tablero.colocable.bonus.DobleCanion;
+import modelo.tablero.colocable.robots.NoPuedeTransformarsePorSerCombinado;
 import modelo.tablero.colocable.robots.armas.Ataque;
 import modelo.tablero.superficie.Superficie;
 import modelo.tablero.superficieAerea.Nube;
@@ -109,12 +110,9 @@ public class MenasorTest {
 		assertEquals(menasor.getDistanciaDeAtaque(), 2);
 		assertEquals(menasor.getVelocidad(),2 );
 	}
-	@Test
-	public void test09StatsNoCambianAlCambiarModo(){
+	@Test(expected = NoPuedeTransformarsePorSerCombinado.class)
+	public void menasorNoPuedeTransformarse()throws NoPuedeTransformarsePorSerCombinado {
 		menasor.transformar();
-		assertEquals(menasor.getAtaque(), 115);
-		assertEquals(menasor.getDistanciaDeAtaque(), 2);
-		assertEquals(menasor.getVelocidad(),2 );
 	}
 	
 	@Test
@@ -153,15 +151,4 @@ public class MenasorTest {
 		menasor.recibirColocable(new DobleCanion());
 		assertTrue(ataque<menasor.getAtaque());
 	}
-
-	@Test
-	public void test14ataqueBonusSeDuplicaEnModoAlterno(){
-		menasor.transformar();
-		int ataque=menasor.getAtaque();
-		menasor.recibirColocable(new DobleCanion());
-		assertTrue(ataque<menasor.getAtaque());
-	}
-
-
-
 }

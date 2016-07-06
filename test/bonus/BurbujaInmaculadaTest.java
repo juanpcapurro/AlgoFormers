@@ -1,6 +1,7 @@
 package bonus;
 
 import modelo.tablero.colocable.bonus.BurbujaInmaculada;
+import modelo.tablero.colocable.robots.NoPuedeTransformarsePorSerCombinado;
 import modelo.tablero.colocable.robots.armas.Ataque;
 import modelo.tablero.colocable.robots.autobot.*;
 import modelo.tablero.colocable.robots.decepticon.*;
@@ -83,7 +84,7 @@ public class BurbujaInmaculadaTest {
 	}
 	
 	@Test
-	public void test03OptimusAlternoConVidaTotalTomaBurbujaYNoPierdeVidaPor2Turnos(){
+	public void test03OptimusAlternoConVidaTotalTomaBurbujaYNoPierdeVidaPor2Turnos()throws NoPuedeTransformarsePorSerCombinado {
 
 		//Vida pre bonus
 		optimus.transformar();
@@ -116,7 +117,7 @@ public class BurbujaInmaculadaTest {
 	}
 
 	@Test
-	public void test04OptimusAlternoDaniadoTomaBurbujaYNoPierdeVidaPor2Turnos(){
+	public void test04OptimusAlternoDaniadoTomaBurbujaYNoPierdeVidaPor2Turnos()throws NoPuedeTransformarsePorSerCombinado{
 		//Vida pre bonus
 		optimus.transformar();
 		optimus.recibirAtaque(new Ataque(100));
@@ -214,7 +215,7 @@ public class BurbujaInmaculadaTest {
 	}
 	
 	@Test
-	public void test07BumblebeeAlternoConVidaTotalTomaBurbujaYNoPierdeVidaPor2Turnos(){
+	public void test07BumblebeeAlternoConVidaTotalTomaBurbujaYNoPierdeVidaPor2Turnos()throws NoPuedeTransformarsePorSerCombinado{
 
 		optimus.transformar();
 		//Vida pre bonus
@@ -247,7 +248,7 @@ public class BurbujaInmaculadaTest {
 	}
 
 	@Test
-	public void test08BumblebeeAlternoDaniadoTomaBurbujaYNoPierdeVidaPor2Turnos(){
+	public void test08BumblebeeAlternoDaniadoTomaBurbujaYNoPierdeVidaPor2Turnos()throws NoPuedeTransformarsePorSerCombinado{
 
 		bumblebee.transformar();
 		//Vida pre bonus
@@ -346,7 +347,7 @@ public class BurbujaInmaculadaTest {
 	}
 	
 	@Test
-	public void test11RatchetAlternoConVidaTotalTomaBurbujaYNoPierdeVidaPor2Turnos(){
+	public void test11RatchetAlternoConVidaTotalTomaBurbujaYNoPierdeVidaPor2Turnos()throws NoPuedeTransformarsePorSerCombinado{
 
 		//Vida pre bonus
 		ratchet.transformar();
@@ -379,7 +380,7 @@ public class BurbujaInmaculadaTest {
 	}
 
 	@Test
-	public void test12RatchetAlternoDaniadoTomaBurbujaYNoPierdeVidaPor2Turnos(){
+	public void test12RatchetAlternoDaniadoTomaBurbujaYNoPierdeVidaPor2Turnos()throws NoPuedeTransformarsePorSerCombinado{
 		//Vida pre bonus
 		ratchet.transformar();
 		ratchet.recibirAtaque(new Ataque(10));
@@ -478,7 +479,7 @@ public class BurbujaInmaculadaTest {
 	}
 	
 	@Test
-	public void test15MegatronAlternoConVidaTotalTomaBurbujaYNoPierdeVidaPor2Turnos(){
+	public void test15MegatronAlternoConVidaTotalTomaBurbujaYNoPierdeVidaPor2Turnos()throws NoPuedeTransformarsePorSerCombinado{
 		//Vida pre bonus
 		megatron.transformar();
 		assertEquals(megatron.getPuntosDeVida(),550);
@@ -510,7 +511,7 @@ public class BurbujaInmaculadaTest {
 	}
 
 	@Test
-	public void test16MegatronAlternoDaniadoTomaBurbujaYNoPierdeVidaPor2Turnos(){
+	public void test16MegatronAlternoDaniadoTomaBurbujaYNoPierdeVidaPor2Turnos()throws NoPuedeTransformarsePorSerCombinado{
 		//Vida pre bonus
 		megatron.transformar();
 		megatron.recibirAtaque(new Ataque(50));
@@ -608,7 +609,7 @@ public class BurbujaInmaculadaTest {
 	}
 	
 	@Test
-	public void test19BonecrusherAlternoConVidaTotalTomaBurbujaYNoPierdeVidaPor2Turnos(){
+	public void test19BonecrusherAlternoConVidaTotalTomaBurbujaYNoPierdeVidaPor2Turnos()throws NoPuedeTransformarsePorSerCombinado{
 
 		//Vida pre bonus
 		boneCrusher.transformar();
@@ -641,7 +642,7 @@ public class BurbujaInmaculadaTest {
 	}
 
 	@Test
-	public void test20BonecrusherAlternoDaniadoTomaBurbujaYNoPierdeVidaPor2Turnos(){
+	public void test20BonecrusherAlternoDaniadoTomaBurbujaYNoPierdeVidaPor2Turnos()throws NoPuedeTransformarsePorSerCombinado{
 		
 		//Vida pre bonus
 		boneCrusher.transformar();
@@ -740,7 +741,7 @@ public class BurbujaInmaculadaTest {
 	}
 	
 	@Test
-	public void test23FrenzyAlternoConVidaTotalTomaBurbujaYNoPierdeVidaPor2Turnos(){
+	public void test23FrenzyAlternoConVidaTotalTomaBurbujaYNoPierdeVidaPor2Turnos()throws NoPuedeTransformarsePorSerCombinado{
 
 		//Vida pre bonus
 		boneCrusher.transformar();
@@ -773,7 +774,7 @@ public class BurbujaInmaculadaTest {
 	}
 
 	@Test
-	public void test24FrenzyAlternoDaniadoTomaBurbujaYNoPierdeVidaPor2Turnos(){
+	public void test24FrenzyAlternoDaniadoTomaBurbujaYNoPierdeVidaPor2Turnos()throws NoPuedeTransformarsePorSerCombinado{
 	
 		//Vida pre bonus
 		frenzy.notificar();

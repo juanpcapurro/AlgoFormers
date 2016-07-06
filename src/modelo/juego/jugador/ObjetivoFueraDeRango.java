@@ -1,4 +1,4 @@
 package modelo.juego.jugador;
 
-public class ObjetivoFueraDeRango extends RuntimeException{
+public class ObjetivoFueraDeRango extends Exception{
 }

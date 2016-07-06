@@ -17,6 +17,9 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import modelo.juego.DatosAlgoformer;
+import modelo.juego.jugador.NoEsAlgoFormerPropio;
+import modelo.juego.jugador.ObjetivoFueraDeRango;
+import modelo.tablero.colocable.robots.NoPuedeTransformarsePorSerCombinado;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -150,8 +153,14 @@ public class SelectionController {
     void procesarSeleccionSecundaria(StackPane pane) throws IOException {
         if (primeroSeleccionado==null)
             return;
-        partida.atacar(GridPane.getRowIndex(primeroSeleccionado),GridPane.getColumnIndex(primeroSeleccionado),
-                 GridPane.getRowIndex(ultimoSeleccionado),GridPane.getColumnIndex(ultimoSeleccionado));
+        try {
+            partida.atacar(GridPane.getRowIndex(primeroSeleccionado), GridPane.getColumnIndex(primeroSeleccionado),
+                    GridPane.getRowIndex(ultimoSeleccionado), GridPane.getColumnIndex(ultimoSeleccionado));
+        }catch (ObjetivoFueraDeRango e){
+            System.out.println("Objetivo fuera de rango");
+        }catch (NoEsAlgoFormerPropio e){
+            System.out.println("No es AlgoFormer propio");
+        }
         actualizarCasillero();
         partida.setIterador(GridPane.getRowIndex(ultimoSeleccionado),GridPane.getColumnIndex(ultimoSeleccionado));
         actualizarBarra();
@@ -214,7 +223,7 @@ public class SelectionController {
             }
         });
         try {
-            Thread.sleep(1000);
+            Thread.sleep(700);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -241,8 +250,15 @@ public class SelectionController {
             @Override
             public void handle(ActionEvent event) {
                 if (primeroSeleccionado!=null) {
-                    partida.transformar(GridPane.getRowIndex(primeroSeleccionado), GridPane.getColumnIndex(primeroSeleccionado));
-                    restartPane(primeroSeleccionado);
+                    try {
+                        partida.transformar(GridPane.getRowIndex(primeroSeleccionado), GridPane.getColumnIndex(primeroSeleccionado));
+                        restartPane(primeroSeleccionado);
+                    }catch(NoEsAlgoFormerPropio e){
+                        System.out.println("No es AlgoFormer propio");
+                    }
+                    catch(NoPuedeTransformarsePorSerCombinado e){
+                        System.out.println("No puede transformarse por ser un algoformer combinado");
+                    }
                 }
                 actualizarBarra();
                 primeroSeleccionado=null;

@@ -1,9 +1,6 @@
 package modelo.juego;
 
-import modelo.juego.jugador.Jugador;
-import modelo.juego.jugador.JugadorAutobots;
-import modelo.juego.jugador.JugadorDecepticons;
-import modelo.juego.jugador.NoEsAlgoFormerPropio;
+import modelo.juego.jugador.*;
 import modelo.tablero.Casillero;
 import modelo.tablero.CasilleroYaOcupado;
 import modelo.tablero.SinMovimientosDisponibles;
@@ -12,6 +9,7 @@ import modelo.tablero.colocable.Colocable;
 import modelo.tablero.colocable.bonus.BurbujaInmaculada;
 import modelo.tablero.colocable.bonus.DobleCanion;
 import modelo.tablero.colocable.bonus.Flash;
+import modelo.tablero.colocable.robots.NoPuedeTransformarsePorSerCombinado;
 import modelo.tablero.colocable.robots.autobot.Bumblebee;
 import modelo.tablero.colocable.robots.autobot.Optimus;
 import modelo.tablero.colocable.robots.autobot.Ratchet;
@@ -24,12 +22,12 @@ import modelo.tablero.superficie.Superficie;
 
 class Partida {
 	
-    private Turno turno;
-    private Tablero tablero;
-    private ControladorPosiciones iterador=new ControladorPosiciones(8);
-    private Posicion posicionIterador=iterador.inicializarPosicion();
-    Jugador jugadorUno;
-    Jugador jugadorDos;
+   private Turno turno;
+   private Tablero tablero;
+   private ControladorPosiciones iterador=new ControladorPosiciones(8);
+   private Posicion posicionIterador=iterador.inicializarPosicion();
+   Jugador jugadorUno;
+   Jugador jugadorDos;
 
    public Partida(String nombreJugadorDecepticons, String nombreJugadorAutobots, int dimension) {
     	this.tablero = new Tablero(dimension);
@@ -46,32 +44,27 @@ class Partida {
         turno.avanzarTurno();
    }
 
-   public void mover(Posicion posicionInicial, Posicion posicionFinal) {
+   public void mover(Posicion posicionInicial, Posicion posicionFinal) throws NoEsAlgoFormerPropio{
        try {
            turno.jugadorActual().mover(posicionInicial, posicionFinal);
-       }catch (CasilleroYaOcupado|NoEsAlgoFormerPropio e){
-        return;
-       }catch (SinMovimientosDisponibles e){
-           turno.avanzarTurno();
-           return;
+       }catch (SinMovimientosDisponibles error){
+           //No hace nada, que se curta
        }
+       turno.avanzarTurno();
+
    }
-    public void atacar(Posicion hostil, Posicion objetivo){
+   public void atacar(Posicion hostil, Posicion objetivo)throws ObjetivoFueraDeRango, NoEsAlgoFormerPropio{
         turno.jugadorActual().atacar(hostil, objetivo);
         turno.avanzarTurno();
         if (!turno.jugadorActual().equipovivo())
             throw new JuegoFinalizado();
     }
-    public void transformar(Posicion posicion){
-        try{
-        turno.jugadorActual().transformar(posicion);
-    }catch (NoEsAlgoFormerPropio e){
-        return;
-    }
-        turno.avanzarTurno();
-    }
+   public void transformar(Posicion posicion)throws NoEsAlgoFormerPropio, NoPuedeTransformarsePorSerCombinado{
+       turno.jugadorActual().transformar(posicion);
+       turno.avanzarTurno();
+   }
 
-    public void combinarODescombinar(){
+   public void combinarODescombinar()throws NoPuedeCombinarPorTenerAlgoFormersMuertos{
         turno.jugadorActual().combinarODescombinar();
         turno.avanzarTurno();
     }
@@ -95,7 +88,7 @@ class Partida {
         return casillero.getColocable();
    }
 
-    public Object getEstado(){
+   public Object getEstado(){
         Casillero casillero=tablero.obtenerCasilleroAsociadoAPosicion(posicionIterador);
         return casillero.getColocable().getEstado();
     }
@@ -112,7 +105,7 @@ class Partida {
         iterador=new ControladorPosiciones(8);
    }
 
-    public DatosAlgoformer getDatos(){
+   public DatosAlgoformer getDatos(){//Turbio af pero los quiero igual
         Casillero casillero=tablero.obtenerCasilleroAsociadoAPosicion(posicionIterador);
         if (jugadorUno.esAlgoformerPropio(casillero.getColocable()))
             return jugadorUno.obtenerDatos(casillero.getColocable());
