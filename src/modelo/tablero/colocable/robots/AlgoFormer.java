@@ -39,6 +39,8 @@ public abstract class AlgoFormer extends Colocable {
 		ptosDeVida.setVidaActual(ptosDeVida.getVidaActual()-unAtaque.getDanio());
 	}
 
+
+
 	@Override
 	public void pasarPor(Superficie superficieTerrestre,Superficie superficieAerea) {
 		contextoModoActual.pasarPor(superficieTerrestre, superficieAerea);

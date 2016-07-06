@@ -45,8 +45,15 @@ public  class EstadoAlgoFormer {
 	public void movilizar(){
 		inmovilizado=false;
 	}
-	public boolean estaInmovilisado(){
+	public boolean estaInmovilizado(){
 		return inmovilizado;
 	}
+	public void setIndaniable(){
+		vida.setIndaniable();
+	}
+	public void setDaniable(){
+		vida.setDaniable();
+	}
+
 
 }

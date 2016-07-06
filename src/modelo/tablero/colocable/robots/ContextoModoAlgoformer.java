@@ -65,4 +65,6 @@ public class ContextoModoAlgoformer {
     public boolean tieneMovimientosDisponibles() {
         return actual.tieneMovimientosDisponibles();
     }
+
+
 }

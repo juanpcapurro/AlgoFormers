@@ -42,6 +42,9 @@ public class ScreenTableroController implements Initializable, ControlledScreen 
     ScreensController myController;
     static ProxyPartida partida;
     SelectionController controladorDeSeleccion;
+    static final double TABLERO_HEIGTH =573.0;
+    static final double TABLERO_WIDTH =1234.0;
+    static final int DIMENSION=8;
 
 
     @Override
@@ -54,7 +57,7 @@ public class ScreenTableroController implements Initializable, ControlledScreen 
         tableroGrid.setGridLinesVisible(true);
         Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
         panelSuperior.setPrefSize(screenBounds.getWidth(), screenBounds.getHeight());
-        tableroGrid.setMaxSize(1234,573);
+        tableroGrid.setMaxSize(TABLERO_WIDTH, TABLERO_HEIGTH);
     }
 
     public void setScreenParent(ScreensController screenParent) {
@@ -64,11 +67,11 @@ public class ScreenTableroController implements Initializable, ControlledScreen 
     public void imprimir(){
         partida=new ProxyPartida(mainApp.nombreJ1,mainApp.nombreJ2,8);
         partida.setNotificarVista();
-        Hashtable<String,String> imagenes=TableroVista.getImagenes();
+        Hashtable<String,String> imagenes= new Imagenes();
         tableroGrid.getChildren().clear();
         tableroGrid.setGridLinesVisible(true);
-        for (int j=0;j<8;j++) {
-            for (int i = 0; i < 8; i++) {
+        for (int j=0;j<DIMENSION;j++) {
+            for (int i = 0; i < DIMENSION; i++) {
                 StackPane pane = new StackPane();
                 ImageView imagenAerea=new ImagenAerea(imagenes,partida);
                 pane.setAlignment(imagenAerea, Pos.TOP_LEFT);

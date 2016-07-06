@@ -65,4 +65,6 @@ public abstract class ModoAlgoformer {
     boolean consultarMovimientosDisponibles(){
         return movimientosRealizados<estado.getVelocidad();
     }
+
+
 }

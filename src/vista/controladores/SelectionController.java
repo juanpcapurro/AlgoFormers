@@ -22,10 +22,8 @@ import modelo.tablero.colocable.robots.NoPuedeTransformarsePorSerCombinado;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Hashtable;
 
 import static vista.controladores.ScreenTableroController.partida;
-import static vista.controladores.TableroVista.getImagenes;
 
 public class SelectionController {
     final ImagenMira mira=new ImagenMira();
@@ -170,7 +168,7 @@ public class SelectionController {
     static void actualizarBarra() {
         actualizarUnidadesJugables();
         if (Integer.valueOf(partida.getDatos().getVidaOriginal()) != 1) {
-            imagenBarraSuperior.setImage(new ImagenObjeto(getImagenes(), partida).getImage());
+            imagenBarraSuperior.setImage(new ImagenObjeto(new Imagenes(), partida).getImage());
             superior.setText(partida.getDatos().getVidaActual());
             inferiorPrimero.setText(partida.getDatos().getAtaque());
             inferiorCentro.setText(partida.getDatos().getAlcance());
@@ -182,14 +180,15 @@ public class SelectionController {
 
     static void actualizarUnidadesJugables(){
         ArrayList<DatosAlgoformer> listaDatos=partida.getDatosJugadorActual().algoformers;
+        Imagenes imagenes= new Imagenes();
         if(listaDatos.size()==3) {
-            jugableUno.setImage((new ImagenObjeto(getImagenes(), listaDatos.get(0)).getImage()));
-            jugableDos.setImage((new ImagenObjeto(getImagenes(), listaDatos.get(1)).getImage()));
-            jugableTres.setImage((new ImagenObjeto(getImagenes(), listaDatos.get(2)).getImage()));
+            jugableUno.setImage((new ImagenObjeto(imagenes, listaDatos.get(0)).getImage()));
+            jugableDos.setImage((new ImagenObjeto(imagenes, listaDatos.get(1)).getImage()));
+            jugableTres.setImage((new ImagenObjeto(imagenes, listaDatos.get(2)).getImage()));
         } else{
             jugableUno.setImage(null);
             jugableDos.setImage(null);
-            jugableTres.setImage((new ImagenObjeto(getImagenes(), listaDatos.get(0)).getImage()));
+            jugableTres.setImage((new ImagenObjeto(imagenes, listaDatos.get(0)).getImage()));
         }
 
     }
@@ -229,8 +228,8 @@ public class SelectionController {
         pane.getChildren().clear();
         ImageView imagenAerea;
         ImageView objeto;
-        Hashtable<String, String> imagenes = getImagenes();
         ImageView imagenTerrestre;
+        Imagenes imagenes=new Imagenes();
         partida.setIterador(GridPane.getRowIndex(pane),GridPane.getColumnIndex(pane));
         imagenTerrestre = new ImagenTerrestre(imagenes, partida);
         imagenAerea = new ImagenAerea(imagenes, partida);

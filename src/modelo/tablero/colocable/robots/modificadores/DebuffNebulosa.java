@@ -8,7 +8,7 @@ public class DebuffNebulosa extends Modificador {
     @Override
     public void actualizar(){
         if (contador>cantidadTurnos){
-            estadoAfectado.inmovilizar();
+            estadoAfectado.movilizar();
             modificadores.remove(this);
         }
         contador++;

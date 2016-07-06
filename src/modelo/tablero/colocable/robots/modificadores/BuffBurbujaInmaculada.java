@@ -4,15 +4,15 @@ public class BuffBurbujaInmaculada extends Modificador {
 
     private int vidaOriginal;
     private int contador=0;
-    private int cantidadTurnos=2;
+    private int cantidadTurnos=6;
 
 
     @Override
     public void actualizar(){
         if (contador>=cantidadTurnos){
             modificadores.remove(this);
+            estadoAfectado.setDaniable();
         }
-        estadoAfectado.setVida(vidaOriginal);
         contador++;
     }
     @Override
@@ -20,8 +20,7 @@ public class BuffBurbujaInmaculada extends Modificador {
         if (yaFueAplicado())
             return;
         modificadores.add(this);
-        vidaOriginal= estadoAfectado.getVida();
-        estadoAfectado.setVida((int)(vidaOriginal));
+        estadoAfectado.setIndaniable();
     }
 
     @Override

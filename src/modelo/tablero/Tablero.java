@@ -38,7 +38,7 @@ public class Tablero{
         return true;
     }
 
-	void colocar(Posicion posicion,Colocable aColocar){
+	public void colocar(Posicion posicion, Colocable aColocar){
         controlador.validarCoordenadas(posicion);
 		Casillero casillero= obtenerCasilleroAsociadoAPosicion(posicion);
 		casillero.colocar(aColocar);
