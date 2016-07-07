@@ -34,7 +34,7 @@ public class ScreenTableroController implements Initializable, ControlledScreen 
     @FXML
     ImageView imagenAlgoformerJugando,robot1Imagen,robot2Imagen,robot3Imagen;;
     @FXML
-    Label nombreJugadorTurno, alcance,velocidad,vidaDisponible,potenciaDeAtaque,estadoRobot1,estadoRobot2,estadoRobot3;
+    Label nombreJugadorTurno, alcance,velocidad,vidaDisponible,potenciaDeAtaque,estadoRobot1,estadoRobot2,estadoRobot3,mensajesDeAyuda;
     @FXML
     Button finalizarTurno, transformar,combinar;
 
@@ -52,7 +52,9 @@ public class ScreenTableroController implements Initializable, ControlledScreen 
         controladorDeSeleccion=new SelectionController(imagenAlgoformerJugando,vidaDisponible,potenciaDeAtaque,
                                                         alcance,velocidad,nombreJugadorTurno,vidaBar,tableroGrid,
                                                         robot1Imagen,robot2Imagen,robot3Imagen,estadoRobot1,estadoRobot2,estadoRobot3);
-        imprimir();
+
+        partida=new ProxyPartida(mainApp.nombreJ1,mainApp.nombreJ2,8);
+        imprimir(partida);
         setButtonsEvent();
         tableroGrid.setGridLinesVisible(true);
         Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
@@ -66,22 +68,22 @@ public class ScreenTableroController implements Initializable, ControlledScreen 
         myController = screenParent;
     }
 
-    public void imprimir(){
-        partida=new ProxyPartida(mainApp.nombreJ1,mainApp.nombreJ2,8);
-        partida.setNotificarVista();
+    public void imprimir(ProxyPartida partida){
+
+        ScreenTableroController.partida.setNotificarVista();
         Hashtable<String,String> imagenes= new Imagenes();
         tableroGrid.getChildren().clear();
         tableroGrid.setGridLinesVisible(true);
         for (int j=0;j<DIMENSION;j++) {
             for (int i = 0; i < DIMENSION; i++) {
                 StackPane pane = new StackPane();
-                ImageView imagenAerea=new ImagenAerea(imagenes,partida);
+                ImageView imagenAerea=new ImagenAerea(imagenes, ScreenTableroController.partida);
                 pane.setAlignment(imagenAerea, Pos.TOP_LEFT);
-                pane.getChildren().addAll( new ImagenTerrestre(imagenes, partida),imagenAerea , new ImagenObjeto(imagenes, partida));
+                pane.getChildren().addAll( new ImagenTerrestre(imagenes, ScreenTableroController.partida),imagenAerea , new ImagenObjeto(imagenes, ScreenTableroController.partida));
                 GridPane.setConstraints(pane,j,i);
                 tableroGrid.getChildren().add(pane);
                 controladorDeSeleccion.setUp(pane);
-                partida.avanzarIterador();
+                ScreenTableroController.partida.avanzarIterador();
             }
         }
 
@@ -101,8 +103,8 @@ public class ScreenTableroController implements Initializable, ControlledScreen 
 
     @FXML
     public void salir(){
-//        primaryStage.close();
-        mainApp.juegoFinalizado();
+        mainApp.primaryStage.close();
+
     }
 
 

@@ -221,6 +221,13 @@
                </rowConstraints>
             </GridPane>
          </top>
+         <bottom>
+            <Label fx:id="mensajesDeAyuda" prefHeight="2.0" prefWidth="1273.0" text="ayuda" textFill="#fffa61" BorderPane.alignment="CENTER">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Label>
+         </bottom>
       </BorderPane>
    </children>
    <stylesheets>

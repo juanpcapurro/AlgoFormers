@@ -39,9 +39,10 @@ public class ScreenIngresoDeNombresController implements Initializable, Controll
 
     @FXML
     public void iniciarJuego(){
-        mainApp.nombreJ1 = nombreJugador1.getText();
-        mainApp.nombreJ2 = nombreJugador2.getText();
+
         myController.setScreen(screenSeleccionDeEquipos);
+        myController.nombresDeJugadores(nombreJugador1.getText(), nombreJugador2.getText());
+
 
 
     }
