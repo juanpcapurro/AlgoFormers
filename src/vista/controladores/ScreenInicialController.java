@@ -49,6 +49,7 @@ public class ScreenInicialController implements Initializable, ControlledScreen 
     @FXML
     public void pasarAIngresoDeNombres(){
         myController.setScreen(screenIngresoDeNombres);
+
     }
     @FXML
     public void salir(){

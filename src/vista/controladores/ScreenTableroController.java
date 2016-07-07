@@ -20,10 +20,10 @@ import java.util.Hashtable;
 import java.util.ResourceBundle;
 
 import static vista.controladores.SelectionController.setResizeEffectOnButton;
-import static vista.mainApp.primaryStage;
-import static vista.mainApp.screenTablero;
+
 
 public class ScreenTableroController implements Initializable, ControlledScreen {
+
 
     @FXML
     GridPane tableroGrid;
@@ -34,7 +34,7 @@ public class ScreenTableroController implements Initializable, ControlledScreen 
     @FXML
     ImageView imagenAlgoformerJugando,robot1Imagen,robot2Imagen,robot3Imagen;;
     @FXML
-    Label nombreJugadorTurno, alcance,velocidad,vidaDisponible,potenciaDeAtaque;
+    Label nombreJugadorTurno, alcance,velocidad,vidaDisponible,potenciaDeAtaque,estadoRobot1,estadoRobot2,estadoRobot3,mensajesDeAyuda;
     @FXML
     Button finalizarTurno, transformar,combinar;
 
@@ -51,37 +51,43 @@ public class ScreenTableroController implements Initializable, ControlledScreen 
     public void initialize(URL url, ResourceBundle rb) {
         controladorDeSeleccion=new SelectionController(imagenAlgoformerJugando,vidaDisponible,potenciaDeAtaque,
                                                         alcance,velocidad,nombreJugadorTurno,vidaBar,tableroGrid,
-                                                        robot1Imagen,robot2Imagen,robot3Imagen);
-        imprimir();
+                                                        robot1Imagen,robot2Imagen,robot3Imagen,estadoRobot1,estadoRobot2,estadoRobot3);
+
+        partida=new ProxyPartida(mainApp.nombreJ1,mainApp.nombreJ2,8);
+        imprimir(partida);
         setButtonsEvent();
         tableroGrid.setGridLinesVisible(true);
         Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
         panelSuperior.setPrefSize(screenBounds.getWidth(), screenBounds.getHeight());
         tableroGrid.setMaxSize(TABLERO_WIDTH, TABLERO_HEIGTH);
+
+
     }
 
     public void setScreenParent(ScreensController screenParent) {
         myController = screenParent;
     }
 
-    public void imprimir(){
-        partida=new ProxyPartida(mainApp.nombreJ1,mainApp.nombreJ2,8);
-        partida.setNotificarVista();
+    public void imprimir(ProxyPartida partida){
+
+        ScreenTableroController.partida.setNotificarVista();
         Hashtable<String,String> imagenes= new Imagenes();
         tableroGrid.getChildren().clear();
         tableroGrid.setGridLinesVisible(true);
         for (int j=0;j<DIMENSION;j++) {
             for (int i = 0; i < DIMENSION; i++) {
                 StackPane pane = new StackPane();
-                ImageView imagenAerea=new ImagenAerea(imagenes,partida);
+                ImageView imagenAerea=new ImagenAerea(imagenes, ScreenTableroController.partida);
                 pane.setAlignment(imagenAerea, Pos.TOP_LEFT);
-                pane.getChildren().addAll( new ImagenTerrestre(imagenes, partida),imagenAerea , new ImagenObjeto(imagenes, partida));
+                pane.getChildren().addAll( new ImagenTerrestre(imagenes, ScreenTableroController.partida),imagenAerea , new ImagenObjeto(imagenes, ScreenTableroController.partida));
                 GridPane.setConstraints(pane,j,i);
                 tableroGrid.getChildren().add(pane);
                 controladorDeSeleccion.setUp(pane);
-                partida.avanzarIterador();
+                ScreenTableroController.partida.avanzarIterador();
             }
         }
+
+
     }
 
     public void setButtonsEvent(){
@@ -93,15 +99,12 @@ public class ScreenTableroController implements Initializable, ControlledScreen 
         setResizeEffectOnButton(combinar);
     }
 
-    @FXML
-    public void jugar(){
-        myController.setScreen(screenTablero);
-    }
 
 
     @FXML
     public void salir(){
-        primaryStage.close();
+        mainApp.primaryStage.close();
+
     }
 
 

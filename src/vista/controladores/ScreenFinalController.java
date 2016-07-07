@@ -29,7 +29,9 @@ public class ScreenFinalController implements Initializable, ControlledScreen {
         Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
         panelSuperior.setPrefSize(screenBounds.getWidth(), screenBounds.getHeight());
 
-        nombreJugadorGanador.setText("HA GANADO EL JUGADOR: ");
+        nombreJugadorGanador.setText("HA GANADO EL JUGADOR: " + "pasar nombre del jugador");
+
+//        nombreJugadorGanador.setText("HA GANADO EL JUGADOR: " + mainApp.winner);
     }
 
     public void setScreenParent(ScreensController screenParent) {
@@ -38,7 +40,8 @@ public class ScreenFinalController implements Initializable, ControlledScreen {
 
     @FXML
     public void reiniciarJuego(){
-        myController.setScreen(screenInicial);
+        mainApp mainApp = new mainApp();
+        mainApp.start(primaryStage);;
     }
 
 

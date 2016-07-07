@@ -20,9 +20,10 @@ public class ScreensController  extends StackPane {
 
 
     private HashMap<String, Node> screens = new HashMap<>();
+    private String j1,j2;
 
 
-    public ScreensController(mainApp mainApp) {
+    public ScreensController() {
         super();
     }
 
@@ -90,5 +91,13 @@ public class ScreensController  extends StackPane {
     }
 
 
+    public void nombresDeJugadores(String j1, String j2) {
+        this.j1 = j1;
+        this.j2 = j2;
+    }
+
+    public String getJ1() {
+        return j1;
+    }
 }
 

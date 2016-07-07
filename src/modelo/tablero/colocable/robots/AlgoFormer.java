@@ -63,7 +63,8 @@ public abstract class AlgoFormer extends Colocable {
 	}
 
 	public DatosAlgoformer obtenerDatosAlgoformer(){
-		return new DatosAlgoformer(getPuntosDeVida(), this.getClass().getSimpleName(),this.getModo().getClass().getSimpleName());//paja hacerlo polimorfico con un literal
+		return new DatosAlgoformer(getPuntosDeVidaOriginal(),getPuntosDeVida(),getAtaque(),getVelocidad(),getDistanciaDeAtaque(),
+									getClass().getSimpleName(),getModo().getClass().getSimpleName(), (String) contextoModoActual.getModificadorActivo());
 	}
 	@Override
 	public void afectarColocable(ContextoModoAlgoformer modo){

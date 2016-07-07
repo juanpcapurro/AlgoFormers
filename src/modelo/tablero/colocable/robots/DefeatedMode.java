@@ -11,7 +11,10 @@ public class DefeatedMode extends ModoAlgoformer {
     public void pasarPor(Superficie superficieTerrestre, Superficie superficieAerea) {
 
     }
-
+    @Override
+    public String getModificadorActivo(){
+        return "Debilitado";
+    }
     @Override
     public boolean esHumanoide() {
         return false;

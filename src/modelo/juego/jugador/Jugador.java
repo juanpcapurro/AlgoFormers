@@ -139,7 +139,7 @@ public abstract class Jugador {
 		if (robotsJugador.contains(colocable)){
 			AlgoFormer robot=(AlgoFormer) colocable;
 			return new DatosAlgoformer(robot.getPuntosDeVidaOriginal(),robot.getPuntosDeVida(),robot.getAtaque(),robot.getVelocidad(),
-					robot.getDistanciaDeAtaque(),robot.getClass().getSimpleName());
+					robot.getDistanciaDeAtaque(),robot.getClass().getSimpleName(), robot.getModo().getClass().getSimpleName(), (String) robot.getModo().getModificadorActivo());
 		}
 		else
 			throw new NoEncontradoError();
