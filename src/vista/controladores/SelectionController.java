@@ -287,7 +287,7 @@ public class SelectionController {
                     catch(NoPuedeTransformarsePorSerCombinado e){
                         System.out.println("No puede transformarse por ser un algoformer combinado");
                     }catch(YaInicioMovimiento e){
-                        System.out.print("No puede trasnformarse porque ya inicio un movimiento");
+                        System.out.println("No puede trasnformarse porque ya inicio un movimiento");
                     }
                 }
                 actualizarBarra();
