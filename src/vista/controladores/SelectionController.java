@@ -170,7 +170,7 @@ public class SelectionController {
     }
 
     void procesarSeleccionSecundaria(StackPane pane) throws IOException {
-        if (primeroSeleccionado==null)
+        if (primeroSeleccionado==null || !partida.esJugable(GridPane.getRowIndex(ultimoSeleccionado),GridPane.getColumnIndex(ultimoSeleccionado)))
             return;
         try {
             partida.atacar(GridPane.getRowIndex(primeroSeleccionado), GridPane.getColumnIndex(primeroSeleccionado),
@@ -179,7 +179,7 @@ public class SelectionController {
             actualizarCasillero();
             partida.setPosicionador(GridPane.getRowIndex(ultimoSeleccionado), GridPane.getColumnIndex(ultimoSeleccionado));
             actualizarBarra();
-            if (Integer.valueOf(partida.getDatos().getVidaActual()) <= 0 && Integer.valueOf(partida.getDatos().getVidaOriginal()) != 1)
+            if (Integer.valueOf(partida.getDatos().getVidaActual()) <= 0)
                 ultimoSeleccionado.getChildren().add(new ExplosionDestruccion(ultimoSeleccionado).getView());
             else
                 ultimoSeleccionado.getChildren().add(new Explosion(ultimoSeleccionado).getView());
