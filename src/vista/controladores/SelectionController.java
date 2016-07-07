@@ -17,6 +17,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import modelo.juego.DatosAlgoformer;
+import modelo.juego.JuegoFinalizado;
 import modelo.juego.jugador.NoEsAlgoFormerPropio;
 import modelo.juego.jugador.NoPuedeCombinarPorTenerAlgoFormersMuertos;
 import modelo.juego.jugador.ObjetivoFueraDeRango;
@@ -139,6 +140,8 @@ public class SelectionController {
                                 , GridPane.getRowIndex(ultimoSeleccionado), GridPane.getColumnIndex(ultimoSeleccionado));
                     }catch (NoEsAlgoFormerPropio|ObjetoInmovible e){
                         System.out.println("No es algoFormer Propio");
+                    }catch(JuegoFinalizado e){
+                        System.out.print("Hola");
                     }
                     Platform.runLater(new Runnable() {
                         @Override
