@@ -93,15 +93,15 @@ class Partida {
         return casillero.getColocable().getModo();
     }
 
-   public void avanzarIterador(){
+   public void avanzarPosicionador(){
         posicionIterador=iterador.inicializarPosicion();
    }
 
-   public void setIterador(Posicion unaPosicion){
+   public void setPosicionador(Posicion unaPosicion){
         posicionIterador=unaPosicion;
    }
 
-   public void resetIterador() {
+   public void resetPosicionador() {
         iterador=new ControladorPosiciones(8);
    }
 
@@ -111,7 +111,7 @@ class Partida {
             return jugadorUno.obtenerDatos(casillero.getColocable());
         if (jugadorDos.esAlgoformerPropio(casillero.getColocable()))
             return jugadorDos.obtenerDatos(casillero.getColocable());
-        return new DatosAlgoformer(1,0,0,0,0,"","",null);
+        return new DatosAlgoformer(1,0,0,0,0,"",null,null);
     }
 
     public boolean esJugable(Posicion posicion) {

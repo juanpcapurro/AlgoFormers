@@ -95,7 +95,7 @@ public class ScreenTableroController implements Initializable, ControlledScreen 
                 GridPane.setConstraints(pane,j,i);
                 tableroGrid.getChildren().add(pane);
                 controladorDeSeleccion.setUp(pane);
-                ScreenTableroController.partida.avanzarIterador();
+                ScreenTableroController.partida.avanzarPosicionador();
             }
         }
 

@@ -4,7 +4,6 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Group;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
@@ -35,6 +34,10 @@ public class mainApp extends Application {
     private static String screenFinallFile = "screenFinal.fxml";
     public static Stage dialogStage;
 
+//
+//    public static String getNombreJugador2() {
+//        return partida.getNombreJugador2();
+//    }
 
     @Override
     public void start(Stage primaryStage) {
@@ -79,34 +82,45 @@ public class mainApp extends Application {
     }
 
 
+
+
+
+
     public static void crearCartelAlerta(String mensaje) {
-        try {
-
-
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(mainApp.class.getResource("screenCartelAlerta.fxml"));
-            AnchorPane page = loader.load();
+        Task task = new Task() {
+            @Override
+            protected Object call() throws Exception {
+                    Platform.runLater(new Runnable() {
+                        @Override
+                        public void run() {
+                            try {
+                            FXMLLoader loader = new FXMLLoader();
+                            loader.setLocation(mainApp.class.getResource("screenCartelAlerta.fxml"));
+                            AnchorPane page = loader.load();
 
             // CREO EL DIALOG STAGE
             dialogStage = new Stage();
             dialogStage.setTitle("ALERTA");
             dialogStage.initModality(Modality.WINDOW_MODAL);
             dialogStage.initOwner(mainApp.primaryStage);
-            dialogStage.setResizable(false);
             Scene scene = new Scene(page);
             dialogStage.setScene(scene);
 
 
-            AlertasController controller = loader.getController();
-            controller.setDialogStage(dialogStage);
-            controller.setearMensaje(mensaje);
+                            AlertasController controller = loader.getController();
+                            controller.setDialogStage(dialogStage);
+                            controller.setearMensaje(mensaje);
 
-            dialogStage.showAndWait();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-
-        }
+                            dialogStage.showAndWait();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    });
+            return null;
+            }
+        };
+        (new Thread(task)).start();
     }
 
 
