@@ -81,6 +81,7 @@ public class JugadorTest {
 		jugadorDecepticons.mover(new Posicion(1, 4), new Posicion(0, 4));
 		posicionFrenzy = tablero.obtenerPosicionAsociadaAColocable(frenzy);
 		assertTrue(posicionFrenzy.compararPosicion(new Posicion(0, 4)));
+		jugadorDecepticons.notificar();
 		jugadorDecepticons.transformar(posicionFrenzy);
 		for (int i = 0; i < 150; i++) {
 			jugadorDecepticons.atacar(posicionFrenzy, posicionBumblebee);
