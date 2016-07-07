@@ -71,7 +71,7 @@ public class JugadorTest {
 		assertFalse(jugadorDecepticons.equipovivo());
 	}
 	@Test
-	public void muereElEquipoAlAtacarLasPosicionesDeLosAlgoformers()throws SinMovimientosDisponibles, ObjetoInmovible, NoEsAlgoFormerPropio, ObjetivoFueraDeRango, NoPuedeTransformarsePorSerCombinado{
+	public void muereElEquipoAlAtacarLasPosicionesDeLosAlgoformers()throws YaInicioMovimiento, SinMovimientosDisponibles, ObjetoInmovible, NoEsAlgoFormerPropio, ObjetivoFueraDeRango, NoPuedeTransformarsePorSerCombinado{
 		assertTrue(jugadorAutobots.equipovivo());
 		assertTrue(posicionFrenzy.compararPosicion(new Posicion(0, 6)));
 		jugadorDecepticons.transformar(posicionFrenzy);
@@ -98,25 +98,25 @@ public class JugadorTest {
 		assertFalse(jugadorAutobots.equipovivo());
 	}
 	@Test(expected= NoEsAlgoFormerPropio.class)
-	public void unJugadorNoPuedeAtacarConAlgoFormersAjenos() throws NoEsAlgoFormerPropio, ObjetivoFueraDeRango{
+	public void unJugadorNoPuedeAtacarConAlgoFormersAjenos() throws YaInicioMovimiento, NoEsAlgoFormerPropio, ObjetivoFueraDeRango{
 		jugadorDecepticons.atacar(posicionBumblebee, posicionOptimus);
 		jugadorDecepticons.atacar(posicionOptimus, posicionRatchet);
 		jugadorDecepticons.atacar(posicionRatchet, posicionBumblebee);
 	}
 	@Test(expected= NoEsAlgoFormerPropio.class)
-	public void unJugadorNoPuedeMoverAlgoFormersAjenos()throws NoEsAlgoFormerPropio, ObjetoInmovible, SinMovimientosDisponibles{
+	public void unJugadorNoPuedeMoverAlgoFormersAjenos()throws NoEsAlgoFormerPropio, YaInicioMovimiento, ObjetoInmovible, SinMovimientosDisponibles{
 		jugadorDecepticons.mover(posicionBumblebee,posicionOptimus);
 		jugadorDecepticons.mover(posicionOptimus,posicionRatchet);
 		jugadorDecepticons.mover(posicionRatchet, posicionBumblebee);
 	}
 	@Test(expected= NoEsAlgoFormerPropio.class)
-	public void unJugadorNoPuedeTransformarAlgoformersAjenos()throws  ObjetoInmovible, NoEsAlgoFormerPropio, NoPuedeTransformarsePorSerCombinado{
+	public void unJugadorNoPuedeTransformarAlgoformersAjenos()throws  ObjetoInmovible, NoEsAlgoFormerPropio, YaInicioMovimiento, NoPuedeTransformarsePorSerCombinado{
 		jugadorAutobots.transformar(posicionBoneCrusher);
 		jugadorAutobots.transformar(posicionFrenzy);
 		jugadorAutobots.transformar(posicionMegatron);
 	}
 	@Test
-	public void combinarYDescombinarTomaDosTurnos() throws NoPuedeCombinarPorTenerAlgoFormersMuertos{
+	public void combinarYDescombinarTomaDosTurnos() throws YaInicioMovimiento, NoPuedeCombinarPorTenerAlgoFormersMuertos{
 		jugadorDecepticons.combinarODescombinar();//Pasar de descombinado a combinado
 		assertFalse(jugadorDecepticons.puedeJugar());
 		jugadorDecepticons.notificar();

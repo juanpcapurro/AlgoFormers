@@ -25,12 +25,14 @@ public abstract class Jugador {
 	private int turnosAunOcupados;
 	private ArrayList<AlgoFormer> robotsJugador = new ArrayList<AlgoFormer>();
 	private boolean estaCombinado;//Algun dia hay que hardcodear //Ya esta todo hardcodeado que flasha
+	private boolean inicioMovimiento;
 
 	public Jugador(String nuevoNombre, Tablero tablero, AlgoFormer unAlgoformer, AlgoFormer otroAlgoformer, AlgoFormer tercerAlgoformer){
 		this.tablero= tablero;
 		this.nombreDeJugador = nuevoNombre;
 		turnosAunOcupados = 0;
 		estaCombinado = false;
+		inicioMovimiento = false;
 		robotsJugador.add(unAlgoformer);
 		robotsJugador.add(otroAlgoformer);
 		robotsJugador.add(tercerAlgoformer);
@@ -52,7 +54,7 @@ public abstract class Jugador {
 		return false;
 	}
 
-	public void combinarODescombinar()throws NoPuedeCombinarPorTenerAlgoFormersMuertos {
+	public void combinarODescombinar()throws NoPuedeCombinarPorTenerAlgoFormersMuertos, YaInicioMovimiento{
 		validarQuePuedeJugar();
 		if(!estaCombinado)
 			combinar();
@@ -63,7 +65,7 @@ public abstract class Jugador {
 		turnosAunOcupados = 2;
 	}
 
-	public void transformar(Posicion posicionAlgoFormer) throws NoEsAlgoFormerPropio, NoPuedeTransformarsePorSerCombinado{
+	public void transformar(Posicion posicionAlgoFormer) throws NoEsAlgoFormerPropio, NoPuedeTransformarsePorSerCombinado, YaInicioMovimiento{
 		validarQuePuedeJugar();
 		hayUnAlgoFormerPropioEnPosicion(posicionAlgoFormer);
 		AlgoFormer aTransformar = (AlgoFormer)tablero.obtenerCasilleroAsociadoAPosicion(posicionAlgoFormer).getColocable();
@@ -71,14 +73,18 @@ public abstract class Jugador {
 	}
 
 	public void mover(Posicion posicionOrigen, Posicion posicionDestino) throws NoEsAlgoFormerPropio, ObjetoInmovible, SinMovimientosDisponibles{
-		validarQuePuedeJugar();
+		try {
+			validarQuePuedeJugar();
+		}catch (YaInicioMovimiento e){
+			//No hace nada, es la excepcion a la excepcion
+		}
         hayUnAlgoFormerPropioEnPosicion(posicionOrigen);
 		tablero.recorrer(posicionOrigen, posicionDestino);
 		if (algoformerSinMovimientos(posicionDestino)){
 			throw new SinMovimientosDisponibles();
 		}
 	}
-	public void atacar(Posicion hostil, Posicion objetivo)throws ObjetivoFueraDeRango, NoEsAlgoFormerPropio{
+	public void atacar(Posicion hostil, Posicion objetivo)throws ObjetivoFueraDeRango, NoEsAlgoFormerPropio, YaInicioMovimiento{
 		validarQuePuedeJugar();
 		hayUnAlgoFormerPropioEnPosicion(hostil);
 		AlgoFormer robot = (AlgoFormer)tablero.obtenerCasilleroAsociadoAPosicion(hostil).getColocable();
@@ -93,6 +99,7 @@ public abstract class Jugador {
 			turnosAunOcupados--;
 		for (AlgoFormer actual: robotsJugador)
 			actual.notificar();
+		inicioMovimiento=false;
 	}
 
 	private boolean algoformerSinMovimientos(Posicion posicion){
@@ -111,9 +118,11 @@ public abstract class Jugador {
         return (turnosAunOcupados<=0);
     }
 
-	private void validarQuePuedeJugar(){
+	private void validarQuePuedeJugar()throws YaInicioMovimiento{
 		if(!puedeJugar())
 			throw new JugadorOcupado();
+		if(inicioMovimiento)
+			throw new YaInicioMovimiento();
 	}
 
     private void hayUnAlgoFormerPropioEnPosicion(Posicion posicionOrigen) throws NoEsAlgoFormerPropio{

@@ -20,6 +20,7 @@ import modelo.juego.DatosAlgoformer;
 import modelo.juego.jugador.NoEsAlgoFormerPropio;
 import modelo.juego.jugador.NoPuedeCombinarPorTenerAlgoFormersMuertos;
 import modelo.juego.jugador.ObjetivoFueraDeRango;
+import modelo.juego.jugador.YaInicioMovimiento;
 import modelo.tablero.colocable.robots.NoPuedeTransformarsePorSerCombinado;
 import modelo.tablero.colocable.robots.ObjetoInmovible;
 
@@ -176,6 +177,9 @@ public class SelectionController {
         }catch(ObjetivoFueraDeRango e){
             System.out.println("Objetivo fuera de rango");
         }
+        catch (YaInicioMovimiento e){
+            System.out.println("No puede atacar porque ya empezo un movimiento");
+        }
     }
 
     static void actualizarBarra() {
@@ -265,6 +269,8 @@ public class SelectionController {
                     }
                     catch(NoPuedeTransformarsePorSerCombinado e){
                         System.out.println("No puede transformarse por ser un algoformer combinado");
+                    }catch(YaInicioMovimiento e){
+                        System.out.print("No puede trasnformarse porque ya inicio un movimiento");
                     }
                 }
                 actualizarBarra();
@@ -313,6 +319,9 @@ public class SelectionController {
                             partida.combinarODescombinar();
                         }catch (NoPuedeCombinarPorTenerAlgoFormersMuertos e ){
                             System.out.println("No puede combinar por tener algoformers muertos");
+                        }
+                        catch(YaInicioMovimiento e){
+                            System.out.println("No puede combinar porque ya inicon un movimiento");
                         }
                         return null;
                     }

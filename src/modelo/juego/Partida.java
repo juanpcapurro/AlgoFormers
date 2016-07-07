@@ -53,18 +53,18 @@ class Partida {
            turno.avanzarTurno();
        }
    }
-   public void atacar(Posicion hostil, Posicion objetivo) throws NoEsAlgoFormerPropio, ObjetivoFueraDeRango, JuegoFinalizado{
+   public void atacar(Posicion hostil, Posicion objetivo) throws NoEsAlgoFormerPropio, ObjetivoFueraDeRango, JuegoFinalizado, YaInicioMovimiento{
         turno.jugadorActual().atacar(hostil, objetivo);
         turno.avanzarTurno();
         if (!turno.jugadorActual().equipovivo())
             throw new JuegoFinalizado();
     }
-   public void transformar(Posicion posicion)throws NoEsAlgoFormerPropio, NoPuedeTransformarsePorSerCombinado{
+   public void transformar(Posicion posicion)throws NoEsAlgoFormerPropio, NoPuedeTransformarsePorSerCombinado, YaInicioMovimiento{
        turno.jugadorActual().transformar(posicion);
        turno.avanzarTurno();
    }
 
-   public void combinarODescombinar()throws NoPuedeCombinarPorTenerAlgoFormersMuertos{
+   public void combinarODescombinar()throws NoPuedeCombinarPorTenerAlgoFormersMuertos, YaInicioMovimiento{
         turno.jugadorActual().combinarODescombinar();
         turno.avanzarTurno();
     }
