@@ -1,28 +1,27 @@
 package vista;
 
 import javafx.application.Application;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Group;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Pane;
-import javafx.scene.transform.Scale;
 import javafx.stage.Modality;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
-import modelo.juego.ProxyPartida;
 import vista.controladores.AlertasController;
 
 import java.io.IOException;
+import java.util.HashMap;
+
 
 public class mainApp extends Application {
 
     public static Stage primaryStage;
     public static String nombreJ1="jugador1";
     public static String nombreJ2="jugador2";
+    public static HashMap<String, ControlledScreen> controladores = new HashMap<>();
     private ScreensController mainContainer;
     public static String screenInicial = "screenInicial";
     private static String screenInicialFile = "screenInicial.fxml";
@@ -36,10 +35,6 @@ public class mainApp extends Application {
     private static String screenFinallFile = "screenFinal.fxml";
     public static Stage dialogStage;
 
-//
-//    public static String getNombreJugador2() {
-//        return partida.getNombreJugador2();
-//    }
 
     @Override
     public void start(Stage primaryStage) {
@@ -84,10 +79,6 @@ public class mainApp extends Application {
     }
 
 
-
-
-
-
     public static void crearCartelAlerta(String mensaje) {
         try {
 
@@ -101,6 +92,7 @@ public class mainApp extends Application {
             dialogStage.setTitle("ALERTA");
             dialogStage.initModality(Modality.WINDOW_MODAL);
             dialogStage.initOwner(mainApp.primaryStage);
+            dialogStage.setResizable(false);
             Scene scene = new Scene(page);
             dialogStage.setScene(scene);
 

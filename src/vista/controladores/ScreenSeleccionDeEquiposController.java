@@ -13,25 +13,22 @@ import vista.mainApp;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import static vista.mainApp.nombreJ1;
 import static vista.mainApp.screenTablero;
 
 
 public class ScreenSeleccionDeEquiposController implements Initializable, ControlledScreen {
 
-
+    private String nombreJugador1, nombreJugador2;
     public AnchorPane panelSuperior;
     ScreensController myController;
     @FXML
     AnchorPane autobots,decepticons;
     @FXML
-    javafx.scene.control.Button  autobotsNext, autobotsPrevious,  decepticonsNext,  decepticonsPrevious;
-    @FXML
     MenuButton autobotJugador, decepticonJugador;
 
     @FXML
-    public  javafx.scene.control.MenuItem jugador1Autobot, jugador2Autobot;
-    @FXML
-    public  javafx.scene.control.MenuItem jugador1Decepticon,jugador2Decepticon;
+    public  javafx.scene.control.MenuItem jugador1Autobot, jugador2Autobot,jugador1Decepticon,jugador2Decepticon;
 
     private String autobot, decepticon,equipoJugador1, equipoJugador2;
 
@@ -40,12 +37,20 @@ public class ScreenSeleccionDeEquiposController implements Initializable, Contro
         this.autobot = "optimus";
         this.decepticon = "megatron";
 
+        setearEtiquetas();
+
         Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
         panelSuperior.setPrefSize(screenBounds.getWidth(), screenBounds.getHeight());
     }
 
     public void setScreenParent(ScreensController screenParent) {
         myController = screenParent;
+    }
+
+    @Override
+    public void setNombreJugadores(String nj1, String nj2) {
+        nombreJugador1 = nj1;
+        nombreJugador2 = nj2;
     }
 
     @FXML
@@ -136,10 +141,10 @@ public class ScreenSeleccionDeEquiposController implements Initializable, Contro
 
     @FXML
     public void setearEtiquetas(){
-        jugador1Autobot.setText(mainApp.nombreJ1);
-        jugador1Decepticon.setText(mainApp.nombreJ1);
-        jugador2Autobot.setText(mainApp.nombreJ2);
-        jugador2Decepticon.setText(mainApp.nombreJ2);
+        jugador1Autobot.setText(nombreJugador1);
+        jugador1Decepticon.setText(nombreJugador1);
+        jugador2Autobot.setText(nombreJugador2);
+        jugador2Decepticon.setText(nombreJugador2);
     }
 
     @FXML
@@ -153,7 +158,7 @@ public class ScreenSeleccionDeEquiposController implements Initializable, Contro
 //            mainApp.partida.asignarAutobotsAJugador(2);
 //            mainApp.partida.asignarDecepticonsAJugador(1);
 //        }
-        myController.setScreen(screenTablero);
+        myController.setScreen(screenTablero,nombreJugador1,nombreJugador2);
     }
 
 }

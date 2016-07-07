@@ -38,10 +38,15 @@ public class ScreenFinalController implements Initializable, ControlledScreen {
         myController = screenParent;
     }
 
+    @Override
+    public void setNombreJugadores(String nj1, String nj2) {
+
+    }
+
     @FXML
     public void reiniciarJuego(){
         mainApp mainApp = new mainApp();
-        mainApp.start(primaryStage);;
+        mainApp.start(primaryStage);
     }
 
 

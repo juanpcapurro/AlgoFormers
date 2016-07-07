@@ -7,7 +7,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Screen;
 import vista.ControlledScreen;
 import vista.ScreensController;
-import vista.mainApp;
+
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -16,8 +16,7 @@ import static vista.mainApp.*;
 
 
 public class ScreenIngresoDeNombresController implements Initializable, ControlledScreen {
-    public javafx.scene.control.TextField nombreJugador1;
-    public javafx.scene.control.TextField nombreJugador2;
+    public javafx.scene.control.TextField nombreJugador1, nombreJugador2;
     public AnchorPane panelSuperior;
 
 
@@ -37,13 +36,15 @@ public class ScreenIngresoDeNombresController implements Initializable, Controll
         myController = screenParent;
     }
 
+    @Override
+    public void setNombreJugadores(String nj1, String nj2) {
+
+    }
+
     @FXML
     public void iniciarJuego(){
 
-        myController.setScreen(screenSeleccionDeEquipos);
-        myController.nombresDeJugadores(nombreJugador1.getText(), nombreJugador2.getText());
-
-
+        myController.setScreen(screenSeleccionDeEquipos,nombreJugador1.getText().toString(),nombreJugador2.getText().toString());
 
     }
 
