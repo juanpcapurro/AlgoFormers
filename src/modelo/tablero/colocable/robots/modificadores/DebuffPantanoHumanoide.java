@@ -12,6 +12,7 @@ public class DebuffPantanoHumanoide extends Modificador {
     @Override
     public void actualizar() {
         if(!modoAfectado.estaActivado()) {
+            modificadores.remove(this);
             estadoAfectado.movilizar();
         }
     }

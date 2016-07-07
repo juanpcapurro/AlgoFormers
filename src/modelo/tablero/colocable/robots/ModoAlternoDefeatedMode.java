@@ -13,6 +13,11 @@ public class ModoAlternoDefeatedMode extends ModoAlgoformer {
     }
 
     @Override
+    public String getModificadorActivo(){
+        return "Debilitado";
+    }
+
+    @Override
     public boolean esHumanoide() {
         return false;
     }

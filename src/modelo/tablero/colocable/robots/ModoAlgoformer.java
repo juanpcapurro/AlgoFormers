@@ -67,4 +67,10 @@ public abstract class ModoAlgoformer {
     }
 
 
+    public String getModificadorActivo() {
+        if (modificadores.size()>0){
+            return modificadores.get(modificadores.size()-1).getClass().getSimpleName();
+        }
+        return "";
+    }
 }

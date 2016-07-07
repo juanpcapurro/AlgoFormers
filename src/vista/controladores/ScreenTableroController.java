@@ -51,7 +51,7 @@ public class ScreenTableroController implements Initializable, ControlledScreen 
     public void initialize(URL url, ResourceBundle rb) {
         controladorDeSeleccion=new SelectionController(imagenAlgoformerJugando,vidaDisponible,potenciaDeAtaque,
                                                         alcance,velocidad,nombreJugadorTurno,vidaBar,tableroGrid,
-                                                        robot1Imagen,robot2Imagen,robot3Imagen);
+                                                        robot1Imagen,robot2Imagen,robot3Imagen,estadoRobot1,estadoRobot2,estadoRobot3);
         imprimir();
         setButtonsEvent();
         tableroGrid.setGridLinesVisible(true);
