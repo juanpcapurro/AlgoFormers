@@ -20,8 +20,7 @@ import java.util.Hashtable;
 import java.util.ResourceBundle;
 
 import static vista.controladores.SelectionController.setResizeEffectOnButton;
-import static vista.mainApp.primaryStage;
-import static vista.mainApp.screenTablero;
+
 
 public class ScreenTableroController implements Initializable, ControlledScreen {
 
@@ -98,15 +97,12 @@ public class ScreenTableroController implements Initializable, ControlledScreen 
         setResizeEffectOnButton(combinar);
     }
 
-    @FXML
-    public void jugar(){
-        myController.setScreen(screenTablero);
-    }
 
 
     @FXML
     public void salir(){
-        primaryStage.close();
+//        primaryStage.close();
+        mainApp.juegoFinalizado();
     }
 
 
