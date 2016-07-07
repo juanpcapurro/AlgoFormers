@@ -111,7 +111,7 @@ class Partida {
             return jugadorUno.obtenerDatos(casillero.getColocable());
         if (jugadorDos.esAlgoformerPropio(casillero.getColocable()))
             return jugadorDos.obtenerDatos(casillero.getColocable());
-        return new DatosAlgoformer(1,0,0,0,0,"","",null);
+        return new DatosAlgoformer(1,0,0,0,0,"",null,null);
     }
 
     public boolean esJugable(Posicion posicion) {

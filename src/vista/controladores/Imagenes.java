@@ -46,11 +46,11 @@ public class Imagenes extends Hashtable<String,String> {
         put("Megatron ModoAlternoDefeatedMode", "file:src/vista/imagenes/tachados/MegatronAlternoTachado.png");
         put("Superion DefeatedMode","file:src/vista/imagenes/tachados/superionTachado.png");
 
-        put("EspacioVacio String", "file:src/vista/imagenes/EspacioVacio.png");
-        put("BurbujaInmaculada String","file:src/vista/imagenes/burbujas.gif");
-        put("DobleCanion String","file:src/vista/imagenes/canion.png");
-        put("Flash String","file:src/vista/imagenes/flash.png");
-        put("Chispa String","file:src/vista/imagenes/chispa.gif");
+        put("EspacioVacio", "file:src/vista/imagenes/EspacioVacio.png");
+        put("BurbujaInmaculada","file:src/vista/imagenes/burbujas.gif");
+        put("DobleCanion","file:src/vista/imagenes/canion.png");
+        put("Flash","file:src/vista/imagenes/flash.png");
+        put("Chispa","file:src/vista/imagenes/chispa.gif");
 
     }
     

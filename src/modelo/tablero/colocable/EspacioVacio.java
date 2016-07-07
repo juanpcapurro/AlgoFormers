@@ -28,7 +28,7 @@ class EspacioVacio extends Colocable{
 
 	@Override
 	public Object getModo() {
-		return "";
+		return null;
 	}
 
 	@Override

@@ -18,8 +18,10 @@ public class ImagenObjeto extends ImageView implements ContenidoCasillero {
     ImageCursor cursor = new ImageCursor(new Image("file:src/vista/imagenes/cursorMira.png"));
 
     public ImagenObjeto(Hashtable<String, String> imagenes, ProxyPartida partida) {
-        String imagen;
-        imagen = imagenes.get((partida.obtenerColocable()).getClass().getSimpleName()+" "+partida.getEstado().getClass().getSimpleName());
+        String imagen,estadoAux="";
+        if(partida.getEstado()!=null)
+            estadoAux=" "+partida.getEstado().getClass().getSimpleName();
+        imagen = imagenes.get((partida.obtenerColocable()).getClass().getSimpleName()+estadoAux);
         setImage(new Image(imagen));
         setProperties();
     }
