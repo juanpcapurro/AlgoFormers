@@ -50,7 +50,7 @@ public class Imagenes extends Hashtable<String,String> {
         put("BurbujaInmaculada String","file:src/vista/imagenes/burbujas.gif");
         put("DobleCanion String","file:src/vista/imagenes/canion.png");
         put("Flash String","file:src/vista/imagenes/flash.png");
-        put("Chispa String","file:src/vista/imagenes/tachados/chispa.gif");
+        put("Chispa String","file:src/vista/imagenes/chispa.gif");
 
     }
     

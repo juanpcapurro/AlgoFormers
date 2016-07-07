@@ -36,9 +36,9 @@ class Partida {
         jugadorUno=new JugadorDecepticons(nombreJugadorDecepticons, tablero, new BoneCrusher(), new Frenzy(), new Megatron());
         jugadorDos=new JugadorAutobots(nombreJugadorAutobots, tablero, new Bumblebee(), new Optimus(), new Ratchet());
         tablero.colocarRandom(new Flash());
-        tablero.colocar(new Posicion(0,3),new BurbujaInmaculada());
+        tablero.colocarRandom(new BurbujaInmaculada());
         tablero.colocarRandom(new DobleCanion());
-        tablero.colocarRandom(new Chispa());
+        tablero.colocar(new Posicion(tablero.getDimension()/2,tablero.getDimension()/2),new Chispa());
         this.turno = new Turno(jugadorDos,jugadorUno);
     }
 
