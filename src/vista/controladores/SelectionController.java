@@ -24,6 +24,7 @@ import modelo.juego.jugador.ObjetivoFueraDeRango;
 import modelo.juego.jugador.YaInicioMovimiento;
 import modelo.tablero.colocable.robots.NoPuedeTransformarsePorSerCombinado;
 import modelo.tablero.colocable.robots.ObjetoInmovible;
+import vista.mainApp;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -185,12 +186,12 @@ public class SelectionController {
                 ultimoSeleccionado.getChildren().add(new Explosion(ultimoSeleccionado).getView());
             primeroSeleccionado = null;
         }catch(NoEsAlgoFormerPropio e){
-            System.out.println("No es AlgoFormer Propio");
+            mainApp.crearCartelAlerta("No es AlgoFormer Propio");
         }catch(ObjetivoFueraDeRango e){
-            System.out.println("Objetivo fuera de rango");
+            mainApp.crearCartelAlerta("Objetivo fuera de rango");
         }
         catch (YaInicioMovimiento e){
-            System.out.println("No puede atacar porque ya empezo un movimiento");
+            mainApp.crearCartelAlerta("No puede atacar porque ya empezo un movimiento");
         }
     }
 
