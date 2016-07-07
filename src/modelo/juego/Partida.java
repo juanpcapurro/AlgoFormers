@@ -93,15 +93,15 @@ class Partida {
         return casillero.getColocable().getModo();
     }
 
-   public void avanzarIterador(){
+   public void avanzarPosicionador(){
         posicionIterador=iterador.inicializarPosicion();
    }
 
-   public void setIterador(Posicion unaPosicion){
+   public void setPosicionador(Posicion unaPosicion){
         posicionIterador=unaPosicion;
    }
 
-   public void resetIterador() {
+   public void resetPosicionador() {
         iterador=new ControladorPosiciones(8);
    }
 

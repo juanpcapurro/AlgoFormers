@@ -57,17 +57,14 @@ public class ProxyPartida {
        return partida.obtenerColocable();
    }
 
-   public void avanzarIterador(){
-       partida.avanzarIterador();
+   public void avanzarPosicionador(){
+       partida.avanzarPosicionador();
    }
 
-   public void setIterador(int x,int y){
-       partida.setIterador(new Posicion(x, y));
+   public void setPosicionador(int x, int y){
+       partida.setPosicionador(new Posicion(x, y));
    }
 
-   public void resetIterador() {
-       partida.resetIterador();
-   }
 
     public Object getEstado (){
         return partida.getEstado();

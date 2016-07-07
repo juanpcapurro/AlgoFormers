@@ -138,7 +138,7 @@ public class SelectionController {
             if (!partida.esJugable(GridPane.getRowIndex(pane),GridPane.getColumnIndex(pane)))
                 return;
             primeroSeleccionado = pane;
-            partida.setIterador(GridPane.getRowIndex(primeroSeleccionado), GridPane.getColumnIndex(primeroSeleccionado));
+            partida.setPosicionador(GridPane.getRowIndex(primeroSeleccionado), GridPane.getColumnIndex(primeroSeleccionado));
             actualizarBarra();
         }
         else {
@@ -177,7 +177,7 @@ public class SelectionController {
                     GridPane.getRowIndex(ultimoSeleccionado), GridPane.getColumnIndex(ultimoSeleccionado));
 
             actualizarCasillero();
-            partida.setIterador(GridPane.getRowIndex(ultimoSeleccionado), GridPane.getColumnIndex(ultimoSeleccionado));
+            partida.setPosicionador(GridPane.getRowIndex(ultimoSeleccionado), GridPane.getColumnIndex(ultimoSeleccionado));
             actualizarBarra();
             if (Integer.valueOf(partida.getDatos().getVidaActual()) <= 0 && Integer.valueOf(partida.getDatos().getVidaOriginal()) != 1)
                 ultimoSeleccionado.getChildren().add(new ExplosionDestruccion(ultimoSeleccionado).getView());
@@ -227,9 +227,9 @@ public class SelectionController {
     }
 
     void actualizarCasillero(){
-        partida.setIterador(GridPane.getRowIndex(primeroSeleccionado),GridPane.getColumnIndex(primeroSeleccionado));
+        partida.setPosicionador(GridPane.getRowIndex(primeroSeleccionado),GridPane.getColumnIndex(primeroSeleccionado));
         restartPane(primeroSeleccionado);
-        partida.setIterador(GridPane.getRowIndex(ultimoSeleccionado),GridPane.getColumnIndex(ultimoSeleccionado));
+        partida.setPosicionador(GridPane.getRowIndex(ultimoSeleccionado),GridPane.getColumnIndex(ultimoSeleccionado));
         restartPane(ultimoSeleccionado);
     }
 
@@ -245,7 +245,7 @@ public class SelectionController {
                     }
                 }
                 restartPane(paneAux);
-                partida.setIterador(x,y);
+                partida.setPosicionador(x,y);
                 actualizarBarra();
             }
         });
@@ -263,7 +263,7 @@ public class SelectionController {
         ImageView objeto;
         ImageView imagenTerrestre;
         Imagenes imagenes=new Imagenes();
-        partida.setIterador(GridPane.getRowIndex(pane),GridPane.getColumnIndex(pane));
+        partida.setPosicionador(GridPane.getRowIndex(pane),GridPane.getColumnIndex(pane));
         imagenTerrestre = new ImagenTerrestre(imagenes, partida);
         imagenAerea = new ImagenAerea(imagenes, partida);
         pane.setAlignment(imagenAerea, Pos.TOP_LEFT);
