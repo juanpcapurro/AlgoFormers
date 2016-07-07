@@ -59,6 +59,8 @@ public class ScreenTableroController implements Initializable, ControlledScreen 
         Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
         panelSuperior.setPrefSize(screenBounds.getWidth(), screenBounds.getHeight());
         tableroGrid.setMaxSize(TABLERO_WIDTH, TABLERO_HEIGTH);
+
+
     }
 
     public void setScreenParent(ScreensController screenParent) {
@@ -83,6 +85,8 @@ public class ScreenTableroController implements Initializable, ControlledScreen 
                 partida.avanzarIterador();
             }
         }
+
+
     }
 
     public void setButtonsEvent(){

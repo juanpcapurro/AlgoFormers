@@ -1,12 +1,15 @@
 package vista;
 
 import javafx.application.Application;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.layout.Pane;
+import javafx.scene.transform.Scale;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
-import modelo.juego.JuegoFinalizado;
 import modelo.juego.ProxyPartida;
 
 public class mainApp extends Application {
@@ -54,11 +57,7 @@ public class mainApp extends Application {
         primaryStage.setFullScreen(true);
         primaryStage.setScene(scene);
         primaryStage.setTitle("ALGOFORMERS");
-        try {
-            primaryStage.show();
-        }catch (JuegoFinalizado e){
-            System.out.println("JuegoFinalizado");
-        }
+        primaryStage.show();
 
 //        letterbox(scene, mainContainer.getChildren());
 
