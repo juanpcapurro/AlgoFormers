@@ -119,7 +119,6 @@ public class SelectionController {
                     try {
                         procesarSeleccionPrimaria(pane);
                     }catch(JuegoFinalizado e){
-                        System.out.println("juegoadsads");
                     }
                 else {
                     try {
@@ -151,7 +150,7 @@ public class SelectionController {
                         partida.mover(GridPane.getRowIndex(primeroSeleccionado), GridPane.getColumnIndex(primeroSeleccionado)
                                 , GridPane.getRowIndex(ultimoSeleccionado), GridPane.getColumnIndex(ultimoSeleccionado));
                     }catch (NoEsAlgoFormerPropio|ObjetoInmovible e) {
-                        System.out.println("No es algoFormer Propio");
+                        mainApp.crearCartelAlerta("No es algoFormer Propio");
                     }
                     Platform.runLater(new Runnable() {
                         @Override
@@ -184,7 +183,6 @@ public class SelectionController {
                 ultimoSeleccionado.getChildren().add(new ExplosionDestruccion(ultimoSeleccionado).getView());
             else
                 ultimoSeleccionado.getChildren().add(new Explosion(ultimoSeleccionado).getView());
-            primeroSeleccionado = null;
         }catch(NoEsAlgoFormerPropio e){
             mainApp.crearCartelAlerta("No es AlgoFormer Propio");
         }catch(ObjetivoFueraDeRango e){
@@ -193,6 +191,7 @@ public class SelectionController {
         catch (YaInicioMovimiento e){
             mainApp.crearCartelAlerta("No puede atacar porque ya empezo un movimiento");
         }
+        primeroSeleccionado = null;
     }
 
     static void actualizarBarra() {
@@ -282,12 +281,12 @@ public class SelectionController {
                         partida.transformar(GridPane.getRowIndex(primeroSeleccionado), GridPane.getColumnIndex(primeroSeleccionado));
                         restartPane(primeroSeleccionado);
                     }catch(NoEsAlgoFormerPropio e){
-                        System.out.println("No es AlgoFormer propio");
+                        mainApp.crearCartelAlerta("No es AlgoFormer propio");
                     }
                     catch(NoPuedeTransformarsePorSerCombinado e){
-                        System.out.println("No puede transformarse por ser un algoformer combinado");
+                        mainApp.crearCartelAlerta("No puede transformarse por ser un algoformer combinado");
                     }catch(YaInicioMovimiento e){
-                        System.out.println("No puede trasnformarse porque ya inicio un movimiento");
+                        mainApp.crearCartelAlerta("No puede trasnformarse porque ya inicio un movimiento");
                     }
                 }
                 actualizarBarra();
@@ -302,6 +301,7 @@ public class SelectionController {
             public void handle(ActionEvent event) {
                 partida.saltearTurno();
                 actualizarBarra();
+                primeroSeleccionado=null;
             }
         });
     }
@@ -335,11 +335,12 @@ public class SelectionController {
                         try {
                             partida.combinarODescombinar();
                         }catch (NoPuedeCombinarPorTenerAlgoFormersMuertos e ){
-                            System.out.println("No puede combinar por tener algoformers muertos");
+                            mainApp.crearCartelAlerta("No puede combinar por tener algoformers muertos");
                         }
                         catch(YaInicioMovimiento e){
-                            System.out.println("No puede combinar porque ya inicon un movimiento");
+                            mainApp.crearCartelAlerta("No puede combinar porque ya inicio un movimiento");
                         }
+                        primeroSeleccionado=null;
                         return null;
                     }
                 };

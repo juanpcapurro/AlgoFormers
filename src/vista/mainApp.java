@@ -1,19 +1,16 @@
 package vista;
 
 import javafx.application.Application;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
+import javafx.application.Platform;
+import javafx.concurrent.Task;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Pane;
-import javafx.scene.transform.Scale;
 import javafx.stage.Modality;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
-import modelo.juego.ProxyPartida;
 import vista.controladores.AlertasController;
 
 import java.io.IOException;
@@ -60,7 +57,8 @@ public class mainApp extends Application {
         Scene scene = new Scene(root, screenBounds.getWidth(), screenBounds.getHeight());
 
         primaryStage.setResizable(false);
-        primaryStage.setFullScreen(true);
+        primaryStage.setFullScreen(false);
+        primaryStage.setMaximized(true);
         primaryStage.setScene(scene);
         primaryStage.setTitle("ALGOFORMERS");
         primaryStage.show();
@@ -89,32 +87,40 @@ public class mainApp extends Application {
 
 
     public static void crearCartelAlerta(String mensaje) {
-        try {
+        Task task = new Task() {
+            @Override
+            protected Object call() throws Exception {
+                    Platform.runLater(new Runnable() {
+                        @Override
+                        public void run() {
+                            try {
+                            FXMLLoader loader = new FXMLLoader();
+                            loader.setLocation(mainApp.class.getResource("screenCartelAlerta.fxml"));
+                            AnchorPane page = loader.load();
+
+                            // CREO EL DIALOG STAGE
+                            dialogStage = new Stage();
+                            dialogStage.setTitle("ALERTA");
+                            dialogStage.initModality(Modality.WINDOW_MODAL);
+                            dialogStage.initOwner(mainApp.primaryStage);
+                            Scene scene = new Scene(page);
+                            dialogStage.setScene(scene);
 
 
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(mainApp.class.getResource("screenCartelAlerta.fxml"));
-            AnchorPane page = loader.load();
+                            AlertasController controller = loader.getController();
+                            controller.setDialogStage(dialogStage);
+                            controller.setearMensaje(mensaje);
 
-            // CREO EL DIALOG STAGE
-            dialogStage = new Stage();
-            dialogStage.setTitle("ALERTA");
-            dialogStage.initModality(Modality.WINDOW_MODAL);
-            dialogStage.initOwner(mainApp.primaryStage);
-            Scene scene = new Scene(page);
-            dialogStage.setScene(scene);
-
-
-            AlertasController controller = loader.getController();
-            controller.setDialogStage(dialogStage);
-            controller.setearMensaje(mensaje);
-
-            dialogStage.showAndWait();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-
-        }
+                            dialogStage.showAndWait();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    });
+            return null;
+            }
+        };
+        (new Thread(task)).start();
     }
 
 

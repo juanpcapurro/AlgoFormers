@@ -75,12 +75,17 @@ public abstract class Jugador {
 	public void mover(Posicion posicionOrigen, Posicion posicionDestino) throws NoEsAlgoFormerPropio, ObjetoInmovible, SinMovimientosDisponibles{
 		try {
 			validarQuePuedeJugar();
-		}catch (YaInicioMovimiento e){
-			//No hace nada, es la excepcion a la excepcion
+		}catch (YaInicioMovimiento e) {}
+
+        hayUnAlgoFormerPropioEnPosicion(posicionOrigen);
+		if (esAlgoformerPropio(tablero.obtenerCasilleroAsociadoAPosicion(posicionDestino).getColocable()))
+			return;
+		try {
+			tablero.recorrer(posicionOrigen, posicionDestino);
+		}catch (ObjetoInmovible e){
+			return;
 		}
 		inicioMovimiento=true;
-        hayUnAlgoFormerPropioEnPosicion(posicionOrigen);
-		tablero.recorrer(posicionOrigen, posicionDestino);
 		if (algoformerSinMovimientos(posicionDestino)){
 			throw new SinMovimientosDisponibles();
 		}
