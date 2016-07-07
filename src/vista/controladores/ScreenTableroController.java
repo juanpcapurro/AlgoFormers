@@ -25,6 +25,7 @@ import static vista.mainApp.screenTablero;
 
 public class ScreenTableroController implements Initializable, ControlledScreen {
 
+
     @FXML
     GridPane tableroGrid;
     @FXML
@@ -34,7 +35,7 @@ public class ScreenTableroController implements Initializable, ControlledScreen 
     @FXML
     ImageView imagenAlgoformerJugando,robot1Imagen,robot2Imagen,robot3Imagen;;
     @FXML
-    Label nombreJugadorTurno, alcance,velocidad,vidaDisponible,potenciaDeAtaque;
+    Label nombreJugadorTurno, alcance,velocidad,vidaDisponible,potenciaDeAtaque,estadoRobot1,estadoRobot2,estadoRobot3;
     @FXML
     Button finalizarTurno, transformar,combinar;
 

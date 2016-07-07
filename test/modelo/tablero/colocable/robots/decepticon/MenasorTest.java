@@ -13,7 +13,7 @@ import modelo.tablero.superficieTerrestre.Rocoso;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.objenesis.ObjenesisException;
+//import org.objenesis.ObjenesisException;
 
 import static org.junit.Assert.*;
 
@@ -82,6 +82,8 @@ public class MenasorTest {
 
         assertTrue(megatron.getPuntosDeVida()==100);
         assertTrue(boneCrusher.getPuntosDeVida()==100);
+
+
         assertTrue(frenzy.getPuntosDeVida()==100);
 
         menasorDecepticonsHeridos = new Menasor(megatron, boneCrusher, frenzy);

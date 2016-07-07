@@ -39,117 +39,8 @@
             </GridPane>
          </center>
          <top>
-            <GridPane prefHeight="95.0" prefWidth="1063.0" BorderPane.alignment="CENTER">
+            <GridPane prefHeight="96.0" prefWidth="1297.0" BorderPane.alignment="CENTER">
                <children>
-                  <GridPane prefHeight="95.0" prefWidth="426.0">
-                     <children>
-                        <AnchorPane mouseTransparent="true" prefHeight="95.0" prefWidth="450.0" styleClass="background" stylesheets="@datosAlgoformersStyle.css">
-                           <children>
-                              <GridPane alignment="CENTER" layoutX="2.0" layoutY="5.0" prefHeight="89.0" prefWidth="426.0">
-                                 <columnConstraints>
-                                    <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
-                                 </columnConstraints>
-                                 <rowConstraints>
-                                    <RowConstraints maxHeight="26.0" minHeight="3.2953925132751465" prefHeight="6.0889787673950195" vgrow="SOMETIMES" />
-                                    <RowConstraints maxHeight="86.0" minHeight="10.0" prefHeight="82.91102123260498" vgrow="SOMETIMES" />
-                                 </rowConstraints>
-                                 <children>
-                                    <GridPane alignment="CENTER" prefHeight="66.0" prefWidth="307.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="0.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                                      <columnConstraints>
-                                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="160.0" minWidth="10.0" prefWidth="38.39335632324219" />
-                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="290.6066436767578" minWidth="10.0" prefWidth="290.6066436767578" />
-                                      </columnConstraints>
-                                      <rowConstraints>
-                                        <RowConstraints maxHeight="34.0" minHeight="10.0" prefHeight="25.0" vgrow="SOMETIMES" />
-                                          <RowConstraints maxHeight="34.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                      </rowConstraints>
-                                       <children>
-                                          <ProgressBar fx:id="vidaBar" prefHeight="20.0" prefWidth="277.0" progress="1.0" GridPane.columnIndex="1">
-                                             <effect>
-                                                <Lighting>
-                                                   <bumpInput>
-                                                      <Shadow />
-                                                   </bumpInput>
-                                                   <light>
-                                                      <Light.Distant azimuth="293.57" color="#2bff00" elevation="49.29" />
-                                                   </light>
-                                                </Lighting>
-                                             </effect>
-                                          </ProgressBar>
-                                          <Label fx:id="vidaDisponible" alignment="CENTER" contentDisplay="CENTER" prefHeight="34.0" prefWidth="278.0" text="100" textFill="#ede534" GridPane.columnIndex="1">
-                                             <font>
-                                                <Font size="17.0" />
-                                             </font>
-                                          </Label>
-                                          <ImageView fitHeight="30.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@imagenes/corazon.gif" />
-                                             </image>
-                                          </ImageView>
-                                          <GridPane alignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                                            <columnConstraints>
-                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="91.76512145996094" minWidth="10.0" prefWidth="59.359527587890625" />
-                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="74.64047241210938" minWidth="10.0" prefWidth="50.32745361328125" />
-                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="100.67254638671875" minWidth="10.0" prefWidth="73.06051635742188" />
-                                              <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="59.939483642578125" minWidth="10.0" prefWidth="37.21002197265625" />
-                                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="74.87893676757812" minWidth="10.0" prefWidth="65.78997802734375" />
-                                            </columnConstraints>
-                                            <rowConstraints>
-                                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                            </rowConstraints>
-                                             <children>
-                                                <ImageView fitHeight="31.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
-                                                   <image>
-                                                      <Image url="@imagenes/alcance.png" />
-                                                   </image>
-                                                </ImageView>
-                                                <Label fx:id="alcance" alignment="CENTER" contentDisplay="CENTER" prefHeight="26.0" prefWidth="277.0" text="200" textAlignment="CENTER" textFill="#fffc46" textOverrun="CENTER_ELLIPSIS" GridPane.columnIndex="2">
-                                                   <font>
-                                                      <Font size="17.0" />
-                                                   </font>
-                                                </Label>
-                                                <ImageView fitHeight="27.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3">
-                                                   <image>
-                                                      <Image url="@imagenes/velocidad.png" />
-                                                   </image>
-                                                </ImageView>
-                                                <Label fx:id="velocidad" alignment="CENTER" contentDisplay="CENTER" prefHeight="26.0" prefWidth="277.0" text="200" textAlignment="CENTER" textFill="#fffc46" textOverrun="CENTER_ELLIPSIS" GridPane.columnIndex="4">
-                                                   <font>
-                                                      <Font size="17.0" />
-                                                   </font>
-                                                </Label>
-                                                <Label fx:id="potenciaDeAtaque" alignment="CENTER" contentDisplay="CENTER" prefHeight="26.0" prefWidth="56.0" text="100" textAlignment="CENTER" textFill="#fffc46" textOverrun="CENTER_ELLIPSIS">
-                                                   <font>
-                                                      <Font size="17.0" />
-                                                   </font>
-                                                </Label>
-                                             </children>
-                                          </GridPane>
-                                          <ImageView fitHeight="30.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1">
-                                             <image>
-                                                <Image url="@imagenes/espada.png" />
-                                             </image>
-                                          </ImageView>
-                                       </children>
-                                    </GridPane>
-                                    <ImageView fx:id="imagenAlgoformerJugando" fitHeight="53.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1">
-                                       <image>
-                                          <Image url="@imagenes/BumblebeeHumanoide.png" />
-                                       </image>
-                                    </ImageView>
-                                 </children>
-                              </GridPane>
-                           </children>
-                        </AnchorPane>
-                     </children>
-                     <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="433.69525146484375" minWidth="10.0" prefWidth="433.69525146484375" />
-                     </columnConstraints>
-                     <rowConstraints>
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                     </rowConstraints>
-                  </GridPane>
                   <Button mnemonicParsing="false" onAction="#salir" prefHeight="10.0" prefWidth="115.0" styleClass="background" stylesheets="@botonSalir.css" GridPane.columnIndex="3" />
                   <GridPane GridPane.columnIndex="2">
                     <columnConstraints>
@@ -178,13 +69,13 @@
                         </Button>
                      </children>
                   </GridPane>
-                  <GridPane GridPane.columnIndex="1">
+                  <GridPane prefHeight="105.0" prefWidth="398.0" GridPane.columnIndex="1">
                     <columnConstraints>
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                     </columnConstraints>
                     <rowConstraints>
-                      <RowConstraints maxHeight="43.91008377075195" minHeight="10.0" prefHeight="35.730255126953125" vgrow="SOMETIMES" />
-                      <RowConstraints maxHeight="59.269744873046875" minHeight="10.0" prefHeight="59.269744873046875" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="43.91008377075195" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="111.0001392364502" minHeight="10.0" prefHeight="66.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
                         <Label fx:id="nombreJugadorTurno" alignment="CENTER" contentDisplay="CENTER" prefHeight="60.0" prefWidth="257.0" text="NOMBRE JUGADOR" textAlignment="CENTER" textFill="#e8e24a" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
@@ -192,29 +83,138 @@
                               <Font name="Arial" size="24.0" />
                            </font>
                         </Label>
-                        <GridPane prefHeight="62.0" prefWidth="330.0" GridPane.rowIndex="1">
+                        <GridPane prefHeight="74.0" prefWidth="398.0" GridPane.rowIndex="1">
                           <columnConstraints>
                               <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                             <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                             <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                           </columnConstraints>
                           <rowConstraints>
-                            <RowConstraints valignment="CENTER" />
+                            <RowConstraints maxHeight="73.0" minHeight="43.27253723144531" prefHeight="56.0" valignment="CENTER" />
+                              <RowConstraints maxHeight="29.727462768554688" minHeight="0.18169403076171875" prefHeight="23.0" valignment="CENTER" />
                           </rowConstraints>
                            <children>
                               <ImageView fx:id="robot1Imagen" fitHeight="58.0" fitWidth="95.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" />
                               <ImageView fx:id="robot2Imagen" fitHeight="61.0" fitWidth="89.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
                               <ImageView fx:id="robot3Imagen" fitHeight="60.0" fitWidth="97.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" />
+                              <Label fx:id="estadoRobot1" text="00" textFill="#fffc46" GridPane.rowIndex="1" />
+                              <Label fx:id="estadoRobot2" text="00" textFill="#fffc46" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <Label fx:id="estadoRobot3" text="00" textFill="#fffc46" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                            </children>
                         </GridPane>
                      </children>
                   </GridPane>
+                  <GridPane prefHeight="126.0" prefWidth="435.0">
+                     <children>
+                        <Pane prefHeight="115.0" prefWidth="384.0" styleClass="background" stylesheets="@datosAlgoformersStyle.css" />
+                        <GridPane alignment="CENTER" prefHeight="147.0" prefWidth="432.0">
+                           <children>
+                              <GridPane alignment="CENTER" prefHeight="100.0" prefWidth="319.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="0.0" GridPane.columnIndex="1">
+                                 <children>
+                                    <ProgressBar fx:id="vidaBar" prefHeight="20.0" prefWidth="277.0" progress="1.0" GridPane.columnIndex="1">
+                                       <effect>
+                                          <Lighting>
+                                             <bumpInput>
+                                                <Shadow />
+                                             </bumpInput>
+                                             <light>
+                                                <Light.Distant azimuth="293.57" color="#2bff00" elevation="49.29" />
+                                             </light>
+                                          </Lighting>
+                                       </effect>
+                                    </ProgressBar>
+                                    <Label fx:id="vidaDisponible" alignment="CENTER" contentDisplay="CENTER" prefHeight="34.0" prefWidth="278.0" text="100" textFill="#ede534" GridPane.columnIndex="1">
+                                       <font>
+                                          <Font size="17.0" />
+                                       </font>
+                                    </Label>
+                                    <ImageView fitHeight="30.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@imagenes/corazon.gif" />
+                                       </image>
+                                    </ImageView>
+                                    <GridPane alignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                       <children>
+                                          <ImageView fitHeight="31.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
+                                             <image>
+                                                <Image url="@imagenes/alcance.png" />
+                                             </image>
+                                          </ImageView>
+                                          <Label fx:id="alcance" alignment="CENTER" contentDisplay="CENTER" prefHeight="26.0" prefWidth="277.0" text="200" textAlignment="CENTER" textFill="#fffc46" textOverrun="CENTER_ELLIPSIS" GridPane.columnIndex="2">
+                                             <font>
+                                                <Font size="17.0" />
+                                             </font>
+                                          </Label>
+                                          <ImageView fitHeight="27.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3">
+                                             <image>
+                                                <Image url="@imagenes/velocidad.png" />
+                                             </image>
+                                          </ImageView>
+                                          <Label fx:id="velocidad" alignment="CENTER" contentDisplay="CENTER" prefHeight="26.0" prefWidth="277.0" text="200" textAlignment="CENTER" textFill="#fffc46" textOverrun="CENTER_ELLIPSIS" GridPane.columnIndex="4">
+                                             <font>
+                                                <Font size="17.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="potenciaDeAtaque" alignment="CENTER" contentDisplay="CENTER" prefHeight="26.0" prefWidth="56.0" text="100" textAlignment="CENTER" textFill="#fffc46" textOverrun="CENTER_ELLIPSIS">
+                                             <font>
+                                                <Font size="17.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                       <columnConstraints>
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="91.76512145996094" minWidth="10.0" prefWidth="59.359527587890625" />
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="74.64047241210938" minWidth="10.0" prefWidth="50.32745361328125" />
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="100.67254638671875" minWidth="10.0" prefWidth="73.06051635742188" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="59.939483642578125" minWidth="10.0" prefWidth="37.21002197265625" />
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="74.87893676757812" minWidth="10.0" prefWidth="65.78997802734375" />
+                                       </columnConstraints>
+                                       <rowConstraints>
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                       </rowConstraints>
+                                    </GridPane>
+                                    <ImageView fitHeight="30.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1">
+                                       <image>
+                                          <Image url="@imagenes/espada.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                                 <columnConstraints>
+                                    <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="160.0" minWidth="10.0" prefWidth="38.39335632324219" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="290.6066436767578" minWidth="10.0" prefWidth="290.6066436767578" />
+                                 </columnConstraints>
+                                 <rowConstraints>
+                                    <RowConstraints maxHeight="34.0" minHeight="10.0" prefHeight="25.0" vgrow="SOMETIMES" />
+                                    <RowConstraints maxHeight="34.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                 </rowConstraints>
+                              </GridPane>
+                              <ImageView fx:id="imagenAlgoformerJugando" fitHeight="53.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@imagenes/BumblebeeHumanoide.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                           <columnConstraints>
+                              <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints maxHeight="86.0" minHeight="10.0" prefHeight="82.91102123260498" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                        </GridPane>
+                     </children>
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="433.69525146484375" minWidth="10.0" prefWidth="433.69525146484375" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                  </GridPane>
                </children>
                <columnConstraints>
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="521.5604400634766" minWidth="10.0" prefWidth="405.3401794433594" />
-                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="666.0" minWidth="10.0" prefWidth="316.91094970703125" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="666.0" minWidth="10.0" prefWidth="366.0" />
-                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="322.904052734375" minWidth="0.0" prefWidth="118.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="521.5604400634766" minWidth="10.0" prefWidth="449.86151123046875" />
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="666.0" minWidth="10.0" prefWidth="285.56158447265625" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="666.0" minWidth="10.0" prefWidth="431.1971435546875" />
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="322.904052734375" minWidth="0.0" prefWidth="131.8028564453125" />
                </columnConstraints>
                <rowConstraints>
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
