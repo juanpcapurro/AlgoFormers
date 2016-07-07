@@ -78,6 +78,7 @@ public abstract class Jugador {
 		}catch (YaInicioMovimiento e){
 			//No hace nada, es la excepcion a la excepcion
 		}
+		inicioMovimiento=true;
         hayUnAlgoFormerPropioEnPosicion(posicionOrigen);
 		tablero.recorrer(posicionOrigen, posicionDestino);
 		if (algoformerSinMovimientos(posicionDestino)){
