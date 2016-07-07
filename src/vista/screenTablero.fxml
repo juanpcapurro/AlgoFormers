@@ -97,9 +97,9 @@
                               <ImageView fx:id="robot1Imagen" fitHeight="58.0" fitWidth="95.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" />
                               <ImageView fx:id="robot2Imagen" fitHeight="61.0" fitWidth="89.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
                               <ImageView fx:id="robot3Imagen" fitHeight="60.0" fitWidth="97.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" />
-                              <Label fx:id="estadoRobot1" text="00" textFill="#fffc46" GridPane.rowIndex="1" />
-                              <Label fx:id="estadoRobot2" text="00" textFill="#fffc46" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                              <Label fx:id="estadoRobot3" text="00" textFill="#fffc46" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                              <Label fx:id="estadoRobot2" text="" textFill="#fffc46" GridPane.rowIndex="1" />
+                              <Label fx:id="estadoRobot3" text="" textFill="#fffc46" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <Label fx:id="estadoRobot1" text="" textFill="#fffc46" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                            </children>
                         </GridPane>
                      </children>

@@ -67,4 +67,7 @@ public class ContextoModoAlgoformer {
     }
 
 
+    public String getModificadorActivo() {
+        return actual.getModificadorActivo();
+    }
 }

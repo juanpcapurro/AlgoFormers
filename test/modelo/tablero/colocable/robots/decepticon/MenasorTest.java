@@ -13,7 +13,7 @@ import modelo.tablero.superficieTerrestre.Rocoso;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.objenesis.ObjenesisException;
+
 
 import static org.junit.Assert.*;
 

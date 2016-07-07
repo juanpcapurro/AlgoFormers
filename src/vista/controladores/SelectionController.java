@@ -46,10 +46,14 @@ public class SelectionController {
     static ImageView jugableUno;
     static ImageView jugableDos;
     static ImageView jugableTres;
+    static Label estadoUno;
+    static Label estadoDos;
+    static Label estadoTres;
 
     SelectionController(ImageView imagenSuperior, Label supLabel, Label infLabelFirst,
                         Label infLabelSecond, Label infLabelThird, Label nombre, ProgressBar barraVida,GridPane grid,
-                        ImageView robot1Imagen, ImageView robot2Imagen,ImageView robort3Imagen){
+                        ImageView robot1Imagen, ImageView robot2Imagen,ImageView robort3Imagen,Label estadoRobot1,
+                        Label estadoRobot2, Label estadoRobot3){
         imagenBarraSuperior=imagenSuperior;
         superior=supLabel;
         inferiorPrimero =infLabelFirst;
@@ -61,6 +65,9 @@ public class SelectionController {
         jugableUno=robot1Imagen;
         jugableDos=robot2Imagen;
         jugableTres=robort3Imagen;
+        estadoUno=estadoRobot1;
+        estadoDos=estadoRobot2;
+        estadoTres=estadoRobot3;
     }
     void setUp(StackPane pane){
         setCrosshairOn(pane);
@@ -108,7 +115,11 @@ public class SelectionController {
             public void handle(MouseEvent event) {
                 StackPane pane = (StackPane) event.getTarget();
                 if (event.getButton()== MouseButton.PRIMARY)
-                    procesarSeleccionPrimaria(pane);
+                    try {
+                        procesarSeleccionPrimaria(pane);
+                    }catch(JuegoFinalizado e){
+                        System.out.println("juegoadsads");
+                    }
                 else {
                     try {
                         ultimoSeleccionado=pane;
@@ -138,10 +149,8 @@ public class SelectionController {
                     try {
                         partida.mover(GridPane.getRowIndex(primeroSeleccionado), GridPane.getColumnIndex(primeroSeleccionado)
                                 , GridPane.getRowIndex(ultimoSeleccionado), GridPane.getColumnIndex(ultimoSeleccionado));
-                    }catch (NoEsAlgoFormerPropio|ObjetoInmovible e){
+                    }catch (NoEsAlgoFormerPropio|ObjetoInmovible e) {
                         System.out.println("No es algoFormer Propio");
-                    }catch(JuegoFinalizado e){
-                        System.out.print("Hola");
                     }
                     Platform.runLater(new Runnable() {
                         @Override
@@ -201,10 +210,14 @@ public class SelectionController {
     static void actualizarUnidadesJugables(){
         ArrayList<DatosAlgoformer> listaDatos=partida.getDatosJugadorActual().algoformers;
         Imagenes imagenes= new Imagenes();
+        Traductor traductor=new Traductor();
         if(listaDatos.size()==3) {
             jugableUno.setImage((new ImagenObjeto(imagenes, listaDatos.get(0)).getImage()));
             jugableDos.setImage((new ImagenObjeto(imagenes, listaDatos.get(1)).getImage()));
             jugableTres.setImage((new ImagenObjeto(imagenes, listaDatos.get(2)).getImage()));
+            estadoUno.setText(traductor.get(listaDatos.get(0).getModificador()));
+            estadoDos.setText(traductor.get(listaDatos.get(1).getModificador()));
+            estadoTres.setText(traductor.get(listaDatos.get(2).getModificador()));
         } else{
             jugableUno.setImage(null);
             jugableDos.setImage(null);
