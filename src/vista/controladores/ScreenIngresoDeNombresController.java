@@ -7,6 +7,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Screen;
 import vista.ControlledScreen;
 import vista.ScreensController;
+import vista.mainApp;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -44,10 +45,9 @@ public class ScreenIngresoDeNombresController implements Initializable, Controll
 
     @FXML
     public void iniciarJuego(){
-
+        myController.nombresDeJugadores(nombreJugador1.getText(), nombreJugador2.getText());
+        mainApp.mainContainer.loadScreen(mainApp.screenTablero, mainApp.screenTablerolFile);
         myController.setScreen(screenSeleccionDeEquipos);
-        //myController.nombresDeJugadores(nombreJugador1.getText(), nombreJugador2.getText());
-
 
 
     }

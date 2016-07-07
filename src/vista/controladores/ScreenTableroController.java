@@ -8,15 +8,15 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.*;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Screen;
-import javafx.stage.Window;
 import modelo.juego.ProxyPartida;
 import vista.ControlledScreen;
 import vista.ScreensController;
 import vista.mainApp;
 
-import javax.swing.*;
 import java.net.URL;
 import java.util.Hashtable;
 import java.util.ResourceBundle;
@@ -59,7 +59,7 @@ public class ScreenTableroController implements Initializable, ControlledScreen 
 
 
 
-        partida=new ProxyPartida(nombreJugador1,mainApp.nombreJ2,8);
+        partida=new ProxyPartida(ScreensController.getJ1(), ScreensController.getJ2(),8);
         imprimir(partida);
         setButtonsEvent();
         tableroGrid.setGridLinesVisible(true);

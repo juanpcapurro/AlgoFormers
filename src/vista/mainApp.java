@@ -23,7 +23,7 @@ public class mainApp extends Application {
     public static String nombreJ1="jugador1";
     public static String nombreJ2="jugador2";
     public static HashMap<String, ControlledScreen> controladores = new HashMap<>();
-    private ScreensController mainContainer;
+    public static ScreensController mainContainer;
     public static String screenInicial = "screenInicial";
     private static String screenInicialFile = "screenInicial.fxml";
     public static String screenIngresoDeNombres = "screenIngresoDeNombres";
@@ -31,7 +31,7 @@ public class mainApp extends Application {
     public static String screenSeleccionDeEquipos = "screenSeleccionDeEquipos";
     private static String screenSeleccionDeEquiposFile = "screenSeleccionDeEquipos.fxml";
     public static String screenTablero = "screenTablero";
-    private static String screenTablerolFile = "screenTablero.fxml";
+    public static String screenTablerolFile = "screenTablero.fxml";
     public static String screenFinal = "screenFinal";
     private static String screenFinallFile = "screenFinal.fxml";
     public static Stage dialogStage;
@@ -73,7 +73,6 @@ public class mainApp extends Application {
         mainContainer.loadScreen(mainApp.screenInicial, mainApp.screenInicialFile);
         mainContainer.loadScreen(mainApp.screenIngresoDeNombres, mainApp.screenIngresoDeNombresFile);
         mainContainer.loadScreen(mainApp.screenSeleccionDeEquipos, mainApp.screenSeleccionDeEquiposFile);
-        mainContainer.loadScreen(mainApp.screenTablero, mainApp.screenTablerolFile);
         mainContainer.loadScreen(mainApp.screenFinal, mainApp.screenFinallFile);
 
     }
@@ -100,13 +99,13 @@ public class mainApp extends Application {
                             loader.setLocation(mainApp.class.getResource("screenCartelAlerta.fxml"));
                             AnchorPane page = loader.load();
 
-            // CREO EL DIALOG STAGE
-            dialogStage = new Stage();
-            dialogStage.setTitle("ALERTA");
-            dialogStage.initModality(Modality.WINDOW_MODAL);
-            dialogStage.initOwner(mainApp.primaryStage);
-            Scene scene = new Scene(page);
-            dialogStage.setScene(scene);
+                            // CREO EL DIALOG STAGE
+                            dialogStage = new Stage();
+                            dialogStage.setTitle("ALERTA");
+                            dialogStage.initModality(Modality.WINDOW_MODAL);
+                            dialogStage.initOwner(mainApp.primaryStage);
+                            Scene scene = new Scene(page);
+                            dialogStage.setScene(scene);
 
 
                             AlertasController controller = loader.getController();
