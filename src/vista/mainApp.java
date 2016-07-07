@@ -3,14 +3,20 @@ package vista;
 import javafx.application.Application;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.transform.Scale;
+import javafx.stage.Modality;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import modelo.juego.ProxyPartida;
+import vista.controladores.AlertasController;
+
+import java.io.IOException;
 
 public class mainApp extends Application {
 
@@ -26,6 +32,7 @@ public class mainApp extends Application {
     private static String screenSeleccionDeEquiposFile = "screenSeleccionDeEquipos.fxml";
     public static String screenTablero = "screenTablero";
     private static String screenTablerolFile = "screenTablero.fxml";
+    public static Stage dialogStage;
 
     public static ProxyPartida partida;
     private static double width, height;
@@ -59,7 +66,7 @@ public class mainApp extends Application {
         primaryStage.setTitle("ALGOFORMERS");
         primaryStage.show();
 
-//        letterbox(scene, mainContainer.getChildren());
+
 
     }
 
@@ -80,6 +87,36 @@ public class mainApp extends Application {
         partida = new ProxyPartida(nombreJ1,nombreJ2,8);
 
     }
+
+    public static void crearCartelAlerta(String mensaje) {
+        try {
+
+
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(mainApp.class.getResource("screenCartelAlerta.fxml"));
+            AnchorPane page = loader.load();
+
+            // CREO EL DIALOG STAGE
+            dialogStage = new Stage();
+            dialogStage.setTitle("ALERTA");
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            dialogStage.initOwner(mainApp.primaryStage);
+            Scene scene = new Scene(page);
+            dialogStage.setScene(scene);
+
+
+            AlertasController controller = loader.getController();
+            controller.setDialogStage(dialogStage);
+            controller.setearMensaje(mensaje);
+
+            dialogStage.showAndWait();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+
+        }
+    }
+
 
     public static double getWidth() {
         return width;
