@@ -2,6 +2,7 @@ package modelo.tablero;
 
 import modelo.tablero.colocable.bonus.DobleCanion;
 import modelo.tablero.colocable.robots.AlgoFormer;
+import modelo.tablero.colocable.robots.ObjetoInmovible;
 import modelo.tablero.colocable.robots.autobot.Bumblebee;
 import modelo.tablero.posiciones.CoordenadasInvalidas;
 import modelo.tablero.posiciones.Posicion;
@@ -80,7 +81,7 @@ public class TableroTest{
     }
     
     @Test
-    public void test09MoverColocable(){
+    public void test09MoverColocable()throws SinMovimientosDisponibles, ObjetoInmovible{
         Posicion posicion=new Posicion(3,4);
         Posicion posicionDesocupada=new Posicion(4,4);
         tablero.colocarAlgoformer(posicion,algoFormerDePrueba);
@@ -94,7 +95,7 @@ public class TableroTest{
     
 
     @Test
-    public void test10MoverAlgoformerPasaPorEspinasYEsDaniado(){
+    public void test10MoverAlgoformerPasaPorEspinasYEsDaniado()throws SinMovimientosDisponibles, ObjetoInmovible{
         Posicion posicionEspinas= new Posicion(2,4);
         Posicion posicionBumble=new Posicion(1,4);
         Posicion posicionDestino=new Posicion(2,4);
@@ -107,7 +108,7 @@ public class TableroTest{
     }
 
     @Test
-    public void test11MoverAlgoformerPasaPorBonusYEsAumentaAtaque(){
+    public void test11MoverAlgoformerPasaPorBonusYEsAumentaAtaque()throws SinMovimientosDisponibles, ObjetoInmovible{
         Posicion posicionBonus= new Posicion(2,3);
         Posicion posicionBumble=new Posicion(2,2);
         DobleCanion dobleCanion=new DobleCanion();

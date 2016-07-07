@@ -1,4 +1,4 @@
 package modelo.tablero;
 
-public class SinMovimientosDisponibles extends RuntimeException {
+public class SinMovimientosDisponibles extends Exception {
 }

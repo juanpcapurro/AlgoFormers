@@ -2,6 +2,7 @@ package modelo.tablero;
 
 import modelo.tablero.colocable.Colocable;
 import modelo.tablero.colocable.robots.AlgoFormer;
+import modelo.tablero.colocable.robots.ObjetoInmovible;
 import modelo.tablero.posiciones.ControladorPosiciones;
 import modelo.tablero.posiciones.Posicion;
 
@@ -48,7 +49,7 @@ public class Tablero{
 		this.colocar(posicion, algoFormer);
 	}
 
-    public Casillero obtenerCasilleroAsociadoAPosicion(Posicion posicion){
+    public Casillero obtenerCasilleroAsociadoAPosicion(Posicion posicion) {
         for (Casillero casillero : listaCasilleros){
             if (casillero.compararPosicion(posicion))
                 return casillero;
@@ -63,7 +64,7 @@ public class Tablero{
 		throw new NoEncontradoError();
 	}
 
-	private void mover(Posicion posicionOrigen, Posicion posicionDestino){
+	private void mover(Posicion posicionOrigen, Posicion posicionDestino)throws SinMovimientosDisponibles, ObjetoInmovible{
         controlador.validarCoordenadas(posicionOrigen);
         controlador.validarCoordenadas(posicionDestino);
 		Casillero casilleroOrigen=obtenerCasilleroAsociadoAPosicion(posicionOrigen);
@@ -72,7 +73,7 @@ public class Tablero{
 	}
 
 
-	public void recorrer(Posicion posicionOrigen,Posicion posicionDestino){
+	public void recorrer(Posicion posicionOrigen,Posicion posicionDestino)throws  SinMovimientosDisponibles, ObjetoInmovible{
 		Movimiento movimiento= new Movimiento(posicionOrigen,posicionDestino);
 		while (movimiento.continuarMovimiento()){
 			mover(movimiento.getActual(),movimiento.obtenerSiguiente());

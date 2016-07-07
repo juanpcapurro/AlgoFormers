@@ -13,6 +13,7 @@ import modelo.tablero.superficieTerrestre.Rocoso;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.objenesis.ObjenesisException;
 
 import static org.junit.Assert.*;
 
@@ -137,7 +138,7 @@ public class MenasorTest {
 	
 	
 	@Test(expected = ObjetoInmovible.class)
-	public void test12MenasorAfectadoAlPasarPorPantanoso(){
+	public void test12MenasorAfectadoAlPasarPorPantanoso()throws ObjetoInmovible{
 		Superficie superficieTerrestre =new Pantanoso();
 		Superficie superficieAerea=new Nube();
 		int velocidad=menasor.getVelocidad();

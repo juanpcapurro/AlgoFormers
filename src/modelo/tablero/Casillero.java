@@ -2,6 +2,7 @@ package modelo.tablero;
 
 import modelo.tablero.colocable.Colocable;
 import modelo.tablero.colocable.EspacioVacio;
+import modelo.tablero.colocable.robots.ObjetoInmovible;
 import modelo.tablero.posiciones.Posicion;
 import modelo.tablero.superficie.Superficie;
 import modelo.tablero.superficieAerea.ContextoSuperficieArea;
@@ -63,7 +64,7 @@ public class Casillero {
         superficieTerrestreActual.cambiarEspinas();
     }
 
-    void moverColocable(Casillero casilleroDestino) {
+    void moverColocable(Casillero casilleroDestino) throws CasilleroYaOcupado, SinMovimientosDisponibles, ObjetoInmovible{
         Colocable colocableEndestino=casilleroDestino.obtenerColocado();
         if (colocableEndestino.ocupaLugar())
             throw new CasilleroYaOcupado();

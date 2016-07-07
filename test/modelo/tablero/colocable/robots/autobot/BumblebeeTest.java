@@ -86,7 +86,7 @@ public class BumblebeeTest {
 	}
 	
 	@Test(expected =ObjetoInmovible.class)
-	public void test09BumblebeeAfectadoAlPasarPorPantanoso(){
+	public void test09BumblebeeAfectadoAlPasarPorPantanoso()throws ObjetoInmovible{
 		Superficie superficieTerrestre =new Pantanoso();
 		Superficie superficieAerea=new Nube();
 		mauricio.pasarPor(superficieTerrestre,superficieAerea);
@@ -94,7 +94,7 @@ public class BumblebeeTest {
 	}
 
 	@Test
-	public void test10BumblebeeAlternoAfectadoAlPasarPorPantanoso()throws NoPuedeTransformarsePorSerCombinado{
+	public void test10BumblebeeAlternoAfectadoAlPasarPorPantanoso()throws NoPuedeTransformarsePorSerCombinado, ObjetoInmovible{
 		Superficie superficieTerrestre =new Pantanoso();
 		Superficie superficieAerea=new Nube();
 		mauricio.transformar(); 

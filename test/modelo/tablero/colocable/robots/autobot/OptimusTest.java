@@ -91,7 +91,7 @@ public class OptimusTest {
 	}
 	
 	@Test(expected = ObjetoInmovible.class)
-	public void test09OptimusAfectadoAlPasarPorPantanoso(){
+	public void test09OptimusAfectadoAlPasarPorPantanoso()throws ObjetoInmovible{
 		Superficie superficieTerrestre =new Pantanoso();
 		Superficie superficieAerea=new Nube();
 		int velocidad=mauricio.getVelocidad();
@@ -100,7 +100,7 @@ public class OptimusTest {
 	}
 	
 	@Test
-	public void test10OptimusAlternoAfectadoAlPasarPorPantanoso()throws NoPuedeTransformarsePorSerCombinado{
+	public void test10OptimusAlternoAfectadoAlPasarPorPantanoso()throws NoPuedeTransformarsePorSerCombinado, ObjetoInmovible{
 		Superficie superficieTerrestre =new Pantanoso();
 		Superficie superficieAerea=new Nube();
 		mauricio.transformar(); 

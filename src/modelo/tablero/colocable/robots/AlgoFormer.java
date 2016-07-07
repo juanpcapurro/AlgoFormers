@@ -71,7 +71,7 @@ public abstract class AlgoFormer extends Colocable {
 	}
 
 	@Override
-	public boolean esMovible() {
+	public boolean esMovible() throws  ObjetoInmovible{
 		return contextoModoActual.tieneMovimientosDisponibles();
 	}
 

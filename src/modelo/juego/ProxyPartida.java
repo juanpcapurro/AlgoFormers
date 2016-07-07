@@ -5,6 +5,7 @@ import modelo.juego.jugador.NoPuedeCombinarPorTenerAlgoFormersMuertos;
 import modelo.juego.jugador.ObjetivoFueraDeRango;
 import modelo.tablero.colocable.Colocable;
 import modelo.tablero.colocable.robots.NoPuedeTransformarsePorSerCombinado;
+import modelo.tablero.colocable.robots.ObjetoInmovible;
 import modelo.tablero.posiciones.Posicion;
 import modelo.tablero.superficie.Superficie;
 
@@ -22,7 +23,7 @@ public class ProxyPartida {
        partida.saltearTurno();
    }
 
-   public void mover(Integer coordInicialX,Integer coordInicialY ,Integer coordFinalX, Integer coordFinaLY) throws NoEsAlgoFormerPropio {
+   public void mover(Integer coordInicialX,Integer coordInicialY ,Integer coordFinalX, Integer coordFinaLY) throws NoEsAlgoFormerPropio, ObjetoInmovible{
         Posicion posicionInicial=new Posicion(coordInicialX,coordInicialY);
         Posicion posicionFinal=new Posicion(coordFinalX,coordFinaLY);
         partida.mover(posicionInicial, posicionFinal);

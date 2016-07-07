@@ -62,7 +62,7 @@ public class ContextoModoAlgoformer {
     public boolean consultarMovimientoDisponibles(){
         return actual.consultarMovimientosDisponibles();
     }
-    public boolean tieneMovimientosDisponibles() {
+    public boolean tieneMovimientosDisponibles() throws ObjetoInmovible{
         return actual.tieneMovimientosDisponibles();
     }
 

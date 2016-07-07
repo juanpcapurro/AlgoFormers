@@ -133,7 +133,7 @@ public class SuperionTest {
 	
 	
 	@Test(expected = ObjetoInmovible.class)
-	public void test12SuperionAfectadoAlPasarPorPantanoso(){
+	public void test12SuperionAfectadoAlPasarPorPantanoso() throws ObjetoInmovible{
 		Superficie superficieTerrestre =new Pantanoso();
 		Superficie superficieAerea=new Nube();
 		int velocidad=superion.getVelocidad();

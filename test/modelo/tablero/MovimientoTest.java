@@ -2,6 +2,7 @@ package modelo.tablero;
 
 import modelo.tablero.colocable.robots.AlgoFormer;
 import modelo.tablero.colocable.robots.NoPuedeTransformarsePorSerCombinado;
+import modelo.tablero.colocable.robots.ObjetoInmovible;
 import modelo.tablero.colocable.robots.autobot.Optimus;
 import modelo.tablero.posiciones.Posicion;
 import org.junit.Before;
@@ -21,7 +22,7 @@ public class MovimientoTest {
     }
 
     @Test
-    public void moverPosicion01() throws NoPuedeTransformarsePorSerCombinado {
+    public void moverPosicion01() throws NoPuedeTransformarsePorSerCombinado, SinMovimientosDisponibles, ObjetoInmovible{
         Posicion posicionOrigen= new Posicion(3,4);
         Posicion posicionDestino= new Posicion(3,5);
         algoFormerDePrueba.transformar();
@@ -33,7 +34,7 @@ public class MovimientoTest {
     }
 
     @Test
-    public void moverPosicion02() throws NoPuedeTransformarsePorSerCombinado {
+    public void moverPosicion02() throws NoPuedeTransformarsePorSerCombinado, SinMovimientosDisponibles, ObjetoInmovible{
         Posicion posicionOrigen= new Posicion(3,5);
         Posicion posicionDestino= new Posicion(3,4);
         algoFormerDePrueba.transformar();
@@ -45,7 +46,7 @@ public class MovimientoTest {
     }
 
     @Test
-    public void moverPosicion03() throws NoPuedeTransformarsePorSerCombinado {
+    public void moverPosicion03() throws NoPuedeTransformarsePorSerCombinado, SinMovimientosDisponibles, ObjetoInmovible{
         Posicion posicionOrigen= new Posicion(1,7);
         Posicion posicionDestino= new Posicion(1,6);
         algoFormerDePrueba.transformar();

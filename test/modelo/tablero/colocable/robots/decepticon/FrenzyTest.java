@@ -1,5 +1,6 @@
 package modelo.tablero.colocable.robots.decepticon;
 
+import modelo.tablero.SinMovimientosDisponibles;
 import modelo.tablero.colocable.robots.NoPuedeTransformarsePorSerCombinado;
 import modelo.tablero.colocable.robots.ObjetoInmovible;
 import modelo.tablero.colocable.robots.armas.Ataque;
@@ -86,7 +87,7 @@ public class FrenzyTest {
 	}
 	
 	@Test(expected = ObjetoInmovible.class)
-	public void test09FrenzyAfectadoAlPasarPorPantanoso(){
+	public void test09FrenzyAfectadoAlPasarPorPantanoso()throws ObjetoInmovible, SinMovimientosDisponibles{
 		Superficie superficieTerrestre =new Pantanoso();
 		Superficie superficieAerea=new Nube();
 		int velocidad=mauricio.getVelocidad();

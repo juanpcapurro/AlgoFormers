@@ -54,7 +54,7 @@ public abstract class ModoAlgoformer {
         return estado.getDistanciaDeAtaque();
     }
 
-    boolean tieneMovimientosDisponibles(){
+    boolean tieneMovimientosDisponibles()throws  ObjetoInmovible{
         if (estado.inmovilizado) {
             throw new ObjetoInmovible();
         }

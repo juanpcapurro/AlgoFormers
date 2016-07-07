@@ -70,14 +70,10 @@ public abstract class Jugador {
 		aTransformar.transformar();
 	}
 
-	public void mover(Posicion posicionOrigen, Posicion posicionDestino) throws NoEsAlgoFormerPropio{
+	public void mover(Posicion posicionOrigen, Posicion posicionDestino) throws NoEsAlgoFormerPropio, ObjetoInmovible, SinMovimientosDisponibles{
 		validarQuePuedeJugar();
         hayUnAlgoFormerPropioEnPosicion(posicionOrigen);
-		try {
-			tablero.recorrer(posicionOrigen, posicionDestino);
-		}catch (ObjetoInmovible e){
-			return;
-		}
+		tablero.recorrer(posicionOrigen, posicionDestino);
 		if (algoformerSinMovimientos(posicionDestino)){
 			throw new SinMovimientosDisponibles();
 		}

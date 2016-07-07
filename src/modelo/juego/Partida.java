@@ -10,6 +10,7 @@ import modelo.tablero.colocable.bonus.BurbujaInmaculada;
 import modelo.tablero.colocable.bonus.DobleCanion;
 import modelo.tablero.colocable.bonus.Flash;
 import modelo.tablero.colocable.robots.NoPuedeTransformarsePorSerCombinado;
+import modelo.tablero.colocable.robots.ObjetoInmovible;
 import modelo.tablero.colocable.robots.autobot.Bumblebee;
 import modelo.tablero.colocable.robots.autobot.Optimus;
 import modelo.tablero.colocable.robots.autobot.Ratchet;
@@ -45,7 +46,7 @@ class Partida {
         turno.avanzarTurno();
    }
 
-   public void mover(Posicion posicionInicial, Posicion posicionFinal) throws NoEsAlgoFormerPropio, JuegoFinalizado{//Esto hay que debatirlo con sharles
+   public void mover(Posicion posicionInicial, Posicion posicionFinal) throws ObjetoInmovible, NoEsAlgoFormerPropio, JuegoFinalizado{//Esto hay que debatirlo con sharles
        try {
            turno.jugadorActual().mover(posicionInicial, posicionFinal);
        }catch (SinMovimientosDisponibles error) {

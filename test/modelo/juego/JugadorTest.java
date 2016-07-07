@@ -1,8 +1,10 @@
 package modelo.juego;
 
 import modelo.juego.jugador.*;
+import modelo.tablero.SinMovimientosDisponibles;
 import modelo.tablero.Tablero;
 import modelo.tablero.colocable.robots.NoPuedeTransformarsePorSerCombinado;
+import modelo.tablero.colocable.robots.ObjetoInmovible;
 import modelo.tablero.colocable.robots.armas.Ataque;
 import modelo.tablero.colocable.robots.autobot.Bumblebee;
 import modelo.tablero.colocable.robots.autobot.Optimus;
@@ -69,7 +71,7 @@ public class JugadorTest {
 		assertFalse(jugadorDecepticons.equipovivo());
 	}
 	@Test
-	public void muereElEquipoAlAtacarLasPosicionesDeLosAlgoformers()throws NoEsAlgoFormerPropio, ObjetivoFueraDeRango, NoPuedeTransformarsePorSerCombinado{
+	public void muereElEquipoAlAtacarLasPosicionesDeLosAlgoformers()throws SinMovimientosDisponibles, ObjetoInmovible, NoEsAlgoFormerPropio, ObjetivoFueraDeRango, NoPuedeTransformarsePorSerCombinado{
 		assertTrue(jugadorAutobots.equipovivo());
 		assertTrue(posicionFrenzy.compararPosicion(new Posicion(0, 6)));
 		jugadorDecepticons.transformar(posicionFrenzy);
@@ -102,13 +104,13 @@ public class JugadorTest {
 		jugadorDecepticons.atacar(posicionRatchet, posicionBumblebee);
 	}
 	@Test(expected= NoEsAlgoFormerPropio.class)
-	public void unJugadorNoPuedeMoverAlgoFormersAjenos()throws NoEsAlgoFormerPropio{
+	public void unJugadorNoPuedeMoverAlgoFormersAjenos()throws NoEsAlgoFormerPropio, ObjetoInmovible, SinMovimientosDisponibles{
 		jugadorDecepticons.mover(posicionBumblebee,posicionOptimus);
 		jugadorDecepticons.mover(posicionOptimus,posicionRatchet);
 		jugadorDecepticons.mover(posicionRatchet, posicionBumblebee);
 	}
 	@Test(expected= NoEsAlgoFormerPropio.class)
-	public void unJugadorNoPuedeTransformarAlgoformersAjenos()throws  NoEsAlgoFormerPropio, NoPuedeTransformarsePorSerCombinado{
+	public void unJugadorNoPuedeTransformarAlgoformersAjenos()throws  ObjetoInmovible, NoEsAlgoFormerPropio, NoPuedeTransformarsePorSerCombinado{
 		jugadorAutobots.transformar(posicionBoneCrusher);
 		jugadorAutobots.transformar(posicionFrenzy);
 		jugadorAutobots.transformar(posicionMegatron);

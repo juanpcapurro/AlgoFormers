@@ -18,8 +18,10 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import modelo.juego.DatosAlgoformer;
 import modelo.juego.jugador.NoEsAlgoFormerPropio;
+import modelo.juego.jugador.NoPuedeCombinarPorTenerAlgoFormersMuertos;
 import modelo.juego.jugador.ObjetivoFueraDeRango;
 import modelo.tablero.colocable.robots.NoPuedeTransformarsePorSerCombinado;
+import modelo.tablero.colocable.robots.ObjetoInmovible;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -130,9 +132,13 @@ public class SelectionController {
             ultimoSeleccionado=pane;
             Task task=new Task() {
                 @Override
-                protected Object call() throws Exception {
-                    partida.mover(GridPane.getRowIndex(primeroSeleccionado),GridPane.getColumnIndex(primeroSeleccionado)
-                            ,GridPane.getRowIndex(ultimoSeleccionado),GridPane.getColumnIndex(ultimoSeleccionado));
+                protected Object call() {
+                    try {
+                        partida.mover(GridPane.getRowIndex(primeroSeleccionado), GridPane.getColumnIndex(primeroSeleccionado)
+                                , GridPane.getRowIndex(ultimoSeleccionado), GridPane.getColumnIndex(ultimoSeleccionado));
+                    }catch (NoEsAlgoFormerPropio|ObjetoInmovible e){
+                        System.out.println("No es algoFormer Propio");
+                    }
                     Platform.runLater(new Runnable() {
                         @Override
                         public void run() {
@@ -302,8 +308,12 @@ public class SelectionController {
             public void handle(ActionEvent event) {
                 Task task=new Task() {
                     @Override
-                    protected Object call() throws Exception {
-                        partida.combinarODescombinar();
+                    protected Object call() {
+                        try {
+                            partida.combinarODescombinar();
+                        }catch (NoPuedeCombinarPorTenerAlgoFormersMuertos e ){
+                            System.out.println("No puede combinar por tener algoformers muertos");
+                        }
                         return null;
                     }
                 };
