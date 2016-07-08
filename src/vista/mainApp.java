@@ -104,7 +104,7 @@ public class mainApp extends Application {
                             dialogStage.initOwner(mainApp.primaryStage);
                             Scene scene = new Scene(page);
                             dialogStage.setScene(scene);
-                        	String musicFile = "src/vista/imagenes/ventanaError.mp3";
+                        	String musicFile = "src/vista/imagenes/pato.mp3";
                         	Media sonido = new Media(new File(musicFile).toURI().toString());
                         	MediaPlayer mediaPlayer = new MediaPlayer(sonido);
                         	mediaPlayer.play();
