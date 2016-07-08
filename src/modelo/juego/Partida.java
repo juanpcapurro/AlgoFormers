@@ -66,7 +66,7 @@ class Partida {
 
    public void combinarODescombinar()throws NoPuedeCombinarPorTenerAlgoFormersMuertos, YaInicioMovimiento{
         turno.jugadorActual().combinarODescombinar();
-        turno.avanzarTurno();
+       //No avanzo el turno porque en este caso el turno se avanza solo.
     }
 
    public Superficie obtenerSuperficieTerrestre() {

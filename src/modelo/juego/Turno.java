@@ -18,19 +18,17 @@ public class Turno {
     }
     
 	public void avanzarTurno() {
-        notificarJugadores();
+        jugadorActual().notificar();
         turno++;
-    }
-
-    private void notificarJugadores(){
-        for (Jugador jugador : jugadores)
-            jugador.notificar();
     }
 
     public Jugador jugadorActual(){
         Jugador jugadorActual = jugadores.get(turno % cantidadDeJugadores);
-        while(!jugadorActual.puedeJugar())
-            avanzarTurno();
+        while(!jugadorActual.puedeJugar()){
+            jugadorActual.notificar();
+            turno++;
+            jugadorActual= jugadores.get(turno%cantidadDeJugadores);
+        }
         return jugadorActual;
     }
 }
