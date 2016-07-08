@@ -30,7 +30,9 @@ public class ScreenFinalController implements Initializable, ControlledScreen {
 
         Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
         panelSuperior.setPrefSize(screenBounds.getWidth(), screenBounds.getHeight());
-        cartelGanador.setText("HA GANADO EL JUGADOR: " + "<NOMBRE DEL GANADOR>"); //PASAR EL NOMBRE
+
+        cartelGanador.setText("HA GANADO EL JUGADOR: ");
+//        cartelGanador.setText("HA GANADO EL JUGADOR: " + ScreensController.getWinnerName());
     }
 
     public void setScreenParent(ScreensController screenParent) {

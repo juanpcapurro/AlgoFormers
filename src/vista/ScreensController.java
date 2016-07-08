@@ -20,9 +20,7 @@ public class ScreensController  extends StackPane {
 
 
     private HashMap<String, Node> screens = new HashMap<>();
-    static String j1;
-    static String j2;
-    static String equipoJ1;
+    static String j1, j2,equipoJ1,winnerName;
 
 
 
@@ -33,6 +31,10 @@ public class ScreensController  extends StackPane {
 
     public static String getEquipoJ1() {
         return equipoJ1;
+    }
+
+    public static String getWinnerName() {
+        return winnerName;
     }
 
 
