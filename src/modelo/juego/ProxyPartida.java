@@ -36,7 +36,7 @@ public class ProxyPartida {
         Posicion posicion = new Posicion(coordInicialX,coordInicialY);
         partida.transformar(posicion);
     }
-   public void combinarODescombinar()throws NoPuedeCombinarPorTenerAlgoFormersMuertos, YaInicioMovimiento{
+   public void combinarODescombinar()throws RobotsMuyAlejados,NoPuedeCombinarPorTenerAlgoFormersMuertos, YaInicioMovimiento{
        partida.combinarODescombinar();
    }
    public Superficie obtenerSuperficieTerrestre() {

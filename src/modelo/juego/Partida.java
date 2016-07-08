@@ -64,7 +64,7 @@ class Partida {
        turno.avanzarTurno();
    }
 
-   public void combinarODescombinar()throws NoPuedeCombinarPorTenerAlgoFormersMuertos, YaInicioMovimiento{
+   public void combinarODescombinar()throws RobotsMuyAlejados,NoPuedeCombinarPorTenerAlgoFormersMuertos, YaInicioMovimiento{
         turno.jugadorActual().combinarODescombinar();
        //No avanzo el turno porque en este caso el turno se avanza solo.
     }
