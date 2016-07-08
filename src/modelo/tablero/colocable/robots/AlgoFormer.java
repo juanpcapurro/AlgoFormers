@@ -64,7 +64,7 @@ public abstract class AlgoFormer extends Colocable {
 
 	public DatosAlgoformer obtenerDatosAlgoformer(){
 		return new DatosAlgoformer(getPuntosDeVidaOriginal(),getPuntosDeVida(),getAtaque(),getVelocidad(),getDistanciaDeAtaque(),
-									getClass().getSimpleName(),getModo().getClass().getSimpleName(), (String) contextoModoActual.getModificadorActivo());
+									getClass().getSimpleName(),getModo().getClass().getSimpleName(), contextoModoActual.getModificadorActivo());
 	}
 	@Override
 	public void afectarColocable(ContextoModoAlgoformer modo){

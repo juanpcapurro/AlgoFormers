@@ -19,7 +19,6 @@ import static vista.mainApp.*;
 
 
 public class ScreenInicialController implements Initializable, ControlledScreen {
-    public javafx.scene.control.TextField nombreJugador1,nombreJugador2;
     public AnchorPane panelSuperior;
 
 
@@ -38,14 +37,11 @@ public class ScreenInicialController implements Initializable, ControlledScreen 
         myController = screenParent;
     }
 
-    @FXML
-    public void iniciarJuego(){
-        mainApp.nombreJ1 = nombreJugador1.getText();
-        mainApp.nombreJ2 = nombreJugador2.getText();
-        myController.setScreen(screenSeleccionDeEquipos);
-
+    @Override
+    public void setNombreJugadores(String nj1, String nj2) {
 
     }
+
     @FXML
     public void pasarAIngresoDeNombres(){
         myController.setScreen(screenIngresoDeNombres);

@@ -1,29 +1,29 @@
 package vista;
 
 import javafx.application.Application;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
+import javafx.application.Platform;
+import javafx.concurrent.Task;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Pane;
-import javafx.scene.transform.Scale;
 import javafx.stage.Modality;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
-import modelo.juego.ProxyPartida;
 import vista.controladores.AlertasController;
 
 import java.io.IOException;
+import java.util.HashMap;
+
 
 public class mainApp extends Application {
 
     public static Stage primaryStage;
     public static String nombreJ1="jugador1";
     public static String nombreJ2="jugador2";
-    private ScreensController mainContainer;
+    public static HashMap<String, ControlledScreen> controladores = new HashMap<>();
+    public static ScreensController mainContainer;
     public static String screenInicial = "screenInicial";
     private static String screenInicialFile = "screenInicial.fxml";
     public static String screenIngresoDeNombres = "screenIngresoDeNombres";
@@ -31,7 +31,7 @@ public class mainApp extends Application {
     public static String screenSeleccionDeEquipos = "screenSeleccionDeEquipos";
     private static String screenSeleccionDeEquiposFile = "screenSeleccionDeEquipos.fxml";
     public static String screenTablero = "screenTablero";
-    private static String screenTablerolFile = "screenTablero.fxml";
+    public static String screenTablerolFile = "screenTablero.fxml";
     public static String screenFinal = "screenFinal";
     private static String screenFinallFile = "screenFinal.fxml";
     public static Stage dialogStage;
@@ -73,7 +73,6 @@ public class mainApp extends Application {
         mainContainer.loadScreen(mainApp.screenInicial, mainApp.screenInicialFile);
         mainContainer.loadScreen(mainApp.screenIngresoDeNombres, mainApp.screenIngresoDeNombresFile);
         mainContainer.loadScreen(mainApp.screenSeleccionDeEquipos, mainApp.screenSeleccionDeEquiposFile);
-        mainContainer.loadScreen(mainApp.screenTablero, mainApp.screenTablerolFile);
         mainContainer.loadScreen(mainApp.screenFinal, mainApp.screenFinallFile);
 
     }
@@ -89,32 +88,40 @@ public class mainApp extends Application {
 
 
     public static void crearCartelAlerta(String mensaje) {
-        try {
+        Task task = new Task() {
+            @Override
+            protected Object call() throws Exception {
+                    Platform.runLater(new Runnable() {
+                        @Override
+                        public void run() {
+                            try {
+                            FXMLLoader loader = new FXMLLoader();
+                            loader.setLocation(mainApp.class.getResource("screenCartelAlerta.fxml"));
+                            AnchorPane page = loader.load();
+
+                            // CREO EL DIALOG STAGE
+                            dialogStage = new Stage();
+                            dialogStage.setTitle("ALERTA");
+                            dialogStage.initModality(Modality.WINDOW_MODAL);
+                            dialogStage.initOwner(mainApp.primaryStage);
+                            Scene scene = new Scene(page);
+                            dialogStage.setScene(scene);
 
 
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(mainApp.class.getResource("screenCartelAlerta.fxml"));
-            AnchorPane page = loader.load();
+                            AlertasController controller = loader.getController();
+                            controller.setDialogStage(dialogStage);
+                            controller.setearMensaje(mensaje);
 
-            // CREO EL DIALOG STAGE
-            dialogStage = new Stage();
-            dialogStage.setTitle("ALERTA");
-            dialogStage.initModality(Modality.WINDOW_MODAL);
-            dialogStage.initOwner(mainApp.primaryStage);
-            Scene scene = new Scene(page);
-            dialogStage.setScene(scene);
-
-
-            AlertasController controller = loader.getController();
-            controller.setDialogStage(dialogStage);
-            controller.setearMensaje(mensaje);
-
-            dialogStage.showAndWait();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-
-        }
+                            dialogStage.showAndWait();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    });
+            return null;
+            }
+        };
+        (new Thread(task)).start();
     }
 
 

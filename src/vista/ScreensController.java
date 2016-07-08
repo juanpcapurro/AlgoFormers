@@ -20,13 +20,14 @@ public class ScreensController  extends StackPane {
 
 
     private HashMap<String, Node> screens = new HashMap<>();
-    private String j1,j2;
+    static String j1;
+    static String j2;
+
 
 
     public ScreensController() {
         super();
     }
-
 
 
     public void addScreen(String name, Node screen) {
@@ -39,6 +40,7 @@ public class ScreensController  extends StackPane {
             FXMLLoader myLoader = new FXMLLoader(getClass().getResource(resource));
             Parent loadScreen = (Parent) myLoader.load();
             ControlledScreen myScreenControler = ((ControlledScreen) myLoader.getController());
+            mainApp.controladores.put(name,myScreenControler);
             myScreenControler.setScreenParent(this);
             addScreen(name, loadScreen);
             return true;
@@ -47,6 +49,7 @@ public class ScreensController  extends StackPane {
             return false;
         }
     }
+
 
 
     public boolean setScreen(final String name) {
@@ -91,13 +94,23 @@ public class ScreensController  extends StackPane {
     }
 
 
-    public void nombresDeJugadores(String j1, String j2) {
-        this.j1 = j1;
-        this.j2 = j2;
+    public void setScreen(String screenName, String nj1, String nj2) {
+        mainApp.controladores.get(screenName).setNombreJugadores(nj1,nj2);
+        setScreen(screenName);
+
+
     }
 
-    public String getJ1() {
+    public void nombresDeJugadores(String text, String text1) {
+        j1=text;
+        j2=text1;
+    }
+
+    public static String getJ1(){
         return j1;
+    }
+    public static String getJ2(){
+        return j2;
     }
 }
 

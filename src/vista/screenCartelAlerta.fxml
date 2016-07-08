@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane onKeyPressed="#close" prefHeight="232.0" prefWidth="468.0" styleClass="background" stylesheets="@fondoScreenPrincipal.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vista.controladores.AlertasController">
+   <children>
+      <Button layoutX="206.0" layoutY="116.0" mnemonicParsing="false" onAction="#close" text="OK" />
+      <Label fx:id="mensaje" alignment="CENTER" layoutX="-1.0" layoutY="31.0" prefHeight="42.0" prefWidth="468.0" text="Label" textAlignment="CENTER" textFill="WHITE" />
+   </children>
+</AnchorPane>

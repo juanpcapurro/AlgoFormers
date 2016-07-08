@@ -12,7 +12,8 @@ import vista.mainApp;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import static vista.mainApp.*;
+import static vista.mainApp.primaryStage;
+import static vista.mainApp.screenSeleccionDeEquipos;
 
 
 public class ScreenIngresoDeNombresController implements Initializable, ControlledScreen {
@@ -37,12 +38,16 @@ public class ScreenIngresoDeNombresController implements Initializable, Controll
         myController = screenParent;
     }
 
+    @Override
+    public void setNombreJugadores(String nj1, String nj2) {
+
+    }
+
     @FXML
     public void iniciarJuego(){
-
-        myController.setScreen(screenSeleccionDeEquipos);
         myController.nombresDeJugadores(nombreJugador1.getText(), nombreJugador2.getText());
-
+        mainApp.mainContainer.loadScreen(mainApp.screenTablero, mainApp.screenTablerolFile);
+        myController.setScreen(screenSeleccionDeEquipos);
 
 
     }

@@ -20,6 +20,8 @@ public class Main extends Application {
         mainApp mainApp = new mainApp();
         mainApp.start(primaryStage);
 
+        String nombreJugador1 = "";
+
     }
 
 

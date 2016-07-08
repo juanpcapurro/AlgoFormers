@@ -10,7 +10,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane fx:id="panelSuperior" onKeyPressed="#jugar" prefHeight="805.0" prefWidth="1291.0" styleClass="background" stylesheets="@fondoScreenSeleccionDeEquipos.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vista.controladores.ScreenSeleccionDeEquiposController">
+<AnchorPane fx:id="panelSuperior" prefHeight="805.0" prefWidth="1291.0" styleClass="background" stylesheets="@fondoScreenSeleccionDeEquipos.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vista.controladores.ScreenSeleccionDeEquiposController">
    <children>
       <GridPane alignment="BOTTOM_CENTER" layoutY="-6.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onKeyPressed="#jugar" stylesheets="@fondoScreenSeleccionDeEquipos.css" AnchorPane.bottomAnchor="9.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="-6.0">
         <columnConstraints>
@@ -67,7 +67,7 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <MenuButton fx:id="autobotJugador" alignment="CENTER" contentDisplay="CENTER" disable="true" mnemonicParsing="false" onAction="#jugar" prefHeight="61.0" prefWidth="242.0" text="JUGADOR" textAlignment="CENTER" GridPane.columnIndex="1">
+                  <MenuButton fx:id="autobotJugador" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#jugar" prefHeight="61.0" prefWidth="242.0" text="JUGADOR" textAlignment="CENTER" GridPane.columnIndex="1">
                     <items>
                       <MenuItem fx:id="jugador1Autobot" mnemonicParsing="false" onAction="#autobotJugador1" text="JUGADOR 1" />
                       <MenuItem fx:id="jugador2Autobot" mnemonicParsing="false" onAction="#autobotJugador2" text="JUGADOR 2" />
@@ -88,7 +88,7 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <MenuButton fx:id="decepticonJugador" alignment="CENTER" contentDisplay="BOTTOM" disable="true" mnemonicParsing="false" prefHeight="61.0" prefWidth="221.0" text="JUGADOR" GridPane.columnIndex="1">
+                  <MenuButton fx:id="decepticonJugador" alignment="CENTER" contentDisplay="BOTTOM" mnemonicParsing="false" prefHeight="61.0" prefWidth="221.0" text="JUGADOR" GridPane.columnIndex="1">
                      <font>
                         <Font name="Arial" size="24.0" />
                      </font>
