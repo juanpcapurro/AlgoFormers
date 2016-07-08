@@ -32,6 +32,8 @@ public class ScreenIngresoDeNombresController implements Initializable, Controll
 
         Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
         panelSuperior.setPrefSize(screenBounds.getWidth(), screenBounds.getHeight());
+        nombreJugador1.setText("Jugador1");
+        nombreJugador2.setText("Jugador2");
     }
 
     public void setScreenParent(ScreensController screenParent) {
@@ -47,6 +49,7 @@ public class ScreenIngresoDeNombresController implements Initializable, Controll
     public void iniciarJuego(){
         myController.nombresDeJugadores(nombreJugador1.getText(), nombreJugador2.getText());
         mainApp.mainContainer.loadScreen(mainApp.screenTablero, mainApp.screenTablerolFile);
+        mainApp.mainContainer.loadScreen(mainApp.screenSeleccionDeEquipos,mainApp.screenSeleccionDeEquiposFile);
         myController.setScreen(screenSeleccionDeEquipos);
 
 
