@@ -16,7 +16,7 @@ public class Tablero{
 
 	public Tablero(int dimension_pedida, boolean debug){
 	    controlador= new ControladorPosiciones(dimension_pedida);
-		listaCasilleros = new ArrayList<>();
+		listaCasilleros = new ArrayList<Casillero>();
 		DIMENSION = dimension_pedida;
 		for(int i=0;i<DIMENSION*DIMENSION;i++){
 			Casillero casillero;

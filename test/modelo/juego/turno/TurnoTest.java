@@ -35,7 +35,7 @@ public class  TurnoTest {
 		assertEquals(turno.jugadorActual(), jugadorAutobots);
 	}
 	@Test
-	public void combinarNoPerminteJugarPorDosTurnos()throws Exception{
+	public void combinarNoPermiteJugarPorDosTurnos()throws Exception{
 		assertEquals(turno.jugadorActual(),jugadorAutobots);
 		turno.jugadorActual().combinarODescombinar();
 		assertEquals(turno.jugadorActual(),jugadorDecepticons);//pasa el turno solo

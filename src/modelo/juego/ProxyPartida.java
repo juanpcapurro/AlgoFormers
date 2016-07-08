@@ -1,9 +1,6 @@
 package modelo.juego;
 
-import modelo.juego.jugador.NoEsAlgoFormerPropio;
-import modelo.juego.jugador.NoPuedeCombinarPorTenerAlgoFormersMuertos;
-import modelo.juego.jugador.ObjetivoFueraDeRango;
-import modelo.juego.jugador.YaInicioMovimiento;
+import modelo.juego.jugador.*;
 import modelo.tablero.colocable.Colocable;
 import modelo.tablero.colocable.robots.NoPuedeTransformarsePorSerCombinado;
 import modelo.tablero.colocable.robots.ObjetoInmovible;
@@ -24,7 +21,7 @@ public class ProxyPartida {
        partida.saltearTurno();
    }
 
-   public void mover(Integer coordInicialX,Integer coordInicialY ,Integer coordFinalX, Integer coordFinaLY) throws NoEsAlgoFormerPropio, ObjetoInmovible{
+   public void mover(Integer coordInicialX,Integer coordInicialY ,Integer coordFinalX, Integer coordFinaLY) throws SoloSePuedeMoverUnRobotPorJugada, NoEsAlgoFormerPropio, ObjetoInmovible{
         Posicion posicionInicial=new Posicion(coordInicialX,coordInicialY);
         Posicion posicionFinal=new Posicion(coordFinalX,coordFinaLY);
         partida.mover(posicionInicial, posicionFinal);

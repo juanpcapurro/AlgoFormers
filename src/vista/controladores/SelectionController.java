@@ -18,10 +18,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import modelo.juego.DatosAlgoformer;
 import modelo.juego.JuegoFinalizado;
-import modelo.juego.jugador.NoEsAlgoFormerPropio;
-import modelo.juego.jugador.NoPuedeCombinarPorTenerAlgoFormersMuertos;
-import modelo.juego.jugador.ObjetivoFueraDeRango;
-import modelo.juego.jugador.YaInicioMovimiento;
+import modelo.juego.jugador.*;
 import modelo.tablero.colocable.robots.NoPuedeTransformarsePorSerCombinado;
 import modelo.tablero.colocable.robots.ObjetoInmovible;
 import vista.mainApp;
@@ -151,6 +148,8 @@ public class SelectionController {
                                 , GridPane.getRowIndex(ultimoSeleccionado), GridPane.getColumnIndex(ultimoSeleccionado));
                     }catch (NoEsAlgoFormerPropio|ObjetoInmovible e) {
                         mainApp.crearCartelAlerta("No es algoFormer Propio");
+                    }catch (SoloSePuedeMoverUnRobotPorJugada e){
+                        mainApp.crearCartelAlerta("Solo se puede mover un robot por jugada, listillo.");
                     }
                     Platform.runLater(new Runnable() {
                         @Override

@@ -71,7 +71,7 @@ public class JugadorTest {
 		assertFalse(jugadorDecepticons.equipovivo());
 	}
 	@Test
-	public void muereElEquipoAlAtacarLasPosicionesDeLosAlgoformers()throws YaInicioMovimiento, SinMovimientosDisponibles, ObjetoInmovible, NoEsAlgoFormerPropio, ObjetivoFueraDeRango, NoPuedeTransformarsePorSerCombinado{
+	public void muereElEquipoAlAtacarLasPosicionesDeLosAlgoformers()throws Exception{
 		assertTrue(jugadorAutobots.equipovivo());
 		assertTrue(posicionFrenzy.compararPosicion(new Posicion(0, 6)));
 		jugadorDecepticons.transformar(posicionFrenzy);
@@ -99,13 +99,13 @@ public class JugadorTest {
 		assertFalse(jugadorAutobots.equipovivo());
 	}
 	@Test(expected= NoEsAlgoFormerPropio.class)
-	public void unJugadorNoPuedeAtacarConAlgoFormersAjenos() throws YaInicioMovimiento, NoEsAlgoFormerPropio, ObjetivoFueraDeRango{
+	public void unJugadorNoPuedeAtacarConAlgoFormersAjenos() throws Exception{
 		jugadorDecepticons.atacar(posicionBumblebee, posicionOptimus);
 		jugadorDecepticons.atacar(posicionOptimus, posicionRatchet);
 		jugadorDecepticons.atacar(posicionRatchet, posicionBumblebee);
 	}
 	@Test(expected= NoEsAlgoFormerPropio.class)
-	public void unJugadorNoPuedeMoverAlgoFormersAjenos()throws NoEsAlgoFormerPropio, YaInicioMovimiento, ObjetoInmovible, SinMovimientosDisponibles{
+	public void unJugadorNoPuedeMoverAlgoFormersAjenos()throws Exception{
 		jugadorDecepticons.mover(posicionBumblebee,posicionOptimus);
 		jugadorDecepticons.mover(posicionOptimus,posicionRatchet);
 		jugadorDecepticons.mover(posicionRatchet, posicionBumblebee);
@@ -136,5 +136,17 @@ public class JugadorTest {
 		assertFalse(jugadorDecepticons.puedeJugar());
 		jugadorDecepticons.notificar();
 		assertTrue(jugadorDecepticons.puedeJugar());
+	}
+	@Test (expected = NoPuedeCombinarPorTenerAlgoFormersMuertos.class)
+	public void noSePuedeCombinarSiMurieronRobots()throws Exception{
+		ratchet.recibirAtaque(new Ataque(2000));
+		assertFalse(ratchet.estaVivo());
+		assertTrue(jugadorAutobots.equipovivo());
+		jugadorAutobots.combinarODescombinar();//aca deberia salir la excepcion
+	}
+	@Test(expected = SoloSePuedeMoverUnRobotPorJugada.class)
+	public void soloSePuedeMoverUnRobotPorJugada()throws Exception{
+		jugadorAutobots.mover(new Posicion(0,0), new Posicion(1,0));
+		jugadorAutobots.mover(new Posicion(0,1), new Posicion(1,1));
 	}
 }

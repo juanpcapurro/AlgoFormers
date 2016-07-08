@@ -31,7 +31,7 @@ class Partida {
    Jugador jugadorDos;
 
    public Partida(String nombreJugadorDecepticons, String nombreJugadorAutobots, int dimension) {
-    	this.tablero = new Tablero(dimension);
+    	this.tablero = new Tablero(dimension,true);
 
         jugadorUno=new JugadorDecepticons(nombreJugadorDecepticons, tablero, new BoneCrusher(), new Frenzy(), new Megatron());
         jugadorDos=new JugadorAutobots(nombreJugadorAutobots, tablero, new Bumblebee(), new Optimus(), new Ratchet());
@@ -46,7 +46,7 @@ class Partida {
         turno.avanzarTurno();
    }
 
-   public void mover(Posicion posicionInicial, Posicion posicionFinal) throws ObjetoInmovible, NoEsAlgoFormerPropio, JuegoFinalizado{//Esto hay que debatirlo con sharles
+   public void mover(Posicion posicionInicial, Posicion posicionFinal) throws SoloSePuedeMoverUnRobotPorJugada, ObjetoInmovible, NoEsAlgoFormerPropio, JuegoFinalizado{//Esto hay que debatirlo con sharles
        try {
            turno.jugadorActual().mover(posicionInicial, posicionFinal);
        }catch (SinMovimientosDisponibles error) {

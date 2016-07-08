@@ -7,6 +7,7 @@ import modelo.tablero.NoEncontradoError;
 import modelo.tablero.SinMovimientosDisponibles;
 import modelo.tablero.Tablero;
 import modelo.tablero.colocable.Colocable;
+import modelo.tablero.colocable.EspacioVacio;
 import modelo.tablero.colocable.robots.AlgoFormer;
 import modelo.tablero.colocable.robots.AlgoformerCombinado;
 import modelo.tablero.colocable.robots.NoPuedeTransformarsePorSerCombinado;
@@ -26,6 +27,7 @@ public abstract class Jugador {
 	private ArrayList<AlgoFormer> robotsJugador = new ArrayList<AlgoFormer>();
 	private boolean estaCombinado;//Algun dia hay que hardcodear //Ya esta todo hardcodeado que flasha
 	private boolean inicioMovimiento;
+	private AlgoFormer robotDelMovimiento;
 
 	public Jugador(String nuevoNombre, Tablero tablero, AlgoFormer unAlgoformer, AlgoFormer otroAlgoformer, AlgoFormer tercerAlgoformer){
 		this.tablero= tablero;
@@ -72,16 +74,22 @@ public abstract class Jugador {
 		aTransformar.transformar();
 	}
 
-	public void mover(Posicion posicionOrigen, Posicion posicionDestino) throws NoEsAlgoFormerPropio, ObjetoInmovible, SinMovimientosDisponibles{
+	public void mover(Posicion posicionOrigen, Posicion posicionDestino) throws SoloSePuedeMoverUnRobotPorJugada, NoEsAlgoFormerPropio, ObjetoInmovible, SinMovimientosDisponibles{
+		hayUnAlgoFormerPropioEnPosicion(posicionOrigen);
+		AlgoFormer robotAMover = (AlgoFormer)tablero.obtenerCasilleroAsociadoAPosicion(posicionOrigen).getColocable();
+
 		try {
 			validarQuePuedeJugar();
-		}catch (YaInicioMovimiento e) {}
+		}catch (YaInicioMovimiento e) {
+			if(robotAMover!=robotDelMovimiento)
+				throw new SoloSePuedeMoverUnRobotPorJugada();
+		}//Es la excepcion a la excepcion
 
-        hayUnAlgoFormerPropioEnPosicion(posicionOrigen);
 		if (esAlgoformerPropio(tablero.obtenerCasilleroAsociadoAPosicion(posicionDestino).getColocable()))
-			return;
+			return;//Para poder cambiar el algoformer seleccionado
 		try {
 			tablero.recorrer(posicionOrigen, posicionDestino);
+			robotDelMovimiento= robotAMover;
 		}catch (ObjetoInmovible e){
 			return;
 		}
@@ -106,6 +114,7 @@ public abstract class Jugador {
 		for (AlgoFormer actual: robotsJugador)
 			actual.notificar();
 		inicioMovimiento=false;
+		robotDelMovimiento=null;
 	}
 
 	private boolean algoformerSinMovimientos(Posicion posicion){
