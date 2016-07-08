@@ -17,8 +17,9 @@ public class ControladorPosiciones {
         if (ultimaPosicionX >= dimension-1) {
             ultimaPosicionX = 0;
             ultimaPosicionY++;
-        }
-        else
+            if(ultimaPosicionY>= dimension)//Asi anda, y no planeo entender por que
+                ultimaPosicionY=0;
+        }else
             ultimaPosicionX++;
     }
 

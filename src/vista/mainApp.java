@@ -29,13 +29,12 @@ public class mainApp extends Application {
     public static String screenIngresoDeNombres = "screenIngresoDeNombres";
     public static String screenIngresoDeNombresFile = "screenIngresoDeNombres.fxml";
     public static String screenSeleccionDeEquipos = "screenSeleccionDeEquipos";
-    private static String screenSeleccionDeEquiposFile = "screenSeleccionDeEquipos.fxml";
+    public static String screenSeleccionDeEquiposFile = "screenSeleccionDeEquipos.fxml";
     public static String screenTablero = "screenTablero";
     public static String screenTablerolFile = "screenTablero.fxml";
     public static String screenFinal = "screenFinal";
-    private static String screenFinalFile = "screenGanador.fxml";
+    private static String screenFinallFile = "screenFinal.fxml";
     public static Stage dialogStage;
-
 
 
     @Override
@@ -57,7 +56,8 @@ public class mainApp extends Application {
         Scene scene = new Scene(root, screenBounds.getWidth(), screenBounds.getHeight());
 
         primaryStage.setResizable(false);
-        primaryStage.setFullScreen(true);
+        primaryStage.setFullScreen(false);
+        primaryStage.setMaximized(true);
         primaryStage.setScene(scene);
         primaryStage.setTitle("ALGOFORMERS");
         primaryStage.show();
@@ -70,7 +70,7 @@ public class mainApp extends Application {
         mainContainer.loadScreen(mainApp.screenInicial, mainApp.screenInicialFile);
         mainContainer.loadScreen(mainApp.screenIngresoDeNombres, mainApp.screenIngresoDeNombresFile);
         mainContainer.loadScreen(mainApp.screenSeleccionDeEquipos, mainApp.screenSeleccionDeEquiposFile);
-        mainContainer.loadScreen(mainApp.screenFinal, mainApp.screenFinalFile);
+        mainContainer.loadScreen(mainApp.screenFinal, mainApp.screenFinallFile);
 
     }
 
@@ -78,6 +78,9 @@ public class mainApp extends Application {
     public static void main(String[] args) {
         launch(args);
     }
+
+
+
 
 
 
@@ -120,4 +123,3 @@ public class mainApp extends Application {
 
 
 }
-

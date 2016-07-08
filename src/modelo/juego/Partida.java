@@ -31,7 +31,7 @@ class Partida {
    Jugador jugadorDos;
 
    public Partida(String nombreJugadorDecepticons, String nombreJugadorAutobots, int dimension) {
-    	this.tablero = new Tablero(dimension,true);
+    	this.tablero = new Tablero(dimension);
 
         jugadorUno=new JugadorDecepticons(nombreJugadorDecepticons, tablero, new BoneCrusher(), new Frenzy(), new Megatron());
         jugadorDos=new JugadorAutobots(nombreJugadorAutobots, tablero, new Bumblebee(), new Optimus(), new Ratchet());
