@@ -9,7 +9,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane fx:id="panelSuperior" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#iniciarJuego" prefHeight="805.0" prefWidth="1291.0" styleClass="background" stylesheets="@fondoScreenPrincipal.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vista.controladores.ScreenIngresoDeNombresController">
+<AnchorPane fx:id="panelSuperior" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="805.0" prefWidth="1291.0" styleClass="background" stylesheets="@fondoScreenPrincipal.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vista.controladores.ScreenIngresoDeNombresController">
    <children>
       <Button layoutX="938.0" layoutY="18.0" mnemonicParsing="false" onAction="#salir" prefHeight="35.0" prefWidth="160.0" styleClass="background" stylesheets="@botonSalir.css" AnchorPane.rightAnchor="17.0" AnchorPane.topAnchor="18.0">
          <font>

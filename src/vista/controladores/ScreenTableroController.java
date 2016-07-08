@@ -62,7 +62,7 @@ public class ScreenTableroController implements Initializable, ControlledScreen 
 
 
 
-        partida=new ProxyPartida(ScreensController.getJ1(), ScreensController.getJ2(),8);
+        partida= crearPartida();
         imprimir(partida);
         setButtonsEvent();
         tableroGrid.setGridLinesVisible(true);
@@ -73,15 +73,26 @@ public class ScreenTableroController implements Initializable, ControlledScreen 
 
     }
 
+    private ProxyPartida crearPartida() {
+
+        if(ScreensController.getEquipoJ1()== "autobots"){
+            return new ProxyPartida(ScreensController.getJ2(), ScreensController.getJ1(),8);
+        }
+        else{
+            return new ProxyPartida(ScreensController.getJ1(),ScreensController.getJ2(),8);
+        }
+
+    }
+
     public void setScreenParent(ScreensController screenParent) {
         myController = screenParent;
     }
 
     @Override
     public void setNombreJugadores(String nj1, String nj2) {
-        nombreJugador1 = nj1;
-        nombreJugador2 = nj2;
+
     }
+
 
     public void imprimir(ProxyPartida partida){
 

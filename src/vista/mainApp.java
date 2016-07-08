@@ -56,7 +56,7 @@ public class mainApp extends Application {
         Scene scene = new Scene(root, screenBounds.getWidth(), screenBounds.getHeight());
 
         primaryStage.setResizable(false);
-        primaryStage.setFullScreen(false);
+        primaryStage.setFullScreen(true);
         primaryStage.setMaximized(true);
         primaryStage.setScene(scene);
         primaryStage.setTitle("ALGOFORMERS");

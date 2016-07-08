@@ -13,7 +13,6 @@ import vista.mainApp;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import static vista.mainApp.nombreJ1;
 import static vista.mainApp.screenTablero;
 
 
@@ -37,6 +36,7 @@ public class ScreenSeleccionDeEquiposController implements Initializable, Contro
         this.autobot = "optimus";
         this.decepticon = "megatron";
 
+        setNombreJugadores();
         setearEtiquetas();
 
         Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
@@ -49,8 +49,14 @@ public class ScreenSeleccionDeEquiposController implements Initializable, Contro
 
     @Override
     public void setNombreJugadores(String nj1, String nj2) {
-        nombreJugador1 = nj1;
-        nombreJugador2 = nj2;
+
+    }
+
+
+    public void setNombreJugadores() {
+
+        nombreJugador1 = ScreensController.getJ1();
+        nombreJugador2 = ScreensController.getJ2();
     }
 
     @FXML
@@ -111,36 +117,37 @@ public class ScreenSeleccionDeEquiposController implements Initializable, Contro
 
     @FXML
     public void autobotJugador1(){
-        this.autobotJugador.setText(mainApp.nombreJ1);
-        this.decepticonJugador.setText(mainApp.nombreJ2);
+        this.autobotJugador.setText(nombreJugador1);
+        this.decepticonJugador.setText(nombreJugador2);
         this.equipoJugador1 = "autobots";
         this.equipoJugador2 = "decepticons";
     }
     @FXML
     public void autobotJugador2(){
-        this.autobotJugador.setText(mainApp.nombreJ2);
-        this.decepticonJugador.setText(mainApp.nombreJ1);
+        this.autobotJugador.setText(nombreJugador2);
+        this.decepticonJugador.setText(nombreJugador1);
         this.equipoJugador2 = "autobots";
         this.equipoJugador1 = "decepticons";
     }
 
     @FXML
     public void decepticonJugador1(){
-        this.autobotJugador.setText(mainApp.nombreJ2);
-        this.decepticonJugador.setText(mainApp.nombreJ1);
+        this.autobotJugador.setText(nombreJugador2);
+        this.decepticonJugador.setText(nombreJugador1);
         this.equipoJugador2 = "autobots";
         this.equipoJugador1 = "decepticons";
     }
     @FXML
     public void decepticonJugador2(){
-        this.autobotJugador.setText(mainApp.nombreJ1);
-        this.decepticonJugador.setText(mainApp.nombreJ2);
+        this.autobotJugador.setText(nombreJugador1);
+        this.decepticonJugador.setText(nombreJugador2);
         this.equipoJugador1 = "autobots";
         this.equipoJugador2 = "decepticons";
     }
 
     @FXML
     public void setearEtiquetas(){
+
         jugador1Autobot.setText(nombreJugador1);
         jugador1Decepticon.setText(nombreJugador1);
         jugador2Autobot.setText(nombreJugador2);
@@ -149,15 +156,15 @@ public class ScreenSeleccionDeEquiposController implements Initializable, Contro
 
     @FXML
     public void jugar(){
-//        mainApp.iniciarPartida(equipoJugador1,equipoJugador2);
-//        if((equipoJugador1 == "autobots") && (equipoJugador2 == "decepticons")){
-//            mainApp..asignarAutobotsAJugador(1);
-//            mainApp.partida.asignarDecepticonsAJugador(2);
-//        }
-//        else if((equipoJugador2 == "autobots") && (equipoJugador1 == "decepticons")){
-//            mainApp.partida.asignarAutobotsAJugador(2);
-//            mainApp.partida.asignarDecepticonsAJugador(1);
-//        }
+
+        if(equipoJugador1 == "autobots"){
+            ScreensController.asignarAutobotsAJugador(1);
+
+        }
+        else if(equipoJugador1 == "decepticons"){
+            ScreensController.asignarAutobotsAJugador(2);
+
+        }
         myController.setScreen(screenTablero,nombreJugador1,nombreJugador2);
     }
 

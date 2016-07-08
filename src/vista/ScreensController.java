@@ -22,11 +22,17 @@ public class ScreensController  extends StackPane {
     private HashMap<String, Node> screens = new HashMap<>();
     static String j1;
     static String j2;
+    static String equipoJ1;
+
 
 
 
     public ScreensController() {
         super();
+    }
+
+    public static String getEquipoJ1() {
+        return equipoJ1;
     }
 
 
@@ -112,5 +118,17 @@ public class ScreensController  extends StackPane {
     public static String getJ2(){
         return j2;
     }
+
+    public static void asignarAutobotsAJugador(int i) {
+        if(i == 1){
+            equipoJ1 = "autobots";
+        }
+        else{
+            equipoJ1 = "decepticons";
+        }
+    }
+
+
+
 }
 
