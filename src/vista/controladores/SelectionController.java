@@ -157,10 +157,10 @@ public class SelectionController {
                         ScreenFinalController.setWinner(e.getMessage());
                         mainApp.mainContainer.loadScreen(mainApp.screenFinal,mainApp.screenFinallFile);
                         mainApp.mainContainer.setScreen(mainApp.screenFinal);
-                        //String musicFile = "src/vista/imagenes/hanGanado.mp3";
-                    	//Media sonido = new Media(new File(musicFile).toURI().toString());
-                    	//MediaPlayer mediaPlayer = new MediaPlayer(sonido);
-                    	//mediaPlayer.play();
+                        String musicFile = "src/vista/imagenes/hanGanado.mp3";
+                    	Media sonido = new Media(new File(musicFile).toURI().toString());
+                    	MediaPlayer mediaPlayer = new MediaPlayer(sonido);
+                    	mediaPlayer.play();
                     }
                     Platform.runLater(new Runnable() {
                         @Override
@@ -189,8 +189,14 @@ public class SelectionController {
             actualizarCasillero();
             partida.setPosicionador(GridPane.getRowIndex(ultimoSeleccionado), GridPane.getColumnIndex(ultimoSeleccionado));
             actualizarBarra();
-            if (Integer.valueOf(partida.getDatos().getVidaActual()) <= 0)
+            if (Integer.valueOf(partida.getDatos().getVidaActual()) <= 0){
                 ultimoSeleccionado.getChildren().add(new ExplosionDestruccion(ultimoSeleccionado).getView());
+            	String musicFile = "src/vista/imagenes/muerte.mp3";
+            	Media sonido = new Media(new File(musicFile).toURI().toString());
+            	MediaPlayer mediaPlayer = new MediaPlayer(sonido);
+            	mediaPlayer.play();
+            }
+            
             else
                 ultimoSeleccionado.getChildren().add(new Explosion(ultimoSeleccionado).getView());
             	String musicFile = "src/vista/imagenes/explota.mp3";

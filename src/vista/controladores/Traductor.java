@@ -10,9 +10,9 @@ public class Traductor extends Hashtable<String,String>{
         put("DebuffEspinas","Danio Lava");
         put("DebuffNebulosa","Inmovilizado");
         put("DebuffPantanoHumanoide","Inmovilizado");
-        put("DebuffPantanoTerrestre","Relantizado");
+        put("DebuffPantanoTerrestre","Ralentizado");
         put("DebuffTormenta","Atq Reducido");
-        put("Debilitado","Debilitado");
+        put("Debilitado","Muerto");
 
 
     }
