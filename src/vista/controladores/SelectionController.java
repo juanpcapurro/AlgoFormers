@@ -15,6 +15,8 @@ import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import modelo.juego.DatosAlgoformer;
 import modelo.juego.JuegoFinalizado;
@@ -23,6 +25,7 @@ import modelo.tablero.colocable.robots.NoPuedeTransformarsePorSerCombinado;
 import modelo.tablero.colocable.robots.ObjetoInmovible;
 import vista.mainApp;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -154,6 +157,10 @@ public class SelectionController {
                         ScreenFinalController.setWinner(e.getMessage());
                         mainApp.mainContainer.loadScreen(mainApp.screenFinal,mainApp.screenFinallFile);
                         mainApp.mainContainer.setScreen(mainApp.screenFinal);
+                        //String musicFile = "src/vista/imagenes/hanGanado.mp3";
+                    	//Media sonido = new Media(new File(musicFile).toURI().toString());
+                    	//MediaPlayer mediaPlayer = new MediaPlayer(sonido);
+                    	//mediaPlayer.play();
                     }
                     Platform.runLater(new Runnable() {
                         @Override
@@ -186,6 +193,11 @@ public class SelectionController {
                 ultimoSeleccionado.getChildren().add(new ExplosionDestruccion(ultimoSeleccionado).getView());
             else
                 ultimoSeleccionado.getChildren().add(new Explosion(ultimoSeleccionado).getView());
+            	String musicFile = "src/vista/imagenes/explota.mp3";
+            	Media sonido = new Media(new File(musicFile).toURI().toString());
+            	MediaPlayer mediaPlayer = new MediaPlayer(sonido);
+            	mediaPlayer.play();
+            	
         }catch(NoEsAlgoFormerPropio e){
             mainApp.crearCartelAlerta("No es AlgoFormer Propio");
         }catch(ObjetivoFueraDeRango e){

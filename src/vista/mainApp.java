@@ -8,11 +8,14 @@ import javafx.geometry.Rectangle2D;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Modality;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import vista.controladores.AlertasController;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 
@@ -101,6 +104,10 @@ public class mainApp extends Application {
                             dialogStage.initOwner(mainApp.primaryStage);
                             Scene scene = new Scene(page);
                             dialogStage.setScene(scene);
+                        	String musicFile = "src/vista/imagenes/ventanaError.mp3";
+                        	Media sonido = new Media(new File(musicFile).toURI().toString());
+                        	MediaPlayer mediaPlayer = new MediaPlayer(sonido);
+                        	mediaPlayer.play();
 
 
                             AlertasController controller = loader.getController();
@@ -108,6 +115,7 @@ public class mainApp extends Application {
                             controller.setearMensaje(mensaje);
 
                             dialogStage.showAndWait();
+
                             } catch (IOException e) {
                                 e.printStackTrace();
                             }
