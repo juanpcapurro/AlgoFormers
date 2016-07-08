@@ -150,6 +150,10 @@ public class SelectionController {
                         mainApp.crearCartelAlerta("No es algoFormer Propio");
                     }catch (SoloSePuedeMoverUnRobotPorJugada e){
                         mainApp.crearCartelAlerta("Solo se puede mover un robot por jugada, listillo.");
+                    }catch (JuegoFinalizado e){
+                        ScreenFinalController.setWinner(e.getMessage());
+                        mainApp.mainContainer.loadScreen(mainApp.screenFinal,mainApp.screenFinallFile);
+                        mainApp.mainContainer.setScreen(mainApp.screenFinal);
                     }
                     Platform.runLater(new Runnable() {
                         @Override

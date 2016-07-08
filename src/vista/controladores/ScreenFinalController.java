@@ -8,12 +8,12 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Screen;
 import vista.ControlledScreen;
 import vista.ScreensController;
-import vista.mainApp;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import static vista.mainApp.*;
+import static vista.mainApp.primaryStage;
+import static vista.mainApp.screenInicial;
 
 
 public class ScreenFinalController implements Initializable, ControlledScreen {
@@ -21,7 +21,7 @@ public class ScreenFinalController implements Initializable, ControlledScreen {
 
     public AnchorPane panelSuperior;
     public Label cartelGanador;
-
+    public static String winner="";
 
     ScreensController myController;
 
@@ -31,8 +31,11 @@ public class ScreenFinalController implements Initializable, ControlledScreen {
         Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
         panelSuperior.setPrefSize(screenBounds.getWidth(), screenBounds.getHeight());
 
-        cartelGanador.setText("HA GANADO EL JUGADOR: ");
-//        cartelGanador.setText("HA GANADO EL JUGADOR: " + ScreensController.getWinnerName());
+       cartelGanador.setText("HA GANADO EL JUGADOR: " + winner);
+    }
+
+    static void setWinner(String theWinner){
+        winner=theWinner;
     }
 
     public void setScreenParent(ScreensController screenParent) {

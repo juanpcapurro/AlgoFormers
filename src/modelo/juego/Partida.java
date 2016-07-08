@@ -49,7 +49,10 @@ class Partida {
    public void mover(Posicion posicionInicial, Posicion posicionFinal) throws SoloSePuedeMoverUnRobotPorJugada, ObjetoInmovible, NoEsAlgoFormerPropio, JuegoFinalizado{//Esto hay que debatirlo con sharles
        try {
            turno.jugadorActual().mover(posicionInicial, posicionFinal);
-       }catch (SinMovimientosDisponibles error) {
+       }catch (JuegoFinalizado e){
+           throw new JuegoFinalizado(turno.jugadorActual().getDatosJugador().nombreJugador);
+       }
+       catch (SinMovimientosDisponibles error) {
            turno.avanzarTurno();
        }
    }
