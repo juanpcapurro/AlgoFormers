@@ -34,4 +34,12 @@ public class Posicion {
             return new Posicion(x,y-1);
         return this;
     }
+    @Override
+    public boolean equals(Object object){
+        if(object instanceof Posicion){
+            return compararPosicion((Posicion)object);
+        }
+        else
+            return false;
+    }
 }
