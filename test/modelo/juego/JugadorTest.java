@@ -117,7 +117,7 @@ public class JugadorTest {
 		jugadorAutobots.transformar(posicionMegatron);
 	}
 	@Test
-	public void combinarYDescombinarTomaDosTurnos() throws YaInicioMovimiento, NoPuedeCombinarPorTenerAlgoFormersMuertos{
+	public void combinarYDescombinarTomaDosTurnos() throws Exception{
 		jugadorDecepticons.combinarODescombinar();//Pasar de descombinado a combinado
 		assertFalse(jugadorDecepticons.puedeJugar());
 		jugadorDecepticons.notificar();
@@ -148,5 +148,13 @@ public class JugadorTest {
 	public void soloSePuedeMoverUnRobotPorJugada()throws Exception{
 		jugadorAutobots.mover(new Posicion(0,0), new Posicion(1,0));
 		jugadorAutobots.mover(new Posicion(0,1), new Posicion(1,1));
+	}
+	@Test(expected = RobotsMuyAlejados.class)
+	public void noSePuedenCombinarAlgoFormersSiEstanMuyLejos()throws Exception{
+		jugadorDecepticons.transformar(new Posicion(0,7));
+		jugadorDecepticons.notificar();
+		jugadorDecepticons.mover(new Posicion(0,7),new Posicion(7,7));
+		jugadorDecepticons.notificar();
+		jugadorDecepticons.combinarODescombinar();//Aca deberia tirar la excepcion
 	}
 }

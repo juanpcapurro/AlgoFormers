@@ -42,10 +42,20 @@ public class ControladorPosicionesTest {
         controlador.inicializarIteradorDesdePosicion(new Posicion(DIMENSION-2, DIMENSION-1));
         assertEquals(new Posicion(DIMENSION-2,DIMENSION-1), controlador.inicializarPosicion());
         assertEquals(esquinaInferiorDerecha, controlador.inicializarPosicion());
-
+        assertEquals(esquinaSuperiorIzquierda, controlador.inicializarPosicion());
     }
     @Test
-    public void testDistancia(){
-
+    public void testDistanciasNulas(){
+        assertEquals(controlador.calcularDistancia(esquinaSuperiorIzquierda,esquinaSuperiorIzquierda), 0);
+        assertEquals(controlador.calcularDistancia(esquinaSuperiorDerecha, esquinaSuperiorDerecha), 0);
+        assertEquals(controlador.calcularDistancia(esquinaInferiorIzquierda, esquinaInferiorIzquierda), 0);
+        assertEquals(controlador.calcularDistancia(esquinaInferiorDerecha, esquinaInferiorDerecha), 0);
+        assertEquals(controlador.calcularDistancia(new Posicion(DIMENSION/2,DIMENSION/2),new Posicion(DIMENSION/2,DIMENSION/2)),0);
+    }
+    @Test
+    public void testDistanciaEntreEsquinas(){
+        assertEquals(controlador.calcularDistancia(esquinaSuperiorIzquierda,esquinaInferiorDerecha), 14);
+        assertEquals(controlador.calcularDistancia(esquinaSuperiorIzquierda,esquinaSuperiorDerecha), 7);
+        assertEquals(controlador.calcularDistancia(esquinaSuperiorIzquierda,esquinaInferiorIzquierda), 7);
     }
 }

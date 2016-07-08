@@ -56,7 +56,7 @@ public abstract class Jugador {
 		return false;
 	}
 
-	public void combinarODescombinar()throws NoPuedeCombinarPorTenerAlgoFormersMuertos, YaInicioMovimiento{
+	public void combinarODescombinar()throws NoPuedeCombinarPorTenerAlgoFormersMuertos, YaInicioMovimiento, RobotsMuyAlejados{
 		validarQuePuedeJugar();
 		if(!estaCombinado)
 			combinar();
@@ -114,7 +114,7 @@ public abstract class Jugador {
 		for (AlgoFormer actual: robotsJugador)
 			actual.notificar();
 		inicioMovimiento=false;
-		robotDelMovimiento=null;
+		robotDelMovimiento=null;//Smelly af
 	}
 
 	private boolean algoformerSinMovimientos(Posicion posicion){
@@ -158,11 +158,12 @@ public abstract class Jugador {
 		else
 			throw new NoEncontradoError();
 	}
-	private void combinar()throws NoPuedeCombinarPorTenerAlgoFormersMuertos{
+	private void combinar()throws NoPuedeCombinarPorTenerAlgoFormersMuertos, RobotsMuyAlejados{
 		if (robotsJugador.size() < 3)
 			throw new NoPuedeCombinarPorTenerAlgoFormersMuertos();
 		if(!(robotsJugador.get(0).estaVivo() && robotsJugador.get(1).estaVivo() && robotsJugador.get(2).estaVivo()))
 			throw new NoPuedeCombinarPorTenerAlgoFormersMuertos();
+		validarDistanciaDeCombinacion();
 
 		AlgoFormer combinacion = crearAlgoFormerCombinado(robotsJugador.get(0),robotsJugador.get(1),robotsJugador.get(2));
 		AlgoFormer algoformerDeReunion=  robotsJugador.get(0);
@@ -196,6 +197,18 @@ public abstract class Jugador {
 			tablero.colocarAlgoformer(posicionRobot, actual);
 			notificarCambio(posicionRobot);
 		}
+	}
+	private void validarDistanciaDeCombinacion()throws RobotsMuyAlejados{
+		ControladorPosiciones controlador= new ControladorPosiciones(tablero.getDimension());
+		int limiteDistancia= tablero.getDimension();
+		for(AlgoFormer robot : robotsJugador)
+			for(AlgoFormer otroRobot: robotsJugador){
+				Posicion unaPosicion = tablero.obtenerPosicionAsociadaAColocable(robot);
+				Posicion otraPosicion= tablero.obtenerPosicionAsociadaAColocable(otroRobot);
+				if(controlador.calcularDistancia(unaPosicion, otraPosicion) >= limiteDistancia)
+					throw new RobotsMuyAlejados();
+			}
+
 	}
 }
 

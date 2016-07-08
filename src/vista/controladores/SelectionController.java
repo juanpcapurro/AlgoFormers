@@ -338,6 +338,8 @@ public class SelectionController {
                         }
                         catch(YaInicioMovimiento e){
                             mainApp.crearCartelAlerta("No puede combinar porque ya inicio un movimiento");
+                        }catch (RobotsMuyAlejados e){
+                            mainApp.crearCartelAlerta("No podes combinar porque tus robots estan muy alejados.");
                         }
                         primeroSeleccionado=null;
                         return null;
