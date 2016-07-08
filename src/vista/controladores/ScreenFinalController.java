@@ -3,6 +3,7 @@ package vista.controladores;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Rectangle2D;
+import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Screen;
 import vista.ControlledScreen;
@@ -16,9 +17,10 @@ import static vista.mainApp.*;
 
 
 public class ScreenFinalController implements Initializable, ControlledScreen {
-    public javafx.scene.control.TextField nombreJugadorGanador;
+
 
     public AnchorPane panelSuperior;
+    public Label cartelGanador;
 
 
     ScreensController myController;
@@ -28,10 +30,7 @@ public class ScreenFinalController implements Initializable, ControlledScreen {
 
         Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
         panelSuperior.setPrefSize(screenBounds.getWidth(), screenBounds.getHeight());
-
-        nombreJugadorGanador.setText("HA GANADO EL JUGADOR: " + "pasar nombre del jugador");
-
-//        nombreJugadorGanador.setText("HA GANADO EL JUGADOR: " + mainApp.winner);
+        cartelGanador.setText("HA GANADO EL JUGADOR: " + "<NOMBRE DEL GANADOR>"); //PASAR EL NOMBRE
     }
 
     public void setScreenParent(ScreensController screenParent) {
@@ -45,8 +44,7 @@ public class ScreenFinalController implements Initializable, ControlledScreen {
 
     @FXML
     public void reiniciarJuego(){
-        mainApp mainApp = new mainApp();
-        mainApp.start(primaryStage);
+        myController.setScreen(screenInicial);
     }
 
 

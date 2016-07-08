@@ -33,13 +33,10 @@ public class mainApp extends Application {
     public static String screenTablero = "screenTablero";
     public static String screenTablerolFile = "screenTablero.fxml";
     public static String screenFinal = "screenFinal";
-    private static String screenFinallFile = "screenFinal.fxml";
+    private static String screenFinalFile = "screenGanador.fxml";
     public static Stage dialogStage;
 
-//
-//    public static String getNombreJugador2() {
-//        return partida.getNombreJugador2();
-//    }
+
 
     @Override
     public void start(Stage primaryStage) {
@@ -73,7 +70,7 @@ public class mainApp extends Application {
         mainContainer.loadScreen(mainApp.screenInicial, mainApp.screenInicialFile);
         mainContainer.loadScreen(mainApp.screenIngresoDeNombres, mainApp.screenIngresoDeNombresFile);
         mainContainer.loadScreen(mainApp.screenSeleccionDeEquipos, mainApp.screenSeleccionDeEquiposFile);
-        mainContainer.loadScreen(mainApp.screenFinal, mainApp.screenFinallFile);
+        mainContainer.loadScreen(mainApp.screenFinal, mainApp.screenFinalFile);
 
     }
 
@@ -81,9 +78,6 @@ public class mainApp extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-
-
-
 
 
 
@@ -126,3 +120,4 @@ public class mainApp extends Application {
 
 
 }
+

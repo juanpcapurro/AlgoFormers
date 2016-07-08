@@ -22,6 +22,9 @@ import java.util.Hashtable;
 import java.util.ResourceBundle;
 
 import static vista.controladores.SelectionController.setResizeEffectOnButton;
+import static vista.mainApp.screenFinal;
+import static vista.mainApp.screenInicial;
+import static vista.mainApp.screenSeleccionDeEquipos;
 
 
 public class ScreenTableroController implements Initializable, ControlledScreen {
@@ -102,6 +105,8 @@ public class ScreenTableroController implements Initializable, ControlledScreen 
 
     }
 
+
+
     public void setButtonsEvent(){
         controladorDeSeleccion.setTransformation(transformar);
         controladorDeSeleccion.setFinalizarTurno(finalizarTurno);
@@ -112,9 +117,13 @@ public class ScreenTableroController implements Initializable, ControlledScreen 
     }
 
 
+    public void mostrarPantallaFinal(){
+        myController.setScreen(screenFinal);
+    }
 
     @FXML
     public void salir(){
+
         mainApp.primaryStage.close();
 
     }
