@@ -240,6 +240,9 @@ public class SelectionController {
             jugableUno.setImage(null);
             jugableDos.setImage(null);
             jugableTres.setImage((new ImagenObjeto(imagenes, listaDatos.get(0)).getImage()));
+            estadoTres.setText(traductor.get(listaDatos.get(0).getModificador()));
+            estadoDos.setText(null);
+            estadoUno.setText(null);
         }
 
     }
@@ -361,6 +364,10 @@ public class SelectionController {
                             mainApp.crearCartelAlerta("No podes combinar porque tus robots estan muy alejados.");
                         }
                         primeroSeleccionado=null;
+                        Platform.runLater(() -> {
+                            actualizarUnidadesJugables();
+
+                        });
                         return null;
                     }
                 };
