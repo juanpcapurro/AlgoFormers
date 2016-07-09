@@ -53,6 +53,7 @@ public class ScreenFinalController implements Initializable, ControlledScreen {
 
     @FXML
     public void reiniciarJuego(){
+        myController.resetScreens();
         myController.setScreen(screenInicial);
     }
 

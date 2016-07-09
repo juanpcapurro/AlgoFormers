@@ -128,6 +128,9 @@ public class ScreensController  extends StackPane {
     }
 
 
-
+    public void resetScreens() {
+        loadScreen(mainApp.screenInicial,mainApp.screenInicialFile);
+        loadScreen(mainApp.screenIngresoDeNombres,mainApp.screenIngresoDeNombresFile);
+    }
 }
 

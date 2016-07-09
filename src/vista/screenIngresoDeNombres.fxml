@@ -38,7 +38,7 @@
                   <Font name="Arial" size="24.0" />
                </font>
             </Label>
-            <Button mnemonicParsing="false" onAction="#iniciarJuego" prefHeight="52.0" prefWidth="240.0" styleClass="background" stylesheets="@botonEmpezarJuego.css" GridPane.columnIndex="4" GridPane.rowIndex="1">
+            <Button fx:id="iniciarJuego" mnemonicParsing="false" onAction="#iniciarJuego" prefHeight="52.0" prefWidth="240.0" styleClass="background" stylesheets="@botonEmpezarJuego.css" GridPane.columnIndex="4" GridPane.rowIndex="1">
                <font>
                   <Font name="Arial" size="13.0" />
                </font></Button>

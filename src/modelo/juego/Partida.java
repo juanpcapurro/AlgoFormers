@@ -55,12 +55,18 @@ class Partida {
        catch (SinMovimientosDisponibles error) {
            turno.avanzarTurno();
        }
+       if(!turno.jugadorActual().equipovivo()){
+           turno.avanzarTurno();
+           throw new JuegoFinalizado(turno.jugadorActual().getDatosJugador().nombreJugador);
+       }
    }
    public void atacar(Posicion hostil, Posicion objetivo) throws NoEsAlgoFormerPropio, ObjetivoFueraDeRango, JuegoFinalizado, YaInicioMovimiento{
         turno.jugadorActual().atacar(hostil, objetivo);
         turno.avanzarTurno();
-        if (!turno.jugadorActual().equipovivo())
-            throw new JuegoFinalizado();
+        if (!turno.jugadorActual().equipovivo()) {
+            turno.avanzarTurno();
+            throw new JuegoFinalizado(turno.jugadorActual().getDatosJugador().nombreJugador);
+        }
     }
    public void transformar(Posicion posicion)throws NoEsAlgoFormerPropio, NoPuedeTransformarsePorSerCombinado, YaInicioMovimiento{
        turno.jugadorActual().transformar(posicion);

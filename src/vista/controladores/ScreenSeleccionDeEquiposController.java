@@ -5,11 +5,14 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.control.MenuButton;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Screen;
 import vista.ControlledScreen;
 import vista.ScreensController;
 import vista.mainApp;
 
+import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -41,6 +44,8 @@ public class ScreenSeleccionDeEquiposController implements Initializable, Contro
 
         Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
         panelSuperior.setPrefSize(screenBounds.getWidth(), screenBounds.getHeight());
+
+
     }
 
     public void setScreenParent(ScreensController screenParent) {

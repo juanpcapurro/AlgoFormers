@@ -28,7 +28,7 @@ public class mainApp extends Application {
     public static HashMap<String, ControlledScreen> controladores = new HashMap<>();
     public static ScreensController mainContainer;
     public static String screenInicial = "screenInicial";
-    private static String screenInicialFile = "screenInicial.fxml";
+    public static String screenInicialFile = "screenInicial.fxml";
     public static String screenIngresoDeNombres = "screenIngresoDeNombres";
     public static String screenIngresoDeNombresFile = "screenIngresoDeNombres.fxml";
     public static String screenSeleccionDeEquipos = "screenSeleccionDeEquipos";
@@ -38,7 +38,7 @@ public class mainApp extends Application {
     public static String screenFinal = "screenFinal";
     public static String screenFinallFile = "screenGanador.fxml";
     public static Stage dialogStage;
-
+    static public MediaPlayer mediaPlayer;
 
     @Override
     public void start(Stage primaryStage) {
@@ -59,10 +59,14 @@ public class mainApp extends Application {
         Scene scene = new Scene(root, screenBounds.getWidth(), screenBounds.getHeight());
 
         primaryStage.setResizable(false);
-        primaryStage.setFullScreen(false);
-        primaryStage.setMaximized(true);
+        primaryStage.setFullScreen(true);
+        primaryStage.setMaximized(false);
         primaryStage.setScene(scene);
         primaryStage.setTitle("ALGOFORMERS");
+        String musicFile = "src/vista/imagenes/fondo.mp3";
+        Media sonido = new Media(new File(musicFile).toURI().toString());
+        mediaPlayer = new MediaPlayer(sonido);
+        mediaPlayer.play();
         primaryStage.show();
 
 
@@ -124,7 +128,8 @@ public class mainApp extends Application {
             return null;
             }
         };
-        (new Thread(task)).start();
+        Thread thread=new Thread(task);
+        thread.start();
     }
 
 

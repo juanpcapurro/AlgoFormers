@@ -154,13 +154,7 @@ public class SelectionController {
                     }catch (SoloSePuedeMoverUnRobotPorJugada e){
                         mainApp.crearCartelAlerta("Solo se puede mover un robot por jugada, listillo.");
                     }catch (JuegoFinalizado e){
-                        ScreenFinalController.setWinner(e.getMessage());
-                        mainApp.mainContainer.loadScreen(mainApp.screenFinal,mainApp.screenFinallFile);
-                        mainApp.mainContainer.setScreen(mainApp.screenFinal);
-                        String musicFile = "src/vista/imagenes/hanGanado.mp3";
-                    	Media sonido = new Media(new File(musicFile).toURI().toString());
-                    	MediaPlayer mediaPlayer = new MediaPlayer(sonido);
-                    	mediaPlayer.play();
+                        setWinnerScreen(e.getMessage());
                     }
                     Platform.runLater(new Runnable() {
                         @Override
@@ -211,6 +205,9 @@ public class SelectionController {
         }
         catch (YaInicioMovimiento e){
             mainApp.crearCartelAlerta("No puede atacar porque ya empezo un movimiento");
+        }
+        catch (JuegoFinalizado e){
+            setWinnerScreen(e.getMessage());
         }
         primeroSeleccionado = null;
     }
@@ -372,4 +369,13 @@ public class SelectionController {
         });
     }
 
+    public void setWinnerScreen(String winnerName) {
+        ScreenFinalController.setWinner(winnerName);
+        mainApp.mainContainer.loadScreen(mainApp.screenFinal,mainApp.screenFinallFile);
+        mainApp.mainContainer.setScreen(mainApp.screenFinal);
+        String musicFile = "src/vista/imagenes/hanGanado.mp3";
+        Media sonido = new Media(new File(musicFile).toURI().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(sonido);
+        mediaPlayer.play();
+    }
 }

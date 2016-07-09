@@ -60,8 +60,6 @@ public class ScreenTableroController implements Initializable, ControlledScreen 
                                                         alcance,velocidad,nombreJugadorTurno,vidaBar,tableroGrid,
                                                         robot1Imagen,robot2Imagen,robot3Imagen,estadoRobot1,estadoRobot2,estadoRobot3);
 
-
-
         partida= crearPartida();
         imprimir(partida);
         setButtonsEvent();
