@@ -14,11 +14,6 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
         
-    	String musicFile = "src/vista/imagenes/fondo.mp3";
-    	Media sonido = new Media(new File(musicFile).toURI().toString());
-    	MediaPlayer mediaPlayer = new MediaPlayer(sonido);
-    	mediaPlayer.play();
-
         mainApp mainApp = new mainApp();
         mainApp.start(primaryStage);
 

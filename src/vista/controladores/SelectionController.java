@@ -150,7 +150,7 @@ public class SelectionController {
                         partida.mover(GridPane.getRowIndex(primeroSeleccionado), GridPane.getColumnIndex(primeroSeleccionado)
                                 , GridPane.getRowIndex(ultimoSeleccionado), GridPane.getColumnIndex(ultimoSeleccionado));
                     }catch (NoEsAlgoFormerPropio|ObjetoInmovible e) {
-                        mainApp.crearCartelAlerta("No es algoFormer Propio");
+                        mainApp.crearCartelAlerta("El robo de AlgoFormers no esta permitido");
                     }catch (SoloSePuedeMoverUnRobotPorJugada e){
                         mainApp.crearCartelAlerta("Solo se puede mover un robot por jugada, listillo.");
                     }catch (JuegoFinalizado e){
@@ -199,7 +199,7 @@ public class SelectionController {
             	mediaPlayer.play();
             	
         }catch(NoEsAlgoFormerPropio e){
-            mainApp.crearCartelAlerta("No es AlgoFormer Propio");
+            mainApp.crearCartelAlerta("El robo de AlgoFormers no esta permitido");
         }catch(ObjetivoFueraDeRango e){
             mainApp.crearCartelAlerta("Objetivo fuera de rango");
         }
