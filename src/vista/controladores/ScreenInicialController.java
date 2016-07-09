@@ -1,15 +1,15 @@
 package vista.controladores;
 
-import java.awt.*;
-import java.awt.TextField;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.control.*;
+import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
 import javafx.stage.Screen;
 import vista.ControlledScreen;
 import vista.ScreensController;
@@ -31,6 +31,7 @@ public class ScreenInicialController implements Initializable, ControlledScreen 
 
         Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
         panelSuperior.setPrefSize(screenBounds.getWidth(), screenBounds.getHeight());
+        panelSuperior.getChildren().add(new TextoAyuda());
     }
 
     public void setScreenParent(ScreensController screenParent) {
