@@ -52,6 +52,7 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
+                     <Button layoutX="100.0" layoutY="720.0" mnemonicParsing="false" onAction="#ayuda" prefHeight="60.0" prefWidth="60.0" styleClass="background" stylesheets="@botonAyuda.css" AnchorPane.bottomAnchor="45.0" />	
                         <Button fx:id="finalizarTurno" mnemonicParsing="false" prefHeight="29.0" prefWidth="132.0" styleClass="backgroundFinalizarTurno" stylesheets="@botones.css" GridPane.columnIndex="2">
                            <font>
                               <Font name="Arial" size="10.0" />
@@ -222,11 +223,7 @@
             </GridPane>
          </top>
          <bottom>
-            <Label fx:id="mensajesDeAyuda" prefHeight="2.0" prefWidth="1273.0" text="ayuda" textFill="#fffa61" BorderPane.alignment="CENTER">
-               <font>
-                  <Font size="19.0" />
-               </font>
-            </Label>
+ 			<Button layoutX="200.0" layoutY="500.0" mnemonicParsing="false" onAction="#ayuda" prefHeight="60.0" prefWidth="60.0" styleClass="background" stylesheets="@botonAyuda.css" AnchorPane.bottomAnchor="45.0" />	
          </bottom>
       </BorderPane>
    </children>

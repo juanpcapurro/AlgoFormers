@@ -60,31 +60,6 @@ public class ScreenInicialController implements Initializable, ControlledScreen 
         primaryStage.close();
     }
     
-    @FXML
-    public void ayuda() throws IOException{
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(mainApp.class.getResource("screenAyuda.fxml"));
-        AnchorPane page = loader.load();
 
-        // CREO EL DIALOG STAGE
-        dialogStage = new Stage();
-        dialogStage.setTitle("AYUDA");
-        dialogStage.initModality(Modality.WINDOW_MODAL);
-        dialogStage.initOwner(mainApp.primaryStage);
-        Scene scene = new Scene(page);
-        dialogStage.setScene(scene);
-        
-    	String musicFile = "src/vista/imagenes/help.mp3";
-    	Media sonido = new Media(new File(musicFile).toURI().toString());
-    	MediaPlayer mediaPlayer = new MediaPlayer(sonido);
-    	mediaPlayer.play();
-
-
-        dialogStage.showAndWait();
-
-
-
-
-    }
 
 }

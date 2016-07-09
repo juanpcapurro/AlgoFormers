@@ -12,7 +12,7 @@
          <children>
             <Button layoutX="472.0" layoutY="735.0" mnemonicParsing="false" onAction="#pasarAIngresoDeNombres" prefHeight="67.0" prefWidth="287.0" styleClass="background" stylesheets="@botonEmpezarJuego.css" AnchorPane.bottomAnchor="45.0" />
             <Button layoutX="1265.0" layoutY="19.0" mnemonicParsing="false" onAction="#salir" prefHeight="35.0" prefWidth="160.0" styleClass="background" stylesheets="@botonSalir.css" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="19.0" />
-            <Button layoutX="100.0" layoutY="720.0" mnemonicParsing="false" onAction="#ayuda" prefHeight="60.0" prefWidth="60.0" styleClass="background" stylesheets="@botonAyuda.css" AnchorPane.bottomAnchor="45.0" />
+            
          </children>
       </AnchorPane>
    </children>

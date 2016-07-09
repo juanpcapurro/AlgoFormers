@@ -390,10 +390,425 @@ public class FlashTest {
 		menasor.notificar();
 
 		//primer turno con flash
+
 		assertEquals(menasor.getVelocidad(),6);
 		menasor.notificar();
 		
 		//segundo turno con flash
+		assertEquals(menasor.getVelocidad(),6);
+		menasor.notificar();
+		
+		//tercer turno con flash
+		assertEquals(menasor.getVelocidad(),6);
+		menasor.notificar();
+		
+		//Cuarto turno sin flash
+		assertEquals(menasor.getVelocidad(),2);
+	}
+
+	
+	public void test15OptimusTomaFlashYNoAcumulaElSegundo(){
+		//Velocidad pre bonus
+		assertEquals(optimus.getVelocidad(),2);
+		
+		//turno de obtencion del flash
+		optimus.recibirColocable(new Flash());
+		assertEquals(optimus.getVelocidad(),6);
+		optimus.notificar();
+		
+		//primer turno con flash
+
+		optimus.recibirColocable(new Flash());
+		assertEquals(optimus.getVelocidad(),6);
+		optimus.notificar();
+		
+		//segundo turno con flash
+		assertEquals(optimus.getVelocidad(),6);
+		optimus.notificar();
+		
+		//tercer turno con flash
+		assertEquals(optimus.getVelocidad(),6);
+		optimus.notificar();
+		
+		//Cuarto turno sin flash
+		assertEquals(optimus.getVelocidad(),2);
+	}
+	
+	@Test
+	public void test16BumblebeeTomaFlashYNoAcumulaElSegundo(){
+
+		//Velocidad pre bonus
+		assertEquals(bumblebee.getVelocidad(),2);
+		
+		//turno de obtencion del flash
+		bumblebee.recibirColocable(new Flash());
+		assertEquals(bumblebee.getVelocidad(),6);
+		bumblebee.notificar();
+		
+		//primer turno con flash
+		assertEquals(bumblebee.getVelocidad(),6);
+		bumblebee.notificar();
+		
+		//segundo turno con flash
+
+		bumblebee.recibirColocable(new Flash());
+		assertEquals(bumblebee.getVelocidad(),6);
+		bumblebee.notificar();
+		
+		//tercer turno con flash
+		assertEquals(bumblebee.getVelocidad(),6);
+		bumblebee.notificar();
+		
+		//Cuarto turno sin flash
+		assertEquals(bumblebee.getVelocidad(),2);
+	}
+	
+	@Test
+	public void test17RatchetTomaFlashYNoAcumulaElSegundo(){
+		
+		//Velocidad pre bonus
+		assertEquals(ratchet.getVelocidad(),1);
+		
+		//turno de obtencion del flash
+		ratchet.recibirColocable(new Flash());
+		assertEquals(ratchet.getVelocidad(),3);
+		ratchet.notificar();
+		
+		//primer turno con flash
+		assertEquals(ratchet.getVelocidad(),3);
+		ratchet.notificar();
+		
+		//segundo turno con flash
+
+		ratchet.recibirColocable(new Flash());
+		assertEquals(ratchet.getVelocidad(),3);
+		ratchet.notificar();
+		
+		//tercer turno con flash
+		assertEquals(ratchet.getVelocidad(),3);
+		ratchet.notificar();
+		
+		//Cuarto turno sin flash
+		assertEquals(ratchet.getVelocidad(),1);
+	}
+	
+	@Test
+	public void test18MegatronTomaFlashYNoAcumulaElSegundo(){
+
+		//Velocidad pre bonus
+		assertEquals(megatron.getVelocidad(),1);
+		
+		//turno de obtencion del flash
+		megatron.notificar();
+		megatron.recibirColocable(new Flash());
+		assertEquals(megatron.getVelocidad(),3);
+		megatron.notificar();
+		
+		//primer turno con flash
+		assertEquals(megatron.getVelocidad(),3);
+		megatron.notificar();
+		
+		//segundo turno con flash
+
+		megatron.recibirColocable(new Flash());
+		assertEquals(megatron.getVelocidad(),3);
+		megatron.notificar();
+		
+		//tercer turno con flash
+		assertEquals(megatron.getVelocidad(),3);
+		megatron.notificar();
+
+		//Cuarto turno sin flash
+		assertEquals(megatron.getVelocidad(),1);
+	}
+	
+	@Test
+	public void test19FrenzyTomaFlashYNoAcumulaElSegundo(){
+		
+		//Velocidad pre bonus
+		assertEquals(frenzy.getVelocidad(),2);
+		
+		//turno de obtencion del flash
+		frenzy.notificar();
+		frenzy.recibirColocable(new Flash());
+		assertEquals(frenzy.getVelocidad(),6);
+		frenzy.notificar();
+		
+		//primer turno con flash
+
+		frenzy.recibirColocable(new Flash());
+		assertEquals(frenzy.getVelocidad(),6);
+		frenzy.notificar();
+		
+		//segundo turno con flash
+		assertEquals(frenzy.getVelocidad(),6);
+		frenzy.notificar();
+		
+		//tercer turno con flash
+		assertEquals(frenzy.getVelocidad(),6);
+		frenzy.notificar();
+		
+		//Cuarto turno sin flash
+		assertEquals(frenzy.getVelocidad(),2);
+	}
+	
+	@Test
+	public void test20BoneCrusherTomaFlashYNoAcumulaElSegundo(){
+
+		//Velocidad pre bonus
+		assertEquals(boneCrusher.getVelocidad(),1);
+		
+		//turno de obtencion del flash
+		boneCrusher.recibirColocable(new Flash());
+		assertEquals(boneCrusher.getVelocidad(),3);
+		boneCrusher.notificar();
+		
+		//primer turno con flash
+		assertEquals(boneCrusher.getVelocidad(),3);
+		boneCrusher.notificar();
+		
+		//segundo turno con flash
+		assertEquals(boneCrusher.getVelocidad(),3);
+		boneCrusher.notificar();
+		
+		//tercer turno con flash
+
+		boneCrusher.recibirColocable(new Flash());
+		assertEquals(boneCrusher.getVelocidad(),3);
+		boneCrusher.notificar();
+		
+		//Cuarto turno sin flash
+		assertEquals(boneCrusher.getVelocidad(),1);
+	}
+	
+	@Test
+	public void test21AlternoOptimusTomaFlashYNoAcumulaElSegundo()throws NoPuedeTransformarsePorSerCombinado {
+		optimus.transformar();
+		//Velocidad pre bonus
+		assertEquals(optimus.getVelocidad(),5);
+		
+		//turno de obtencion del flash
+		optimus.recibirColocable(new Flash());
+		assertEquals(optimus.getVelocidad(),15);
+		optimus.notificar();
+		
+		//primer turno con flash
+
+		optimus.recibirColocable(new Flash());
+		assertEquals(optimus.getVelocidad(),15);
+		optimus.notificar();
+		
+		//segundo turno con flash
+		assertEquals(optimus.getVelocidad(),15);
+		optimus.notificar();
+		
+		//tercer turno con flash
+		assertEquals(optimus.getVelocidad(),15);
+		optimus.notificar();
+		
+		//Cuarto turno sin flash
+		assertEquals(optimus.getVelocidad(),5);
+	}
+	
+	@Test
+	public void test22AlternoBumblebeeTomaFlashYNoAcumulaElSegundo()throws NoPuedeTransformarsePorSerCombinado{
+		
+		bumblebee.transformar();		
+		//Velocidad pre bonus
+		assertEquals(bumblebee.getVelocidad(),5);
+		
+		//turno de obtencion del flash
+		bumblebee.recibirColocable(new Flash());
+		assertEquals(bumblebee.getVelocidad(),15);
+		bumblebee.notificar();
+		
+		//primer turno con flash
+
+		bumblebee.recibirColocable(new Flash());
+		assertEquals(bumblebee.getVelocidad(),15);
+		bumblebee.notificar();
+		
+		//segundo turno con flash
+		assertEquals(bumblebee.getVelocidad(),15);
+		bumblebee.notificar();
+		
+		//tercer turno con flash
+		assertEquals(bumblebee.getVelocidad(),15);
+		bumblebee.notificar();
+		
+		//Cuarto turno sin flash
+		assertEquals(bumblebee.getVelocidad(),5);
+	}
+	
+	@Test
+	public void test23AlternoRatchetTomaFlashYNoAcumulaElSegundo()throws NoPuedeTransformarsePorSerCombinado{
+		
+		ratchet.transformar();		
+		//Velocidad pre bonus
+		assertEquals(ratchet.getVelocidad(),8);
+		
+		//turno de obtencion del flash
+		ratchet.recibirColocable(new Flash());
+		assertEquals(ratchet.getVelocidad(),24);
+		ratchet.notificar();
+		
+		//primer turno con flash
+		assertEquals(ratchet.getVelocidad(),24);
+		ratchet.notificar();
+		
+		//segundo turno con flash
+
+		ratchet.recibirColocable(new Flash());
+		assertEquals(ratchet.getVelocidad(),24);
+		ratchet.notificar();
+		
+		//tercer turno con flash
+		assertEquals(ratchet.getVelocidad(),24);
+		ratchet.notificar();
+		
+		//Cuarto turno sin flash
+		assertEquals(ratchet.getVelocidad(),8);
+	}
+	
+	@Test
+	public void test24AlternoMegatronTomaFlashYNoAcumulaElSegundo()throws NoPuedeTransformarsePorSerCombinado{
+		
+		megatron.transformar();
+		//Velocidad pre bonus
+		assertEquals(megatron.getVelocidad(),8);
+		
+		//turno de obtencion del flash
+		megatron.notificar();
+		megatron.recibirColocable(new Flash());
+		assertEquals(megatron.getVelocidad(),24);
+		megatron.notificar();
+		
+		//primer turno con flash
+		assertEquals(megatron.getVelocidad(),24);
+		megatron.notificar();
+
+		//segundo turno con flash
+		assertEquals(megatron.getVelocidad(),24);
+		megatron.notificar();
+
+		//tercer turno con flash
+
+		megatron.recibirColocable(new Flash());
+		assertEquals(megatron.getVelocidad(),24);
+		megatron.notificar();
+		
+		//Cuarto turno sin flash
+		assertEquals(megatron.getVelocidad(),8);
+	}
+	
+	@Test
+	public void test25AlternoFrenzyTomaFlashYNoAcumulaElSegundo()throws NoPuedeTransformarsePorSerCombinado{
+		
+		frenzy.transformar();
+		//Velocidad pre bonus
+		assertEquals(frenzy.getVelocidad(),6);
+		
+		//turno de obtencion del flash
+		frenzy.notificar();
+		frenzy.recibirColocable(new Flash());
+		assertEquals(frenzy.getVelocidad(),18);
+		frenzy.notificar();
+
+		//primer turno con flash
+		assertEquals(frenzy.getVelocidad(),18);
+		frenzy.notificar();
+
+		//segundo turno con flash
+		assertEquals(frenzy.getVelocidad(),18);
+		frenzy.notificar();
+
+		//tercer turno con flash
+
+		frenzy.recibirColocable(new Flash());
+		assertEquals(frenzy.getVelocidad(),18);
+		frenzy.notificar();
+		
+		//Cuarto turno sin flash
+		assertEquals(frenzy.getVelocidad(),6);
+	}
+	
+	@Test
+	public void test26AlternoBoneCrusherTomaFlashYNoAcumulaElSegundo()throws NoPuedeTransformarsePorSerCombinado{
+		
+		boneCrusher.transformar();		
+		// pre bonus
+		assertEquals(boneCrusher.getVelocidad(),8);
+		
+		//turno de obtencion
+		boneCrusher.notificar();
+		boneCrusher.recibirColocable(new Flash());
+		assertEquals(boneCrusher.getVelocidad(),24);
+		boneCrusher.notificar();
+
+		//primer turno
+		assertEquals(boneCrusher.getVelocidad(),24);
+		boneCrusher.notificar();
+
+		//segundo turno
+		assertEquals(boneCrusher.getVelocidad(),24);
+		boneCrusher.notificar();
+
+		//tercer turno
+
+		boneCrusher.recibirColocable(new Flash());
+		assertEquals(boneCrusher.getVelocidad(),24);
+		boneCrusher.notificar();
+		
+		//Cuarto turno
+		assertEquals(boneCrusher.getVelocidad(),8);
+	}
+	
+	@Test
+	public void test27SuperionTomaFlashYNoAcumulaElSegundo(){
+		Superion superion = new Superion (optimus, bumblebee, ratchet);
+		assertEquals(superion.getVelocidad(),3);
+		
+		//turno de obtencion del flash
+		superion.recibirColocable(new Flash());
+		assertEquals(superion.getVelocidad(),9);
+		superion.notificar();
+
+		//primer turno con flash y toma otro
+
+		superion.recibirColocable(new Flash());
+		assertEquals(superion.getVelocidad(),9);
+		superion.notificar();
+
+		//segundo turno con flash
+		assertEquals(superion.getVelocidad(),9);
+		superion.notificar();
+
+		//tercer turno con flash
+		assertEquals(superion.getVelocidad(),9);
+		superion.notificar();
+		
+		//Cuarto turno sin flash
+		assertEquals(superion.getVelocidad(),3);
+	}
+
+	@Test
+	public void test28MenasorTomaFlashYNoAcumulaElSegundo(){
+		Menasor menasor = new Menasor(megatron, boneCrusher,frenzy);
+		//Velocidad pre bonus
+		assertEquals(menasor.getVelocidad(),2);
+		
+		//turno de obtencion del flash
+		menasor.recibirColocable(new Flash());
+		assertEquals(menasor.getVelocidad(),6);
+		menasor.notificar();
+
+		//primer turno con flash
+		assertEquals(menasor.getVelocidad(),6);
+		menasor.notificar();
+		
+		//segundo turno con flash y toma otro
+
+		menasor.recibirColocable(new Flash());
 		assertEquals(menasor.getVelocidad(),6);
 		menasor.notificar();
 		

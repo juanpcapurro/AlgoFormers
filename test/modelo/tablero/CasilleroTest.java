@@ -43,5 +43,15 @@ public class CasilleroTest {
 		assertTrue(casillero.estaOcupado());
 		casillero.colocar(algoFormerDePrueba);
 	}
+	
+	@Test
+	public void test05CasilleroQuedaVacioYPuedeVolverAColocar() {
+		casillero.colocar(algoFormerDePrueba);
+		assertTrue(casillero.estaOcupado());
+		casillero.vaciar();
+		assertFalse(casillero.estaOcupado());
+		casillero.colocar(algoFormerDePrueba);
+		assertTrue(casillero.estaOcupado());
+	}
 
 }

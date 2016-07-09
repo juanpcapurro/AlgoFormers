@@ -1,9 +1,11 @@
 package vista.controladores;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.geometry.Rectangle2D;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
@@ -11,17 +13,24 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import javafx.stage.Modality;
 import javafx.stage.Screen;
+import javafx.stage.Stage;
 import modelo.juego.ProxyPartida;
 import vista.ControlledScreen;
 import vista.ScreensController;
 import vista.mainApp;
 
+import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.util.Hashtable;
 import java.util.ResourceBundle;
 
 import static vista.controladores.SelectionController.setResizeEffectOnButton;
+import static vista.mainApp.dialogStage;
 import static vista.mainApp.screenFinal;
 import static vista.mainApp.screenInicial;
 import static vista.mainApp.screenSeleccionDeEquipos;
@@ -134,6 +143,33 @@ public class ScreenTableroController implements Initializable, ControlledScreen 
     public void salir(){
 
         mainApp.primaryStage.close();
+
+    }
+    
+    @FXML
+    public void ayuda() throws IOException{
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(mainApp.class.getResource("screenAyuda.fxml"));
+        AnchorPane page = loader.load();
+
+        // CREO EL DIALOG STAGE
+        dialogStage = new Stage();
+        dialogStage.setTitle("AYUDA");
+        dialogStage.initModality(Modality.WINDOW_MODAL);
+        dialogStage.initOwner(mainApp.primaryStage);
+        Scene scene = new Scene(page);
+        dialogStage.setScene(scene);
+        
+    	String musicFile = "src/vista/imagenes/help.mp3";
+    	Media sonido = new Media(new File(musicFile).toURI().toString());
+    	MediaPlayer mediaPlayer = new MediaPlayer(sonido);
+    	mediaPlayer.play();
+
+
+        dialogStage.showAndWait();
+
+
+
 
     }
 
