@@ -27,16 +27,16 @@ public class mainApp extends Application {
     public static String nombreJ2="jugador2";
     public static HashMap<String, ControlledScreen> controladores = new HashMap<>();
     public static ScreensController mainContainer;
-    public static String screenInicial = "screenInicial";
+    public static String screenInicial = "src/vista/screenInicial";
     public static String screenInicialFile = "src/vista/screenInicial.fxml";
-    public static String screenIngresoDeNombres = "screenIngresoDeNombres";
+    public static String screenIngresoDeNombres = "src/vista/screenIngresoDeNombres";
     public static String screenIngresoDeNombresFile = "src/vista/screenIngresoDeNombres.fxml";
-    public static String screenSeleccionDeEquipos = "screenSeleccionDeEquipos";
+    public static String screenSeleccionDeEquipos = "src/vista/screenSeleccionDeEquipos";
     public static String screenSeleccionDeEquiposFile = "src/vista/screenSeleccionDeEquipos.fxml";
-    public static String screenTablero = "screenTablero";
+    public static String screenTablero = "src/vista/screenTablero";
     public static String screenTablerolFile = "src/vista/screenTablero.fxml";
-    public static String screenFinal = "screenFinal";
-    public static String screenFinallFile = "screenGanador.fxml";
+    public static String screenFinal = "src/vista/screenFinal";
+    public static String screenFinallFile = "src/vista/screenGanador.fxml";
     public static Stage dialogStage;
     static public MediaPlayer mediaPlayer;
 
