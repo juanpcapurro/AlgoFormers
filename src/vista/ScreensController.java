@@ -12,6 +12,7 @@ import javafx.scene.Parent;
 import javafx.scene.layout.StackPane;
 import javafx.util.Duration;
 
+import java.io.File;
 import java.util.HashMap;
 
 
@@ -42,7 +43,8 @@ public class ScreensController  extends StackPane {
 
     public boolean loadScreen(String name, String resource) {
         try {
-            FXMLLoader myLoader = new FXMLLoader(getClass().getResource(resource));
+            FXMLLoader myLoader = new FXMLLoader();
+            myLoader.setLocation(new File(resource).toURI().toURL());
             Parent loadScreen = (Parent) myLoader.load();
             ControlledScreen myScreenControler = ((ControlledScreen) myLoader.getController());
             mainApp.controladores.put(name,myScreenControler);
@@ -51,6 +53,7 @@ public class ScreensController  extends StackPane {
             return true;
         } catch (Exception e) {
             System.out.println(e.getMessage());
+            System.out.println();
             return false;
         }
     }
