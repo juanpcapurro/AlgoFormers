@@ -18,7 +18,7 @@ import javafx.scene.media.MediaPlayer;
 import javafx.stage.Modality;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
-import modelo.juego.ProxyPartida;
+import modelo.juego.AdaptadorPartida;
 import vista.ControlledScreen;
 import vista.ScreensController;
 import vista.mainApp;
@@ -32,8 +32,6 @@ import java.util.ResourceBundle;
 import static vista.controladores.SelectionController.setResizeEffectOnButton;
 import static vista.mainApp.dialogStage;
 import static vista.mainApp.screenFinal;
-import static vista.mainApp.screenInicial;
-import static vista.mainApp.screenSeleccionDeEquipos;
 
 
 public class ScreenTableroController implements Initializable, ControlledScreen {
@@ -55,7 +53,7 @@ public class ScreenTableroController implements Initializable, ControlledScreen 
 
 
     ScreensController myController;
-    static ProxyPartida partida;
+    static AdaptadorPartida partida;
     SelectionController controladorDeSeleccion;
     static final double TABLERO_HEIGTH =573.0;
     static final double TABLERO_WIDTH =1234.0;
@@ -80,13 +78,13 @@ public class ScreenTableroController implements Initializable, ControlledScreen 
 
     }
 
-    private ProxyPartida crearPartida() {
+    private AdaptadorPartida crearPartida() {
 
         if(ScreensController.getEquipoJ1()== "autobots"){
-            return new ProxyPartida(ScreensController.getJ2(), ScreensController.getJ1(),8);
+            return new AdaptadorPartida(ScreensController.getJ2(), ScreensController.getJ1(),8);
         }
         else{
-            return new ProxyPartida(ScreensController.getJ1(),ScreensController.getJ2(),8);
+            return new AdaptadorPartida(ScreensController.getJ1(),ScreensController.getJ2(),8);
         }
 
     }
@@ -101,7 +99,7 @@ public class ScreenTableroController implements Initializable, ControlledScreen 
     }
 
 
-    public void imprimir(ProxyPartida partida){
+    public void imprimir(AdaptadorPartida partida){
 
         ScreenTableroController.partida.setNotificarVista();
         Hashtable<String,String> imagenes= new Imagenes();

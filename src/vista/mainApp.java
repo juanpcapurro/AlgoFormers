@@ -65,8 +65,8 @@ public class mainApp extends Application {
         primaryStage.setTitle("ALGOFORMERS");
         String musicFile = "src/vista/imagenes/fondo.mp3";
         Media sonido = new Media(new File(musicFile).toURI().toString());
-        mediaPlayer = new MediaPlayer(sonido);
-        mediaPlayer.play();
+ //       mediaPlayer = new MediaPlayer(sonido);
+  //      mediaPlayer.play();
         primaryStage.show();
 
 

@@ -4,7 +4,7 @@ import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
-import modelo.juego.ProxyPartida;
+import modelo.juego.AdaptadorPartida;
 
 import java.util.Hashtable;
 
@@ -12,7 +12,7 @@ public class ImagenAerea extends ImageView implements ContenidoCasillero{
     private static final double HEIGTH =30;
     private static final double WIDTH =50;
 
-    ImagenAerea(Hashtable<String, String> imagenes, ProxyPartida partida) {
+    ImagenAerea(Hashtable<String, String> imagenes, AdaptadorPartida partida) {
         String imagen;
         imagen = imagenes.get((partida.obtenerSuperficieAerea()).getClass().getSimpleName());
         setImage(new Image(imagen));

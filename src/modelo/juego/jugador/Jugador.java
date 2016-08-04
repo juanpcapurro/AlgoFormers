@@ -7,7 +7,6 @@ import modelo.tablero.NoEncontradoError;
 import modelo.tablero.SinMovimientosDisponibles;
 import modelo.tablero.Tablero;
 import modelo.tablero.colocable.Colocable;
-import modelo.tablero.colocable.EspacioVacio;
 import modelo.tablero.colocable.robots.AlgoFormer;
 import modelo.tablero.colocable.robots.AlgoformerCombinado;
 import modelo.tablero.colocable.robots.NoPuedeTransformarsePorSerCombinado;
@@ -17,7 +16,7 @@ import modelo.tablero.posiciones.Posicion;
 
 import java.util.ArrayList;
 
-import static modelo.juego.ProxyPartida.notificarCambio;
+import static modelo.juego.AdaptadorPartida.notificarCambio;
 
 public abstract class Jugador {
 

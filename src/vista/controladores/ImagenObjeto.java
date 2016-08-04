@@ -7,7 +7,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import modelo.juego.DatosAlgoformer;
-import modelo.juego.ProxyPartida;
+import modelo.juego.AdaptadorPartida;
 
 import java.util.Hashtable;
 
@@ -17,7 +17,7 @@ public class ImagenObjeto extends ImageView implements ContenidoCasillero {
     private static final int WIDTH = 90;
     ImageCursor cursor = new ImageCursor(new Image("file:src/vista/imagenes/cursorMira.png"));
 
-    public ImagenObjeto(Hashtable<String, String> imagenes, ProxyPartida partida) {
+    public ImagenObjeto(Hashtable<String, String> imagenes, AdaptadorPartida partida) {
         String imagen,estadoAux="";
         if(partida.getEstado()!=null)
             estadoAux=" "+partida.getEstado().getClass().getSimpleName();

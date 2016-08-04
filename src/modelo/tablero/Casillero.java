@@ -8,7 +8,7 @@ import modelo.tablero.superficie.Superficie;
 import modelo.tablero.superficieAerea.ContextoSuperficieArea;
 import modelo.tablero.superficieTerrestre.ContextoSuperficieTerrestre;
 
-import static modelo.juego.ProxyPartida.notificarMovimiento;
+import static modelo.juego.AdaptadorPartida.notificarMovimiento;
 
 public class Casillero {
     private Colocable colocado;
